@@ -131,7 +131,7 @@ a#list {
   border: 1px solid #fff;
 }
 
-.images {
+.images, #thisisinternet {
   text-align: center;
 }
 
