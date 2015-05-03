@@ -155,10 +155,9 @@ section li {
 }
 .pictures a {
   border: 1px solid #fff;
-  margin: .6em 1.2em;
+  margin: 0.6em 1em;
   display: inline-block;
-}
-.pictures a img {
+  max-width: 100%;
 }
 
 .video {
