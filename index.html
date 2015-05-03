@@ -1,31 +1,33 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="fr-FR">
 <head>
-  <meta content="text/html; charset=utf-8" http-equiv="content-type" />
-  <link rel="stylesheet" href="css/main.css" />
-  <script type="text/javascript" src="js/main.js"></script>
+  <meta charset="utf-8">
   <title>La Brique Internet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/main.css" />
 </head>
 
-<body lang="fr-FR">
-  <div id="haut-gauche">Auto-Hébergement</div>
-  <div id="haut-droite">Internet Neutre</div>
-  
-  <div class="section" id="banniere">
-    <img src="img/brique.png" alt="La Brique Internet" >
-    <p class="banTexte"><span>LaBrique</span>Înter.net</p>
-    <p class="banDescription"><em>Bâtissons ensemble un Internet libre, neutre et décentralisé</em></p>
-  </div>
-  
-  <div class="section">
-    <div class="text">
-      <div id="video">
-        <video width="800" height="450" src="video/labriqueinternet.webm" preload="metadata" controls="controls" tabindex="0">
-          Utilisez un navigateur récent pour visualiser cette vidéo.
-        </video>
-        
-        <a href="javascript:showFeaturesText()" id="list">Liste des fonctionnalités (texte)</a>
+<body class=" nojs ">
+  <header>
+    <div id="haut-droite">Internet Neutre</div>
+    <div id="haut-gauche">Auto-Hébergement</div>
+
+    <div id="banniere">
+      <h1><img src="img/brique.png" alt="La Brique Internet" ></h1>
+      <p class="banTexte"><span>LaBrique</span>Înter.net</p>
+      <p class="banDescription"><em>Bâtissons ensemble un Internet libre, neutre et décentralisé</em></p>
+    </div>
+  </header>
+
+  <main>
+    <section>
+
+        <div class="video">
+          <video width="800" height="450" src="video/labriqueinternet.webm" preload="metadata" controls="controls" tabindex="0">
+            Utilisez un navigateur récent pour visualiser cette vidéo.
+          </video>
+          <a href="#features" id="show-features-button">Liste des fonctionnalités (texte)</a>
+        </div>
 
         <div id="features">
           La Brique Internet permet deux principaux usages :
@@ -66,32 +68,28 @@
             </li>
           </ol>
         </div>
-      </div>
-    </div>
-  </div>
-  
-  <div class="section">
-    <h2><span>Comment</span> ça marche ?</h2>
-    
-    <div class="text">
+
+    </section>
+
+    <section>
+      <h2><span>Comment</span> ça marche ?</h2>
+
       <p>La Brique Internet, présentée dans la vidéo ci-dessus, est un simple boîtier VPN couplé à un serveur.</p>
 
       <p>Un VPN sert à relier <a href="https://fr.wikipedia.org/wiki/R%C3%A9seau_priv%C3%A9_virtuel">un ordinateur à un autre</a>, de façon sécurisée, de façon à ce qu'aucun intermédiaire sur Internet ne puisse lire le contenu des communications qui transitent. Pour que la Brique fonctionne, il faut lui configurer un accès VPN, qui lui permettra de créer un tunnel jusqu'à un autre ordinateur sur Internet. En vous connectant simplement en Wifi sur la Brique, vous pourrez aller sur Internet, en passant automatiquement au travers de ce tunnel chiffré. De cette façon, votre FAI ne peut plus ni vous espionner, ni vous brider ni vous filtrer. C'est le même mécanisme qui permet à la Brique d'être un serveur nomade.</p>
-      
+
       <p>Schémas <a href="pdf/labriqueinternet_schemas.pdf">plus complets</a> que ceux présentés dans la vidéo :</p>
-      
-      <div id="schemas">
+
+      <div class="pictures">
         <a href="pdf/labriqueinternet_schemas.pdf"><img src="img/labriqueinternet_schemas_thumb.png" alt="Schémas" /></a>
       </div>
-      
-      <p>L'ordinateur auquel vous vous reliez par le VPN doit être géré par des gens de confiance. C'est pour cette raison qu'il est souhaitable de choisir une association, pour laquelle vous avez déjà rencontré les adhérents. Certaines associations vous fourniront directement le boîtier clé-en-main, avec votre accès VPN pré-configuré.</p>
-    </div>
-  </div>
-  
-  <div class="section">
-    <h2><span>Comment mieux comprendre</span> les enjeux ?</h2>
 
-    <div class="text">
+      <p>L'ordinateur auquel vous vous reliez par le VPN doit être géré par des gens de confiance. C'est pour cette raison qu'il est souhaitable de choisir une association, pour laquelle vous avez déjà rencontré les adhérents. Certaines associations vous fourniront directement le boîtier clé-en-main, avec votre accès VPN pré-configuré.</p>
+    </section>
+
+    <section>
+      <h2><span>Comment mieux comprendre</span> les enjeux ?</h2>
+
       <p>Ces trois conférences devraient vous aider à comprendre les enjeux liés à la vie privée, à l'auto-hébergement et à l'IPv6 :</p>
 
       <ul>
@@ -99,45 +97,38 @@
         <li><a href="http://ldn-fai.net/liberer-internet-sexe-alcool-et-vie-privee/">Sexe, alcool et vie privée</a></li>
         <li><a href="http://ldn-fai.net/intranet-ipv4-ou-internet-ipv6/">Intranet IPv4 ou Internet IPv6</a></li>
       </ul>
-    </div>
-  </div>
-  
-  <div class="section">
-    <h2><span>Quel est l'avancement</span> du projet ?</h2>
+    </section>
 
-    <div class="text">
+    <section>
+      <h2><span>Quel est l'avancement</span> du projet ?</h2>
+
       <p>Plusieurs personnes, côté <a href="http://ldn-fai.net">LDN</a> comme <a href="http://neutrinet.be">Neutrinet</a>, utilisent déjà la Brique comme principal accès à Internet, depuis plusieurs mois. Les applications Hotspot Wifi et Client VPN pour YunoHost sont fonctionnelles (mais encore à traduire en français).</p>
-      
+
       <p>Il ne reste plus qu'à finir d'intégrer le logiciel <em>dnsmasq</em> à la version stable de YunoHost (l'application Hotspot a été modifiée pour prendre en compte ce futur changement), et modifier YunoHost pour qu'il ajoute correctement les enregistrements AAAA au fichier DNS qu'il génère pour l'auto-hébergement.</p>
-      
+
       <p>Les contributeurs de YunoHost sont sur le coup, tout le reste est prêt.</p>
-    </div>
-  </div>
 
-  <div id="thisisinternet">
-    <img src="img/thisisinternet.png" alt="This is Internet." />
-  </div>
-  
-  <div class="section">
-    <h2><span>Comment obtenir</span> une Brique Internet ?</h2>
+      <div class="pictures">
+        <img src="img/thisisinternet.png" alt="This is Internet." />
+      </div>
+    </section>
 
-    <div class="text">
+    <section>
+      <h2><span>Comment obtenir</span> une Brique Internet ?</h2>
+
       <p>Pour l'instant les commandes groupées de matériel se font auprès des associations, et sont discrètes tant que les points évoqués dans la section précédente ne sont pas résolus. Vous pourrez prochainement vous procurer une Brique Internet dans différentes associations.</p>
 
       <p>Vous pouvez commencer à contacter une association <a href="http://db.ffdn.org">près de chez vous</a>, pour savoir si elle fournit des services VPN, et si elle fournira des Briques Internet :</p>
-      
-      <div id="assos">
+
+      <div class="pictures">
         <a href="http://db.ffdn.org"><img src="img/assos.png" alt="Associations de FFDN" /></a>
       </div>
-      
-      <p>Sinon, vous pouvez construire votre propre Brique, vous-même, grâce aux liens de la section suivante.</p>
-    </div>
-  </div>
-  
-  <div class="section">
-    <h2><span>Comment construire</span> ma propre Brique ?</h2>
 
-    <div class="text">
+      <p>Sinon, vous pouvez construire votre propre Brique, vous-même, grâce aux liens de la section suivante.</p>
+    </section>
+
+    <section>
+      <h2><span>Comment construire</span> ma propre Brique ?</h2>
       <p>Logiciels :</p>
 
       <ul>
@@ -148,13 +139,13 @@
         <li><a href="https://github.com/labriqueinternet/piratebox_ynh">Application PirateBox pour YunoHost</a> (il faut installer Wifi Hotspot avant, mais pas VPN Client)</li>
       </ul>
 
-      <div class="images">
+      <div class="pictures">
         <a href="img/boot1.png"><img src="img/boot1_thumb.png" alt="Boot 1" /></a>
         <a href="img/boot2.png"><img src="img/boot2_thumb.png" alt="Boot 2" /></a>
       </div>
-      
+
       <p>Matériel présenté dans la vidéo :</p>
-      
+
       <ul>
         <li>Carte Olimex (<em>open-hardware</em>) : <a href="https://www.olimex.com/Products/OLinuXino/A20/A20-OLinuXino-LIME/open-source-hardware">A20-OLinuXino-LIME</a></li>
         <li>Boîtier pour la carte : <a href="https://www.olimex.com/Products/OLinuXino/A10/A10-OLinuXino-LIME-BOX/">A10-OLinuXino-LIME-BOX</a></li>
@@ -174,29 +165,27 @@
         <li>Environ 70€, dans le cadre d'une commande groupée (à partir de 10 Briques)</li>
         <li>Environ 80€ sinon</li>
       </ul>
-    </div>
-  </div>
+    </section>
 
-  <div class="section">
-    <h2><span>Remplacer le VPN</span> par Tor ?</h2>
+    <section>
+      <h2><span>Remplacer le VPN</span> par Tor ?</h2>
 
-    <div class="text">
-      <p>Une extension de la Brique est en train d'être travaillée, pour fournir en plus un accès à Internet clé-en-main via <a href="https://www.torproject.org">Tor</a>.</p>
+      <div class="text">
+        <p>Une extension de la Brique est en train d'être travaillée, pour fournir en plus un accès à Internet clé-en-main via <a href="https://www.torproject.org">Tor</a>.</p>
 
-      <p>L'objectif est d'utiliser la clé Wifi pour diffuser deux réseaux Wifi : un pour un accès transparent via VPN et l'autre pour un accès transparent via Tor. Cette extension se présentera comme une simple application YunoHost supplémentaire, à installer.</p>
+        <p>L'objectif est d'utiliser la clé Wifi pour diffuser deux réseaux Wifi : un pour un accès transparent via VPN et l'autre pour un accès transparent via Tor. Cette extension se présentera comme une simple application YunoHost supplémentaire, à installer.</p>
 
-      <div class="images">
-        <a href="img/tor.png"><img src="img/tor_thumb.png" alt="Tor" /></a>
+        <div class="pictures">
+          <a href="img/tor.png"><img src="img/tor_thumb.png" alt="Tor" /></a>
+        </div>
+
+        <p>Toutes les requêtes Internet des périphériques connectés au Wifi seront anonymisées en passant par le réseau Tor. Toutefois, pour garantir un véritable anonymat (dissidants politiques, journalistes, etc.) et empêcher votre navigateur de faire fuiter des informations sur votre identité, il restera toujours préférable d'utiliser directement le <a href="https://www.torproject.org/download/download-easy.html">Tor Bundle</a> (uniquement pour le web et sur un ordinateur classique). De plus, conformément aux contraintes imposées par Tor, l'accès à Internet ne sera pas neutre (limité à TCP et aux requêtes DNS en UDP).</p>
       </div>
+    </section>
 
-      <p>Toutes les requêtes Internet des périphériques connectés au Wifi seront anonymisées en passant par le réseau Tor. Toutefois, pour garantir un véritable anonymat (dissidants politiques, journalistes, etc.) et empêcher votre navigateur de faire fuiter des informations sur votre identité, il restera toujours préférable d'utiliser directement le <a href="https://www.torproject.org/download/download-easy.html">Tor Bundle</a> (uniquement pour le web et sur un ordinateur classique). De plus, conformément aux contraintes imposées par Tor, l'accès à Internet ne sera pas neutre (limité à TCP et aux requêtes DNS en UDP).</p>
-    </div>
-  </div>
-  
-  <div class="section">
-    <h2><span>Anonymat</span> et législation ?</h2>
+    <section>
+      <h2><span>Anonymat</span> et législation ?</h2>
 
-    <div class="text">
       <p>Concernant l'aspect « accès à Internet par VPN » : les associations de la fédération FDN ne garantissent en général pas l'anonymat vis-à-vis des autorités compétentes, ni aucune sorte d'impunité vis-à-vis de la loi française.</p>
 
       <p>La garantie qu'elles apportent à ce niveau, c'est de ne coopérer avec la justice que dans le cadre strict des lois en vigueur. Par conséquent, aucune donnée ne sera fournie à quiconque, si la procédure légale associée n'est pas strictement suivie. Nous savons que ça n'est pas forcément le cas des fournisseurs d'accès grand public, qu'on peut légitimement soupçonner de fournir des informations sur simples appels téléphoniques émanant de policiers ou d'installer des accès privilégiées à leurs données, en dehors de toutes procédures légales (qui sont désormais amenées à être <a href="http://sous-surveillance.fr">plus ou moins facultatives</a>).</p>
@@ -204,8 +193,9 @@
       <p>Les tunnels VPN ne peuvent apporter une sorte d'anonymat vis-à-vis des autorités françaises, que si le fournisseur du service se trouve sous la juridiction d'un état réputé pour ne pas collaborer facilement avec la France (par exemple la Russie, et il faudra alors avoir confiance dans le fournisseur du service, et en la législation de ce pays).</p>
 
       <p>Mais quelque soit le pays, configurer la Brique avec un fournisseur de VPN étranger (judicieusement choisi) sera particulièrement intéressant dans le cas d'un dissidant politique ou d'un journaliste, qui souhaiterait se protéger des dérives sécuritaires de son pays, pour revendiquer plus de libertés.</p>
-    </div>
-  </div>
+    </section>
+
+  </main>
 
   <footer>
     <div class="logos">
@@ -215,5 +205,6 @@
     </div>
   </footer>
 
+  <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
