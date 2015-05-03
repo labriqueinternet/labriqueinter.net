@@ -14,6 +14,8 @@ body {
   font-size: 14pt;
   font-weight: 300;
   line-height: 1.2em;
+  max-width: 64em;
+  margin: auto;
 }
 
 strong, b {
@@ -37,105 +39,172 @@ h2 {
   margin: 1em 0 0;
 }
 
-span {
+h2 span {
   color: #ff3c3c;
 }
 
-a {
+/* responsive medias */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+
+a,
+a:link,
+a:visited {
   text-decoration: underline;
   color: #fff;
 }
 
-a:hover {
+a:hover,
+a:focus {
+  color: #ff3c3c;
   text-decoration: none;
 }
 
-#haut-gauche {
-  left: 0;
-  display: inline-block;
+/**     Header      **/
+
+#haut-gauche,
+#haut-droite {
   font-size: 2em;
-  position: absolute;
   padding: 0 1em;
 }
 
 #haut-droite {
-  right: 0;
-  display: inline-block;
-  font-size: 2em;
-  position: absolute;
-  padding: 0 1em;
+  float: right;
 }
+@media screen and (max-width: 768px) {
+  #haut-gauche,
+  #haut-droite {
+    font-size: 1.6em;
+    padding: 0 0 0.5em 0;
+  }
+  #haut-droite {
+    float: none;
+  }
+}
+
 
 #banniere {
   text-align: center;
   padding-top: 4em;
 }
 
-#banniere img {
-  border: 0;
+#banniere h1 {
+  margin: 0;
 }
 
-#banniere p.banTexte {
+#banniere .banTexte {
   font-size: 5em;
   letter-spacing: 2px;
   padding: 0.1em 0 0.3em;
   margin: 0;
 }
+#banniere .banTexte span {
+  color: #ff3c3c;
+}
 
-#banniere p.banDescription {
+#banniere .banDescription {
   padding: 0 0.5em;
   font-size: 2em;
   letter-spacing: 2px;
   line-height: 1em;
 }
+@media screen and (max-width: 840px) {
+  #banniere {font-size: 0.8em;}
+}
+@media screen and (max-width: 650px) {
+  #banniere {font-size: 0.5em;}
+}
+@media screen and (max-width: 435px) {
+  #banniere {font-size: 0.4em;}
+  /*#banniere .banTexte {font-size: 6em;}*/
+}
+@media screen and (max-width: 360px) {
+  /*#banniere {font-size: 0.4em;}*/
+  #banniere .banTexte {font-size: 4em;}
+  #banniere .banDescription {font-size: 2.5em;}
+}
 
-#section {
+
+
+/**       Global sections       **/
+section {
   padding-top: 2em;
 }
 
+section span {
+  color: #ff3c3c;
+}
+
+section ul {
+}
+section li {
+  padding: 0.2em 0;
+}
+
+
+.pictures {
+  text-align: center;
+}
+.pictures img {
+  display: block;
+  margin: auto;
+}
+.pictures a {
+  border: 1px solid #fff;
+  margin: .6em 1.2em;
+  display: inline-block;
+}
+.pictures a img {
+}
+
+.video {
+  text-align: center;
+  padding: 2em 0 0.5em;
+}
+
+
+/**       Footer       **/
 footer {
   padding-top: 2em;
   text-align: center;
 }
 
-footer img {
-  border: 0;
-  margin: 0 2em 1em;
+.logos {
+  max-width: 600px;
+  margin: auto;
+}
+.logos a {
   display: inline-block;
-}
-
-#video {
+  vertical-align: middle;
+  width: 32%;
   text-align: center;
-  padding: 2em 0 0.5em;
+  margin-bottom: 1em;
+}
+@media screen and (max-width: 460px) {
+  .logos a {
+    width: auto;
+    display: block;
+  }
 }
 
-li {
-  padding: 0.2em 0;
-}
 
-#features {
+/**       States        **/
+
+.has-js #features {
   display: none;
-  text-align: left;
+  /*text-align: left;*/
 }
 
-a#list {
+.has-js #show-features-button {
   display: block;
   padding: 0.6em;
 }
-
-#schemas, #assos {
-  text-align: center;
-}
-
-#schemas img, #assos img {
-  border: 1px solid #fff;
-}
-
-.images, #thisisinternet {
-  text-align: center;
-}
-
-.images img {
-  margin: .6em 1.2em;
-  border: 1px solid #fff;
+.has-js #show-features-button:hover,
+.has-js #show-features-button:focus {
+  outline: none;
+  color: #ff3c3c;
 }
