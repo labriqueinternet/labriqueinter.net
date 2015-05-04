@@ -36,7 +36,7 @@ h1, h2 {
 h2 {
   font-size: 1.75em;
   line-height: 1.5em;
-  margin: 1em 0 0;
+  margin: 0;
 }
 
 h2 span {
@@ -69,7 +69,7 @@ a:focus {
 #haut-gauche,
 #haut-droite {
   font-size: 2em;
-  padding: 0 1em;
+  padding: 0 .4em;
 }
 
 #haut-droite {
@@ -78,11 +78,8 @@ a:focus {
 @media screen and (max-width: 768px) {
   #haut-gauche,
   #haut-droite {
-    font-size: 1.6em;
+    font-size: .9em;
     padding: 0 0 0.5em 0;
-  }
-  #haut-droite {
-    float: none;
   }
 }
 
@@ -132,7 +129,7 @@ a:focus {
 
 /**       Global sections       **/
 section {
-  padding-top: 2em;
+  padding-top: 1em;
 }
 
 section span {
@@ -152,11 +149,10 @@ section li {
 .pictures img {
   display: block;
   margin: auto;
+  border: 1px solid #fff;
 }
 .pictures a {
-  border: 1px solid #fff;
   margin: .6em 1.2em;
-  display: inline-block;
 }
 .pictures a img {
 }
@@ -184,9 +180,23 @@ footer {
   text-align: center;
   margin-bottom: 1em;
 }
+
+#boots {
+  margin: 1.3em 0;
+}
+
+#boots img {
+  display: inline-block;
+  margin: .7em;
+}
+
 @media screen and (max-width: 460px) {
   .logos a {
     width: auto;
+    display: block;
+  }
+
+  #boots img {
     display: block;
   }
 }
@@ -208,3 +218,9 @@ footer {
   outline: none;
   color: #ff3c3c;
 }
+
+#thisisinternet img {
+  border: 0;
+  margin-bottom: 1.6em;
+}
+
