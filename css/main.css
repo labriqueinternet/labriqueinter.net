@@ -35,8 +35,8 @@ h1, h2 {
 
 h2 {
   font-size: 1.75em;
-  line-height: 1.5em;
   margin: 0;
+  line-height: 1.25;
 }
 
 h2 span {
@@ -152,9 +152,16 @@ section li {
   border: 1px solid #fff;
 }
 .pictures a {
+<<<<<<< HEAD
   margin: .6em 1.2em;
 }
 .pictures a img {
+=======
+  border: 1px solid #fff;
+  margin: 0.6em 1em;
+  display: inline-block;
+  max-width: 100%;
+>>>>>>> 307a92ac2c88dfbfae128b3a3694aafbcb232cf5
 }
 
 .video {
