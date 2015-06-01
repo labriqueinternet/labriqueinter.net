@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+  <meta charset="utf-8">
+  <title>The Internet Cube</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body class=" nojs ">
+  <header>
+    <div id="haut-droite">Net Neutrality</div>
+    <div id="haut-gauche">Self-Hosting</div>
+
+    <div id="banniere">
+      <h1><img src="img/brique.png" alt="The Internet Cube" ></h1>
+      <p class="banTexte">Înternet<span>Cu.be</span></p>
+      <p class="banDescription"><em>Let's Build together a Free Internet, Neutral and Decentralized</em></p>
+    </div>
+  </header>
+
+  <main>
+    <section>
+
+        <div id="video" class="video">
+          <video width="800" height="450" src="video/labriqueinternet.webm" preload="metadata" controls="controls" tabindex="0">
+            Use a modern browser to watch this video.
+          </video>
+        </div>
+
+        <div>
+          The Internet cube has two main uses:
+
+          <ol>
+            <li>
+              <strong>Clean your internet access:</strong>
+              <ul>
+                <li><span>You simply connect the Cube to your Internet Service Provider (ISP) box</span>... and that's it ;</li>
+                <li><span>It will start a second Wifi network</span>, which you can use to access the internet;</li>
+                <li>By using this Wifi rather than the one from you ISP, <span>won't be able to spy, filter or restrict</span> your Internet connection;</li>
+                <li>Furthermore, <span>your computers will automatically gain a native IPv6 access</span>, without the need to configure anything;</li>
+                <li>If you decide to switch of ISP, <span>you can just unplug and replug the Cube from one box to the Other</span> and you won't need to reconfigure anything;</li>
+                <li>You now have a Trusted Internet access, without filtering and respectful of the Net Neutrality, <span>regardless of where your connect your box</span>, it even works using 3G/4G.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Self Hosting:</strong>
+              <ul>
+                <li>thanks to the software <a href="http://yunohost.org">YunoHost</a>, <span>the Internet Cube allows you to store your emails and other personal data at your own place</span> instead of storing them on the computer of someone else (what is commonly referred today as <em>the cloud</em>);</li>
+                <li>YunoHost allows anyone who is interested in IT, without being an expert, <span>to self-host a wide range of services</span> (emails, file sharing, blog, online calendar, etc...);</li>
+                <li>thanks to the Cube, which is also an Internet server, <span>you don't have to worry about the restrictions of your ISP</span>: they have disappeared;</li>
+                <li><span>you server is connected to an Internet access that respect Net Neutrality and which isn't censored</span>, with static IPv4 and IPv6 and there is no need to configure your ISP box;</li>
+                <li>if you switch of ISP, <span>you only need to unplugged and replug the Internet Cube from the old box to the new one and your server will be available again</span> without the need of any configuration;</li>
+                <li>if you move or switch off your electricity to go on vacation, <span>you can plug your Cube on any Internet access</span> without having to do any configuration;</li>
+                <li><span>you can even connect your portable server to an especially restricted access,</span>, like a 3/4G connection and continue to offer your services to the whole world.</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Bonus:</strong>
+              <ul>
+                <li>with a maximum consumption of only 2W with the Wifi activated, the Cube can be powered <span>via a battery or a small solar Panel</span> (a 12€ battery cell can last 13h);</li>
+                <li>the box is in <span><em>open-hardware</em> and all the software included are freesoftware</span>;</li>
+                <li>the Internet Cube can also allows you to <span>share files easily</span> during an event (this is what we call a <em>PirateBox</em>) ;</li>
+                <li>you can also use it <span>to provide Internet access at a public event</span>, when using someone else connection to free it's owner from liabilities.</li>
+                <li>PS: you can use the same Cube <span>to clean your Internet access with its Wifi hotspot and host your Internet services</span>.</li>
+              </ul>
+            </li>
+          </ol>
+        </div>
+
+    </section>
+
+    <section id="comment-ca-marche">
+      <h2><span>How</span> does it works?</h2>
+
+      <p>The Internet Cube, as presented in the video below, is a simple VPN box paired with a server.</p>
+
+      <p>A VPN is used to <a href="https://fr.wikipedia.org/wiki/R%C3%A9seau_priv%C3%A9_virtuel">connect one computer to another</a>, in a secured way, a way that no intermediary on the internet can read the content of the communication that transit over it. For the Cube to work, it needs to be configured to access a VPN, that will allow to create a tunnel up to another computer on the internet. By connecting yourself to the Cube Wifi, you can surf the internet, through its encrypted tunnel. This way your Provider can't spy, limit or filter your connection. The same mechanism allows the Cube to act as a portable server.</p>
+
+      <p>More complete <a href="pdf/labriqueinternet_schemas.pdf">schematics</a> that the ones in the video:</p>
+
+      <div class="pictures">
+        <a href="pdf/labriqueinternet_schemas.pdf"><img src="img/labriqueinternet_schemas_thumb.png" alt="Schémas" /></a>
+      </div>
+
+      <p>Of course, since your internet traffic will transit via this VPN, the distant computer to which you will connect it must be managed by people you trust. For that reason, it's better to choose an association whose members you have already met. Some of theses associations can provide you the Cube pre-configured to connect to them.</p>
+    </section>
+
+    <section id="comprendre-les-enjeux">
+      <h2><span>How to have a better understanding</span> of the stakes?</h2>
+
+      <p>These three conferences (in French) should help you understand the issues of privacy, self-hosting and IPv6:</p>
+
+      <ul>
+        <li><a href="http://ldn-fai.net/je-nai-rien-a-cacher/">Je n'ai rien à cacher (I have nothing to hide)</a></li>
+        <li><a href="http://ldn-fai.net/liberer-internet-sexe-alcool-et-vie-privee/">Sexe, alcool et vie privée (Sex, alcohol and privacy)</a></li>
+        <li><a href="http://ldn-fai.net/intranet-ipv4-ou-internet-ipv6/">Intranet IPv4 ou Internet IPv6 (IPv4 intranet or IPv6 Internet)</a></li>
+      </ul>
+    </section>
+
+    <section id="avancement-du-projet">
+      <h2><span>What is the state</span> of the project?</h2>
+
+      <p>Several people from  <a href="http://ldn-fai.net">LDN</a> and <a href="http://neutrinet.be">Neutrinet</a> are already using the Cube as their main Internet access for several months. The Wifi Hotspot and VPN Client applications for YunoHost are already operational.</p>
+
+      <p>The only missing bits are the integration of the software <em>dnsmasq</em> into the stable version of YunoHost (the Hotspot application has been modified to take this modification into account), and to make YunoHost correctly add the AAAA record to the generated DNS file for self-hosting.</p>
+
+      <p>The YunoHost contributors are currently working on resolving theses problems, everything else is ready.</p>
+
+      <div class="pictures" id="thisisinternet">
+        <img src="img/thisisinternet.png" alt="This is Internet." />
+      </div>
+
+      <p>To stay informed about the progress of the project, ask questions or make suggestions, several mediums are available:</p>
+
+      <ul>
+        <li>Mailing list: <a href='https://listes.labriqueinter.net/mailman/listinfo/discussions'>discussions@listes.labriqueinter.net</a></li>
+        <li>IRC: <a href='http://en.irc2go.com/webchat/?net=GeekNode&room=labriqueinter.net'>#labriqueinter.net</a> sur irc.geeknode.org</li>
+        <li>Twitter: <a href="https://twitter.com/une_brique">@Une_brique</a></li>
+      </ul>
+    </section>
+
+    <section id="obtenir-une-brique">
+      <h2><span>How to get</span> an Internet Cube?</h2>
+
+      <p>For now, grouped order are made by associations, and are discreet until the points told in the previous sections aren't solved. You'll be able in a near future to get an Internet Cube in various associations.At the moment, only grouped orders can be made by the way of our partners associations, but this is not public till the previously mentioned issues are resolved. In the future you will be able to order one Internet Cube directly via theses associations.</p>
+
+      <p>You can start to contact an association <a href="http://db.ffdn.org">close to you</a> to ask if they provide VPN services and if they will provide Internet Cube:</p>
+
+      <div class="pictures">
+        <a href="http://db.ffdn.org"><img src="img/assos.png" alt="Associations from the FFDN" /></a>
+      </div>
+
+      <p>Otherwise, you can build your own Cube all by yourself by following this information in the next section.</p>
+    </section>
+
+    <section id="construire-une-brique">
+      <h2><span>How to build</span> my own Internet Cube?</h2>
+      <p>Softwares:</p>
+
+      <ul>
+        <li><a href="http://build.labriqueinter.net">Debian/YunoHost image for A20-OlinuXino-LIME</a> (made by us, recompilable and <a href="http://repo.labriqueinter.net">downloadable</a> by torrent or HTTP)</li>
+        <li><a href="http://yunohost.org">YunoHost project</a> (<a href="http://build.yunohost.org">other Debian images</a>)</li>
+        <li><a href="https://github.com/labriqueinternet/hotspot_ynh">Wifi Hotspot application for YunoHost</a></li>
+        <li><a href="https://github.com/labriqueinternet/vpnclient_ynh">VPN Client application for YunoHost</a></li>
+        <li><a href="https://github.com/labriqueinternet/piratebox_ynh">PirateBox application for YunoHost</a> (you need to install the Wifi Hotspot app first, but the VPN Client isn't required)</li>
+      </ul>
+
+      <div class="pictures" id="boots">
+        <a href="img/boot1.png"><img src="img/boot1_thumb.png" alt="Boot 1" /></a>
+        <a href="img/boot2.png"><img src="img/boot2_thumb.png" alt="Boot 2" /></a>
+      </div>
+
+      <p>Hardware shown in the video:</p>
+
+      <ul>
+        <li>Olimex board (<em>open-hardware</em>): <a href="https://www.olimex.com/Products/OLinuXino/A20/A20-OLinuXino-LIME/open-source-hardware">A20-OLinuXino-LIME</a></li>
+        <li>Case for the board: <a href="https://www.olimex.com/Products/OLinuXino/A10/A10-OLinuXino-LIME-BOX/">A10-OLinuXino-LIME-BOX</a></li>
+        <li>Sector adaptor for the board (a simple mini-USB cable is enough to powered to board, but the adapter is useful to plug a self-powered hard drive): <a href="https://www.olimex.com/Products/Power/SY0605E-CHINA/">SY0605E-CHINA</a></li>
+        <li>Wifi antenna (not <em>open-hardware</em>)
+          <ul>
+            <li><a href="http://www.fsf.org/news/ryf-certification-thinkpenguin-usb-with-atheros-chip">Free Software</a> version (limited to 7 simultaneous connections, <em>multissid</em> up to 2 AP): <a href="http://www.ebay.fr/itm/121637060560?ssPageName=STRK:MEWNX:IT&amp;_trksid=p3984.m1439.l2649">USB 150Mb/s AR9271 5dbi</a> (<a href="http://www.ebay.fr/itm/Mini-USB-Wifi-Adapter-150Mbps-Atheros-AR9271-Chip-with-5dBi-wifi-Antenna-C1846-/121445056410?pt=LH_DefaultDomain_0">another link</a>)</li>
+            <li><a href="https://packages.debian.org/wheezy/firmware-ralink">Non Free Software</a> version (driver rt2800usb, limited to 8 simultaneous connections, <em>multissid</em> up to 8 AP) : <a href="https://www.olimex.com/Products/USB-Modules/MOD-WIFI-R5370-ANT/">MOD-WIFI-R5370-ANT</a></li>
+          </ul>
+        <li>Micro-SD card that is used as the internal hard drive: <a href="http://www.amazon.fr/Transcend-microSDHC-adaptateur-TS32GUSDU1E-Emballage/dp/B00CES44EO">Transcend Premium 300x Class 10</a> (16 Go)</li>
+        <li>Battery (13h of autonomy, optional) : <a href="https://www.olimex.com/Products/Power/BATTERY-LIPO6600mAh/">BATTERY-LIPO6600mAh</a></li>
+      </ul>
+
+      <p>Cost of the hardware bundle describe above, per Cube (without the battery but including the shipping cost):</p>
+
+      <ul>
+        <li>Approximately 70€ for a grouped order (start at 10 Cubes)</li>
+        <li>Approximately 80€ otherwise</li>
+      </ul>
+    </section>
+
+    <section id="remplacer-vpn-par-tor">
+      <h2><span>Replacing the VPN</span> by Tor?</h2>
+
+      <div class="text">
+        <p>An extension to the cube is currently being developed in order to offer an internet access via <a href="https://www.torproject.org">TOR</a>.</p>
+
+        <p>The goal is to provide two Wifi networks: one with the VPN access and another one with the TOR access. It will be distributed as a simple application for YunoHost. When available, activating this functionality will be as simple as enabling it in the YunoHost web interface.</p>
+
+        <div class="pictures">
+          <a href="img/tor.png"><img src="img/tor_thumb.png" alt="Tor" /></a>
+        </div>
+
+        <p>Then, every request to the Internet from the devices connected in Wifi will be anonymised using the Tor network. However, to ensure real anonymity (political dissident, journalist, etc...) and prevent your browser from leaking informations about your identity, it is always recommended to directly use the <a href="https://www.torproject.org/download/download-easy.html">Tor Bundle</a> (only for the web and on your own computer). Furthermore, in accordance to the restrictions imposed by Tor, you Internet connection won't be neutral (limited to TCP and UDP for DNS requests).</p>
+      </div>
+    </section>
+
+    <section id="anonymat-et-legislation">
+      <h2><span>Anonymity</span> and law?</h2>
+
+      <p>Regarding the aspect « Internet access via VPN » : the associations of the FDN Federation (FFDN) in general don't guarantee anonymity in regard of the legal body, neither any impunity in regards of the law.</p>
+
+      <p>The guarantee they bring at this level, is to only cooperate with the justice in the strictest framework of the law. Therefore, no data will be given away to anyone if the associated legal process is not strictly followed. We know that it's not always the case for the general public big access providers, that we can legitimately suspect them to provide informations on the bases of simple phone calls from police officers or to install privileged access to their data, outside of all legal process (which are nowadays becoming <a href="http://sous-surveillance.fr">more and more optional</a>...)</p>
+
+      <p>VPN access can only guarantee anonymity regarding the French or Belgian legal body only if the provider is located in a country that is known to not collaborate easily with France/Belgium (for example Russia, but this will imply to trust the provider and the legislation of the country).</p>
+
+      <p>But, no matter the country, setup the Cube with a foreign VPN provider (correctly chosen) will be especially interesting for a political dissident or a journalist who would like to protect himself against abuses from his country, to claim for more freedom.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="logos">
+      <a href="http://ldn-fai.net"><img alt="Lorraine Data Network" src="img/ldn.png" /></a>
+      <a href="http://neutrinet.be"><img alt="Neutrinet" src="img/neutrinet.png"></a>
+      <a href="http://yunohost.org"><img alt="YunoHost" src="img/yunohost.png"></a>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
