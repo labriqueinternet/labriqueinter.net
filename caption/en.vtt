@@ -1,0 +1,568 @@
+WEBVTT
+
+00:00:02.370 --> 00:00:04.936
+(Cleaning my Internet access)
+(Just by plugging a cable)
+
+00:00:04.936 --> 00:00:07.953
+Let's assume that my internet
+service provider is called FABOX
+
+00:00:07.961 --> 00:00:10.321
+and that I've chosen one
+of its common offers
+
+00:00:10.336 --> 00:00:14.461
+At home, all my computers
+are connect via Wifi to my box.
+
+00:00:14.461 --> 00:00:18.081
+My problem is that I don't trust
+my internet service provider a lot.
+
+00:00:18.086 --> 00:00:21.401
+I know for example that it is able to
+watch all my online activity
+
+00:00:21.401 --> 00:00:23.661
+and that it might
+sells those informations.
+
+00:00:23.661 --> 00:00:27.903
+I also know it can decide what kind
+of internet service I'm allowed to use.
+
+00:00:27.903 --> 00:00:29.610
+we speak in this case of locked ports.
+
+00:00:29.610 --> 00:00:32.019
+it can also choose which
+website I'm able to see.
+
+00:00:32.019 --> 00:00:35.170
+then we talk about
+liar DNS
+
+00:00:35.170 --> 00:00:39.811
+Finally I know it can take the initiative
+to favor some destinations on the internet.
+
+00:00:39.823 --> 00:00:42.805
+For instance to make
+its own services
+
+00:00:42.805 --> 00:00:44.552
+or those of its paying partners more efficient.
+
+00:00:44.556 --> 00:00:48.608
+In that case, we call that
+Net Neutralitiy violations.
+
+00:00:48.608 --> 00:00:51.976
+But in the end my biggest
+problem is that I'm unable
+
+00:00:51.976 --> 00:00:55.346
+to know exactly what it is
+doing with my Internet access.
+
+00:00:55.346 --> 00:00:58.565
+Not only because it doesn't offer
+any ethical charter about those matters
+
+00:00:58.565 --> 00:01:01.205
+but also because its
+way of operating is completely opaque.
+
+00:01:01.690 --> 00:01:05.065
+Moreover, the general Term of Use
+that I've signed with it
+
+00:01:05.065 --> 00:01:07.155
+don't bind it to anything in that respect either
+
+00:01:07.155 --> 00:01:11.003
+except, possibly, to officially not
+respect my privacy.
+
+00:01:11.879 --> 00:01:14.485
+The goal of this presentation
+is to introduce you to
+
+00:01:14.485 --> 00:01:17.585
+a simple and effective
+solution to those problems.
+
+00:01:19.215 --> 00:01:21.913
+An association which protect
+a vision of the Internet
+
+00:01:21.933 --> 00:01:23.963
+and of privacy
+with which I agree,
+
+00:01:23.963 --> 00:01:25.941
+gave me a little box.
+
+00:01:25.941 --> 00:01:27.715
+We will call it
+"the Internet Cube"
+
+00:01:27.715 --> 00:01:29.961
+All *I* have to do to make it works
+
+00:01:30.019 --> 00:01:32.096
+is to connect it on my Internet modem
+
+00:01:32.391 --> 00:01:35.285
+From there, a new Wifi network will be available.
+
+00:01:35.702 --> 00:01:39.228
+I can connect computers from my home
+to this Wifi network
+
+00:01:39.228 --> 00:01:43.198
+rather that the one of my ISP
+that I was using before.
+
+00:01:43.198 --> 00:01:46.551
+By being directly connected to the Cube
+my ISP cannot
+
+00:01:46.551 --> 00:01:49.160
+spy on my Internet activity anymore.
+
+00:01:49.518 --> 00:01:51.756
+In reality, he will only see encrypted traffic
+
+00:01:51.850 --> 00:01:54.353
+to the sever of my association,
+
+00:01:54.355 --> 00:01:56.381
+we call this a VPN tunnel.
+
+00:01:56.381 --> 00:01:59.643
+Thus, it can't either limit or restrain
+
+00:01:59.643 --> 00:02:01.175
+my internet access.
+
+00:02:01.175 --> 00:02:04.383
+My ISP is now in realty
+my association
+
+00:02:04.388 --> 00:02:07.868
+and my ISP is only one of many way I can
+
+00:02:07.868 --> 00:02:09.446
+connect to it.
+
+00:02:09.705 --> 00:02:12.786
+It is now a simple gateway to my association.
+
+00:02:13.046 --> 00:02:14.936
+The IP addresses I use on
+the Internet from now
+
+00:02:14.936 --> 00:02:16.900
+are those of my association.
+
+00:02:16.900 --> 00:02:19.845
+And for the geeks, I also now have native IPv6
+
+00:02:19.845 --> 00:02:21.846
+on all my computers at home
+
+00:02:21.846 --> 00:02:23.645
+without having anything to configure
+
+00:02:23.883 --> 00:02:26.548
+For the others, just know that
+the adoption of IPv6 is primordial
+
+00:02:26.548 --> 00:02:28.851
+to keeping a sane Internet in the years to come
+
+00:02:29.336 --> 00:02:34.251
+I can now easily configure my new Wifi access,
+thanks to an easy to use UI
+
+00:02:34.251 --> 00:02:37.576
+I can also freely switch from one association
+to another by simply modifying
+
+00:02:37.576 --> 00:02:41.466
+the configuration of my VPN tunnel,
+using the informations it will gives me.
+
+00:02:41.466 --> 00:02:44.010
+The UI are also available in French
+
+00:02:44.753 --> 00:02:47.295
+If I chose to use another ISP because I found a better offer,
+
+00:02:47.295 --> 00:02:50.295
+on a private sale website for example
+
+00:02:50.295 --> 00:02:52.161
+I just have to disconnect my Cube from the previous box
+
+00:02:52.161 --> 00:02:55.161
+and plug it into the new one.
+
+00:02:55.161 --> 00:02:58.033
+my Wifi access stay available and works immediately
+
+00:02:58.033 --> 00:03:01.773
+In the same way, without having anything to configure,
+neither on my Cube
+
+00:03:01.773 --> 00:03:04.103
+nor on my computer or anywhere else
+
+00:03:04.103 --> 00:03:07.255
+if my ISP offer TV or Phone access,
+
+00:03:07.255 --> 00:03:09.335
+I can still use them
+
+00:03:09.335 --> 00:03:11.515
+and if my association has a temporary technical problem
+
+00:03:11.515 --> 00:03:15.467
+I can still connect my computer on my old Wifi network
+
+00:03:15.467 --> 00:03:19.151
+It will be a sort of downgraded Internet
+access but still be available.
+
+00:03:19.628 --> 00:03:21.671
+(Self Hosting)
+(in a few clicks)
+
+00:03:21.895 --> 00:03:24.911
+The Internet Cube not only
+clean my Internet Access
+
+00:03:24.911 --> 00:03:27.026
+Indeed, if I make the step to protect myself
+
+00:03:27.026 --> 00:03:30.026
+against an ISP which I don't trust
+
+00:03:30.026 --> 00:03:33.261
+it doesn't make much senses to use
+this new Freedom enabled Internet
+
+00:03:33.261 --> 00:03:36.132
+to give away my personal data,
+to the servers of private enterprises
+
+00:03:36.132 --> 00:03:38.122
+like Google, Facebook or others...
+
+00:03:38.122 --> 00:03:41.296
+which proudly announce,
+in their Terms of Use,
+
+00:03:41.296 --> 00:03:43.086
+that they will exploit my private life.
+
+00:03:43.086 --> 00:03:45.863
+the best place to store my emails
+is in my own home
+
+00:03:45.863 --> 00:03:47.553
+for example in a dresser drawer
+
+00:03:47.553 --> 00:03:49.590
+rather than the computer
+of someone else
+
+00:03:49.590 --> 00:03:51.171
+that is what is commonly referred as the "cloud"
+
+00:03:51.597 --> 00:03:53.484
+the Internet Cube also allows me to
+
+00:03:53.484 --> 00:03:55.110
+easily do self-hosting
+
+00:03:55.260 --> 00:03:57.242
+the Internet Cube, actually contains
+a software
+
+00:03:57.261 --> 00:03:59.787
+called YUNOHOST which allows
+people with a bit of interested
+
+00:03:59.805 --> 00:04:02.921
+in computers, but without necessarily being an expert,
+
+00:04:02.921 --> 00:04:05.341
+to easily host, in their own homes,
+their own internet services
+
+00:04:05.341 --> 00:04:08.308
+available from anywhere in the world.
+
+00:04:08.308 --> 00:04:11.308
+The user interface is also available in French.
+
+00:04:11.308 --> 00:04:14.138
+Since YUNOHOST know, by default,
+how to manage an email account
+
+00:04:14.138 --> 00:04:15.428
+I could, for example,
+install a Webmail interface
+
+00:04:15.428 --> 00:04:18.065
+which will allow me to
+easily read my emails
+
+00:04:18.065 --> 00:04:21.535
+from my browser, like with Gmail, for example.
+
+00:04:21.535 --> 00:04:24.336
+In a few clicks, I can install this service on my Cube
+
+00:04:24.336 --> 00:04:26.967
+and immediately access
+it from anywhere in the world
+
+00:04:26.971 --> 00:04:29.618
+with, obviously, a secure
+authentication, in that case.
+
+00:04:29.880 --> 00:04:32.611
+There are many easy to
+install services,
+
+00:04:32.611 --> 00:04:35.195
+like Jappix to chat
+using instant messaging,
+
+00:04:35.195 --> 00:04:38.103
+Owncloud to share files
+or even WordPress
+
+00:04:38.103 --> 00:04:40.056
+to make my own blog.
+
+00:04:40.056 --> 00:04:43.626
+By the way, the web interfaces
+for the Wifi and the VPN that we just saw
+
+00:04:43.626 --> 00:04:47.035
+are simple YUNOHOST applications
+that are pre-installed.
+
+00:04:47.281 --> 00:04:49.550
+Thanks to the VPN
+tunnel of the Cube
+
+00:04:49.550 --> 00:04:51.430
+my server is also mobile
+
+00:04:51.430 --> 00:04:53.783
+I can plug it on any
+Internet access
+
+00:04:53.783 --> 00:04:55.693
+and my services will stay available.
+
+00:04:55.693 --> 00:04:59.569
+If I change again my service provider
+or if I go on holidays or if I want to cut
+
+00:04:59.569 --> 00:05:03.481
+the power in my house, for example, I only
+need to unplug my Internet Cube and to
+
+00:05:03.481 --> 00:05:07.378
+plug it back anywhere else and it will work
+again without the need for any reconfiguration.
+
+00:05:07.828 --> 00:05:11.188
+At the DNS level, it's the IPs of my
+association that are used to
+
+00:05:11.188 --> 00:05:14.091
+contact my server
+and those are fixed IPs.
+
+00:05:15.285 --> 00:05:18.179
+I can even plug my Cube
+on an particularly restrained access,
+
+00:05:18.179 --> 00:05:21.343
+like a smartphone connected in 3 or 4G
+for example
+
+00:05:21.343 --> 00:05:23.903
+or an especially restricted enterprise network
+.
+
+00:05:24.188 --> 00:05:26.727
+For the geeks, again, wherever
+I plug my Cube,
+
+00:05:26.727 --> 00:05:29.211
+my services are also
+available in IPv6.
+
+00:05:29.910 --> 00:05:32.420
+(Where can I find this box?)
+
+00:05:32.633 --> 00:05:37.213
+The FDN Federation is composed of associative 
+ISP who respect Net Neutrality,
+
+00:05:37.213 --> 00:05:40.528
+your privacy and who provide,
+increasingly, VPN services.
+
+00:05:41.161 --> 00:05:44.846
+Some of those associations offer
+their own plug'n play version of the Internet Cube
+
+00:05:44.846 --> 00:05:48.375
+bundled with an optional automatic
+domain name binding.
+
+00:05:48.375 --> 00:05:51.061
+and encrypted storage
+for automatic backup.
+
+00:05:51.351 --> 00:05:54.516
+Since it is mandatory to
+totally trust the provider
+
+00:05:54.516 --> 00:05:56.630
+you will choose for this service.
+
+00:05:56.630 --> 00:05:58.276
+The associations of the Federation are
+
+00:05:58.276 --> 00:05:59.861
+spread all over France and
+
+00:05:59.861 --> 00:06:02.265
+allow you to easily
+meet their members
+
+00:06:02.265 --> 00:06:04.830
+who are also generally their administrators.
+
+00:06:04.840 --> 00:06:08.343
+In Belgium, the association Neutrinet,
+who has also started this project
+
+00:06:08.343 --> 00:06:10.665
+will gladly welcomes you.
+
+00:06:10.670 --> 00:06:14.050
+In addition, if you wish, you can use
+whichever computer you want
+
+00:06:14.050 --> 00:06:17.160
+and a Wifi antenna to install
+YUNOHOST by yourself.
+
+00:06:17.160 --> 00:06:20.060
+and the 2 applications needed for
+the Wifi and the VPN
+
+00:06:20.060 --> 00:06:21.561
+since everything is FreeSoftware.
+
+00:06:21.563 --> 00:06:24.328
+Then, you'll only have to choose
+a VPN provider
+
+00:06:24.328 --> 00:06:26.523
+and to configure the application.
+
+00:06:26.523 --> 00:06:29.029
+The shown box cost 70€ all included
+
+00:06:29.039 --> 00:06:32.681
+and an associative VPN service
+cost around 7€ per month.
+
+00:06:33.256 --> 00:06:36.146
+Combined with a classical Internet access
+at 20€
+
+00:06:36.158 --> 00:06:38.968
+the result is below 30€ per month
+for a movable server
+
+00:06:38.968 --> 00:06:42.891
+and a trusted associative Internet
+access with TV and phone
+
+00:06:42.891 --> 00:06:44.573
+from the original Internet Service Provider.
+
+00:06:44.940 --> 00:06:47.350
+(Bonus)
+(More and more!)
+
+00:06:47.520 --> 00:06:51.350
+As a bonus, the Internet Cube can
+be modified to offer many more features
+
+00:06:51.351 --> 00:06:53.221
+as you may wish.
+
+00:06:53.454 --> 00:06:56.094
+For example, without
+using the VPN application,
+
+00:06:56.094 --> 00:06:59.348
+it's also a solution to allow
+everyone to easily and freely share
+
+00:06:59.361 --> 00:07:01.726
+files during a public event.
+
+00:07:01.726 --> 00:07:05.388
+We call this, as a provocative,
+general label, a PirateBox
+
+00:07:05.952 --> 00:07:09.285
+Also, the Cube with the Wifi on,
+only consume 2 Watts at max
+
+00:07:09.295 --> 00:07:11.653
+which is a lot less than a
+commercial Box from any other ISP
+
+00:07:11.653 --> 00:07:14.225
+so it may be paired easily with a battery
+
+00:07:14.231 --> 00:07:15.636
+or a small solar panel
+
+00:07:15.636 --> 00:07:17.943
+A battery costing only 12€ allows the Internet Cube
+
+00:07:17.943 --> 00:07:19.753
+to have an autonomy of 13 hours
+
+00:07:20.157 --> 00:07:22.795
+You can also configure it to deploy
+a stand alone WIFI, clean and secured,
+
+00:07:22.805 --> 00:07:26.208
+to be used in any public event.
+Releasing the owner
+
+00:07:26.211 --> 00:07:29.166
+of the Internet connection
+of any legal claim
+
+00:07:29.211 --> 00:07:35.045
+http://internetcu.be
