@@ -1,0 +1,597 @@
+WEBVTT
+
+00:00:02.370 --> 00:00:04.936
+(Nettoyer son accès à Internet)
+(Juste en branchant un câble)
+
+00:00:04.936 --> 00:00:07.953
+Admettons que mon fournisseur
+d'accès Internet s'appelle FABOX
+
+00:00:07.961 --> 00:00:10.321
+et que j'ai choisi une offre
+grand public classique.
+
+00:00:10.336 --> 00:00:14.461
+À la maison, tous les ordinateurs sont
+donc connectés en WiFi au réseau de ma box.
+
+00:00:14.461 --> 00:00:18.081
+Mon problème, c'est que je n'ai pas beaucoup
+confiance en mon fournisseur d'accès.
+
+00:00:18.086 --> 00:00:21.401
+Je sais par exemple qu'il a la capacité
+d'épier tout ce que je fais sur Internet,
+
+00:00:21.401 --> 00:00:23.661
+et éventuellement
+de revendre ces informations.
+
+00:00:23.661 --> 00:00:27.903
+Je sais également qu'il peut décider du type
+de service Internet que j'ai le droit d'utiliser,
+
+00:00:27.903 --> 00:00:29.610
+on parle en général de ports bloqués,
+
+00:00:29.610 --> 00:00:32.019
+et qu'il peut décider des sites
+que je peux consulter ou non.
+
+00:00:32.019 --> 00:00:35.170
+On parle en général dans ce cas
+de DNS menteur.
+
+00:00:35.170 --> 00:00:39.811
+Enfin, je sais qu'il peut prendre l'initiative
+de favoriser certaines destinations sur Internet.
+
+00:00:39.823 --> 00:00:42.805
+Par exemple pour rendre plus
+performant ses propres services
+
+00:00:42.805 --> 00:00:44.552
+ou ceux de partenaires qui payent pour ça.
+
+00:00:44.556 --> 00:00:48.608
+Et cette fois-ci on parle alors en général
+d'atteinte à la neutralité du Net.
+
+00:00:48.608 --> 00:00:51.976
+Mais en définitive mon plus gros
+problème, c'est que je suis incapable
+
+00:00:51.976 --> 00:00:55.346
+de savoir exactement ce qu'il
+fait avec mon accès internet.
+
+00:00:55.346 --> 00:00:58.565
+Non seulement parce qu'il ne propose
+aucune charte éthique à ces sujets
+
+00:00:58.565 --> 00:01:01.205
+mais aussi parce que son
+fonctionnement est totalement opaque.
+
+00:01:01.690 --> 00:01:05.065
+Par ailleurs, les conditions générales
+d'utilisation que j'ai signées avec lui
+
+00:01:05.065 --> 00:01:07.155
+ne l'engagent à rien non plus à ce niveau,
+
+00:01:07.155 --> 00:01:11.003
+sauf éventuellement à officiellement ne
+pas être respectueux de ma vie privée.
+
+00:01:11.879 --> 00:01:14.485
+L'objet de cette présentation,
+c'est de vous faire découvrir
+
+00:01:14.485 --> 00:01:17.585
+une solution simple et
+efficace à ces problèmes.
+
+00:01:19.215 --> 00:01:21.913
+Une association qui défend une
+vision du réseau Internet
+
+00:01:21.933 --> 00:01:23.963
+et du respect de la vie
+privée qui me correspond
+
+00:01:23.963 --> 00:01:25.941
+m'a fourni un petit boîtier.
+
+00:01:25.941 --> 00:01:27.715
+Nous l'appellerons
+"La Brique Internet".
+
+00:01:27.715 --> 00:01:29.961
+Tout ce que j'ai à faire, moi,
+pour la faire fonctionner,
+
+00:01:30.019 --> 00:01:32.096
+c'est de la brancher sur ma box internet.
+
+00:01:32.391 --> 00:01:35.285
+À partir de cet instant un nouveau
+réseau wifi est disponible.
+
+00:01:35.702 --> 00:01:39.228
+Je peux donc connecter tout les ordinateurs
+de la maison au wifi de la brique
+
+00:01:39.228 --> 00:01:43.198
+plutot que celui de la box
+de mon FAI que j'utilisais avant.
+
+00:01:43.198 --> 00:01:46.551
+En étant connecté directement à la brique
+mon FAI n'est plus en capacité
+
+00:01:46.551 --> 00:01:49.160
+de voir ce que je fait
+avec mon accès à internet.
+
+00:01:49.518 --> 00:01:51.756
+En réalité, il ne verra plus
+que du trafic chiffré
+
+00:01:51.850 --> 00:01:54.353
+qui est à destination d'un
+serveur de mon association
+
+00:01:54.355 --> 00:01:56.381
+on appelle ça un tunnel VPN.
+
+00:01:56.381 --> 00:01:59.643
+Par conséquent, il ne peut
+plus non plus ni filtrer ni brider
+
+00:01:59.643 --> 00:02:01.175
+mon accès à internet.
+
+00:02:01.175 --> 00:02:04.383
+Mon FAI est désormais en réalité
+maintenant mon association
+
+00:02:04.388 --> 00:02:07.868
+et mon FAI n'est plus qu'un
+opérateur de plus sur internet
+
+00:02:07.868 --> 00:02:09.446
+qui me permet de m'y relier.
+
+00:02:09.705 --> 00:02:12.786
+Il devient en fait un simple
+fournisseur d'accès à mon association.
+
+00:02:13.046 --> 00:02:14.936
+Les addresses ip que j'utilise
+maintenant sur internet
+
+00:02:14.936 --> 00:02:16.900
+sont maintenant celle de mon association.
+
+00:02:16.900 --> 00:02:19.845
+Et pour les geeks j'ai aussi
+désormais de l'IPv6 natif
+
+00:02:19.845 --> 00:02:21.846
+sur tous les ordinateurs de ma maison
+
+00:02:21.846 --> 00:02:23.645
+sans ne rien avoir à configurer.
+
+00:02:23.883 --> 00:02:26.548
+Pour les autres, sachez
+qu'encourager IPv6 est primordial
+
+00:02:26.548 --> 00:02:28.851
+pour avoir un internet sain
+dans les années à venir.
+
+00:02:29.336 --> 00:02:34.251
+Je peux configurer facilement mon nouvel accès wifi
+grâce à une interface simple d'utilisation.
+
+00:02:34.251 --> 00:02:37.576
+Je peux également librement passer
+d'une association à l'autre en changeant
+
+00:02:37.576 --> 00:02:41.466
+la configuration de mon tunnel VPN
+grâce aux informations qu'elle me fournira.
+
+00:02:41.466 --> 00:02:44.010
+Ces interfaces sont également
+disponible en français.
+
+00:02:44.753 --> 00:02:47.295
+Si je décide de changer de fournisseur
+d'accès parce que j'ai trouvé une offre
+
+00:02:47.295 --> 00:02:50.295
+plus intéressant sur un site
+de vente privé par exemple
+
+00:02:50.295 --> 00:02:52.161
+il suffit que je débranche ma brique
+de l'ancienne box
+
+00:02:52.161 --> 00:02:55.161
+et que je la rebranche
+simplement à la nouvelle box
+
+00:02:55.161 --> 00:02:58.033
+mon accès wifi reste donc disponible
+et fonctionne immédiatement
+
+00:02:58.033 --> 00:03:01.773
+de la même façon qu'avant sans rien
+avoir à reconfigurer ni sur ma brique
+
+00:03:01.773 --> 00:03:04.103
+ni sur mes ordinateurs
+ni nulle part ailleurs
+
+00:03:04.103 --> 00:03:07.255
+si mon fournisseur d'accès propose
+aussi de la télé et du téléphone
+
+00:03:07.255 --> 00:03:09.335
+je peux toujours les utiliser
+
+00:03:09.335 --> 00:03:11.515
+et si mon association a un
+problème technique temporaire
+
+00:03:11.515 --> 00:03:15.467
+je peux à tout instant connecter
+mon ordinateur sur l'ancien accès Wifi
+
+00:03:15.467 --> 00:03:19.151
+c'est une sorte d'accès à Internet dégradé
+qui reste toujours disponible.
+
+00:03:19.628 --> 00:03:21.671
+(S'autohéberger)
+(En quelques clics)
+
+00:03:21.895 --> 00:03:24.911
+La Brique Internet ne se contente pas
+de nettoyer mon accès à Internet.
+
+00:03:24.911 --> 00:03:27.026
+En effet, si je fais l'effort de me
+protéger vis-à-vis
+
+00:03:27.026 --> 00:03:30.026
+de mon fournisseur d'accès
+en lequel je n'ai pas confiance
+
+00:03:30.026 --> 00:03:33.261
+ça n'a pas beaucoup de sens
+d'utiliser mon bel accès à Internet propre
+
+00:03:33.261 --> 00:03:36.132
+pour déposer mes données personnelles
+sur des serveurs d'entreprises
+
+00:03:36.132 --> 00:03:38.122
+comme Google, Facebook ou d'autres
+
+00:03:38.122 --> 00:03:41.296
+qui promettent, pour le coup, dans leurs
+conditions générales d'utilisation
+
+00:03:41.296 --> 00:03:43.086
+d'exploiter ma vie privée
+
+00:03:43.086 --> 00:03:45.863
+le meilleur endroit pour stocker
+mes emails c'est chez moi,
+
+00:03:45.863 --> 00:03:47.553
+par exemple dans un tiroir de commode
+
+00:03:47.553 --> 00:03:49.590
+plutôt que sur l'ordinateur
+de quelqu'un d'autre
+
+00:03:49.590 --> 00:03:51.171
+qu'on appelle en général le cloud.
+
+00:03:51.597 --> 00:03:53.484
+la brique internet me permet également de
+
+00:03:53.484 --> 00:03:55.110
+m'auto héberger facilement
+
+00:03:55.260 --> 00:03:57.242
+la brique contient
+en réalité un logiciel qui
+
+00:03:57.261 --> 00:03:59.787
+s'appel YUNOHOST et permet
+à des gens qui s'intéressent
+
+00:03:59.805 --> 00:04:02.921
+un minimum à l'informatique,
+sans pour autant en être expert,
+
+00:04:02.921 --> 00:04:05.341
+d'héberger facilement chez eux
+leurs services Internet
+
+00:04:05.341 --> 00:04:08.308
+qui sont accessibles depuis
+n'importe où dans le monde.
+
+00:04:08.308 --> 00:04:11.308
+L'interface est également disponible en français.
+
+00:04:11.308 --> 00:04:14.138
+Puisque YUNOHOST sait par défaut
+gérer une boite email
+
+00:04:14.138 --> 00:04:15.428
+je peux avoir envie d'installer,
+par exemple,
+
+00:04:15.428 --> 00:04:18.065
+un webmail qui me permettra
+de consulter facilement
+
+00:04:18.065 --> 00:04:21.535
+mon courrier avec un navigateur
+comme avec gmail, par exemple.
+
+00:04:21.535 --> 00:04:24.336
+En quelques clics,
+je peux installer ce service sur ma brique
+
+00:04:24.336 --> 00:04:26.967
+et j'y ai immédiatement accès
+depuis n'importe où dans le monde
+
+00:04:26.971 --> 00:04:29.618
+avec une authentification évidement
+dans ce cas là.
+
+00:04:29.880 --> 00:04:32.611
+Des services à installer
+facilement il y en a plein,
+
+00:04:32.611 --> 00:04:35.195
+comme jappix pour discuter
+en messagerie instantannée,
+
+00:04:35.195 --> 00:04:38.103
+owncloud pour partager des fichiers
+ou encore wordpress
+
+00:04:38.103 --> 00:04:40.056
+pour faire mon propre blog
+
+00:04:40.056 --> 00:04:43.626
+d'ailleurs, les interfaces web
+wifi et VPN qu'on a vu tout à l'heure
+
+00:04:43.626 --> 00:04:47.035
+ce sont de simple applications
+YUNOHOST qui sont pré-installées.
+
+00:04:47.281 --> 00:04:49.550
+Grâce au système
+de tunnel VPN de la Brique
+
+00:04:49.550 --> 00:04:51.430
+mon serveur est aussi nomade
+
+00:04:51.430 --> 00:04:53.783
+Je peux le brancher sur
+n'importe quel accès à Internet
+
+00:04:53.783 --> 00:04:55.693
+et mes services restent accessibles.
+
+00:04:55.693 --> 00:04:59.569
+Si je change de nouveau de fournisseur d'accès
+ou que je pars en vacances ou que je veux couper
+
+00:04:59.569 --> 00:05:03.481
+l'électricité par exemple, il suffit de
+débrancher la Brique Internet et de la
+
+00:05:03.481 --> 00:05:07.378
+rebrancher n'importe où et ça fonctionne
+toujours sans rien avoir à reconfigurer.
+
+00:05:07.828 --> 00:05:11.188
+Au niveau DNS ce sont les IPs de mon
+associations qui seront utilisées pour
+
+00:05:11.188 --> 00:05:14.091
+contacter mon serveur
+et ce sont évidement des IPs fixes.
+
+00:05:15.285 --> 00:05:18.179
+Je peux aller jusqu'à brancher ma Brique
+sur un accès particulièrement filtré,
+
+00:05:18.179 --> 00:05:21.343
+comme un smartphone connecté en 3 ou 4G
+par exemple
+
+00:05:21.343 --> 00:05:23.903
+ou un réseau d'entreprise 
+particulièrement restraint.
+
+00:05:24.188 --> 00:05:26.727
+Pour les geeks, de nouveau, quelque soit
+l'endroit où je pose ma brique,
+
+00:05:26.727 --> 00:05:29.211
+mes services sont aussi
+accessible en IPv6.
+
+00:05:29.910 --> 00:05:32.420
+(Où trouver ce boîtier ?)
+
+00:05:32.633 --> 00:05:37.213
+La Fédération FDN regroupe des associations
+FAI qui respectent la neutralité du net
+
+00:05:37.213 --> 00:05:40.528
+et votre vie privée et qui fournissent,
+parfois, des services VPN.
+
+00:05:41.161 --> 00:05:44.846
+Certaines de ces associations proposent
+leur version de la Brique Internet clef en main
+
+00:05:44.846 --> 00:05:48.375
+en plus avec un nom de domaine facultatif
+automatiquement associé
+
+00:05:48.375 --> 00:05:51.061
+et un espace chiffré pour stocker
+automatiquement les sauvegardes.
+
+00:05:51.351 --> 00:05:54.516
+Dans la mesure où il est primordiable
+d'avoir confiance dans le fournisseur que
+
+00:05:54.516 --> 00:05:56.630
+vous choisissez pour votre service.
+
+00:05:56.630 --> 00:05:58.276
+Les associations de la Fédération sont
+
+00:05:58.276 --> 00:05:59.861
+réparties sur toute la France et vous
+
+00:05:59.861 --> 00:06:02.265
+permettent de faire facilement
+connaissance avec les adhérents
+
+00:06:02.265 --> 00:06:04.830
+qui en sont également les administrateurs.
+
+00:06:04.840 --> 00:06:08.343
+En Belgique, c'est l'association Neutrinet,
+qui a également fondé ce projet de boitier
+
+00:06:08.343 --> 00:06:10.665
+qui sera ravie de vous accueillir.
+
+00:06:10.670 --> 00:06:14.050
+Sinon, si vous le souhaitez, vous pouvez
+utiliser n'importe quelle machine
+
+00:06:14.050 --> 00:06:17.160
+avec une antenne Wifi et installer
+vous-même YUNOHOST,
+
+00:06:17.160 --> 00:06:20.060
+les 2 applications nécessaires pour
+le Wifi et le VPN
+
+00:06:20.060 --> 00:06:21.561
+puisque que tout est libre.
+
+00:06:21.563 --> 00:06:24.328
+Il nous vous restera plus qu'à choisir
+un fournisseur de VPN
+
+00:06:24.328 --> 00:06:26.523
+et de configurer l'application.
+
+00:06:26.523 --> 00:06:29.029
+Le boîtier présenté vaut 70€ tout compris
+
+00:06:29.039 --> 00:06:32.681
+et un service VPN associatif vaut environ 
+7€ par mois
+
+00:06:33.256 --> 00:06:36.146
+Combiné avec un accès Internet grand
+publique à 20€,
+
+00:06:36.158 --> 00:06:38.968
+ça fait moins de 30€ par mois pour
+un serveur nomade
+
+00:06:38.968 --> 00:06:42.891
+et un accès Internet associatif de
+confiance avec la télé et le téléphone
+
+00:06:42.891 --> 00:06:44.573
+du fournisseur d'accès initiale.
+
+00:06:44.940 --> 00:06:47.350
+(Bonus)
+(Encore, encore !)
+
+00:06:47.520 --> 00:06:51.350
+En bonus, la Brique Internet peut être
+détournée pour d'autres utilisations
+
+00:06:51.351 --> 00:06:53.221
+au gré de ses besoins.
+
+00:06:53.454 --> 00:06:56.094
+Par exemple, sans utiliser
+l'application VPN
+
+00:06:56.094 --> 00:06:59.348
+c'est aussi une solution pour permettre à
+tout le monde de s'échanger facilement
+
+00:06:59.361 --> 00:07:01.726
+et librement des fichiers lors d'un
+événement
+
+00:07:01.726 --> 00:07:05.388
+On appel ça, en générale, de façon
+provocatrice, une PirateBox
+
+00:07:05.952 --> 00:07:09.285
+Au passage, le boîtier avec le Wifi
+consomme 2 Wats maximum
+
+00:07:09.295 --> 00:07:11.653
+soit beaucoup moins que n'importe quelle
+box de fournisseur d'accès
+
+00:07:11.653 --> 00:07:14.225
+il peut donc être connecté facilement à
+une batterie
+
+00:07:14.231 --> 00:07:15.636
+ou à un petit panneau solaire
+
+00:07:15.636 --> 00:07:17.943
+Une batterie vaut 12€ et permet à la
+Brique Internet
+
+00:07:17.943 --> 00:07:19.753
+d'avoir une autonomie de 13h
+
+00:07:20.157 --> 00:07:22.795
+il peut aussi servir pour déployer du wifi
+propre et sécurisé
+
+00:07:22.805 --> 00:07:26.208
+pour n'importe quel événement publique
+en déchargeant ainsi le propriétaire
+
+00:07:26.211 --> 00:07:29.166
+de la ligne Internet de sa responsabilité
+juridique
+
+00:07:29.211 --> 00:07:35.045
+http://labriqueinter.net
