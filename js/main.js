@@ -12,4 +12,9 @@ document.querySelector('#show-features-button')
     }, false);
 
 // firefox doesn't display subtitles by default
-document.querySelector("video").textTracks[0].mode = "showing"
+var videos = document.getElementsByTagName("video");
+for (var i = 0; i < videos.length; i++) {
+    if (videos[i].textTracks.length) {
+        videos[i].textTracks[0].mode = "showing"
+    }
+}
