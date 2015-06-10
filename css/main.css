@@ -161,6 +161,9 @@ section li {
   display: inline-block;
   max-width: 100%;
 }
+@media screen and (max-width: 768px) {
+  .pictures a {display: block;}
+}
 
 .video {
   text-align: center;
