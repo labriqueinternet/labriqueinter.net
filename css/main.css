@@ -66,6 +66,30 @@ a:focus {
 
 /**     Header      **/
 
+.language-links {
+  padding: 0.5em 1em;
+  font-size: 0.7em;
+  font-weight: bold;
+  text-align: left;
+  list-style: none;
+  margin: 0;
+  color: #bbb;
+}
+.language-links li {display: inline;}
+.language-links li + li:before {
+  content:" / ";
+  display: inline-block;
+  margin-right: 0.25em;
+}
+.language-links a {
+  text-decoration: none;
+  display: inline-block;
+  color: #bbb;
+}
+.language-links a:hover,
+.language-links a:focus {color: #ff3c3c;}
+.language-links a.active {}
+
 #haut-gauche,
 #haut-droite {
   font-size: 2em;
