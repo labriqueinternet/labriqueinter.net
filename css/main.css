@@ -15,9 +15,9 @@
 */
 
 body {
-  background-color: #000;
+  background-color: #111;
   padding: 1.4em 1.4em 0.5em;
-  color: #fff;
+  color: #ccc;
   font-family: "Source Serif Pro";
   font-size: 14pt;
   font-weight: 300;
@@ -28,6 +28,10 @@ body {
 
 div#banniere {
   font-family: jurabook;
+}
+
+div#banniere, h1, h2, h3, h4, h5, h6 {
+  color: #fff;
 }
 
 strong, b {
@@ -51,10 +55,6 @@ h2 {
   line-height: 1.25;
 }
 
-h2 span {
-  color: #ff3c3c;
-}
-
 /* responsive medias */
 img,
 video {
@@ -67,12 +67,12 @@ a,
 a:link,
 a:visited {
   text-decoration: underline;
-  color: #fff;
+  color: #ccc;
 }
 
 a:hover,
 a:focus {
-  color: #ff3c3c;
+  color: #ff0000;
   text-decoration: none;
 }
 
@@ -141,7 +141,7 @@ a:focus {
   margin: 0;
 }
 #banniere .banTexte span {
-  color: #ff3c3c;
+  color: #ff0000;
 }
 
 #banniere .banDescription {
@@ -174,7 +174,7 @@ section {
 }
 
 section span {
-  color: #ff3c3c;
+  color: #ff0000;
 }
 
 section ul {
