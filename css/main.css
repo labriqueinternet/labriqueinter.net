@@ -1,13 +1,6 @@
 @charset "UTF-8";
 @import url(jura-font.css);
-
-@font-face {
-  font-family: "Source Serif Pro";
-  font-style: normal;
-  font-weight: 400;
-  src: local("Source Serif Pro"), local("SourceSerifPro-Regular"),
-    url("fonts/SourceSerifPro-Regular.woff") format("woff");
-}
+@import url(source.css);
 
 /* Style CSS pour La Brique Internet.
 * Code vite-fait par alex/nah
@@ -269,4 +262,3 @@ footer {
   border: 0;
   margin-bottom: 1.6em;
 }
-
