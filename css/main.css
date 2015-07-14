@@ -10,10 +10,9 @@
 body {
   background-color: #111;
   padding: 1.4em 1.4em 0.5em;
-  color: #ccc;
-  font-family: "Source Serif Pro";
+  color: #eee;
+  font-family: Helvetica, Arial, Sans-Serif;
   font-size: 14pt;
-  font-weight: 300;
   line-height: 1.2em;
   max-width: 64em;
   margin: auto;
