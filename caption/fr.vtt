@@ -56,7 +56,7 @@ ou ceux de partenaires qui payent pour ça.
 
 00:00:44.556 --> 00:00:48.608
 Et cette fois-ci on parle alors en général
-d'atteinte à la neutralité du Net.
+d'atteinte à la Neutralité du Net.
 
 00:00:48.608 --> 00:00:51.976
 Mais en définitive mon plus gros
@@ -64,7 +64,7 @@ problème, c'est que je suis incapable
 
 00:00:51.976 --> 00:00:55.346
 de savoir exactement ce qu'il
-fait avec mon accès internet.
+fait avec mon accès à Internet.
 
 00:00:55.346 --> 00:00:58.565
 Non seulement parce qu'il ne propose
@@ -113,27 +113,27 @@ Tout ce que j'ai à faire, moi,
 pour la faire fonctionner,
 
 00:01:30.019 --> 00:01:32.096
-c'est de la brancher sur ma box internet.
+c'est de la brancher sur ma box Internet.
 
 00:01:32.391 --> 00:01:35.285
 À partir de cet instant un nouveau
-réseau wifi est disponible.
+réseau WiFi est disponible.
 
 00:01:35.702 --> 00:01:39.228
 Je peux donc connecter tout les ordinateurs
-de la maison au wifi de la brique
+de la maison au WiFi de la Brique
 
 00:01:39.228 --> 00:01:43.198
 plutot que celui de la box
 de mon FAI que j'utilisais avant.
 
 00:01:43.198 --> 00:01:46.551
-En étant connecté directement à la brique
+En étant connecté directement à la Brique
 mon FAI n'est plus en capacité
 
 00:01:46.551 --> 00:01:49.160
 de voir ce que je fait
-avec mon accès à internet.
+avec mon accès à Internet.
 
 00:01:49.518 --> 00:01:51.756
 En réalité, il ne verra plus
@@ -151,7 +151,7 @@ Par conséquent, il ne peut
 plus non plus ni filtrer ni brider
 
 00:01:59.643 --> 00:02:01.175
-mon accès à internet.
+mon accès à Internet.
 
 00:02:01.175 --> 00:02:04.383
 Mon FAI est désormais en réalité
@@ -159,7 +159,7 @@ maintenant mon association
 
 00:02:04.388 --> 00:02:07.868
 et mon FAI n'est plus qu'un
-opérateur de plus sur internet
+opérateur de plus sur Internet
 
 00:02:07.868 --> 00:02:09.446
 qui me permet de m'y relier.
@@ -169,11 +169,11 @@ Il devient en fait un simple
 fournisseur d'accès à mon association.
 
 00:02:13.046 --> 00:02:14.936
-Les addresses ip que j'utilise
-maintenant sur internet
+Les addresses IP que j'utilise
+sur Internet
 
 00:02:14.936 --> 00:02:16.900
-sont maintenant celle de mon association.
+sont maintenant celles de mon association.
 
 00:02:16.900 --> 00:02:19.845
 Et pour les geeks j'ai aussi
@@ -190,11 +190,11 @@ Pour les autres, sachez
 qu'encourager IPv6 est primordial
 
 00:02:26.548 --> 00:02:28.851
-pour avoir un internet sain
+pour avoir un Internet sain
 dans les années à venir.
 
 00:02:29.336 --> 00:02:34.251
-Je peux configurer facilement mon nouvel accès wifi
+Je peux configurer facilement mon nouvel accès WiFi
 grâce à une interface simple d'utilisation.
 
 00:02:34.251 --> 00:02:37.576
@@ -207,7 +207,7 @@ grâce aux informations qu'elle me fournira.
 
 00:02:41.466 --> 00:02:44.010
 Ces interfaces sont également
-disponible en français.
+disponibles en français.
 
 00:02:44.753 --> 00:02:47.295
 Si je décide de changer de fournisseur
@@ -215,10 +215,10 @@ d'accès parce que j'ai trouvé une offre
 
 00:02:47.295 --> 00:02:50.295
 plus intéressant sur un site
-de vente privé par exemple
+de ventes privées par exemple
 
 00:02:50.295 --> 00:02:52.161
-il suffit que je débranche ma brique
+il suffit que je débranche ma Brique
 de l'ancienne box
 
 00:02:52.161 --> 00:02:55.161
@@ -226,12 +226,12 @@ et que je la rebranche
 simplement à la nouvelle box
 
 00:02:55.161 --> 00:02:58.033
-mon accès wifi reste donc disponible
+mon accès WiFi reste donc disponible
 et fonctionne immédiatement
 
 00:02:58.033 --> 00:03:01.773
 de la même façon qu'avant sans rien
-avoir à reconfigurer ni sur ma brique
+avoir à reconfigurer ni sur ma Brique
 
 00:03:01.773 --> 00:03:04.103
 ni sur mes ordinateurs
@@ -250,14 +250,14 @@ problème technique temporaire
 
 00:03:11.515 --> 00:03:15.467
 je peux à tout instant connecter
-mon ordinateur sur l'ancien accès Wifi
+mon ordinateur sur l'ancien accès WiFi
 
 00:03:15.467 --> 00:03:19.151
 c'est une sorte d'accès à Internet dégradé
 qui reste toujours disponible.
 
 00:03:19.628 --> 00:03:21.671
-(S'autohéberger)
+(S'auto-héberger)
 (En quelques clics)
 
 00:03:21.895 --> 00:03:24.911
@@ -302,20 +302,20 @@ plutôt que sur l'ordinateur
 de quelqu'un d'autre
 
 00:03:49.590 --> 00:03:51.171
-qu'on appelle en général le cloud.
+ce qu'on appelle en général le cloud.
 
 00:03:51.597 --> 00:03:53.484
-la brique internet me permet également de
+la Brique Internet me permet également de
 
 00:03:53.484 --> 00:03:55.110
-m'auto héberger facilement
+m'auto-héberger facilement
 
 00:03:55.260 --> 00:03:57.242
-la brique contient
+la Brique contient
 en réalité un logiciel qui
 
 00:03:57.261 --> 00:03:59.787
-s'appel YUNOHOST et permet
+s'appel YunoHost et permet
 à des gens qui s'intéressent
 
 00:03:59.805 --> 00:04:02.921
@@ -334,8 +334,8 @@ n'importe où dans le monde.
 L'interface est également disponible en français.
 
 00:04:11.308 --> 00:04:14.138
-Puisque YUNOHOST sait par défaut
-gérer une boite email
+Puisque YunoHost sait par défaut
+gérer une boîte email
 
 00:04:14.138 --> 00:04:15.428
 je peux avoir envie d'installer,
@@ -347,18 +347,18 @@ de consulter facilement
 
 00:04:18.065 --> 00:04:21.535
 mon courrier avec un navigateur
-comme avec gmail, par exemple.
+comme avec GMail, par exemple.
 
 00:04:21.535 --> 00:04:24.336
 En quelques clics,
-je peux installer ce service sur ma brique
+je peux installer ce service sur ma Brique
 
 00:04:24.336 --> 00:04:26.967
 et j'y ai immédiatement accès
 depuis n'importe où dans le monde
 
 00:04:26.971 --> 00:04:29.618
-avec une authentification évidement
+avec une authentification évidemment
 dans ce cas là.
 
 00:04:29.880 --> 00:04:32.611
@@ -366,23 +366,23 @@ Des services à installer
 facilement il y en a plein,
 
 00:04:32.611 --> 00:04:35.195
-comme jappix pour discuter
-en messagerie instantannée,
+comme Jappix pour discuter
+en messagerie instantanée,
 
 00:04:35.195 --> 00:04:38.103
-owncloud pour partager des fichiers
-ou encore wordpress
+ownCloud pour partager des fichiers
+ou encore WordPress
 
 00:04:38.103 --> 00:04:40.056
 pour faire mon propre blog
 
 00:04:40.056 --> 00:04:43.626
 d'ailleurs, les interfaces web
-wifi et VPN qu'on a vu tout à l'heure
+WiFi et VPN qu'on a vues tout à l'heure
 
 00:04:43.626 --> 00:04:47.035
 ce sont de simple applications
-YUNOHOST qui sont pré-installées.
+YunoHost qui sont pré-installées.
 
 00:04:47.281 --> 00:04:49.550
 Grâce au système
@@ -408,15 +408,15 @@ débrancher la Brique Internet et de la
 
 00:05:03.481 --> 00:05:07.378
 rebrancher n'importe où et ça fonctionne
-toujours sans rien avoir à reconfigurer.
+toujours sans rien n'avoir à reconfigurer.
 
 00:05:07.828 --> 00:05:11.188
-Au niveau DNS ce sont les IPs de mon
+Au niveau DNS ce sont les IP de mon
 associations qui seront utilisées pour
 
 00:05:11.188 --> 00:05:14.091
 contacter mon serveur
-et ce sont évidement des IPs fixes.
+et ce sont évidement des IP fixes.
 
 00:05:15.285 --> 00:05:18.179
 Je peux aller jusqu'à brancher ma Brique
@@ -428,22 +428,22 @@ par exemple
 
 00:05:21.343 --> 00:05:23.903
 ou un réseau d'entreprise 
-particulièrement restraint.
+particulièrement restreint.
 
 00:05:24.188 --> 00:05:26.727
 Pour les geeks, de nouveau, quelque soit
-l'endroit où je pose ma brique,
+l'endroit où je pose ma Brique,
 
 00:05:26.727 --> 00:05:29.211
 mes services sont aussi
-accessible en IPv6.
+accessibles en IPv6.
 
 00:05:29.910 --> 00:05:32.420
 (Où trouver ce boîtier ?)
 
 00:05:32.633 --> 00:05:37.213
 La Fédération FDN regroupe des associations
-FAI qui respectent la neutralité du net
+FAI qui respectent la Neutralité du Net
 
 00:05:37.213 --> 00:05:40.528
 et votre vie privée et qui fournissent,
@@ -451,7 +451,7 @@ parfois, des services VPN.
 
 00:05:41.161 --> 00:05:44.846
 Certaines de ces associations proposent
-leur version de la Brique Internet clef en main
+leur version de la Brique Internet clé en main
 
 00:05:44.846 --> 00:05:48.375
 en plus avec un nom de domaine facultatif
@@ -462,14 +462,14 @@ et un espace chiffré pour stocker
 automatiquement les sauvegardes.
 
 00:05:51.351 --> 00:05:54.516
-Dans la mesure où il est primordiable
+Dans la mesure où il est primordial
 d'avoir confiance dans le fournisseur que
 
 00:05:54.516 --> 00:05:56.630
-vous choisissez pour votre service.
+vous choisissez pour votre service,
 
 00:05:56.630 --> 00:05:58.276
-Les associations de la Fédération sont
+les associations de la Fédération sont
 
 00:05:58.276 --> 00:05:59.861
 réparties sur toute la France et vous
@@ -483,7 +483,7 @@ qui en sont également les administrateurs.
 
 00:06:04.840 --> 00:06:08.343
 En Belgique, c'est l'association Neutrinet,
-qui a également fondé ce projet de boitier
+qui a également fondé ce projet de boîtier
 
 00:06:08.343 --> 00:06:10.665
 qui sera ravie de vous accueillir.
@@ -493,12 +493,12 @@ Sinon, si vous le souhaitez, vous pouvez
 utiliser n'importe quelle machine
 
 00:06:14.050 --> 00:06:17.160
-avec une antenne Wifi et installer
-vous-même YUNOHOST,
+avec une antenne WiFi et installer
+vous-même YunoHost,
 
 00:06:17.160 --> 00:06:20.060
-les 2 applications nécessaires pour
-le Wifi et le VPN
+et les 2 applications nécessaires pour
+le WiFi et le VPN
 
 00:06:20.060 --> 00:06:21.561
 puisque que tout est libre.
@@ -508,7 +508,7 @@ Il nous vous restera plus qu'à choisir
 un fournisseur de VPN
 
 00:06:24.328 --> 00:06:26.523
-et de configurer l'application.
+et configurer l'application.
 
 00:06:26.523 --> 00:06:29.029
 Le boîtier présenté vaut 70€ tout compris
@@ -519,7 +519,7 @@ et un service VPN associatif vaut environ
 
 00:06:33.256 --> 00:06:36.146
 Combiné avec un accès Internet grand
-publique à 20€,
+public à 20€,
 
 00:06:36.158 --> 00:06:38.968
 ça fait moins de 30€ par mois pour
@@ -530,7 +530,7 @@ et un accès Internet associatif de
 confiance avec la télé et le téléphone
 
 00:06:42.891 --> 00:06:44.573
-du fournisseur d'accès initiale.
+du fournisseur d'accès initial.
 
 00:06:44.940 --> 00:06:47.350
 (Bonus)
@@ -556,12 +556,12 @@ et librement des fichiers lors d'un
 événement
 
 00:07:01.726 --> 00:07:05.388
-On appel ça, en générale, de façon
+On appelle ça, en général, de façon
 provocatrice, une PirateBox
 
 00:07:05.952 --> 00:07:09.285
-Au passage, le boîtier avec le Wifi
-consomme 2 Wats maximum
+Au passage, le boîtier avec le WiFi
+consomme 2W maximum
 
 00:07:09.295 --> 00:07:11.653
 soit beaucoup moins que n'importe quelle
@@ -582,11 +582,11 @@ Brique Internet
 d'avoir une autonomie de 13h
 
 00:07:20.157 --> 00:07:22.795
-il peut aussi servir pour déployer du wifi
+il peut aussi servir pour déployer du WiFi
 propre et sécurisé
 
 00:07:22.805 --> 00:07:26.208
-pour n'importe quel événement publique
+pour n'importe quel événement public
 en déchargeant ainsi le propriétaire
 
 00:07:26.211 --> 00:07:29.166
