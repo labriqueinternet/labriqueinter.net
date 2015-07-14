@@ -208,15 +208,14 @@ footer {
 }
 
 .logos {
-  max-width: 600px;
-  margin: auto;
-}
-.logos a {
-  display: inline-block;
-  vertical-align: middle;
-  width: 32%;
   text-align: center;
-  margin-bottom: 1em;
+}
+
+.logos img {
+  margin: 0 .5em .5em 1em;
+  vertical-align: middle;
+  display: inline-block;
+  max-width: 20%;
 }
 
 #boots {
