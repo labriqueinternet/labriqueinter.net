@@ -27,9 +27,9 @@ div#banniere, h1, h2, h3, h4, h5, h6 {
   font-family: jurabook;
 }
 
-strong, b {
-  color: #fff;
-  font-weight: 400;
+#features span {
+  color: #729fcf;
+  font-weight: 500;
 }
 
 em, i {
@@ -134,7 +134,8 @@ a:focus {
   padding: 0.1em 0 0.3em;
   margin: 0;
 }
-#banniere .banTexte span {
+
+#banniere .banTexte span, h2 span {
   color: #ff0000;
 }
 
@@ -167,32 +168,30 @@ section {
   padding-top: 1em;
 }
 
-section span {
-  color: #ff0000;
-}
-
-section ul {
-}
 section li {
   padding: 0.2em 0;
 }
 
-
 .pictures {
   text-align: center;
 }
+
 .pictures img {
   display: block;
   margin: auto;
   border: 1px solid #fff;
 }
+
 .pictures a {
   margin: 0.6em 1em;
   display: inline-block;
   max-width: 100%;
 }
+
 @media screen and (max-width: 768px) {
-  .pictures a {display: block;}
+  .pictures a {
+    display: block;
+  }
 }
 
 .video {
@@ -250,10 +249,10 @@ footer {
   display: block;
   padding: 0.6em;
 }
+
 .has-js #show-features-button:hover,
 .has-js #show-features-button:focus {
   outline: none;
-  color: #ff3c3c;
 }
 
 #thisisinternet img {
