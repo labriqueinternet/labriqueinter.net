@@ -217,11 +217,16 @@ footer {
   max-width: 20%;
 }
 
-#boots {
+#photos {
   margin: 1.3em 0;
 }
 
-#boots img {
+#photos a {
+  padding: 0;
+  margin: 0;
+}
+
+#photos img {
   display: inline-block;
   margin: .7em;
 }
@@ -232,7 +237,7 @@ footer {
     display: block;
   }
 
-  #boots img {
+  #photos img {
     display: block;
   }
 }
@@ -255,7 +260,6 @@ footer {
   outline: none;
 }
 
-#thisisinternet img {
-  border: 0;
+.nature img {
   margin-bottom: 1.6em;
 }
