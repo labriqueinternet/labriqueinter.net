@@ -1,0 +1,16 @@
+---
+pageable: true
+---
+
+<h1><%= t(:ArchivesFor) %>
+  <% case page_type
+     when 'day' %>
+    <%= escape_html Date.new(year, month, day).strftime('%b %e %Y') %>
+  <% when 'month' %>
+    <%= escape_html Date.new(year, month, 1).strftime('%b %Y') %>
+  <% when 'year' %>
+    <%= year %>
+  <% end %>
+</h1>
+
+<%= partial "layouts/articles" %>

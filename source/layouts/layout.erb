@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="<% current_page.data.locale %>">
+<head>
+  <meta charset="utf-8">
+  <title><%= I18n.t(:Title) %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <% $locales.each do |l| %><% if I18n.locale != l %>
+  <link rel="alternate" hreflang="<%= I18n.t(:lang, :locale => l) %>" href="<%= I18n.t(:url, :locale => l) %>" />
+  <% end %><% end %>
+  <%= yield_content :feed %>
+</head>
+
+<body class="nojs">
+  <header>
+
+    <ul class="language-links">
+        <% $locales.each do |l| %>
+        <li><a lang="<%= I18n.t(:lang, :locale => l) %>" hreflang="<%= I18n.t(:lang, :locale => l) %>"
+            href="<%= I18n.t(:url, :locale => l) %>" title="<%= I18n.t(:menu, :locale => l) %>"
+            class="<%= if I18n.locale == l then 'active' else '' end %>"
+            ><%= I18n.t(:lang, :locale => l).upcase %></a></li>
+        <% end %>
+    </ul>
+
+    <div id="haut-droite"><%= I18n.t(:NetNeutrality) %></div>
+    <div id="haut-gauche"><%= I18n.t(:SelfHosting) %></div>
+
+    <div id="banniere">
+      <% if current_page.data.home %>
+      <h1><img src="/img/brique.png" alt="<%= I18n.t(:Title) %>" ></h1>
+      <p class="banTexte"><%= I18n.t(:HtmlTitle) %></p>
+      <p class="banDescription"><em><%= I18n.t(:Subtitle) %></em></p>
+      <% else %>
+      <h1 class="banTexte"><%= I18n.t(:HtmlTitle) %></h1>
+      <% end %>
+    </div>
+  </header>
+
+  <main>
+    <% if current_article.nil? %>
+      <%= yield %>
+    <% else %>
+      <article>
+        <header>
+          <h1><%= link_to current_article.title, current_article %></h1>
+          <p><time><%= current_article.date.strftime('%b %e %Y') %></time></p>
+        </header>
+        <%= yield %>
+      </article>
+      
+    <% end %>
+  </main>
+
+  <footer>
+    <div class="logos">
+      <a href="http://ffdn.org"><img alt="Fédération French Data Network" src="/img/ffdn.png" /></a>
+      <a href="http://ldn-fai.net"><img alt="Lorraine Data Network" src="/img/ldn.png" /></a>
+      <a href="http://neutrinet.be"><img alt="Neutrinet" src="/img/neutrinet.png" /></a>
+      <a href="https://yunohost.org/#/index_fr"><img alt="YunoHost" src="/img/yunohost.png" /></a>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

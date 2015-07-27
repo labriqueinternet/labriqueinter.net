@@ -1,0 +1,26 @@
+<% page_articles.each_with_index do |article, i| %>
+<article>
+    <header>
+      <h1><%= link_to article.title, article %></h1>
+      <p><time><%= article.date.strftime('%b %e %Y') %></time></p>  
+    </header>
+  <%= article.body %>
+</article>
+<% end %>
+
+<% if paginate %>
+  <p>
+  Page <%= page_number %> / <%= num_pages %>
+  |
+  <% if prev_page %>
+    <%= link_to I18N.t(:PreviousPage), prev_page %>
+  <% else %>
+    <a>Previous <%= I18N.t(:PreviousPage) %></a>
+  <% end %>
+  |
+  <% if next_page %>
+    <%= link_to I18N.t(:NextPage), next_page %>
+  <% else %>
+    <a>Next <%= I18N.t(:NextPage) %></a>
+  <% end %>
+<% end %>

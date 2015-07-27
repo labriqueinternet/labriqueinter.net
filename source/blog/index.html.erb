@@ -1,0 +1,11 @@
+---
+title: Blog
+pageable: true
+per_page: 10
+---
+
+<%= partial "layouts/articles" %>
+
+<% content_for :feed do %>
+ <link rel="alternate" type="application/atom+xml" alternate="All articles" href="/feed.xml"/>
+<% end %>
