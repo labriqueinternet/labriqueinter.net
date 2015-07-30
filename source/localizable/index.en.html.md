@@ -1,6 +1,5 @@
 ---
 title: InternetCu.be
-locale: en
 home: yes
 ---
 

@@ -4,11 +4,34 @@ Website
 
 ## Usage
 
+Install the dependencies:
+
 ~~~sh
 bundle install --path vendor/bundle --binstubs
-export I18N=fr
-middleman server
-middleman build && middleman deploy
+~~~
+
+Live server (the pages reload themselves when the files are modified):
+
+~~~sh
+I18N=fr middleman server
+~~~
+
+Generate the static website:
+
+~~~sh
+middleman build
+~~~
+
+Test the static website:
+
+~~~sh
+I18N=fr rackup
+~~~
+
+Deploy the static website:
+
+~~~
+middleman deploy
 ~~~
 
 ## Howto

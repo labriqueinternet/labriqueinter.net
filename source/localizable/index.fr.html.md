@@ -1,6 +1,5 @@
 ---
 title: La BriqueInter.net
-locale: fr
 home: yes
 ---
 
