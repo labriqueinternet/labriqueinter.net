@@ -55,6 +55,12 @@ en:
   foo: FooBar
 ~~~
 
+Geneate the nginx configuration:
+
+~~~sh
+./conf/nginx.rb
+~~~
+
 ### Add a blog post
 
 Create a file in `source/${lang}/YYYY-MM-DD-title.html.md`.
