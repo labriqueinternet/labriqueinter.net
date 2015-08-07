@@ -1,0 +1,28 @@
+<% locales.each do |k,locale| %><% host = locale['url'].sub(/^https?:\/\//, '') %>
+server {
+  listen [::];
+  server_name <%=  host %>;
+  root /srv/internetcube/;
+  index index.html;
+  charset utf-8;
+
+  access_log /var/log/nginx/<%=  host %>.access.log;
+  error_log /var/log/nginx/<%=  host %>.error.log error;
+
+  <% locales.each do |u,v| %>
+  location /<%= u %>/ {
+    internal;
+  }<% end %>
+
+  try_files <%=k %>$uri $uri =404;
+  error_page 404 /404.html;
+
+  gzip                on;
+  gzip_static         on;
+  gzip_http_version   1.1;
+  gzip_proxied        expired no-cache no-store private auth;
+  gzip_disable        "MSIE [1-6]\.";
+  gzip_vary           on;
+  gzip_types          text/css application/x-javascript;
+}
+<% end %>

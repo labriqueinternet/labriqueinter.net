@@ -1,0 +1,27 @@
+---
+layout: false
+---
+doctype xml
+feed xmlns="http://www.w3.org/2005/Atom"
+  - site_url = t(:url, :locale => l)
+  title = t(:Title, :locale => l)
+  subtitle = t(:Subtitle, :locale => l)
+  id = URI.join(site_url, "/")
+  link href="#{URI.join(site_url, "/")}"
+  link href='#{URI.join(site_url, current_page.path)}' rel="self"
+  - if not blog.articles.empty?
+    updated = blog.articles.first.date.to_time.iso8601
+  - else
+    updated = Time.new(2015).iso8601
+  author
+    name = t(:Title, :locale => l)
+  - blog.articles.each do |article|
+    entry
+      title = article.title
+      link rel="alternate" href="#{URI.join(site_url, article.url)}"
+      id = URI.join(site_url, article.url)
+      published = article.date.to_time.iso8601
+      updated = article.updated.to_time.iso8601
+      content type="xhtml"
+        div xmlns='http://www.w3.org/1999/xhtml'
+          = article.body

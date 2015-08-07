@@ -1,3 +1,9 @@
 *.tgz
 *.swp
 *.webm
+
+# Middleman:
+bin/
+.bundle/
+vendor/
+build/
