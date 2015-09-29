@@ -38,7 +38,8 @@
   "login_passphrase": "",
   "dns0": "89.234.141.66",
   "dns1": "2001:913::8",
-  "openvpn_add": "key1 value1|key2 value2"
+  "openvpn_rm": [ ],
+  "openvpn_add": [ "topology subnet" ]
 }
 </pre>
     </section>
@@ -117,19 +118,25 @@
           <td class="cubekey">dns0</td>
           <td class="cubevalue">IPv6 or IPv4 address</td>
           <td class="cubeoptional cubeoptionalno">No</td>
-          <td class="cubecomment">First public DNS resolver address (to set on the host)</td>
+          <td class="cubecomment">First public DNS resolver (will be set on the host)</td>
         </tr>
         <tr>
           <td class="cubekey">dns1</td>
           <td class="cubevalue">IPv6 or IPv4 address</td>
           <td class="cubeoptional cubeoptionalno">No</td>
-          <td class="cubecomment">Second public DNS resolver address (to set on the host)</td>
+          <td class="cubecomment">Second public DNS resolver (will be set on the host)</td>
+        </tr>
+        <tr>
+          <td class="cubekey">openvpn_rm</td>
+          <td class="cubevalue">Array of strings or PCRE regexes</td>
+          <td class="cubeoptional cubeoptionalyes">Yes</td>
+          <td class="cubecomment">OpenVPN options to remove from the default configuration (remove all lines containing one of the strings/regexes &mdash; non case-sensitive)</td>
         </tr>
         <tr>
           <td class="cubekey">openvpn_add</td>
-          <td class="cubevalue">"key value" pairs (separated by pipes)</td>
+          <td class="cubevalue">Array of "key value" pairs</td>
           <td class="cubeoptional cubeoptionalyes">Yes</td>
-          <td class="cubecomment">OpenVPN options to add</td>
+          <td class="cubecomment">OpenVPN options to add to the default configuration</td>
         </tr>
       </table>
 

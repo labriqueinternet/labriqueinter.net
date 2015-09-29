@@ -271,6 +271,7 @@ footer {
   background-color: #222;
   padding: .6em;
   margin: 20px 0;
+  box-shadow: 3px 3px 2px #000;
 }
 
 #cubefilestable td {
@@ -300,6 +301,8 @@ td.cubecomment {
 }
 
 pre {
+  text-shadow: 1px 1px #000;
+  box-shadow: 3px 3px 2px #000;
   background-color: #222;
   padding: 10px;
 }
