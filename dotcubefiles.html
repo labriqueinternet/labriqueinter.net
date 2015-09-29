@@ -140,15 +140,36 @@
         </tr>
       </table>
 
-      <strong>Note<sup>1</sup>:</strong> You have to define either a public/private certificates couple, either a user/passphrase couple, either both.<br />
-      <strong>Note<sup>2</sup>:</strong> You also have to set the same <em>IPv6 Delegated Prefix</em> in the web interface of <a href="https://github.com/labriqueinternet/hotspot_ynh/">Wifi Hotspot</a>, for delivering IPv6 to wifi clients.
+      <p>
+        <strong>Note<sup>1</sup>:</strong> You have to define either a public/private certificates couple, either a user/passphrase couple, either both.<br />
+        <strong>Note<sup>2</sup>:</strong> You also have to set the same <em>IPv6 Delegated Prefix</em> in the web interface of <a href="https://github.com/labriqueinternet/hotspot_ynh/">Wifi Hotspot</a>, for delivering IPv6 to wifi clients.
+      </p>
+    </section>
+
+    <section>
+      <h2><span>Command</span>-line</h2>
+
+      <p>VPN Client can be configured with a <em>dot cube</em> file, directly in command-line:</p>
+
+      <pre>
+% ynh-vpnclient-loadcubefile.sh -h
+-u SSO username (user with permissions on VPN Client)
+-p SSO password
+-c Dot cube file path
+-h This help
+
+% ynh-vpnclient-loadcubefile.sh -u jdoe -p AAaxRjLAyU4CU -c /tmp/config.cube
+[VPN] Configuration updated and service successfully reloaded
+</pre>
+
+      <p>The script <em>ynh-vpnclient-loadcubefile.sh</em> is provided with VPN Client.</p>
+
+      <p>The user <em>jdoe:AAaxRjLAyU4CU</em> must be a valid YunoHost user (SSO), allowed to access to the VPN Client web interface. When Wifi Hotspot is detected and if there is only one SSID defined, the <em>IPv6 Delegated Prefix</em> is also configured for this SSID and Wifi Hotspot is restarted.</p>
     </section>
   </main>
 
   <footer>
-    <div class="logos">
-      <a href="http://internetcu.be">Internet Cube</a>
-    </div>
+    <a href="http://internetcu.be">Internet Cube</a>
   </footer>
 
   <script type="text/javascript" src="js/main.js"></script>
