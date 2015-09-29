@@ -303,3 +303,7 @@ pre {
   background-color: #222;
   padding: 10px;
 }
+
+pre span {
+  color: #f00;
+}

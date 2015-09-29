@@ -16,7 +16,7 @@
     <section>
       <h2><span>What is</span> a dot cube file?</h2>
 
-      <p>A <em>dot cube</em> file (e.g. <em>config.cube</em>) is a single configuration file containing all of the necessary settings and keys for connecting an <a href="http://internetcu.be">Internet Cube</a> to a remote VPN server. This file can be used on the web interface of <a href="https://github.com/labriqueinternet/vpnclient_ynh/">VPN Client</a>, under the <em>Automatic</em> tab. It should be provided by the VPN access provider.</p>
+      <p>A <em>dot cube</em> file (e.g. <em>config.cube</em>) is a single configuration file containing all of the necessary settings and keys for connecting an <a href="http://internetcu.be">Internet Cube</a> to a remote VPN server. This file can be used on the web interface of <a href="https://github.com/labriqueinternet/vpnclient_ynh/">VPN Client</a>, under the <em>Automatic</em> tab. It should be provided ready to use, by the VPN access provider.</p>
 
       <p>A <em>dot cube</em> file is just a Json file.</p>
     </section>
@@ -30,9 +30,9 @@
   "server_port": "1194",
   "server_proto": "udp",
   "ip6_net": "2001:db8:c42::",
-  "crt_server_ca": "-----BEGIN CERTIFICATE-----|MIIFFX...eRte6K|-----END CERTIFICATE-----",
-  "crt_client": "-----BEGIN CERTIFICATE-----|MIIFbU...5ax4T3As=|-----END CERTIFICATE-----",
-  "crt_client_key": "-----BEGIN PRIVATE KEY-----|MIIEvM...vEi8kAMj|-----END PRIVATE KEY-----",
+  "crt_server_ca": "-----BEGIN CERTIFICATE-----|MIIFFXAJjzZhAZJ+JHA<span>&hellip;</span>eRte6K|-----END CERTIFICATE-----",
+  "crt_client": "-----BEGIN CERTIFICATE-----|MIIFbUHHQjauIUoiUAA5ax<span>&hellip;</span>4T3As=|-----END CERTIFICATE-----",
+  "crt_client_key": "-----BEGIN PRIVATE KEY-----|MIIEvM/JsSAmledzvE<span>&hellip;</span>i8kAMj|-----END PRIVATE KEY-----",
   "crt_client_ta": "",
   "login_user": "",
   "login_passphrase": "",
@@ -81,19 +81,19 @@
           <td class="cubekey">crt_server_ca</td>
           <td class="cubevalue">ASCII certificate (new lines replaced by pipes)</td>
           <td class="cubeoptional cubeoptionalno">No</td>
-          <td class="cubecomment">Server CA (.crt)</td>
+          <td class="cubecomment">Public server CA (.crt)</td>
         </tr>
         <tr>
           <td class="cubekey">crt_client</td>
           <td class="cubevalue">ASCII certificate (new lines replaced by pipes)</td>
           <td class="cubeoptional cubeoptionalyes">Yes (except if <em>crt_client_key</em> is defined)</td>
-          <td class="cubecomment">Client certificate (.crt)</td>
+          <td class="cubecomment">Public client certificate (.crt)</td>
         </tr>
         <tr>
           <td class="cubekey">crt_client_key</td>
           <td class="cubevalue">ASCII certificate (new lines replaced by pipes)</td>
-          <td class="cubeoptional cubeoptionalyes">Yes (except if <em>crt_client_key</em> is defined)</td>
-          <td class="cubecomment">Client certificate (.key)</td>
+          <td class="cubeoptional cubeoptionalyes">Yes (except if <em>crt_client</em> is defined)</td>
+          <td class="cubecomment">Private client certificate (.key)</td>
         </tr>
         <tr>
           <td class="cubekey">crt_client_ta</td>
@@ -117,13 +117,13 @@
           <td class="cubekey">dns0</td>
           <td class="cubevalue">IPv6 or IPv4 address</td>
           <td class="cubeoptional cubeoptionalno">No</td>
-          <td class="cubecomment">First public DNS resolver address (set on the host)</td>
+          <td class="cubecomment">First public DNS resolver address (to set on the host)</td>
         </tr>
         <tr>
           <td class="cubekey">dns1</td>
           <td class="cubevalue">IPv6 or IPv4 address</td>
           <td class="cubeoptional cubeoptionalno">No</td>
-          <td class="cubecomment">Second public DNS resolver address (set on the host)</td>
+          <td class="cubecomment">Second public DNS resolver address (to set on the host)</td>
         </tr>
         <tr>
           <td class="cubekey">openvpn_add</td>
@@ -133,7 +133,7 @@
         </tr>
       </table>
 
-      <strong>Note:</strong> You have to define either certificates, either a user/passphrase couple, either both.
+      <strong>Note:</strong> You have to define either a public/private certificates couple, either a user/passphrase couple, either both.
     </section>
   </main>
 
