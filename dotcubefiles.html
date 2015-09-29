@@ -76,7 +76,7 @@
           <td class="cubekey">ip6_net</td>
           <td class="cubevalue">IPv6 network address</td>
           <td class="cubeoptional cubeoptionalyes">Yes</td>
-          <td class="cubecomment">Delegated prefix (IPv6)</td>
+          <td class="cubecomment">IPv6 delegated prefix</td>
         </tr>
         <tr>
           <td class="cubekey">crt_server_ca</td>
@@ -140,7 +140,8 @@
         </tr>
       </table>
 
-      <strong>Note:</strong> You have to define either a public/private certificates couple, either a user/passphrase couple, either both.
+      <strong>Note<sup>1</sup>:</strong> You have to define either a public/private certificates couple, either a user/passphrase couple, either both.<br />
+      <strong>Note<sup>2</sup>:</strong> You also have to set the same <em>IPv6 Delegated Prefix</em> in the web interface of <a href="https://github.com/labriqueinternet/hotspot_ynh/">Wifi Hotspot</a>, for delivering IPv6 to wifi clients.
     </section>
   </main>
 
