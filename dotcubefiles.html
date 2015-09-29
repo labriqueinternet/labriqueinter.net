@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Internet Cube - Dot Cube Files</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body class="nojs">
+  <header>
+    <h1 style="text-align: center">Dot Cube Files</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2><span>What is</span> a dot cube file?</h2>
+
+      <p>A <em>dot cube</em> file (e.g. <em>config.cube</em>) is a single configuration file containing all of the necessary settings and keys for connecting an <a href="http://internetcu.be">Internet Cube</a> to a remote VPN server. This file can be used on the web interface of <a href="https://github.com/labriqueinternet/vpnclient_ynh/">VPN Client</a>, under the <em>Automatic</em> tab.</p>
+
+      <p>A <em>dot cube</em> file is just a Json file.</p>
+    </section>
+
+    <section>
+      <h2><span>Json</span> example</h2>
+
+      <pre>
+{
+  "server_name": "access.ldn-fai.net",
+  "server_port": "1194",
+  "server_proto": "udp",
+  "ip6_net": "2001:db8:c42::",
+  "crt_server_ca": "-----BEGIN CERTIFICATE-----|MIIFFX...eRte6K|-----END CERTIFICATE-----",
+  "crt_client": "-----BEGIN CERTIFICATE-----|MIIFbU...5ax4T3As=|-----END CERTIFICATE-----",
+  "crt_client_key": "-----BEGIN PRIVATE KEY-----|MIIEvM...vEi8kAMj|-----END PRIVATE KEY-----",
+  "crt_client_ta": "",
+  "login_user": "",
+  "login_passphrase": "",
+  "dns0": "89.234.141.66",
+  "dns1": "2001:913::8",
+  "openvpn_add": "key1 value1|key2 value2"
+}
+</pre>
+    </section>
+
+    <section>
+      <h2><span>Json</span> settings</h2>
+
+      <table id="cubefilestable">
+        <tr>
+          <th class="cubekey">Key</th>
+          <th class="cubevalue">Value Type</th>
+          <th class="cubeoptional">Optional</th>
+          <th class="cubecomment">Comment</th>
+        </tr>
+        <tr>
+          <td class="cubekey">server_name</td>
+          <td class="cubevalue">Domain name</td>
+          <td class="cubeoptional cubeoptionalno">No</td>
+          <td class="cubecomment">Remote VPN server address</td>
+        </tr>
+        <tr>
+          <td class="cubekey">server_port</td>
+          <td class="cubevalue">Port number</td>
+          <td class="cubeoptional cubeoptionalno">No</td>
+          <td class="cubecomment">Remote VPN server port</td>
+        </tr>
+        <tr>
+          <td class="cubekey">server_proto</td>
+          <td class="cubevalue">"udp" or "tcp"</td>
+          <td class="cubeoptional cubeoptionalno">No</td>
+          <td class="cubecomment">L4 protocol to use</td>
+        </tr>
+        <tr>
+          <td class="cubekey">ip6_net</td>
+          <td class="cubevalue">IPv6 network address</td>
+          <td class="cubeoptional cubeoptionalyes">Yes</td>
+          <td class="cubecomment">Delegated prefix (IPv6)</td>
+        </tr>
+        <tr>
+          <td class="cubekey">crt_server_ca</td>
+          <td class="cubevalue">ASCII certificate (new lines replaced by pipes)</td>
+          <td class="cubeoptional cubeoptionalno">No</td>
+          <td class="cubecomment">Server CA (.crt)</td>
+        </tr>
+        <tr>
+          <td class="cubekey">crt_client</td>
+          <td class="cubevalue">ASCII certificate (new lines replaced by pipes)</td>
+          <td class="cubeoptional cubeoptionalyes">Yes (except if <em>crt_client_key</em> is defined)</td>
+          <td class="cubecomment">Client certificate (.crt)</td>
+        </tr>
+        <tr>
+          <td class="cubekey">crt_client_key</td>
+          <td class="cubevalue">ASCII certificate (new lines replaced by pipes)</td>
+          <td class="cubeoptional cubeoptionalyes">Yes (except if <em>crt_client_key</em> is defined)</td>
+          <td class="cubecomment">Client certificate (.key)</td>
+        </tr>
+        <tr>
+          <td class="cubekey">crt_client_ta</td>
+          <td class="cubevalue">ASCII certificate (new lines replaced by pipes)</td>
+          <td class="cubeoptional cubeoptionalyes">Yes</td>
+          <td class="cubecomment">Shared-secret (ta.key)</td>
+        </tr>
+        <tr>
+          <td class="cubekey">login_user</td>
+          <td class="cubevalue">Username</td>
+          <td class="cubeoptional cubeoptionalyes">Yes (except if <em>login_passphrase</em> is defined)</td>
+          <td class="cubecomment">Username</td>
+        </tr>
+        <tr>
+          <td class="cubekey">login_passphrase</td>
+          <td class="cubevalue">Passphrase</td>
+          <td class="cubeoptional cubeoptionalyes">Yes (except if <em>login_user</em> is defined)</td>
+          <td class="cubecomment">Password</td>
+        </tr>
+        <tr>
+          <td class="cubekey">dns0</td>
+          <td class="cubevalue">IPv6 or IPv4 address</td>
+          <td class="cubeoptional cubeoptionalno">No</td>
+          <td class="cubecomment">First public DNS resolver address (set on the host)</td>
+        </tr>
+        <tr>
+          <td class="cubekey">dns1</td>
+          <td class="cubevalue">IPv6 or IPv4 address</td>
+          <td class="cubeoptional cubeoptionalno">No</td>
+          <td class="cubecomment">Second public DNS resolver address (set on the host)</td>
+        </tr>
+        <tr>
+          <td class="cubekey">openvpn_add</td>
+          <td class="cubevalue">"key value" pairs (separated by pipes)</td>
+          <td class="cubeoptional cubeoptionalyes">Yes</td>
+          <td class="cubecomment">OpenVPN options to add</td>
+        </tr>
+      </table>
+
+      <strong>Note:</strong> You have to define either certificates, either a user/passphrase couple, either both.
+    </section>
+  </main>
+
+  <footer>
+    <div class="logos">
+      <a href="http://internetcu.be">Internet Cube</a>
+    </div>
+  </footer>
+
+  <script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

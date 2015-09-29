@@ -263,3 +263,43 @@ footer {
 .nature img {
   margin-bottom: 1.6em;
 }
+
+
+/**       DotCubeFiles       **/
+
+#cubefilestable {
+  background-color: #222;
+  padding: .6em;
+  margin: 20px 0;
+}
+
+#cubefilestable td {
+  padding: 5px 20px;
+}
+
+#cubefilestable th {
+  background-color: #333;
+  padding: 10px;
+  text-shadow: 2px 1px #111;
+}
+
+td.cubekey {
+  font-weight: bold;
+}
+
+td.cubecomment {
+  font-style: italic;
+}
+
+.cubeoptionalyes {
+  color: #0f0;
+}
+
+.cubeoptionalno {
+  color: #f00;
+}
+
+pre {
+  background-color: #222;
+  padding: 10px;
+}
