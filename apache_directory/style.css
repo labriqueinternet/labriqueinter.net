@@ -1,0 +1,106 @@
+@charset "UTF-8";
+@import url(../css/jura-font.css);
+
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: jurabook;
+}
+
+.container {
+    max-width: 50em;
+    margin: auto;
+}
+
+
+/* global link settings */
+a,
+a:link,
+a:visited {
+    color: #ccc;
+    text-decoration: none;
+}
+a:hover,
+a:focus {
+    color: #f00;
+    text-decoration: underline;
+}
+
+
+/* header and headings */
+header {
+    text-align: center;
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: normal;
+}
+h1 span {color: #f00;}
+
+h2 {
+    margin: 1.5em 0 0.25em
+}
+
+
+/* listing table */
+main table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #999;
+}
+main table a,
+main table a:link,
+    main table a:visited {
+    color: #fff;
+}
+main table a:hover,
+main table a:active {
+    color: #f00;
+}
+
+main table tr,
+main table th,
+main table td {
+    border: 0;
+    text-align: left;
+}
+main table th,
+main table td {
+    padding: 0.25em;
+}
+
+main table th {
+    font-weight: normal;
+    border-bottom: 1px solid #999;
+}
+main table th a,
+main table th a:link,
+main table th a:visited {color: #999;}
+
+
+/* icons */
+main table td:first-child {
+    padding: 0.4em 0.25em 0.1em;
+    text-align: center;
+}
+
+
+/* Documentation */
+.readme pre {
+    background: #333;
+    padding: 0.25em;
+}
+
+.readme ul {
+    padding-left: 1.5em;
+}
+
+
+/* footer */
+footer {
+    border-top: 1px solid #999;
+    margin-top: 2em;
+    padding-top: 2em;
+    font-size: 0.9em;
+}
