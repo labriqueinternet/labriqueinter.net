@@ -27,6 +27,10 @@ div#banniere, h1, h2, h3, h4, h5, h6 {
   font-family: jurabook;
 }
 
+h1 {
+  text-align: center;
+}
+
 #features span {
   color: #729fcf;
   font-weight: 500;
@@ -135,7 +139,7 @@ a:focus {
   margin: 0;
 }
 
-#banniere .banTexte span, h2 span {
+#banniere .banTexte span, h1 span, h2 span {
   color: #ff0000;
 }
 
@@ -208,6 +212,7 @@ footer {
 
 .logos {
   text-align: center;
+  padding-top: 1em;
 }
 
 .logos img {
@@ -309,4 +314,58 @@ pre {
 
 pre span {
   color: #f00;
+}
+
+
+/**  repo.labriqueinter.net  **/
+
+#files table {
+  font-family: jurabook;
+  width: 100%;
+  border-collapse: collapse;
+  color: #999;
+  margin: 15px 0;
+}
+
+#files table tr,
+#files table th,
+#files table td {
+  border: 0;
+  text-align: left;
+}
+
+#files table th,
+#files table td {
+  padding: 0.25em;
+}
+
+#files table th {
+  font-weight: normal;
+  border-bottom: 1px solid #999;
+}
+
+#files a {
+  color: #fff;
+  font-family: jurabook;
+  text-decoration: none;
+}
+
+#files a:hover {
+  color: #f00;
+}
+
+#files table td:first-child {
+  text-align: center;
+  width: 20px;
+}
+
+#files table th:first-child {
+  content: "";
+}
+
+footer {
+  border-top: 1px solid #999;
+  margin-top: 2em;
+  padding-top: .5em;
+  font-size: 0.9em;
 }

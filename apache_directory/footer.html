@@ -1,29 +1,57 @@
-    </main>
-    <aside class="readme">
-        <h2>Documentation</h2>
-        <ul>
-            <li><a href="http://labriqueinter.net">http://labriqueinter.net</a> | <a href="http://internetcu.be">http://internetcu.be</a></li>
-            <li><a href="https://yunohost.org/postinstall_fr">https://yunohost.org/postinstall_fr</a></li>
-            <li><a href="https://yunohost.org/installation_brique_fr">https://yunohost.org/installation_brique_fr</a></li>
-            <li><a href="https://github.com/bleuchtang/sunxi-debian/blob/master/README.md">https://github.com/bleuchtang/sunxi-debian/blob/master/README.md</a></li>
-            <li><a href="https://github.com/labriqueinternet/build.labriqueinter.net/blob/master/README.md">https://github.com/labriqueinternet/build.labriqueinter.net/blob/master/README.md</a></li>
-        </ul>
+    </section>
 
-        <h2>Install</h2>
-        <pre>sudo dd if=labriqueinternet_latest.img of=/dev/sdX bs=1M</pre>
-        or
-        <pre>sudo dd if=labriqueinternet_latest.img of=/dev/mmcblk0 bs=1M</pre>
+    <section>
+      <h2><span>Doc</span>umentation</h2>
 
-        <h2>First SSH</h2>
-        <p>
-        user: root<br />
-        password: olinux
-        </p>
-    </aside>
+      <p>You are here because you want to set up an Internet Cube by yourself. If you are interested by a plug-n-play Cube, please contact a non-profit organization (see the map <a href="http://internetcu.be">here</a>).</p>
 
-    <footer>
-        <a href="http://labriqueinter.net">labriqueinter.net</a>
-    </footer>
-</div>
+      <p>A complete <a hreflang="fr-FR" href="https://yunohost.org/installation_brique_fr">installation guide (fr)</a> is available. All information about hardware, YunoHost apps and community channels can be found on the <a href="http://internetcu.be">official website</a>.</p>
+
+      <p>If you want information about the Debian image itselft, you can read the README of <a href="https://github.com/bleuchtang/sunxi-debian/blob/master/README.md">sunxi-debian</a> and <a href="https://github.com/labriqueinternet/build.labriqueinter.net/blob/master/README.md">build.labriqueinter.net</a>.</p>
+    </section>
+
+    <section>
+      <h2><span>Quick</span> guide</h2>
+
+      <p>Replace <em>DEVICENAME</em> by the device corresponding to your SD card (e.g. <em>/dev/sdb</em>, <em>/dev/mmcblk0</em>):</p>
+
+      <pre>% sudo dd if=labriqueinternet_latest.img of=/dev/DEVICENAME bs=1M</pre>
+
+      <p>You can now do the YunoHost <a hreflang="fr-FR" href="https://yunohost.org/postinstall_fr">post-installation</a>.</p>
+    </section>
+
+<!--
+    <section>
+      <h2><span>Quick</span> guide (encrypted)</h2>
+
+      <p>Thanks to the <em>encrypted</em> image, the root file system of your Cube will be encrypted, for even further privacy.</p>
+
+      <p>The hard drive will have to be unlocked each time your Cube is rebooting. You will be able to remotely unlock the hard drive by accessing to your Cube with HTTPS. For that, you will have to use the public IPv4 from your ISP, with a correctly configured port-forwarding on your router (or directly IPv6 if your are lucky).</p>
+
+      <p>Replace <em>DEVICENAME</em> by the device corresponding to your SD card (e.g. <em>/dev/sdb</em>, <em>/dev/mmcblk0</em>) and choose <em>a20lime</em> or <em>a20lime2</em>:</p>
+
+      <pre>
+% git clone https://github.com/bleuchtang/sunxi-debian &amp;&amp; cd sunxi-debian
+% sudo bash olinux/create_device.sh -d /dev/DEVICENAME\
+-b labriqueinternet_encryptedroot_latest.img -e -u a20lime</pre>
+
+      <p>You can now do the YunoHost <a hreflang="fr-FR" href="https://yunohost.org/postinstall_fr">post-installation</a>.</p>
+    </section>
+-->
+
+    <section>
+      <h2><span>First</span> SSH</h2>
+
+      <p>SSH is available on the port 22:</p>
+
+      <pre>root:olinux</pre>
+
+      <p>Enjoy!</p>
+    </section>
+  </main>
+
+  <footer>
+    <a href="http://internetcu.be">Internet Cube</a>
+  </footer>
 </body>
 </html>
