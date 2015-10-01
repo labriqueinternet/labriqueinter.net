@@ -52,6 +52,13 @@ h2 {
   line-height: 1.25;
 }
 
+iframe {
+  width: 30em;
+  height: 21.5em;
+  border: 0;
+  overflow: hidden;
+}
+
 /* responsive medias */
 img,
 video {
