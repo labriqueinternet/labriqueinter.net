@@ -3,7 +3,7 @@
     <section>
       <h2><span>Doc</span>umentation</h2>
 
-      <p>You are here because you want to set up an Internet Cube (<em>La Brique Internet</em>, in French) by yourself. If you are interested by a plug-n-play Cube, please contact a non-profit organization (see the map <a href="http://internetcu.be">here</a>).</p>
+      <p>You are here because you want to set up an Internet Cube (<em>La Brique Internet</em>, in French) by yourself. If you are interested by a plug-n-play Cube, please contact a non-profit organization (<a href="http://internetcu.be">see the map</a>).</p>
 
       <p>A complete <a hreflang="fr-FR" href="https://yunohost.org/installation_brique_fr">installation guide (fr)</a> is available. All information about hardware, YunoHost apps and community channels can be found on the <a href="http://internetcu.be">official website</a>.</p>
 
@@ -11,17 +11,17 @@
     </section>
 
     <section>
-      <h2><span>Quick</span> guide</h2>
+      <h2><span>Quick</span> Guide</h2>
 
       <p>Replace <em>DEVICENAME</em> by the device corresponding to your SD card (e.g. <em>/dev/sdb</em>, <em>/dev/mmcblk0</em>):</p>
 
       <pre>% sudo dd if=labriqueinternet_latest.img of=/dev/DEVICENAME bs=1M</pre>
 
-      <p>You can now do the YunoHost <a hreflang="fr-FR" href="https://yunohost.org/postinstall_en">post-installation</a>.</p>
+      <p>For the SSH access and the YunoHost post-installation, see the <em>Post-Installation</em> section below.</p>
     </section>
 
     <section>
-      <h2><span>Quick</span> guide (encrypted)</h2>
+      <h2><span>Quick</span> Guide (encrypted)</h2>
 
       <p>Thanks to the <em>encrypted</em> image, the root file system of your Cube will be encrypted, for even further privacy.</p>
 
@@ -32,17 +32,23 @@
       <pre>
 % git clone https://github.com/bleuchtang/sunxi-debian &amp;&amp; cd sunxi-debian
 % sudo bash olinux/create_device.sh -d /dev/DEVICENAME\
--b labriqueinternet_encryptedroot_latest.img -e -u a20lime</pre>
+-b labriqueinternet_encrypted_latest.img -e -u a20lime</pre>
 
-      <p>You can now do the YunoHost <a hreflang="fr-FR" href="https://yunohost.org/postinstall_fr">post-installation</a>.</p>
+      <p>For the SSH access and the YunoHost post-installation, see the <em>Post-Installation</em> section below.</p>
     </section>
 
     <section>
-      <h2><span>First</span> SSH</h2>
+      <h2><span>Post</span>-Installation</h2>
 
       <p>SSH is available on the port 22:</p>
 
       <pre>root:olinux</pre>
+
+      <p>The first thing to do is upgrading Debian/Yunohost:</p>
+
+      <pre>% sudo apt-get update &amp;&amp; sudo apt-get dist-upgrade</pre>
+
+      <p>You can now do the YunoHost <a href="https://yunohost.org/postinstall_en">post-installation</a>.</p>
 
       <p>Enjoy!</p>
     </section>
