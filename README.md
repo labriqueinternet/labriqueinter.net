@@ -55,7 +55,7 @@ en:
   foo: FooBar
 ~~~
 
-Geneate the nginx configuration:
+Generate the nginx configuration:
 
 ~~~sh
 ./conf/nginx.rb
@@ -64,3 +64,15 @@ Geneate the nginx configuration:
 ### Add a blog post
 
 Create a file in `source/${lang}/YYYY-MM-DD-title.html.md`.
+
+
+## Develop with docker
+
+~~~sh
+docker build -t debian:olinux .
+docker run -ti -v $(pwd):/srv/middleman debian:middleman middleman build
+docker run -ti -v $(pwd):/srv/middleman debian:middleman middleman server
+~~~
+
+
+
