@@ -3,31 +3,31 @@
     <section>
       <h2><span>Doc</span>umentation</h2>
 
-      <p>You are here because you want to set up an Internet Cube (<em>La Brique Internet</em>, in French) by yourself. If you are interested by a plug-n-play Cube, please contact a non-profit organization (<a href="http://internetcu.be">see the map</a>).</p>
+      <p>Vous êtes ici parce que vous voulez configurer vous même une brique internet. Si vous voulez une brique "clé en main", merci de contacter un FAI associatif local (<a href="http://internetcu.be">voir la carte</a>).</p>
 
-      <p>An <a hreflang="fr-FR" href="https://yunohost.org/installation_brique_fr">Installation Guide (fr)</a> is available. All information about hardware, YunoHost apps and community channels can be found on the <a href="http://internetcu.be">official website</a>.</p>
+      <p>Un <a hreflang="fr-FR" href="https://yunohost.org/installation_brique_fr">guide d'installation (fr)</a> détaillé est disponible. Vous trouverez toutes les informations sur le matériel supporté et les apps YunoHost sur le <a href="http://internetcu.be">site officiel</a>.</p>
 
-      <p>If you want information about the Debian image itselft, you can read the README of <a href="https://github.com/bleuchtang/sunxi-debian/blob/master/README.md">sunxi-debian</a> and <a href="https://github.com/labriqueinternet/build.labriqueinter.net/blob/master/README.md">build.labriqueinter.net</a>.</p>
+      <p>Vous trouverez les informations sur l'image Debian sur le README de <a href="https://github.com/bleuchtang/sunxi-debian/blob/master/README.md">sunxi-debian</a> et de <a href="https://github.com/labriqueinternet/build.labriqueinter.net/blob/master/README.md">build.labriqueinter.net</a>.</p>
     </section>
 
     <section>
-      <h2><span>Quick</span> Guide</h2>
+      <h2><span>Guide</span> Rapide</h2>
 
-      <p>Replace <em>DEVICENAME</em> by the device corresponding to your SD card (e.g. <em>/dev/sdb</em>, <em>/dev/mmcblk0</em>):</p>
+      <p>Remplacer <em>labriqueinternet_latest.img</em> par le nom de l'image téléchargée et <em>NomDuDevice</em> par le nom de votre micro-SD (par ex. /dev/sdb, /dev/mmcblk0) :</p>
 
       <pre>% sudo dd if=labriqueinternet_latest.img of=/dev/DEVICENAME bs=1M</pre>
 
-      <p>For the SSH access and the YunoHost post-installation, see the <em>Post-Installation</em> section below.</p>
+      <p>Pour l'accès SSH et la post-installation de YunoHost, voir la section <em>Post-Installation</em> ci-dessous.</p>
     </section>
 
     <section>
-      <h2><span>Quick</span> Guide (encrypted)</h2>
+      <h2><span>Guide</span> Rapide (avec chiffrement)</h2>
 
-      <p>Thanks to the <em>encrypted</em> image, the root file system of your Cube will be encrypted, for even further privacy.</p>
+      <p>Pour encore plus de protection de vos données, grâce à l'image <em>encryptedfs</em>, le système de fichiers root de votre brique peut-être chiffré.</p>
 
-      <p>The hard drive will have to be unlocked each time your Cube is rebooting. You will be able to remotely unlock the hard drive by accessing to your Cube with HTTPS. For that, you will have to use the public IPv4 from your ISP, with a correctly configured port-forwarding on your router (or directly IPv6 if your are lucky).</p>
+      <p>La partition devra être déchiffrée à chaque redémarage de la brique. Il sera possible de déchiffrer la partition en accédant à une interface web en HTTPS. Vous devrez alors utiliser l'adresse IP publique de votre FAI (directement en IPv6, ou avec de la redirection de ports sur votre routeur en IPv4). </p>
 
-      <p>Replace <em>DEVICENAME</em> by the device corresponding to your SD card (e.g. <em>/dev/sdb</em>, <em>/dev/mmcblk0</em>) and choose <em>a20lime</em> or <em>a20lime2</em>:</p>
+      <p>Remplacer <em>labriqueinternet_latest.img</em> par le nom de l'image téléchargée, <em>NomDuDevice</em> par le nom de votre micro-SD (par ex. <em>/dev/sdb</em>, </em>/dev/mmcblk0</em>) et choisir <em>a20lime</em> ou <em>a20lime2</em> :</p>
 
       <pre>
 % git clone https://github.com/bleuchtang/sunxi-debian &amp;&amp; cd sunxi-debian
@@ -40,17 +40,17 @@
     <section>
       <h2><span>Post</span>-Installation</h2>
 
-      <p>SSH is available on the port 22:</p>
+      <p>Il y a un serveur SSH sur le port 22 :</p>
 
       <pre>root:olinux</pre>
 
-      <p>The first thing to do is upgrading Debian/Yunohost:</p>
+      <p>Commencez par mettre à jour Debian et YunoHost :</p>
 
       <pre>% sudo apt-get update &amp;&amp; sudo apt-get dist-upgrade</pre>
 
-      <p>You can now do the YunoHost <a href="https://yunohost.org/#/postinstall_en">post-installation</a>. Then, install <a href="https://github.com/labriqueinternet/vpnclient_ynh">VPN Client</a> and <a href="https://github.com/labriqueinternet/hotspot_ynh">Wifi Hotspot</a> on YunoHost.</p>
+      <p>Vous pouvez maintenant faire la <a href="https://yunohost.org/#/postinstall_en">post-installation</a>. Puis installer <a href="https://github.com/labriqueinternet/vpnclient_ynh">VPN Client</a> et <a href="https://github.com/labriqueinternet/hotspot_ynh">Wifi Hotspot</a> sur YunoHost.</p>
 
-      <p>Enjoy!</p>
+      <p>Yolo!</p>
     </section>
   </main>
 
