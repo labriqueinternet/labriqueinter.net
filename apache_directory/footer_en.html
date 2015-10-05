@@ -1,3 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Internet Cube - repo.internetcu.be</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+
+<body class="nojs">
+  <header>
+    <ul class="language-links">
+        <li><a href="http://repo.internetcu.be" title="View the English version">EN</a></li>
+        <li><a hreflang="fr_FR" href="http://repo.labriqueinter.net" title="Voir la version française" class="active">FR</a></li>
+    </ul>
+    <h1><span>repo</span>.ÎnternetCu.be</h1>
+  </header>
+  <main>
+    <section id="files">
+      <h2><span>Down</span>loads</h2>
+
     </section>
 
     <section>
@@ -13,9 +34,9 @@
     <section>
       <h2><span>Quick</span> Guide</h2>
 
-      <p>Replace <em>DEVICENAME</em> by the device corresponding to your SD card (e.g. <em>/dev/sdb</em>, <em>/dev/mmcblk0</em>):</p>
+      <p>This command will download the latest image and install your SD card (add <em>-2</em> to the end for a LIME2</em>):</p>
 
-      <pre>% sudo dd if=labriqueinternet_latest.img of=/dev/DEVICENAME bs=1M</pre>
+      <pre>bash &lt;(wget -qO- http://repo.internetcu.be/install-sd.sh)</pre>
 
       <p>For the SSH access and the YunoHost post-installation, see the <em>Post-Installation</em> section below.</p>
     </section>
@@ -23,16 +44,13 @@
     <section>
       <h2><span>Quick</span> Guide (encrypted)</h2>
 
-      <p>Thanks to the <em>encrypted</em> image, the root file system of your Cube will be encrypted, for even further privacy.</p>
+      <p>For even further privacy, the root file system of your Cube can be encrypted (images <em>encryptedfs</em>).</p>
 
       <p>The hard drive will have to be unlocked each time your Cube is rebooting. You will be able to remotely unlock the hard drive by accessing to your Cube with HTTPS. For that, you will have to use the public IPv4 from your ISP, with a correctly configured port-forwarding on your router (or directly IPv6 if your are lucky).</p>
 
-      <p>Replace <em>DEVICENAME</em> by the device corresponding to your SD card (e.g. <em>/dev/sdb</em>, <em>/dev/mmcblk0</em>) and choose <em>a20lime</em> or <em>a20lime2</em>:</p>
+      <p>This command will download the latest image and install your SD card with an encrypted file system (add <em>-2</em> to the end for a LIME2</em>):</p>
 
-      <pre>
-% git clone https://github.com/bleuchtang/sunxi-debian &amp;&amp; cd sunxi-debian
-% sudo bash olinux/create_device.sh -d /dev/DEVICENAME\
--b labriqueinternet_encryptedfs_latest.img -e -u a20lime</pre>
+      <pre>bash &lt;(wget -qO- http://repo.internetcu.be/install-sd.sh) -e</pre>
 
       <p>For the SSH access and the YunoHost post-installation, see the <em>Post-Installation</em> section below.</p>
     </section>

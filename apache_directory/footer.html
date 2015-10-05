@@ -3,19 +3,19 @@
     <section>
       <h2><span>Doc</span>umentation</h2>
 
-      <p>Vous êtes ici parce que vous voulez configurer vous même une brique internet. Si vous voulez une brique "clé en main", merci de contacter un FAI associatif local (<a href="http://internetcu.be">voir la carte</a>).</p>
+      <p>Vous êtes ici parce que vous voulez configurer vous-même une Brique Internet. Si vous voulez une Brique clé en main, merci de contacter un FAI associatif local (<a href="http://labriqueinter.net">voir la carte</a>).</p>
 
-      <p>Un <a hreflang="fr-FR" href="https://yunohost.org/installation_brique_fr">guide d'installation (fr)</a> détaillé est disponible. Vous trouverez toutes les informations sur le matériel supporté et les apps YunoHost sur le <a href="http://labriqueinter.net">site officiel</a>.</p>
+      <p>Un <a href="https://yunohost.org/installation_brique_fr">guide d'installation</a> détaillé est disponible. Vous trouverez toutes les informations concernant le matériel supporté et les apps YunoHost sur le <a href="http://labriqueinter.net">site officiel</a>.</p>
 
-      <p>Vous trouverez les informations sur l'image Debian sur le README de <a href="https://github.com/bleuchtang/sunxi-debian/blob/master/README.md">sunxi-debian</a> et de <a href="https://github.com/labriqueinternet/build.labriqueinter.net/blob/master/README.md">build.labriqueinter.net</a>.</p>
+      <p>Les informations à propos de l'image Debian sont disponibles dans les README de <a hreflang="en" href="https://github.com/bleuchtang/sunxi-debian/blob/master/README.md">sunxi-debian</a> et <a hreflang="en" href="https://github.com/labriqueinternet/build.labriqueinter.net/blob/master/README.md">build.labriqueinter.net</a>.</p>
     </section>
 
     <section>
       <h2><span>Guide</span> Rapide</h2>
 
-      <p>Remplacer <em>labriqueinternet_latest.img</em> par le nom de l'image téléchargée et <em>NomDuDevice</em> par le nom de votre micro-SD (par ex. /dev/sdb, /dev/mmcblk0) :</p>
+      <p>Cette commande va télécharger la dernière image et l'installer sur votre carte SD (ajouter l'option <em>-2</em> à la fin pour une LIME2) :</p>
 
-      <pre>% sudo dd if=labriqueinternet_latest.img of=/dev/DEVICENAME bs=1M</pre>
+      <pre>bash &lt;(wget -qO- http://repo.labriqueinter.net/install-sd.sh)</pre>
 
       <p>Pour l'accès SSH et la post-installation de YunoHost, voir la section <em>Post-Installation</em> ci-dessous.</p>
     </section>
@@ -23,32 +23,29 @@
     <section>
       <h2><span>Guide</span> Rapide (avec chiffrement)</h2>
 
-      <p>Pour encore plus de protection de vos données, grâce à l'image <em>encryptedfs</em>, le système de fichiers root de votre brique peut-être chiffré.</p>
+      <p>Pour encore plus de protection de vos données, le système de fichiers de votre Brique peut être chiffré (images <em>encryptedfs</em>).</p>
 
-      <p>La partition devra être déchiffrée à chaque redémarage de la brique. Il sera possible de déchiffrer la partition en accédant à une interface web en HTTPS. Vous devrez alors utiliser l'adresse IP publique de votre FAI (directement en IPv6, ou avec de la redirection de ports sur votre routeur en IPv4). </p>
+      <p>La partition devra être déchiffrée à chaque redémarrage de la Brique. Il sera possible de déchiffrer la partition en accédant à une interface web en HTTPS. Vous devrez alors utiliser l'adresse IP publique de votre FAI (directement en IPv6, ou avec de la redirection de ports sur votre routeur en IPv4). </p>
 
-      <p>Remplacer <em>labriqueinternet_latest.img</em> par le nom de l'image téléchargée, <em>NomDuDevice</em> par le nom de votre micro-SD (par ex. <em>/dev/sdb</em>, </em>/dev/mmcblk0</em>) et choisir <em>a20lime</em> ou <em>a20lime2</em> :</p>
+      <p>Cette commande va télécharger la dernière image et l'installer sur votre carte SD, avec un système de fichiers chiffré (ajouter l'option <em>-2</em> à la fin pour une LIME2) :</p>
 
-      <pre>
-% git clone https://github.com/bleuchtang/sunxi-debian &amp;&amp; cd sunxi-debian
-% sudo bash olinux/create_device.sh -d /dev/DEVICENAME\
--b labriqueinternet_encryptedfs_latest.img -e -u a20lime</pre>
+      <pre>bash &lt;(wget -qO- http://repo.labriqueinter.net/install-sd.sh) -e</pre>
 
-      <p>Pour accéder en SSH à la brique et effectuer la <em>post-installation</em>, regardez la section ci-dessous.</p>
+      <p>Pour l'accès SSH et la post-installation de YunoHost, voir la section <em>Post-Installation</em> ci-dessous.</p>
     </section>
 
     <section>
       <h2><span>Post</span>-Installation</h2>
 
-      <p>Il y a un serveur SSH sur le port 22 :</p>
+      <p>SSH est disponible sur le port 22 :</p>
 
       <pre>root:olinux</pre>
 
-      <p>Commencez par mettre à jour Debian et YunoHost :</p>
+      <p>La première chose à faire est de mettre à jour Debian/YunoHost :</p>
 
       <pre>% sudo apt-get update &amp;&amp; sudo apt-get dist-upgrade</pre>
 
-      <p>Vous pouvez maintenant faire la <a href="https://yunohost.org/#/postinstall_en">post-installation</a>. Puis installer <a href="https://github.com/labriqueinternet/vpnclient_ynh">VPN Client</a> et <a href="https://github.com/labriqueinternet/hotspot_ynh">Wifi Hotspot</a> sur YunoHost.</p>
+      <p>Vous pouvez maintenant faire la <a href="https://yunohost.org/#/postinstall_fr">post-installation</a>. Puis installer <a href="https://github.com/labriqueinternet/vpnclient_ynh">VPN Client</a> et <a href="https://github.com/labriqueinternet/hotspot_ynh">Wifi Hotspot</a> sur YunoHost.</p>
 
       <p>Yolo!</p>
     </section>
