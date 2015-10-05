@@ -251,8 +251,9 @@ function find_cubes() {
   fi
 
   echo -e "\nInternet Cubes found on the network:\n"
+  ips=($ips)
 
-  for ip in $ips; do
+  for ip in "${ips[@]}"; do
     i=$(( i + 1 ))
 
     knownhost=$(awk "/$ip/ { print \$2 }" /etc/hosts | head -n1)
@@ -268,19 +269,16 @@ function find_cubes() {
     exit_normal
   fi
 
-  if [[ ! "${addip}" =~ [0-9]+\.[0-9]+ ]]; then
-    i=0 && for ip in $ips; do
-      i=$(( i + 1 ))
+  if [[ "${addip}" =~ ^[0-9]+$ ]]; then
+    addip=${ips[$(( addip - 1 ))]}
 
-      if [ "${i}" == "${addip}" ]; then
-        addip=$ip
-        break
-      fi
-    done
+    if [ -z "${addip}" ]; then
+      exit_error "IP index not found"
+    fi
   fi
 
-  if [[ ! "${addip}" =~ [0-9]+\.[0-9]+ ]]; then
-    exit_error "IP index not found"
+  if [[ ! "${addip}" =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
+    exit_error "This is not an IPv4 nor an IP index"
   fi
 
   echo -en "Choose a host name for this IP: "
@@ -562,8 +560,7 @@ while getopts "f:s:c:e2:dlh" opt; do
     d) opt_debug=true ;;
     l) opt_findcubes=true ;;
     h) exit_usage ;;
-    \?) exit_usage "Invalid option: -$OPTARG" ;;
-    :) exit_usage "Option -$OPTARG requires an argument" ;;
+    \?) exit_usage ;;
   esac
 done
 
