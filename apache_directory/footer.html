@@ -13,11 +13,9 @@
     <section>
       <h2><span>Guide</span> express</h2>
 
-      <p>Cette commande va télécharger la dernière image et l'installer sur votre carte SD (ajouter l'option <em>-2</em> à la fin pour une LIME2) :</p>
+      <p>Il suffit de télécharger le <a href="https://repo.labriqueinter.net/install-sd.sh">SD Card Installer</a>, et l'exécuter (ajouter <em>-2</em> à la fin pour une LIME2</em>, ou <em>-h</em> pour voir les autres options) :</p>
 
-      <pre>bash &lt;(wget -qO- http://repo.labriqueinter.net/install-sd.sh)</pre>
-
-      <p>Vous pouvez aussi <a href="http://repo.labriqueinter.net/install-sd.sh">télécharger le script</a> et utiliser <em>-h</em> pour voir les autres options.</p>
+      <pre>bash install-sd.sh</pre>
 
       <p>Pour l'accès SSH et la post-installation de YunoHost, voir la section <em>Post-installation</em> ci-dessous.</p>
     </section>
@@ -29,11 +27,9 @@
 
       <p>La partition devra être déchiffrée à chaque redémarrage de la Brique. Il sera possible de procéder au déchiffrement à distance, grâce à une interface web accessible en HTTPS. Vous devrez alors utiliser l'adresse IP publique de votre FAI (directement en IPv6, ou en IPv4 avec de la redirection de ports sur votre box). </p>
 
-      <p>Cette commande va télécharger la dernière image et l'installer sur votre carte SD, avec un système de fichiers chiffré (ajouter l'option <em>-2</em> à la fin pour une LIME2) :</p>
+      <p>Il suffit de télécharger le <a href="https://repo.labriqueinter.net/install-sd.sh">SD Card Installer</a>, et l'exécuter avec l'option <em>-e</em> (ajouter <em>-2</em> à la fin pour une LIME2</em>, ou <em>-h</em> pour voir les autres options) :</p>
 
-      <pre>bash &lt;(wget -qO- http://repo.labriqueinter.net/install-sd.sh) -e</pre>
-
-      <p>Vous pouvez aussi <a href="http://repo.labriqueinter.net/install-sd.sh">télécharger le script</a> et utiliser <em>-h</em> pour voir les autres options.</p>
+      <pre>bash install-sd.sh -e</pre>
 
       <p>Pour l'accès SSH et la post-installation de YunoHost, voir la section <em>Post-installation</em> ci-dessous.</p>
     </section>

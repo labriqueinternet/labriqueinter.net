@@ -571,7 +571,7 @@ if $opt_findcubes; then
   check_findcubes_bins
   find_cubes
 
-  exit 0
+  exit_normal
 fi
 
 preamble

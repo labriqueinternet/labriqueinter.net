@@ -13,11 +13,9 @@
     <section>
       <h2><span>Quick</span> Guide</h2>
 
-      <p>This command will download the latest image and install your SD card (add <em>-2</em> to the end for a LIME2</em>):</p>
+      <p>Download the <a href="https://repo.internetcu.be/install-sd.sh">SD Card Installer</a>, and just run it (add <em>-2</em> at the end for a LIME2</em>, or <em>-h</em> to see other options):</p>
 
-      <pre>bash &lt;(wget -qO- http://repo.internetcu.be/install-sd.sh)</pre>
-
-      <p>You also can <a href="http://repo.internetcu.be/install-sd.sh">download the script</a> and use <em>-h</em> for viewing the other options.</p>
+      <pre>bash install-sd.sh</pre>
 
       <p>For the SSH access and the YunoHost post-installation, see the <em>Post-Installation</em> section below.</p>
     </section>
@@ -29,11 +27,9 @@
 
       <p>The hard drive will have to be unlocked each time your Cube is rebooting. You will be able to remotely unlock the hard drive by accessing to your Cube with HTTPS. For that, you will have to use the public IPv4 from your ISP, with a correctly configured port-forwarding on your router (or directly IPv6 if your are lucky).</p>
 
-      <p>This command will download the latest image and install your SD card with an encrypted file system (add <em>-2</em> to the end for a LIME2</em>):</p>
+      <p>Download the <a href="https://repo.internetcu.be/install-sd.sh">SD Card Installer</a>, and just run it with <em>-e</em> (add <em>-2</em> at the end for a LIME2</em>, or <em>-h</em> to see other options):</p>
 
-      <pre>bash &lt;(wget -qO- http://repo.internetcu.be/install-sd.sh) -e</pre>
-
-      <p>You also can <a href="http://repo.internetcu.be/install-sd.sh">download the script</a> and use <em>-h</em> for viewing the other options.</p>
+      <pre>bash install-sd.sh -e</pre>
 
       <p>For the SSH access and the YunoHost post-installation, see the <em>Post-Installation</em> section below.</p>
     </section>
