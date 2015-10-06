@@ -193,6 +193,11 @@ section li {
   border: 1px solid #fff;
 }
 
+.schema img {
+  border: 0;
+  padding: 10px;
+}
+
 .pictures a {
   margin: 0.6em 1em;
   display: inline-block;
