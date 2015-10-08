@@ -18,7 +18,11 @@
 
       <p>A <em>dot cube</em> file (e.g. <em>config.cube</em>) is a single configuration file containing all of the necessary settings and keys for connecting an <a href="http://internetcu.be">Internet Cube</a> to a remote VPN server. This file can be used on the web interface of <a href="https://github.com/labriqueinternet/vpnclient_ynh/">VPN Client</a>, under the <em>Automatic</em> tab. It should be provided ready to use, by the VPN access provider.</p>
 
-      <p>A <em>dot cube</em> file is just a Json file.</p>
+      <div class="pictures">
+        <img src="img/vpnclient-automatic.png" alt="Automatic Tab" /><br />
+      </div>
+
+      <p>A <em>dot cube</em> file is just a Json file. The following sections are intended to explain to VPN providers how to create <em>dot cube</em> files for their members.</p>
     </section>
 
     <section>
@@ -26,7 +30,7 @@
 
       <pre>
 {
-  "server_name": "access.ldn-fai.net",
+  "server_name": "vpn.ldn-fai.net",
   "server_port": "1194",
   "server_proto": "udp",
   "ip6_net": "2001:db8:c42::",
@@ -153,8 +157,8 @@
 
       <pre>
 % ynh-vpnclient-loadcubefile.sh -h
--u SSO username (user with permissions on VPN Client)
--p SSO password
+-u YunoHost username (user with permissions on VPN Client)
+-p User password
 -c Dot cube file path
 -h This help
 
