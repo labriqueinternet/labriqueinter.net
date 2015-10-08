@@ -295,7 +295,7 @@ function find_cubes() {
 function autodetect_sdcardpath() {
   echo -n "1. Please, remove the target SD card from your computer if present, then press Enter"
   read -s && echo
-  sleep 2
+  sleep 1
 
   local blocks1=$(ls -1 /sys/block/)
 
@@ -342,7 +342,7 @@ function download_img() {
   
   local tar_name="labriqueinternet_A20LIME${urlpart_lime2}${urlpart_encryptedfs}_latest_${deb_version}.img.tar.xz"
 
-  info "Downloading ${tar_name}..."
+  info "Image file: ${tar_name}"
 
   if ! download_file "${url_base}${tar_name}" "${tmp_dir}"; then
     exit_error "Image download failed"
