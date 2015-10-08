@@ -400,7 +400,7 @@ function download_file() {
   local url=$1
   local dest_dir=$2
 
-  if [ ! -f "${tmp_dir}/cacert.crt" ]; then
+  if [ ! -f "${tmp_dir}/cacert_root.crt" ]; then
   cat << EOF > "${tmp_dir}/cacert_root.crt"
 -----BEGIN CERTIFICATE-----
 MIIHPTCCBSWgAwIBAgIBADANBgkqhkiG9w0BAQQFADB5MRAwDgYDVQQKEwdSb290
