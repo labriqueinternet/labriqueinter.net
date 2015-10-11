@@ -381,3 +381,11 @@ footer {
   padding-top: .5em;
   font-size: 0.9em;
 }
+
+code {
+  font-family: Helvetica, Arial, Sans-Serif;
+  background-color: #222;
+  padding: 1px 7px;
+  border: 1px solid #000;
+  text-shadow: 1px 1px #000;
+}
