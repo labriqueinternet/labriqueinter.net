@@ -329,6 +329,24 @@ pre span {
 }
 
 
+/* Anchor links */
+section[id] {position: relative;}
+section[id] .anchor-link {
+  display: none;
+  position: absolute;
+  top: 1em; /* section padding top */
+  left: -1em;
+  width: 1em;
+  text-decoration: none;
+  font-size: 1.25em;
+  line-height: 1.35;
+
+}
+section[id]:hover .anchor-link {
+  display: block;
+}
+
+
 /**  repo.labriqueinter.net  **/
 
 #files table {
@@ -356,13 +374,13 @@ pre span {
   border-bottom: 1px solid #999;
 }
 
-#files a {
+#files table a {
   color: #fff;
   font-family: jurabook;
   text-decoration: none;
 }
 
-#files a:hover {
+#files table a:hover {
   color: #f00;
 }
 

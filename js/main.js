@@ -18,3 +18,17 @@ for (var i = 0; i < videos.length; i++) {
         videos[i].textTracks[0].mode = "showing"
     }
 }
+
+// Anchor links helper
+var anchorTitles = document.querySelectorAll('section[id]');
+for(var i = 0; i < anchorTitles.length; i++) {
+
+    // Create anchorLink
+    var anchorLink = document.createElement("a");
+    anchorLink.classList.add('anchor-link');
+    anchorLink.href = '#' + anchorTitles[i].id;
+    anchorLink.innerHTML = '#';
+
+    // Append to anchorTitles
+    anchorTitles[i].insertBefore(anchorLink, anchorTitles[i].childNodes[0]);
+}
