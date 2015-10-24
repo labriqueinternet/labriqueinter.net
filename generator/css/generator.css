@@ -97,9 +97,9 @@ textarea#raw_openvpn {
   border: 1px solid #D9534F;
 }
 
-ul.nav {
-  margin-top: 30px;
-  margin-bottom: 20px;
+.nav {
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 ul.nav a {
@@ -108,4 +108,61 @@ ul.nav a {
 
 .alert {
   display: none;
+}
+
+.panel, #tab-vpn-advanced, #tab-lbi-advanced, #vpn_auth_type_crt, #vpn_auth_type_login, #vpn_auth_type_ta, #question-level, #question-dotcube {
+  display: none;
+}
+
+#panel-questions {
+  display: block;
+}
+
+.panel-inside {
+  padding: 14px 14px 0 10px;
+}
+
+.panel-section {
+  font-weight: bold;
+  color: #888;
+  border-bottom: 1px solid #ddd;
+  padding: 5px 5px 5px 5px;
+  font-size: inherit;
+  margin-top: 30px;
+}
+
+.panel-section-first {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+#panel-questions .panel-inside {
+  text-align: center;
+}
+
+#buttons {
+  text-align: center;
+  display: none;
+}
+
+#panel-questions .panel-inside ul {
+  margin: 10px auto;
+  width: 205px;
+}
+
+#panel-questions .panel-inside li {
+  margin: 10px auto;
+  width: 100px;
+}
+
+iframe {
+  width: 770px;
+  height: 500px;
+  border: 0;
+  overflow: hidden;
+}
+
+.nav-wizard {
+  margin: 10px auto 30px;
+  width: 500px;
 }

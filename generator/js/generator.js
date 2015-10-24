@@ -16,16 +16,65 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-function tabsClick() {
-  var tab = $(this).parent().attr('data-tab');
+function tabClick() {
+  var active = $(this).parent().attr('data-tab');
 
-  $('.nav').find('li.active').removeClass('active');
+  $(this).parents('.nav').find('li.active').removeClass('active');
   $(this).parent().addClass('active');
-
-  $('.tabs').hide();
-  $('.tab' + tab).show();
+  $(this).parents('.panel').find('.tab').hide();
+  $('#' + active).show();
 
   return false;
+}
+
+function showPanel(panel) {
+  $('.panel').hide();
+  $('#panel-' + panel).show();
+}
+
+function showQuestion(question) {
+  $('.question').hide();
+  $('#question-' + question).show();
+}
+
+function updateButton(nextStep) {
+
+}
+
+function questionClick() {
+  var question = $(this).parents('.question').prop('id');
+
+  if(question == 'question-hardware') {
+    if($(this).data('answer') == 'yes') {
+      showQuestion('level');
+    } else {
+      showPanel('ffdn');
+    }
+
+  } else if(question == 'question-level') {
+    if($(this).data('answer') == 'yes') {
+      showQuestion('dotcube');
+    } else {
+      showPanel('ffdn');
+    }
+
+  } else if(question == 'question-dotcube') {
+    if($(this).data('answer') == 'yes') {
+      showPanel('vpn-dotcube');
+    } else {
+      showPanel('vpn-manual');
+    }
+  }
+}
+
+function authTypeChange() {
+  var name = $(this).prop('name');
+
+  if($(this).prop('checked')) {
+    $('#' + name).show();
+  } else {
+    $('#' + name).hide();
+  }
 }
 
 var crtFilesContent = {
@@ -129,8 +178,10 @@ function i18n() {
     $(this).data('title', $(this).data('title').replace("_('", '').replace("')", ''));
   });
 
-  $('h1, h2, h3, label, a, strong, em, button').each(function() {
-    $(this).text($(this).text().replace('_("', '').replace('")', ''));
+  $('h1, h2, h3, h4, label, a, strong, em, button, .i18n').each(function() {
+   if($(this).children().length == 0) {
+     $(this).text($(this).text().replace('_("', '').replace('")', ''));
+   }
   });
 }
 
@@ -141,7 +192,9 @@ $(document).ready(function() {
   $('[data-toggle="tooltip"]').tooltip();
 
   $('.switch').bootstrapToggle();
-  $('.nav-tabs a').click(tabsClick);
+  $('.nav-tabs a').click(tabClick);
+  $('.nav-pills a').click(questionClick);
+  $('#vpn_auth_type').find('input').change(authTypeChange);
 
   $('.fileinput').click(function() {
     if(!$(this).hasClass('btn-danger')) {
