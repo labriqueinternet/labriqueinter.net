@@ -613,7 +613,7 @@ trap cleaning_exit EXIT
 trap cleaning_exit ERR
 trap cleaning_ctrlc INT
 
-while getopts "f:s:c:e2:dlh" opt; do
+while getopts "f:s:c:e2dlh" opt; do
   case $opt in
     f) opt_imgpath=$OPTARG ;;
     c) opt_md5path=$OPTARG ;;
