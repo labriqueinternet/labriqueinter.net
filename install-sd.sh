@@ -581,7 +581,7 @@ function install_clear() {
   info "Please wait..."
 
   debug "Raw copying ${img_path} to ${opt_sdcardpath} (dd)"
-  sudo dd "if=${img_path}" of="${opt_sdcardpath}" bs=1M &> /dev/null
+  sudo dd if="${img_path}" of="${opt_sdcardpath}" bs=1M &> /dev/null
 
   debug "Flushing file system buffers (sync)"
   sudo sync
