@@ -12,3 +12,5 @@ List of work documents :
 * https://pad.gresille.org/p/test-debit-brique
 * https://pad.ilico.org/p/hardware_brique
 * http://pad.aquilenet.fr/p/LaBrique
+
+**[BUG REPORTS SHOULD BE OPEN HERE](https://dev.yunohost.org)**
