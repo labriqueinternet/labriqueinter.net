@@ -142,6 +142,9 @@ ul.nav a {
 
 #buttons {
   text-align: center;
+}
+
+#buttons div {
   display: none;
 }
 

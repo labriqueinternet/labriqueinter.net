@@ -40,7 +40,7 @@
   
     <div class="row">
       <div class="col-sm-offset-2 col-sm-8">
-        <form class="form-horizontal" role="form" id="form" onsubmit="return validate()">
+        <form class="form-horizontal" role="form" id="form">
           <div class="panel panel-default" id="panel-questions">
             <div class="panel-heading">
               <h3 class="panel-title">_("About You")</h3>
@@ -111,15 +111,15 @@
                 <div class="form-group">
                   <label for="vpn_server_port" class="col-sm-3 control-label">_("Server Port")</label>
                   <div class="col-sm-9">
-                    <input type="text" data-toggle="tooltip" data-title="_('With restricted access, you should use 443 (TCP) or 53 (UDP)')" class="form-control" name="vpn_server_port" id="vpn_server_port" placeholder="1194" />
+                    <input type="text" data-toggle="tooltip" data-title="_('With restricted access, you should use 443 (TCP) or 53 (UDP)')" class="form-control" name="vpn_server_port" id="vpn_server_port" value="1194" placeholder="1194" />
                   </div>
                 </div>
     
                 <div class="form-group">
                   <label for="vpn_server_proto" class="col-sm-3 control-label">_("Protocol")</label>
                   <div class="btn-group col-sm-9" data-toggle="buttons">
-                    <label class="btn btn-default">
-                      <input type="radio" name="vpn_server_proto" value="udp" /> <span class="i18n">_("UDP")</span>
+                    <label class="btn btn-default active">
+                      <input type="radio" name="vpn_server_proto" value="udp" checked="checked" /> <span class="i18n">_("UDP")</span>
                     </label>
     
                     <label class="btn btn-default" data-toggle="tooltip" data-title="_('UDP is more efficient than TCP (but more filtered in case of restrictive access)')">
@@ -129,7 +129,7 @@
                 </div>
  
                 <div class="form-group">
-                  <label for="vpn_ip6_net" class="col-sm-3 control-label">_("Delegated prefix (IPv6)")</label>
+                  <label for="vpn_ip6_net" class="col-sm-3 control-label">_("Delegated Prefix (IPv6)")</label>
                   <div class="col-sm-9">
                     <input type="text" data-toggle="tooltip" data-title="_('Leave empty if your Internet Service Provider does not give you a delegated prefix')" class="form-control" name="vpn_ip6_net" id="vpn_ip6_net" placeholder="2001:db8:42::" />
                   </div>
@@ -137,8 +137,17 @@
 
                 <h4 class="panel-section">_("Authentication")</h4>
 
+                <div class="form-group">
+                  <label for="vpn_crt_server_ca" class="col-sm-3 control-label">_("Upload Server CA")</label>
+                  <div class="input-group col-sm-9" style="padding: 0 15px">
+                    <input type="text" class="form-control fileinput" id="vpn_crt_server_ca_choosertxt" placeholder="-----BEGIN CERTIFICATE-----" readonly="readonly" />
+                    <input id="vpn_crt_server_ca" name="vpn_crt_server_ca" type="file" style="display: none" />
+                    <a class="btn input-group-addon fileinput" id="vpn_crt_server_ca_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
+                  </div>
+                </div>
+
                 <div class="form-group" id="vpn_auth_type">
-                  <label for="vpn_auth_type" class="col-sm-3 control-label">_("Type")</label>
+                  <label for="vpn_auth_type" class="col-sm-3 control-label">_("Authentication Type")</label>
                   <div class="btn-group col-sm-9" data-toggle="buttons">
                     <label class="btn btn-default">
                       <input type="checkbox" name="vpn_auth_type_crt" value="1" /> <span class="i18n">_("Certificates")</span>
@@ -154,16 +163,7 @@
                   </div>
                 </div>
   
-                <div id="vpn_auth_type_crt">
-                  <div class="form-group">
-                    <label for="vpn_crt_server_ca" class="col-sm-3 control-label">_("Upload Server CA")</label>
-                    <div class="input-group col-sm-9" style="padding: 0 15px">
-                      <input type="text" class="form-control fileinput" id="vpn_crt_server_ca_choosertxt" placeholder="-----BEGIN CERTIFICATE-----" readonly="readonly" />
-                      <input id="vpn_crt_server_ca" name="vpn_crt_server_ca" type="file" style="display: none" />
-                      <a class="btn input-group-addon fileinput" id="vpn_crt_server_ca_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
-                    </div>
-                  </div>
-    
+                <div id="vpn_auth_type_crt">  
                   <div class="form-group">
                     <label for="vpn_crt_client" class="col-sm-3 control-label">_("Upload Client Cert")</label>
                     <div class="input-group col-sm-9" style="padding: 0 15px">
@@ -183,17 +183,6 @@
                   </div>
                 </div>
   
-                <div id="vpn_auth_type_ta">
-                  <div class="form-group">
-                    <label for="vpn_crt_client_ta" class="col-sm-3 control-label">_("Upload Shared-Secret")</label>
-                    <div class="input-group col-sm-9" style="padding: 0 15px">
-                      <input type="text" class="form-control fileinput" id="vpn_crt_client_ta_choosertxt" data-toggle="tooltip" data-title="_('Make sure your browser is able to read the key file before uploading')" placeholder="ta.key" readonly="readonly" />
-                      <input id="vpn_crt_client_ta" name="vpn_crt_client_ta" type="file" style="display: none" />
-                      <a class="btn input-group-addon fileinput" id="vpn_crt_client_ta_chooserbtn" data-toggle="tooltip" data-title="_('Browse (make sure your browser is able to read the key file before uploading)')"><span class="glyphicon glyphicon-search"></span></a>
-                    </div>
-                  </div>
-                </div>
-  
                 <div id="vpn_auth_type_login">
                   <div class="form-group">
                     <label for="vpn_login_user" class="col-sm-3 control-label">_("Username")</label>
@@ -209,6 +198,17 @@
                     </div>
                   </div>
                 </div>
+
+                <div id="vpn_auth_type_ta">
+                  <div class="form-group">
+                    <label for="vpn_crt_client_ta" class="col-sm-3 control-label">_("Upload Shared-Secret")</label>
+                    <div class="input-group col-sm-9" style="padding: 0 15px">
+                      <input type="text" class="form-control fileinput" id="vpn_crt_client_ta_choosertxt" data-toggle="tooltip" data-title="_('Make sure your browser is able to read the key file before uploading')" placeholder="ta.key" readonly="readonly" />
+                      <input id="vpn_crt_client_ta" name="vpn_crt_client_ta" type="file" style="display: none" />
+                      <a class="btn input-group-addon fileinput" id="vpn_crt_client_ta_chooserbtn" data-toggle="tooltip" data-title="_('Browse (make sure your browser is able to read the key file before uploading)')"><span class="glyphicon glyphicon-search"></span></a>
+                    </div>
+                  </div>
+                </div>
               </div>
   
               <div class="tab" id="tab-vpn-advanced">
@@ -217,14 +217,14 @@
                 <div class="form-group">
                   <label for="vpn_dns0" class="col-sm-3 control-label">_("First resolver")</label>
                   <div class="col-sm-9">
-                    <input type="text" data-toggle="tooltip" data-title="_('IPv6 or IPv4')" class="form-control" name="vpn_dns0" id="vpn_dns0" placeholder="89.234.141.66" />
+                    <input type="text" data-toggle="tooltip" data-title="_('IPv6 or IPv4')" class="form-control" name="vpn_dns0" id="vpn_dns0" placeholder="89.234.141.66" value="89.234.141.66" />
                   </div>
                 </div>
   
                 <div class="form-group">
                   <label for="vpn_dns1" class="col-sm-3 control-label">_("Second resolver")</label>
                   <div class="col-sm-9">
-                    <input type="text" data-toggle="tooltip" data-title="_('IPv6 or IPv4')" class="form-control" name="vpn_dns1" id="vpn_dns1" placeholder="2001:913::8" />
+                    <input type="text" data-toggle="tooltip" data-title="_('IPv6 or IPv4')" class="form-control" name="vpn_dns1" id="vpn_dns1" placeholder="2001:913::8" value="2001:913::8" />
                   </div>
                 </div>
 
@@ -296,16 +296,16 @@
                 <h4 class="panel-section">_("Wifi Hotspot")</h4>
 
                 <div class="form-group">
-                  <label for="hotspot_name" class="col-sm-3 control-label">_("Name (SSID)")</label>
+                  <label for="hotspot_wifi_ssid" class="col-sm-3 control-label">_("Name (SSID)")</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" name="hotspot_name" id="hotspot_name" placeholder="myNeutralNetwork" />
+                    <input type="text" class="form-control" name="hotspot_wifi_ssid" id="hotspot_wifi_ssid" placeholder="myNeutralNetwork" />
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="hotspot_password" class="col-sm-3 control-label">_("Password")</label>
+                  <label for="hotspot_wifi_passphrase" class="col-sm-3 control-label">_("Password")</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" name="hotspot_password" id="hotspot_password" />
+                    <input type="text" class="form-control" name="hotspot_wifi_passphrase" id="hotspot_wifi_passphrase" />
                   </div>
                 </div>
               </div>
@@ -351,7 +351,7 @@
                 <h4 class="panel-section">_("Wifi Hotspot")</h4>
 
                 <div class="form-group">
-                  <label for="hotspot_ip6_net" class="col-sm-3 control-label">_("IPv6 delegated prefix")</label>
+                  <label for="hotspot_ip6_net" class="col-sm-3 control-label">_("IPv6 delegated Prefix")</label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" name="hotspot_ip6_net" id="hotspot_ip6_net" placeholder="2001:db8:42::" />
                   </div>
@@ -386,28 +386,32 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="hotspot_ip4_nat_prefix" class="col-sm-3 control-label">_("IPv4 NAT prefix (/24)")</label>
+                  <label for="hotspot_ip4_nat_prefix" class="col-sm-3 control-label">_("IPv4 NAT Prefix (/24)")</label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" name="hotspot_ip4_nat_prefix" id="hotspot_ip4_nat_prefix" placeholder="10.0.242" value="10.0.242" />
                   </div>
                 </div>
 
-               <div class="form-group">
-                 <label for="hotspot_nonfree" class="col-sm-3 control-label">_("Non-free firmwares")</label>
-                 <div class="col-sm-9 input-group-btn">
-                   <div class="input-group">
-                     <input type="checkbox" class="form-control switch" name="hotspot_nonfree" id="hotspot_nonfree" value="1" checked="checked" />
-                   </div>
-                 </div>
-               </div>
-
+                <div class="form-group">
+                  <label for="hotspot_firmware_nonfree" class="col-sm-3 control-label">_("Non-free firmwares")</label>
+                  <div class="col-sm-9 input-group-btn">
+                    <div class="input-group">
+                      <input type="checkbox" class="form-control switch" name="hotspot_firmware_nonfree" id="hotspot_firmware_nonfree" value="1" checked="checked" />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
     
-          <div class="form-group" id="buttons">
-            <button type="button" class="btn btn-default" id="button_next">_("Next step")</button>
-            <button type="submit" class="btn btn-default" data-toggle="tooltip" id="button_save" data-title="_('Reloading may take a few minutes. Be patient.')">_("Save and reload")</button> <img src="public/img/loading.gif" id="save-loading" alt="Loading..." />
+          <div id="buttons">
+            <div class="form-group" id="button-next">
+              <button type="button" class="btn btn-default" id="button_next">_("Next step")</button>
+            </div>
+  
+            <div class="form-group" id="button-submit">
+              <button type="button" class="btn btn-default" id="button_submit">_("Validate")</button>
+            </div>
           </div>
         </form>
       </div>

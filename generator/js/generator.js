@@ -16,195 +16,260 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-function tabClick() {
-  var active = $(this).parent().attr('data-tab');
 
-  $(this).parents('.nav').find('li.active').removeClass('active');
-  $(this).parent().addClass('active');
-  $(this).parents('.panel').find('.tab').hide();
-  $('#' + active).show();
+/**************
+ *** MODELS ***
+ **************/
 
-  return false;
-}
+var cube = {
+  crtFilesContent: {
+    index: 0,
+    read: false,
+    crt_server_ca: '',
+    crt_client: '',
+    crt_client_key: '',
+    crt_client_ta: ''
+  },
 
-function showPanel(panel) {
-  $('.panel').hide();
-  $('#panel-' + panel).show();
-}
+  readCrtFiles: function() {
+    var filesToRead = [
+      'crt_server_ca',
+      'crt_client',
+      'crt_client_key',
+      'crt_client_ta'
+    ];
 
-function showQuestion(question) {
-  $('.question').hide();
-  $('#question-' + question).show();
-}
+    cube.crtFilesContent.read = true;
+  
+    $.each(filesToRead, function(i, fileName) {
+      cube.readCrtFileContent(fileName);
+    });
+  },
 
-function updateButton(nextStep) {
+  readCrtFileContent: function(id) {
+    var crtFiles = $('#vpn_' + id).prop('files');
 
-}
+    if(crtFiles.length > 0) {
+      var fileReader = new FileReader();
+      fileReader.readAsText(crtFiles[0]);
+  
+      fileReader.onload = function(e) {
+        var fileContent = e.target.result;
+        var crtFileContent = cube.formatCrtFileContent(fileContent);
 
-function questionClick() {
-  var question = $(this).parents('.question').prop('id');
-
-  if(question == 'question-hardware') {
-    if($(this).data('answer') == 'yes') {
-      showQuestion('level');
-    } else {
-      showPanel('ffdn');
+        cube.crtFilesContent[id] = crtFileContent;
+        cube.crtFilesContent.index++;
+      };
+  
+      return true;
     }
-
-  } else if(question == 'question-level') {
-    if($(this).data('answer') == 'yes') {
-      showQuestion('dotcube');
-    } else {
-      showPanel('ffdn');
-    }
-
-  } else if(question == 'question-dotcube') {
-    if($(this).data('answer') == 'yes') {
-      showPanel('vpn-dotcube');
-    } else {
-      showPanel('vpn-manual');
-    }
-  }
-}
-
-function authTypeChange() {
-  var name = $(this).prop('name');
-
-  if($(this).prop('checked')) {
-    $('#' + name).show();
-  } else {
-    $('#' + name).hide();
-  }
-}
-
-var crtFilesContent = {
-  index: 0,
-  crt_server_ca: '',
-  crt_client: '',
-  crt_client_key: '',
-  crt_client_ta: ''
-}
-
-var cubeJson;
-
-function formatCrtFileContent(txt) {
-  txt = txt.replace(/\n/g, '|');
-  txt = txt.replace(/^.*\|(-.*-\|.*\|-.*-)\|.*$/, '$1');
-
-  return txt;
-}
-
-function generateCubeJson() {
-
-
-  if(crtFilesContent.index < 4) {
+  
+    cube.crtFilesContent.index++;
+  
     return false;
-  }
+  },
 
-  var cube = {
-    server_name: $('#server_name').val(),
-    server_port: $('#server_port').val(),
-    server_proto: $('#server_proto').val(),
-    ip6_net: $('#ip6_net').val(),
-    crt_server_ca: crtFilesContent.crt_server_ca,
-    crt_client: crtFilesContent.crt_client,
-    crt_client_key: crtFilesContent.crt_client_key,
-    crt_client_ta: crtFilesContent.crt_client_ta,
-    login_user: $('#login_user').val(),
-    login_passphrase: $('#login_passphrase').val(),
-    dns0: $('#dns0').val(),
-    dns1: $('#dns1').val()
-  }
+  formatCrtFileContent: function (txt) {
+    txt = txt.replace(/\n/g, '|');
+    txt = txt.replace(/^.*\|(-.*-\|.*\|-.*-)\|.*$/, '$1');
+  
+    return txt;
+  },
 
-  var json = JSON.stringify(cube, null, 2);
-
-  proposeCubeFileDownload(json);
-}
-
-function readCrtFileContent(id) {
-  var crtFiles = $('#' + id).prop('files');
-
-  if(crtFiles.length > 0) {
-    var fileReader = new FileReader();
-    fileReader.readAsText(crtFiles[0]);
-
-    fileReader.onload = function(e) {
-      var fileContent = e.target.result;
-      crtFileContent = formatCrtFileContent(fileContent);
-      crtFilesContent[id] = crtFileContent;
-      crtFilesContent.index++;
-
-      generateCubeJson();
+  toJson: function(callback, callbackArg1) {
+    var stalker = function() {
+      if(cube.crtFilesContent.index < 4) {
+        setTimeout(stalker, 100);
+      } else {
+        cube.doToJson(callback, callbackArg1);
+      }
     };
 
-    return true;
+    if(!cube.crtFilesContent.read) {
+      cube.readCrtFiles();
+    }
+
+    stalker();
+  },
+
+  doToJson: function(callback, callbackArg1) {
+    if(cube.crtFilesContent.index < 4) {
+      return false;
+    }
+
+    var json = {
+      server_name: $('#vpn_server_name').val(),
+      server_port: $('#vpn_server_port').val(),
+      server_proto: $('input[name=vpn_server_proto]:checked').val(),
+      ip6_net: $('#vpn_ip6_net').val(),
+      crt_server_ca: cube.crtFilesContent.crt_server_ca,
+      crt_client: cube.crtFilesContent.crt_client,
+      crt_client_key: cube.crtFilesContent.crt_client_key,
+      crt_client_ta: cube.crtFilesContent.crt_client_ta,
+      login_user: $('#vpn_login_user').val(),
+      login_passphrase: $('#vpn_login_passphrase').val(),
+      dns0: $('#vpn_dns0').val(),
+      dns1: $('#vpn_dns1').val(),
+      openvpn_rm: $('#vpn_openvpn_rm').val().split("\n"),
+      openvpn_add: $('#vpn_openvpn_add').val().split("\n")
+    };
+
+    callback(json, callbackArg1);
+  },
+
+  toJsonTxt: function(json) {
+    return JSON.stringify(json, null, 2);
+  },
+
+  proposeDownload: function(json) {
+    var fileContent = window.btoa(cube.toJsonTxt(json));
+    fileContent = "data:application/octet-stream;base64," + fileContent;
+  
+    var downloadLink = $('<a>',{
+      text: 'config.cube',
+      download: 'config.cube',
+      href: fileContent
+    });
+  
+    downloadLink.appendTo('body');
   }
-
-  crtFilesContent.index++;
-
-  return false;
 }
 
-function validate() {
-  var crtFilesToRead = 0;
+var hypercube = {
+  toJson: function(callback) {
+    cube.toJson(hypercube.doToJson, callback);
+  },
 
-  readCrtFileContent('crt_server_ca') && crtFilesToRead++;
-  readCrtFileContent('crt_client') && crtFilesToRead++;
-  readCrtFileContent('crt_client_key') && crtFilesToRead++;
-  readCrtFileContent('crt_client_ta') && crtFilesToRead++;
+  doToJson: function(cubeJson, callback) {
+    var json = {
+      vpnclient: cubeJson,
 
-  if(crtFilesToRead == 0) {
-    generateCubeJson();
+      hotspot: {
+        wifi_ssid: $('#hotspot_wifi_ssid').val(),
+        wifi_passphrase: $('#hotspot_wifi_passphrase').val(),
+        ip6_net: $('#hotspot_ip6_net').val(),
+        ip6_dns0: $('#hotspot_ip6_dns0').val(),
+        ip6_dns1: $('#hotspot_ip6_dns1').val(),
+        ip4_dns0: $('#hotspot_ip4_dns0').val(),
+        ip4_dns1: $('#hotspot_ip4_dns1').val(),
+        ip4_nat_prefix: $('#hotspot_ip4_nat_prefix').val(),
+        firmware_nonfree: $('#hotspot_firmware_nonfree').is(':checked') ? 'yes' : 'no'
+      },
+
+      yunohost: {
+        domain: $('#ynh_domain').val(),
+        add_domain: $('#ynh_add_domain').val(),
+        password: $('#ynh_password').val(),
+        user: $('#ynh_user').val(),
+        user_firstname: $('#ynh_user_firstname').val(),
+        user_lastname: $('#ynh_user_lastname').val(),
+        user_password: $('#ynh_user_password').val()
+      }
+    };
+
+    callback(json);
+  },
+
+  toJsonTxt: function(json) {
+    return JSON.stringify(json, null, 2);
+  },
+
+  proposeDownload: function(json) {
+    var fileContent = window.btoa(hypercube.toJsonTxt(json));
+    fileContent = "data:application/octet-stream;base64," + fileContent;
+  
+    var downloadLink = $('<a>',{
+      text: 'install.hypercube',
+      download: 'install.hypercube',
+      href: fileContent
+    });
+  
+    downloadLink.appendTo('body');
   }
-
-  return false;
 }
 
-function proposeCubeFileDownload(json) {
-  var fileContent = window.btoa(json);
-  fileContent = "data:application/octet-stream;base64," + fileContent;
 
-  var downloadLink = $('<a>',{
-    text: 'config.cube',
-    download: 'config.cube',
-    href: fileContent
-  });
+/************/
+/*** VIEW ***/
+/************/
 
-  downloadLink.appendTo('body');
+var view = {
+  showPanel: function(panel) {
+    $('.panel').hide();
+    $('#panel-' + panel).show();
+  },
+  
+  showQuestion: function(question) {
+    $('.question').hide();
+    $('#question-' + question).show();
+  },
+  
+  showButtonNext: function(nextStep) {
+    $('#button-next').data('nextpanel', nextStep);
+    $('#button-submit').hide();
+    $('#button-next').show();
+  },
+  
+  showButtonSubmit: function() {
+    $('#button-next').hide();
+    $('#button-submit').show();
+  },
+
+  i18n: function() {
+    $('[data-title]').each(function() {
+      $(this).data('title', $(this).data('title').replace("_('", '').replace("')", ''));
+    });
+  
+    $('h1, h2, h3, h4, label, a, strong, em, button, .i18n').each(function() {
+      if($(this).children().length == 0) {
+        $(this).text($(this).text().replace('_("', '').replace('")', ''));
+      }
+    });
+  },
+
+  setEvents: function() {
+    view.i18n();
+
+    $('.btn-group').button();
+    $('[data-toggle="tooltip"]').tooltip();
+    $('.switch').bootstrapToggle();
+
+    $('.nav-tabs a').click(navigation.tabClick);
+    $('.nav-pills a').click(navigation.questionClick);
+    $('.fileinput').click(controller.fileInputClick);
+    $('.deletefile').click(controller.deleteFileButtonClick);
+    $('input[type="file"]').change(controller.fileInputChange);
+    $('#button-next').click(controller.nextButtonClick);
+    $('#button-submit').click(controller.submitButtonClick);
+
+    $('#vpn_auth_type').find('input').change(controller.authtypeChbxChange);
+  }
 }
 
-function i18n() {
-  $('[data-title]').each(function() {
-    $(this).data('title', $(this).data('title').replace("_('", '').replace("')", ''));
-  });
 
-  $('h1, h2, h3, h4, label, a, strong, em, button, .i18n').each(function() {
-   if($(this).children().length == 0) {
-     $(this).text($(this).text().replace('_("', '').replace('")', ''));
-   }
-  });
-}
+/*******************/
+/*** CONTROLLERS ***/
+/*******************/
 
-$(document).ready(function() {
-  i18n();
+var controller = {
+  authtypeChbxChange: function() {
+    var name = $(this).prop('name');
+  
+    if($(this).prop('checked')) {
+      $('#' + name).show();
+    } else {
+      $('#' + name).hide();
+    }
+  },
 
-  $('.btn-group').button();
-  $('[data-toggle="tooltip"]').tooltip();
-
-  $('.switch').bootstrapToggle();
-  $('.nav-tabs a').click(tabClick);
-  $('.nav-pills a').click(questionClick);
-  $('#vpn_auth_type').find('input').change(authTypeChange);
-
-  $('.fileinput').click(function() {
+  fileInputClick: function() {
     if(!$(this).hasClass('btn-danger')) {
       var realinputid = '#' + $(this).attr('id').replace(/_chooser.*/, '');
-
       $(realinputid).click();
     }
-  });
+  },
 
-  $('.deletefile').click(function() {
+  deleteFileButtonClick: function() {
     var chooserbtnid = '#' + $(this).attr('id').replace(/_deletebtn$/, '_chooserbtn');
     var choosertxtid = '#' + $(this).attr('id').replace(/_deletebtn$/, '_choosertxt');
     var fileinputid = '#' + $(this).attr('id').replace(/_deletebtn$/, '');
@@ -226,48 +291,81 @@ $(document).ready(function() {
         $('#crt_client_key_deletebtn').click();
       }
     }
-  });
+  },
 
-  $('input[type="file"]').change(function() {
+  fileInputChange: function() {
     var choosertxtid = '#' + $(this).attr('id') + '_choosertxt';
-
     $(choosertxtid).val($(this).val().replace(/^.*[\/\\]/, ''));
-  });
+  },
 
-  $('#save').click(function() {
-    $(this).prop('disabled', true);
-    $('#save-loading').show();
-  });
+  nextButtonClick: function() {
+    var nextStep = $(this).data('nextpanel');
 
-  $('#status .close').click(function() {
-    $(this).parent().hide();
-  });
+    view.showPanel(nextStep);
 
-  $('#statusbtn').click(function() {
-    if($('#status-loading').is(':hidden')) {
-      $('#status').hide();
-      $('#status-loading').show();
-
-      $.ajax({
-        url: '?/status',
-      }).done(function(data) {
-        $('#status-loading').hide();
-        $('#status-text').html('<ul>' + data + '</ul>');
-        $('#status').show('slow');
-      });
+    if(nextStep == 'lbi') {
+      view.showButtonSubmit();
     }
-  });
+  },
 
-  $('#raw_openvpn_btn').click(function() {
-    $('#raw_openvpn_btnpanel').hide();
-    $('#raw_openvpn_panel').show('low');
-  });
+  submitButtonClick: function() {
+    controller.formSubmit();
+  },
 
-  $('#service_enabled').change(function() {
-    if($('#service_enabled').parent().hasClass('off')) {
-      $('.enabled').hide('slow');
-    } else {
-      $('.enabled').show('slow');
+  formSubmit: function() {
+    cube.toJson(cube.proposeDownload);
+    hypercube.toJson(hypercube.proposeDownload);
+  
+    return false;
+  } 
+}
+
+var navigation = {
+  tabClick: function () {
+    var active = $(this).parent().attr('data-tab');
+  
+    $(this).parents('.nav').find('li.active').removeClass('active');
+    $(this).parent().addClass('active');
+    $(this).parents('.panel').find('.tab').hide();
+    $('#' + active).show();
+  
+    return false;
+  },
+
+  questionClick: function() {
+    var question = $(this).parents('.question').prop('id');
+  
+    if(question == 'question-hardware') {
+      if($(this).data('answer') == 'yes') {
+        view.showQuestion('level');
+      } else {
+        view.showPanel('ffdn');
+      }
+  
+    } else if(question == 'question-level') {
+      if($(this).data('answer') == 'yes') {
+        view.showQuestion('dotcube');
+      } else {
+        view.showPanel('ffdn');
+      }
+  
+    } else if(question == 'question-dotcube') {
+      if($(this).data('answer') == 'yes') {
+        view.showPanel('vpn-dotcube');
+      } else {
+        view.showPanel('vpn-manual');
+      }
+  
+      view.showButtonNext('lbi');
     }
-  });
+  }
+}
+
+
+/************/
+/*** MAIN ***/
+/************/
+
+$(document).ready(function() {
+  view.setEvents();
 });
