@@ -76,6 +76,14 @@ var cube = {
     return txt;
   },
 
+  hasConfigToUpload: function() {
+    var cubeFiles = $('#vpn_cubefile').prop('files');
+
+    if(cubeFiles.length > 0) {
+      
+    }
+  },
+
   toJson: function(callback, callbackArg1) {
     var stalker = function() {
       if(cube.crtFilesContent.index < 4) {
@@ -315,7 +323,7 @@ var controller = {
   formSubmit: function() {
     cube.toJson(cube.proposeDownload);
     hypercube.toJson(hypercube.proposeDownload);
-  
+
     return false;
   } 
 }

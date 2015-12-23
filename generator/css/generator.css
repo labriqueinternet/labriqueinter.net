@@ -16,43 +16,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-li.status-info {
-  color: #5BC0DE;
-}
-
-li.status-warning {
-  color: #D9534F;
-}
-
-li.status-danger, div#raw_openvpn_panel {
-  color: #D9534F;
-}
-
-li.status-success {
-  color: #5CB85C;
-}
-
-img#status-loading {
-  display: none;
-  margin-right: 5px;
-}
-
-img#save-loading {
-  display: none;
-  margin-left: 5px;
-}
-
-div#status {
-  display: none;
-  margin-top: 10px;
-}
-
-div#status ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
 a.btn-danger span {
   color: #eee;
 }
@@ -88,18 +51,79 @@ div#github a {
   margin-left: 17px;
 }
 
-div#raw_openvpn_panel {
-  display: none;
-}
-
-textarea#raw_openvpn {
-  height: 300px;
-  border: 1px solid #D9534F;
-}
-
 .nav {
   margin-top: 10px;
   margin-bottom: 5px;
+}
+
+.nav > li > a {
+  text-decoration: none;
+  font-size: 10pt;
+  padding: 6.75pt 13pt;
+}
+
+.nav-pills.nav-wizard > li {
+  border-color: #111;
+}
+
+.nav-pills.nav-wizard > li a {
+  background-color: #600000;
+}
+
+.nav-pills.nav-wizard > li.active a {
+  background-color: #f00;
+}
+
+.nav-pills.nav-wizard > li .nav-wedge {
+  border-color: #600000 #600000 #600000 transparent;
+}
+
+.nav-pills.nav-wizard > li .nav-arrow {
+  border-color: transparent transparent transparent #600000;
+}
+
+.nav-pills.nav-wizard > li.active .nav-wedge {
+  border-color: #f00 #f00 #f00 transparent;
+}
+
+.nav-pills.nav-wizard > li.active .nav-arrow {
+  border-color: transparent transparent transparent #f00;
+}
+
+.nav-pills.nav-wizard > li:hover a {
+  color: #fff;
+  background-color: #800000;
+}
+
+.nav-pills.nav-wizard > li:hover .nav-wedge {
+  border-color: #800000 #800000 #800000 transparent;
+}
+
+.nav-pills.nav-wizard > li:hover .nav-arrow {
+  border-color: transparent transparent transparent #800000;
+}
+
+.nav-pills.nav-wizard > li.active:hover a {
+  background-color: #f00;
+}
+
+.nav-pills.nav-wizard > li.active:hover .nav-wedge {
+  border-color: #f00 #f00 #f00 transparent;
+}
+
+.nav-pills.nav-wizard > li.active:hover .nav-arrow {
+  border-color: transparent transparent transparent #f00;
+}
+
+.panel-default .nav li a {
+  text-decoration: none;
+  background-color: #111;
+  margin: 0 10px;
+}
+
+.panel-default .nav li a:hover {
+  background-color: #f00;
+  color: #fff;
 }
 
 ul.nav a {
@@ -112,6 +136,12 @@ ul.nav a {
 
 .panel, #tab-vpn-advanced, #tab-lbi-advanced, #vpn_auth_type_crt, #vpn_auth_type_login, #vpn_auth_type_ta, #question-level, #question-dotcube {
   display: none;
+}
+
+.question strong {
+  display: block;
+  margin: 25pt;
+  text-shadow: 0px 1px 0px #000;
 }
 
 #panel-questions {
@@ -149,7 +179,7 @@ ul.nav a {
 }
 
 #panel-questions .panel-inside ul {
-  margin: 10px auto;
+  margin: 25pt auto;
   width: 205px;
 }
 
@@ -168,4 +198,33 @@ iframe {
 .nav-wizard {
   margin: 10px auto 30px;
   width: 500px;
+}
+
+.panel-default {
+  background-color: #303030;
+  color: #eee;
+}
+
+.nav-tabs.nav-justified > li > a {
+  border-radius: 4px;
+  border-width: 0;
+}
+
+.nav-tabs.nav-justified > li.active > a, .nav-tabs.nav-justified > li.active > a:focus, .nav-tabs.nav-justified > li.active > a:active, .nav-tabs.nav-justified > li.active > a:hover {
+  background-color: #111;
+  border-color: #f00;
+  border-width: 0 0 1px 0;
+}
+
+.btn-default:active, .btn-default.active {
+  color: red;
+}
+
+label {
+  font-size: 12pt;
+}
+
+.form-control:focus {
+  border-color: #f00;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 0, 0, 0.6);
 }

@@ -7,6 +7,7 @@
 <link media="all" type="text/css" href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
 <link media="all" type="text/css" href="bootstrap/css/bootstrap-toggle.min.css" rel="stylesheet">
 <link media="all" type="text/css" href="bootstrap/css/bootstrap-nav-wizard.css" rel="stylesheet">
+<link media="all" type="text/css" href="../css/main.css" rel="stylesheet">
 <link media="all" type="text/css" href="css/generator.css" rel="stylesheet">
 <script src="jquery/jquery-2.1.1.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
@@ -15,7 +16,16 @@
 </head>
 
 <body>
-  <!-- <? -->
+<!-- <? -->
+  <header>
+    <ul class="language-links">
+        <li><a hreflang="en" href="http://repo.internetcu.be" title="View the English version">EN</a></li>
+        <li><a href="http://repo.labriqueinter.net" title="Voir la version française" class="active">FR</a></li>
+    </ul>
+    <h1><span>generator</span>.ÎnternetCu.be</h1>
+  </header>
+
+  <main>
   <div class="container">
      <div class="alert alert-dismissible alert-danger fade in" style="margin-top: 20px" role="alert">
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -29,8 +39,6 @@
       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
     </div>
 
-    <h2>_("Generator")</h2>
-
     <ul class="nav nav-pills nav-wizard">
       <li class="active"><a href="#" data-toggle="tab">_("About You")</a><div class="nav-arrow"></div></li>
       <li><div class="nav-wedge"></div><a href="#" data-toggle="tab">_("VPN")</a><div class="nav-arrow"></div></li>
@@ -39,7 +47,7 @@
     </ul>
   
     <div class="row">
-      <div class="col-sm-offset-2 col-sm-8">
+      <div class="col-sm-offset-1 col-sm-10">
         <form class="form-horizontal" role="form" id="form">
           <div class="panel panel-default" id="panel-questions">
             <div class="panel-heading">
@@ -82,10 +90,9 @@
             </div>
 
             <div class="panel-inside">
-                    <iframe src="//db.ffdn.org/embed_map_cube/"></iframe>
+              <iframe src="//db.ffdn.org/embed_map_cube/"></iframe>
             </div>
           </div>
-
 
           <div class="panel panel-default" id="panel-vpn-manual">
             <div class="panel-heading">
@@ -416,9 +423,11 @@
         </form>
       </div>
     </div>
-
-    <hr />
-    <div id="github"><a href="https://github.com/labriqueinternet/labriqueinter.net">_("Any problem? Contribute!")</a> - AGPL 3.0</div>
   </div>
+</main>
+
+<footer>
+  <a href="http://labriqueinter.net">Internet Cube</a>
+</footer>
 </body>
 </html>
