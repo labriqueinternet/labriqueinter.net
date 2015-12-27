@@ -141,7 +141,7 @@ var cube = {
   
     downloadLink.appendTo('body');
   }
-}
+};
 
 var hypercube = {
   toJson: function(callback) {
@@ -194,7 +194,7 @@ var hypercube = {
   
     downloadLink.appendTo('body');
   }
-}
+};
 
 
 /************/
@@ -202,25 +202,41 @@ var hypercube = {
 /************/
 
 var view = {
-  showPanel: function(panel) {
-    $('.panel').hide();
-    $('#panel-' + panel).show();
-  },
-  
   showQuestion: function(question) {
+    view.hideButtonNext();
+
     $('.question').hide();
     $('#question-' + question).show();
   },
-  
-  showButtonNext: function(nextStep) {
-    $('#button-next').data('nextpanel', nextStep);
-    $('#button-submit').hide();
-    $('#button-next').show();
+
+  showStep: function(step) {
+    $('#timeline').find('li.active').removeClass('active');
+    $('#timeline a[data-tab=' + step + ']').parent().addClass('active');
+
+    if(step == 'aboutyou') {
+      view.showQuestion('hardware');
+    }
+
+    if(step == 'vpn') {
+      if($('#vpn-choice').data('auto') == 'yes') {
+        step += '-auto';
+      } else {
+        step += '-manual';
+      }
+    }
+
+    $('.panel').hide();
+    $('#panel-' + step + ' .nav-tabs li:first-child a').click();
+    $('#panel-' + step).show();
   },
   
-  showButtonSubmit: function() {
+  showButtonNext: function(nextStep) {
+    $('#button-next').data('next-panel', nextStep);
+    $('#button-next').show();
+  },
+
+  hideButtonNext: function() {
     $('#button-next').hide();
-    $('#button-submit').show();
   },
 
   i18n: function() {
@@ -228,7 +244,7 @@ var view = {
       $(this).data('title', $(this).data('title').replace("_('", '').replace("')", ''));
     });
   
-    $('h1, h2, h3, h4, label, a, strong, em, button, .i18n').each(function() {
+    $('h1, h2, h3, h4, label, span, a, strong, em, button, .i18n').each(function() {
       if($(this).children().length == 0) {
         $(this).text($(this).text().replace('_("', '').replace('")', ''));
       }
@@ -242,6 +258,7 @@ var view = {
     $('[data-toggle="tooltip"]').tooltip();
     $('.switch').bootstrapToggle();
 
+    $('.nav-wizard a').click(navigation.timelineClick);
     $('.nav-tabs a').click(navigation.tabClick);
     $('.nav-pills a').click(navigation.questionClick);
     $('.fileinput').click(controller.fileInputClick);
@@ -252,7 +269,7 @@ var view = {
 
     $('#vpn_auth_type').find('input').change(controller.authtypeChbxChange);
   }
-}
+};
 
 
 /*******************/
@@ -307,17 +324,14 @@ var controller = {
   },
 
   nextButtonClick: function() {
-    var nextStep = $(this).data('nextpanel');
-
-    view.showPanel(nextStep);
-
-    if(nextStep == 'lbi') {
-      view.showButtonSubmit();
-    }
+    var nextStep = $(this).data('next-panel');
+    navigation.goToStep(nextStep);
   },
 
   submitButtonClick: function() {
-    controller.formSubmit();
+    if(validation.form()) {
+      controller.formSubmit();
+    }
   },
 
   formSubmit: function() {
@@ -326,15 +340,58 @@ var controller = {
 
     return false;
   } 
-}
+};
 
 var navigation = {
+  goToStep: function(step) {
+    var currentStep = $('#main').data('current-step');
+    $('#main').data('current-step', step);
+
+    if(currentStep == 'aboutyou') {
+      if(!validation.aboutyou()) {
+        return false;
+      }
+    }
+
+    if(currentStep == 'vpn') {
+      if(!validation.vpn()) {
+        return false;
+      }
+    }
+
+    if(currentStep == 'postinstall') {
+      if(!validation.postinstall()) {
+        return false;
+      }
+    }
+
+    if(step == 'aboutyou' || step == 'ffdn') {
+      view.hideButtonNext();
+    }
+
+    if(step == 'vpn') {
+      view.showButtonNext('postinstall');
+    }
+
+    if(step == 'postinstall') {
+      view.showButtonNext('download');
+    }
+
+    view.showStep(step);
+  },
+
+  timelineClick: function() {
+    var step = $(this).data('tab');
+    navigation.goToStep(step);
+  },
+
   tabClick: function () {
-    var active = $(this).parent().attr('data-tab');
+    var active = $(this).data('tab');
   
     $(this).parents('.nav').find('li.active').removeClass('active');
     $(this).parent().addClass('active');
-    $(this).parents('.panel').find('.tab').hide();
+    $(this).parents('ul').parent().find('.tab').hide();
+
     $('#' + active).show();
   
     return false;
@@ -347,26 +404,186 @@ var navigation = {
       if($(this).data('answer') == 'yes') {
         view.showQuestion('level');
       } else {
-        view.showPanel('ffdn');
+        navigation.goToStep('ffdn');
       }
   
     } else if(question == 'question-level') {
       if($(this).data('answer') == 'yes') {
         view.showQuestion('dotcube');
       } else {
-        view.showPanel('ffdn');
+        navigation.goToStep('ffdn');
       }
   
     } else if(question == 'question-dotcube') {
-      if($(this).data('answer') == 'yes') {
-        view.showPanel('vpn-dotcube');
-      } else {
-        view.showPanel('vpn-manual');
-      }
-  
-      view.showButtonNext('lbi');
+      $('#vpn-choice').data('auto', $(this).data('answer'));
+      navigation.goToStep('vpn');
     }
   }
+};
+
+var validation = {
+  resetWarnings: function(panel) {
+    var warnings = $('#panel-' + panel + ' .alert ul');
+    var step = /^vpn-/.test(panel) ? 'vpn' : panel;
+
+    $('#timeline a[data-tab=' + step + ']').parent().addClass('warnings');
+    $('#panel-' + panel + ' .control-label').css('color', 'white');
+
+    warnings.parent().hide();
+    warnings.parent().fadeIn();
+  },
+
+  addWarning: function(panel, msg) {
+    var warnings = $('#panel-' + panel + ' .alert ul');
+
+    var warningItem = $('<li>',{
+      text: msg,
+    });
+  
+    warningItem.appendTo(warnings);
+  },
+
+  noMoreWarnings: function(panel) {
+    var warnings = $('#panel-' + panel + ' .alert ul');
+    var step = /^vpn-/.test(panel) ? 'vpn' : panel;
+
+    $('#timeline a[data-tab=' + step + ']').parent().removeClass('warnings');
+    $('#timeline a[data-tab=' + step + ']').parent().addClass('validated');
+
+    $('#panel-' + panel + ' .control-label').css('color', 'white');
+    warnings.parent().hide();
+  },
+
+  fieldMarking: function(field) {
+    $('#' + field).closest('.form-group').find('label').css('color', 'red');
+  },
+
+  testMandatoryFields: function(panel, fields) {
+    var nbWarns = 0;
+
+    $.each(fields, function(i, id) {
+      if($('#' + id).val() == '') {
+        validation.fieldMarking(id);
+        nbWarns++;
+      }
+    });
+
+    if(nbWarns > 0) {
+      validation.addWarning(panel, _("Some mandatory fields are empty"));
+
+      return false;
+    }
+
+    return true;
+  },
+
+  form: function() {
+    validation.resetWarnings('download');
+
+    if(!validation.vpn() || !validation.postinstall()) {
+      validation.addWarning('download', _("The configuration files cannot be generated because some steps still have warnings."));
+      validation.addWarning('download', _("Please fix them, then retry."));
+
+      return false;
+    }
+
+    validation.noMoreWarnings('download');
+
+    return true;
+  },
+
+  aboutyou: function() {
+    validation.noMoreWarnings('aboutyou');
+
+    return true;
+  },
+
+  vpn: function() {
+    var auto = ($('#vpn-choice').data('auto') == 'yes');
+
+    if(auto) {
+      return validation.vpnAuto();
+    }
+
+    return validation.vpnManual();
+  },
+
+  vpnAuto: function() {
+    var nbWarns = 0;
+    validation.resetWarnings('vpn-auto');
+
+    var files = $('#vpn_cubefile').prop('files');
+
+    if(files.length == 0) {
+      nbWarns++;
+      validation.addWarning('vpn-auto', _("No .cube file selected"));
+    }
+
+    if(nbWarns == 0) {
+      validation.noMoreWarnings('vpn-auto');
+
+      return true;
+    }
+
+    return false;
+  },
+
+  vpnManual: function() {
+    var nbWarns = 0;
+    validation.resetWarnings('vpn-manual');
+
+    var mandatoryFields = [ 'vpn_server_name', 'vpn_server_port', 'vpn_server_proto' ];
+
+    if($('#vpn_auth_type_login').attr('checked')) {
+//      mandatoryFields.add(
+// ===> HERE <===
+    }
+
+    if(!validation.testMandatoryFields('vpn-manual', mandatoryFields)) {
+      nbWarns++;
+    }
+
+    if(!/^[0-9]+/.test($('#vpn_server_port').val())) {
+      addWarning('vpn-manual', _("The Server Port must be only composed of digits"));
+      validation.fieldMarking('vpn_server_port');
+      nbWarns++;
+    }
+
+    if($('#vpn_server_proto').val() != 'udp' && $('#vpn_server_proto').val() != 'tcp') {
+      addWarning('vpn-manual', _("The Protocol must be udp or tcp"));
+      validation.fieldMarking('vpn_server_proto');
+      nbWarns++;
+    }
+
+    if($('#vpn_dns0').val() == '' || $('#vpn_dns1').val() == '') {
+      addWarning('vpn-manual', _("You need to define two DNS resolver addresses"));
+      validation.fieldMarking('vpn_dns0');
+      validation.fieldMarking('vpn_dns1');
+      nbWarns++;
+    }
+
+
+    if(nbWarns == 0) {
+      validation.noMoreWarnings('vpn-manual');
+
+      return true;
+    }
+
+    return false;
+  },
+
+  postinstall: function() {
+    return true;
+  }
+};
+
+
+/************
+ *** I18N ***
+ ************/
+
+function _(msg) {
+  return msg;
 }
 
 

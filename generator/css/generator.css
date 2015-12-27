@@ -66,53 +66,55 @@ div#github a {
   border-color: #111;
 }
 
-.nav-pills.nav-wizard > li a {
-  background-color: #600000;
-}
-
-.nav-pills.nav-wizard > li.active a {
+.nav-pills.nav-wizard > li a, .nav-pills.nav-wizard > li.active a, .nav-pills.nav-wizard > li:hover a {
   background-color: #f00;
+  opacity: 0.5;
 }
 
-.nav-pills.nav-wizard > li .nav-wedge {
-  border-color: #600000 #600000 #600000 transparent;
-}
-
-.nav-pills.nav-wizard > li .nav-arrow {
-  border-color: transparent transparent transparent #600000;
-}
-
-.nav-pills.nav-wizard > li.active .nav-wedge {
+.nav-pills.nav-wizard > li .nav-wedge, .nav-pills.nav-wizard > li.active .nav-wedge, .nav-pills.nav-wizard > li:hover .nav-wedge {
   border-color: #f00 #f00 #f00 transparent;
+  opacity: 0.5;
 }
 
-.nav-pills.nav-wizard > li.active .nav-arrow {
+.nav-pills.nav-wizard > li .nav-arrow, .nav-pills.nav-wizard > li.active .nav-arrow, .nav-pills.nav-wizard > li:hover .nav-arrow {
   border-color: transparent transparent transparent #f00;
+  opacity: 0.5;
 }
 
-.nav-pills.nav-wizard > li:hover a {
-  color: #fff;
-  background-color: #800000;
+.nav-pills.nav-wizard > li.warnings a, .nav-pills.nav-wizard > li.active.warnings a, .nav-pills.nav-wizard > li.warnings:hover a {
+  background-color: #ff7500;
 }
 
-.nav-pills.nav-wizard > li:hover .nav-wedge {
-  border-color: #800000 #800000 #800000 transparent;
+.nav-pills.nav-wizard > li.warnings .nav-wedge, .nav-pills.nav-wizard > li.active.warnings .nav-wedge, .nav-pills.nav-wizard > li.warnings:hover .nav-wedge {
+  border-color: #ff7500 #ff7500 #ff7500 transparent;
 }
 
-.nav-pills.nav-wizard > li:hover .nav-arrow {
-  border-color: transparent transparent transparent #800000;
+.nav-pills.nav-wizard > li.warnings .nav-arrow, .nav-pills.nav-wizard > li.active.warnings .nav-arrow, .nav-pills.nav-wizard > li.warnings:hover .nav-arrow {
+  border-color: transparent transparent transparent #ff7500;
 }
 
-.nav-pills.nav-wizard > li.active:hover a {
-  background-color: #f00;
+.nav-pills.nav-wizard > li.validated a, .nav-pills.nav-wizard > li.active.validated a, .nav-pills.nav-wizard > li.validated:hover a {
+  background-color: #09af00;
 }
 
-.nav-pills.nav-wizard > li.active:hover .nav-wedge {
-  border-color: #f00 #f00 #f00 transparent;
+.nav-pills.nav-wizard > li.validated .nav-wedge, .nav-pills.nav-wizard > li.active.validated .nav-wedge, .nav-pills.nav-wizard > li.validated:hover .nav-wedge {
+  border-color: #09af00 #09af00 #09af00 transparent;
 }
 
-.nav-pills.nav-wizard > li.active:hover .nav-arrow {
-  border-color: transparent transparent transparent #f00;
+.nav-pills.nav-wizard > li.validated .nav-arrow, .nav-pills.nav-wizard > li.active.validated .nav-arrow, .nav-pills.nav-wizard > li.validated:hover .nav-arrow {
+  border-color: transparent transparent transparent #09af00;
+}
+
+.nav-pills.nav-wizard > li.active:hover a, .nav-pills.nav-wizard > li.active:hover .nav-wedge, .nav-pills.nav-wizard > li.active:hover .nav-arrow {
+  opacity: 1;
+}
+
+.nav-pills.nav-wizard > li.active a, .nav-pills.nav-wizard > li.active .nav-wedge, .nav-pills.nav-wizard > li.active .nav-arrow {
+  opacity: 1;
+}
+
+.nav-pills.nav-wizard > li:hover a, .nav-pills.nav-wizard > li:hover .nav-wedge, .nav-pills.nav-wizard > li:hover .nav-arrow {
+  opacity: 0.75;
 }
 
 .panel-default .nav li a {
@@ -130,26 +132,53 @@ ul.nav a {
   outline: none;
 }
 
-.alert {
+.alert-danger {
+  margin: 20px;
+  background-image: linear-gradient(to bottom, #ff7500 0px, #ff5003 100%);
+  border-color: #833c00;
+  color: #fff;
+  font-size: 12pt;
   display: none;
 }
 
-.panel, #tab-vpn-advanced, #tab-lbi-advanced, #vpn_auth_type_crt, #vpn_auth_type_login, #vpn_auth_type_ta, #question-level, #question-dotcube {
+.alert-danger strong {
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
+  display: block;
+  text-align: center;
+}
+
+.alert-danger ul, .alert-danger li {
+  list-style-type: square;
+  margin: 0;
+  padding: 0;
+}
+
+.alert-danger ul {
+  margin-left: 20pt;
+  text-shadow: none;
+}
+
+.panel, #vpn_auth_type_crt, #vpn_auth_type_login, #vpn_auth_type_ta, #question-level, #question-dotcube {
   display: none;
 }
 
-.question strong {
+.question span {
   display: block;
   margin: 25pt;
   text-shadow: 0px 1px 0px #000;
 }
 
-#panel-questions {
+#panel-aboutyou {
   display: block;
 }
 
 .panel-inside {
   padding: 14px 14px 0 10px;
+}
+
+.panel-text {
+  padding: 20px;
+  text-align: center;
 }
 
 .panel-section {
@@ -166,7 +195,7 @@ ul.nav a {
   margin-top: 0;
 }
 
-#panel-questions .panel-inside {
+#panel-aboutyou .panel-inside {
   text-align: center;
 }
 
@@ -178,12 +207,12 @@ ul.nav a {
   display: none;
 }
 
-#panel-questions .panel-inside ul {
+#panel-aboutyou .panel-inside ul {
   margin: 25pt auto;
   width: 205px;
 }
 
-#panel-questions .panel-inside li {
+#panel-aboutyou .panel-inside li {
   margin: 10px auto;
   width: 100px;
 }
@@ -203,6 +232,7 @@ iframe {
 .panel-default {
   background-color: #303030;
   color: #eee;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 1) inset, 0px 0px 8px rgba(0, 0, 0, 1);
 }
 
 .nav-tabs.nav-justified > li > a {
@@ -222,9 +252,26 @@ iframe {
 
 label {
   font-size: 12pt;
+  font-weight: normal;
 }
 
 .form-control:focus {
   border-color: #f00;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 0, 0, 0.6);
+}
+
+.btn-primary {
+  background-image: linear-gradient(to bottom, #f00 0px, #800000 100%);
+  border-color: #111;
+}
+
+.btn-primary:hover, .btn-primary:active {
+  background-color: #800000;
+  border-color: #111;
+}
+
+.panel-section {
+  color: #bbb;
+  text-shadow: 0px 1px 0px #000;
+  border-bottom-color: #777;
 }

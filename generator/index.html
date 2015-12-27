@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Generator</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link media="all" type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link media="all" type="text/css" href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
-<link media="all" type="text/css" href="bootstrap/css/bootstrap-toggle.min.css" rel="stylesheet">
-<link media="all" type="text/css" href="bootstrap/css/bootstrap-nav-wizard.css" rel="stylesheet">
-<link media="all" type="text/css" href="../css/main.css" rel="stylesheet">
-<link media="all" type="text/css" href="css/generator.css" rel="stylesheet">
-<script src="jquery/jquery-2.1.1.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="bootstrap/js/bootstrap-toggle.min.js"></script>
-<script src="js/generator.js"></script>
+  <title>Generator</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link media="all" type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link media="all" type="text/css" href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link media="all" type="text/css" href="bootstrap/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <link media="all" type="text/css" href="bootstrap/css/bootstrap-nav-wizard.css" rel="stylesheet">
+  <link media="all" type="text/css" href="../css/main.css" rel="stylesheet">
+  <link media="all" type="text/css" href="css/generator.css" rel="stylesheet">
+  <script src="jquery/jquery-2.1.1.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="bootstrap/js/bootstrap-toggle.min.js"></script>
+  <script src="js/generator.js"></script>
 </head>
 
 <body>
@@ -26,37 +26,25 @@
   </header>
 
   <main>
-  <div class="container">
-     <div class="alert alert-dismissible alert-danger fade in" style="margin-top: 20px" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <strong>_("Error"):</strong>
-    </div>
-    <div class="alert alert-dismissible alert-info fade in" style="margin-top: 20px" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-      <strong>_("Notice"):</strong>
-    </div>
-    <div class="alert alert-dismissible alert-success fade in" style="margin-top: 20px" role="alert">
-      <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-    </div>
-
-    <ul class="nav nav-pills nav-wizard">
-      <li class="active"><a href="#" data-toggle="tab">_("About You")</a><div class="nav-arrow"></div></li>
-      <li><div class="nav-wedge"></div><a href="#" data-toggle="tab">_("VPN")</a><div class="nav-arrow"></div></li>
-      <li><div class="nav-wedge"></div><a href="#" data-toggle="tab">_("Post-Installation")</a><div class="nav-arrow"></div></li>
-      <li><div class="nav-wedge"></div><a href="#" data-toggle="tab">_("Download")</a></li>
+  <div class="container" id="main" data-current-step="aboutyou">
+    <ul class="nav nav-pills nav-wizard" id="timeline">
+      <li class="active"><a href="javascript:" data-tab="aboutyou">_("About You")</a><div class="nav-arrow"></div></li>
+      <li><div class="nav-wedge"></div><a href="javascript:" class="nav-main" data-tab="vpn" id="vpn-choice" data-auto="no">_("VPN")</a><div class="nav-arrow"></div></li>
+      <li><div class="nav-wedge"></div><a href="javascript:" class="nav-main" data-tab="postinstall">_("Post-Installation")</a><div class="nav-arrow"></div></li>
+      <li><div class="nav-wedge"></div><a href="javascript:" data-tab="download">_("Download")</a></li>
     </ul>
   
     <div class="row">
       <div class="col-sm-offset-1 col-sm-10">
         <form class="form-horizontal" role="form" id="form">
-          <div class="panel panel-default" id="panel-questions">
+          <div class="panel panel-default tab" id="panel-aboutyou">
             <div class="panel-heading">
               <h3 class="panel-title">_("About You")</h3>
             </div>
 
             <div class="panel-inside">
               <div id="question-hardware" class="question">
-                <strong>_("Do you have an Internet Cube and a VPN Account?")</strong>
+                <span>_("Do you have an Internet Cube and a VPN Account?")</span>
   
                 <ul class="nav nav-pills questions">
                   <li><a href="javascript:" data-answer="yes">_("Yes")</a></li>
@@ -65,7 +53,7 @@
               </div>
 
               <div id="question-level" class="question">
-                <strong>_("Do you know how to use a terminal on GNU/Linux?")</strong>
+                <span>_("Do you know how to use a terminal on GNU/Linux?")</span>
   
                 <ul class="nav nav-pills questions">
                   <li><a href="javascript:" data-answer="yes">_("Yes")</a></li>
@@ -74,7 +62,7 @@
               </div>
 
               <div id="question-dotcube" class="question">
-                <strong>_("Do you have a .cube file in the files provided by your VPN provider?")</strong>
+                <span>_("Do you have a .cube file in the files provided by your VPN provider?")</span>
   
                 <ul class="nav nav-pills questions">
                   <li><a href="javascript:" data-answer="yes">_("Yes")</a></li>
@@ -90,18 +78,41 @@
             </div>
 
             <div class="panel-inside">
-              <iframe src="//db.ffdn.org/embed_map_cube/"></iframe>
+              <!-- <iframe src="//db.ffdn.org/embed_map_cube/"></iframe> -->
             </div>
           </div>
 
-          <div class="panel panel-default" id="panel-vpn-manual">
+          <div class="panel panel-default" id="panel-download">
+            <div class="panel-heading">
+              <h3 class="panel-title">_("Configuration Files")</h3>
+            </div>
+
+            <div class="alert alert-dismissible alert-danger fade in" role="alert">
+              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">_("Close")</span></button>
+              <strong>_("You have some issues to fix in this step"):</strong>
+              <ul></ul>
+            </div>
+
+            <div class="panel-inside panel-text">
+              <button type="button" class="btn btn-default" id="button-submit">_("Validate")</button>
+              <ul></ul>
+            </div>
+          </div>
+
+          <div class="panel panel-default tab" id="panel-vpn-manual">
             <div class="panel-heading">
               <h3 class="panel-title">_("VPN")</h3>
             </div>
 
+            <div class="alert alert-dismissible alert-danger fade in" role="alert">
+              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">_("Close")</span></button>
+              <strong>_("You have some issues to fix in this step"):</strong>
+              <ul></ul>
+            </div>
+
             <ul class="nav nav-tabs nav-justified">
-              <li role="presentation" data-tab="tab-vpn-main" class="active"><a href="javascript:">_("Main")</a></li>
-              <li role="presentation" data-tab="tab-vpn-advanced"><a href="javascript:">_("Advanced")</a></li>
+              <li class="active"><a href="javascript:" data-tab="tab-vpn-main">_("Main")</a></li>
+              <li><a href="javascript:" data-tab="tab-vpn-advanced">_("Advanced")</a></li>
             </ul>
   
             <div class="panel-inside">
@@ -254,9 +265,15 @@
             </div>
           </div>
   
-          <div class="panel panel-default" id="panel-vpn-dotcube">
+          <div class="panel panel-default" id="panel-vpn-auto">
             <div class="panel-heading">
               <h3 class="panel-title">_("VPN")</h3>
+            </div>
+
+            <div class="alert alert-dismissible alert-danger fade in" role="alert">
+              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">_("Close")</span></button>
+              <strong>_("You have some issues to fix in this step"):</strong>
+              <ul></ul>
             </div>
   
             <div class="panel-inside">
@@ -272,18 +289,24 @@
             </div>
           </div>
 
-          <div class="panel panel-default" id="panel-lbi">
+          <div class="panel panel-default tab" id="panel-postinstall">
             <div class="panel-heading">
               <h3 class="panel-title">_("Post-Installation")</h3>
             </div>
 
+            <div class="alert alert-dismissible alert-danger fade in" role="alert">
+              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">_("Close")</span></button>
+              <strong>_("You have some issues to fix in this step"):</strong>
+              <ul></ul>
+            </div>
+
             <ul class="nav nav-tabs nav-justified">
-              <li role="presentation" data-tab="tab-lbi-main" class="active"><a href="javascript:">_("Main")</a></li>
-              <li role="presentation" data-tab="tab-lbi-advanced"><a href="javascript:">_("Advanced")</a></li>
+              <li class="active"><a href="javascript:" data-tab="tab-postinstall-main">_("Main")</a></li>
+              <li><a href="javascript:" data-tab="tab-postinstall-advanced">_("Advanced")</a></li>
             </ul>
   
             <div class="panel-inside">
-              <div class="tab" id="tab-lbi-main">
+              <div class="tab" id="tab-postinstall-main">
                 <h4 class="panel-section panel-section-first">_("YunoHost")</h4>
 
                 <div class="form-group">
@@ -317,7 +340,7 @@
                 </div>
               </div>
 
-              <div class="tab" id="tab-lbi-advanced">
+              <div class="tab" id="tab-postinstall-advanced">
                 <h4 class="panel-section panel-section-first">_("YunoHost")</h4>
 
                 <div class="form-group">
@@ -414,10 +437,6 @@
           <div id="buttons">
             <div class="form-group" id="button-next">
               <button type="button" class="btn btn-default" id="button_next">_("Next step")</button>
-            </div>
-  
-            <div class="form-group" id="button-submit">
-              <button type="button" class="btn btn-default" id="button_submit">_("Validate")</button>
             </div>
           </div>
         </form>
