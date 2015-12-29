@@ -133,7 +133,7 @@ var cube = {
     var fileContent = window.btoa(cube.toJsonTxt(json));
     fileContent = "data:application/octet-stream;base64," + fileContent;
   
-    var downloadLink = $('<a>',{
+    var downloadLink = $('<a>', {
       text: 'config.cube',
       download: 'config.cube',
       href: fileContent
@@ -278,9 +278,9 @@ var view = {
 
 var controller = {
   authtypeChbxChange: function() {
-    var name = $(this).prop('name');
+    var name = $(this).data('auth');
   
-    if($(this).prop('checked')) {
+    if($(this).is(':checked')) {
       $('#' + name).show();
     } else {
       $('#' + name).hide();
@@ -343,27 +343,28 @@ var controller = {
 };
 
 var navigation = {
-  goToStep: function(step) {
+  goToStep: function(step, ignoreWarns = false) {
     var currentStep = $('#main').data('current-step');
-    $('#main').data('current-step', step);
 
     if(currentStep == 'aboutyou') {
-      if(!validation.aboutyou()) {
+      if(!validation.aboutyou() && !ignoreWarns) {
         return false;
       }
     }
 
     if(currentStep == 'vpn') {
-      if(!validation.vpn()) {
+      if(!validation.vpn() && !ignoreWarns) {
         return false;
       }
     }
 
-    if(currentStep == 'postinstall') {
+    if(currentStep == 'postinstall' && !ignoreWarns) {
       if(!validation.postinstall()) {
         return false;
       }
     }
+
+    $('#main').data('current-step', step);
 
     if(step == 'aboutyou' || step == 'ffdn') {
       view.hideButtonNext();
@@ -382,7 +383,7 @@ var navigation = {
 
   timelineClick: function() {
     var step = $(this).data('tab');
-    navigation.goToStep(step);
+    navigation.goToStep(step, true);
   },
 
   tabClick: function () {
@@ -423,24 +424,49 @@ var navigation = {
 
 var validation = {
   resetWarnings: function(panel) {
-    var warnings = $('#panel-' + panel + ' .alert ul');
+    var warnings = $('#panel-' + panel + ' .alert-danger');
     var step = /^vpn-/.test(panel) ? 'vpn' : panel;
 
     $('#timeline a[data-tab=' + step + ']').parent().addClass('warnings');
     $('#panel-' + panel + ' .control-label').css('color', 'white');
+    $('#panel-' + panel + ' .hasWarnings').removeClass('hasWarnings');
 
-    warnings.parent().hide();
-    warnings.parent().fadeIn();
+    warnings.each(function(i) {
+      if(i == 0) {
+        $(this).hide();
+        $(this).fadeIn();
+      } else {
+        if($(this).closest('.form-group')) {
+          $(this).closest('.form-group').remove();
+        } else {
+          $(this).remove();
+        }
+      }
+    });
   },
 
-  addWarning: function(panel, msg) {
-    var warnings = $('#panel-' + panel + ' .alert ul');
+  addWarning: function(field, msg) {
+    var warnings = $('.alert-danger').first().clone();
+    var warnMsg = warnings.find('strong');
 
-    var warningItem = $('<li>',{
-      text: msg,
-    });
-  
-    warningItem.appendTo(warnings);
+    warnMsg.text(msg);
+
+    var formGroup = $('<div>', { class: 'form-group alert-input' });
+    var label = $('<label>', { class: 'col-sm-3' });
+    var col = $('<div>', { class: 'col-sm-9' });
+
+    label.appendTo(formGroup);
+    col.appendTo(formGroup);
+    warnings.appendTo(col);
+
+    var tab = $('#' + field).closest('.tab');
+
+    if(tab) {
+      $('a[data-tab=' + tab.attr('id') + ']').addClass('hasWarnings');
+    }
+
+    $('#' + field).closest('.form-group').before(formGroup);
+    warnings.fadeIn();
   },
 
   noMoreWarnings: function(panel) {
@@ -454,27 +480,60 @@ var validation = {
     warnings.parent().hide();
   },
 
-  fieldMarking: function(field) {
-    $('#' + field).closest('.form-group').find('label').css('color', 'red');
-  },
-
-  testMandatoryFields: function(panel, fields) {
+  testMandatoryFields: function(fields) {
     var nbWarns = 0;
 
     $.each(fields, function(i, id) {
-      if($('#' + id).val() == '') {
-        validation.fieldMarking(id);
+      if(!$('#' + id).val().trim()) {
+        validation.addWarning(id, _("This field is mandatory"));
         nbWarns++;
       }
     });
 
-    if(nbWarns > 0) {
-      validation.addWarning(panel, _("Some mandatory fields are empty"));
+    return !nbWarns;
+  },
 
-      return false;
-    }
+  testIpFields: function(fields, ipVersion) {
+    var nbWarns = 0;
 
-    return true;
+    $.each(fields, function(i, id) {
+      var isWarn = false;
+
+      if(!$('#' + id).val().trim()) {
+        return;
+      }
+
+      switch(ipVersion) {
+        case 64:
+          if(!ipaddr.isValid($('#' + id).val())) {
+            validation.addWarning(id, _("This IP format looks bad"));
+            isWarn = true;
+          }
+        break;
+
+        case 4:
+          if(!ipaddr.IPv4.isValid($('#' + id).val())) {
+            validation.addWarning(id, _("This IPv4 format looks bad"));
+            isWarn = true;
+          }
+        break;
+
+        case 6:
+          if(!ipaddr.IPv6.isValid($('#' + id).val())) {
+            validation.addWarning(id, _("This IPv6 format looks bad"));
+            isWarn = true;
+          }
+        break;
+      }
+
+      if(!isWarn) {
+        $('#' + id).val(ipaddr.parse($('#' + id).val()).toString());
+      } else {
+        nbWarns++;
+      }
+    });
+
+    return !nbWarns;
   },
 
   form: function() {
@@ -516,7 +575,7 @@ var validation = {
 
     if(files.length == 0) {
       nbWarns++;
-      validation.addWarning('vpn-auto', _("No .cube file selected"));
+      validation.addWarning('vpn_cubefile', _("No .cube file selected"));
     }
 
     if(nbWarns == 0) {
@@ -532,36 +591,40 @@ var validation = {
     var nbWarns = 0;
     validation.resetWarnings('vpn-manual');
 
-    var mandatoryFields = [ 'vpn_server_name', 'vpn_server_port', 'vpn_server_proto' ];
+    var ip6Fields = [ 'vpn_ip6_net' ];
+    var ipFields = [ 'vpn_dns0', 'vpn_dns1' ];
+    var mandatoryFields = [ 'vpn_server_name', 'vpn_server_port', 'vpn_crt_server_ca', 'vpn_dns0', 'vpn_dns1' ];
 
-    if($('#vpn_auth_type_login').attr('checked')) {
-//      mandatoryFields.add(
-// ===> HERE <===
+    if($('input[data-auth=vpn_auth_type_crt]').is(':checked')) {
+      mandatoryFields.push('vpn_crt_client');
+      mandatoryFields.push('vpn_crt_client_key');
     }
 
-    if(!validation.testMandatoryFields('vpn-manual', mandatoryFields)) {
+    if($('input[data-auth=vpn_auth_type_login]').is(':checked')) {
+      mandatoryFields.push('vpn_login_user');
+      mandatoryFields.push('vpn_login_passphrase');
+    }
+
+    if($('input[data-auth=vpn_auth_type_ta]').is(':checked')) {
+      mandatoryFields.push('vpn_crt_client_ta');
+    }
+
+    if(!validation.testMandatoryFields(mandatoryFields)) {
+      nbWarns++;
+    }
+
+    if(!validation.testIpFields(ip6Fields, 6)) {
+      nbWarns++;
+    }
+
+    if(!validation.testIpFields(ipFields, 64)) {
       nbWarns++;
     }
 
     if(!/^[0-9]+/.test($('#vpn_server_port').val())) {
-      addWarning('vpn-manual', _("The Server Port must be only composed of digits"));
-      validation.fieldMarking('vpn_server_port');
+      validation.addWarning('vpn_server_port', _("A Port is only composed of digits"));
       nbWarns++;
     }
-
-    if($('#vpn_server_proto').val() != 'udp' && $('#vpn_server_proto').val() != 'tcp') {
-      addWarning('vpn-manual', _("The Protocol must be udp or tcp"));
-      validation.fieldMarking('vpn_server_proto');
-      nbWarns++;
-    }
-
-    if($('#vpn_dns0').val() == '' || $('#vpn_dns1').val() == '') {
-      addWarning('vpn-manual', _("You need to define two DNS resolver addresses"));
-      validation.fieldMarking('vpn_dns0');
-      validation.fieldMarking('vpn_dns1');
-      nbWarns++;
-    }
-
 
     if(nbWarns == 0) {
       validation.noMoreWarnings('vpn-manual');
