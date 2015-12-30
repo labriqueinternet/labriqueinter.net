@@ -151,8 +151,45 @@ ul.nav a {
   text-align: center;
 }
 
-.alert-input {
+.alert-input, .dynette {
   margin: 0;
+}
+
+.dynette {
+  margin-top: -15px;
+  font-size: 11pt;
+  display: none;
+}
+
+.dynette.available {
+  color: #09af00;
+  font-weight: bold;
+}
+
+.dynette.notavailable, .dynette.dynetterror {
+  color: #f00;
+  font-weight: bold;
+}
+
+.dynette.notavailable, .dynette.dynetterror {
+  font-weight: normal;
+  font-style: italic;
+}
+
+.dynette.available img, .dynette.notavailable img, .dynette.dynetterror img {
+  display: none;
+}
+
+.dynette.available span:before {
+  content:  "\2714 ";
+}
+
+.dynette.notavailable span:before {
+  content:  "\2716 ";
+}
+
+.dynette.dynetterror span:before {
+  content:  "\27B0 ";
 }
 
 .alert-input .alert {

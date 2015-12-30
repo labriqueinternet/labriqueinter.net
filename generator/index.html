@@ -37,7 +37,7 @@
   
     <div class="row">
       <div class="col-sm-offset-1 col-sm-10">
-        <form class="form-horizontal" role="form" id="form">
+        <form class="form-horizontal" role="form">
           <div class="panel panel-default tab" id="panel-aboutyou">
             <div class="panel-heading">
               <h3 class="panel-title">_("About You")</h3>
@@ -311,9 +311,9 @@
                 <h4 class="panel-section panel-section-first">_("YunoHost")</h4>
 
                 <div class="form-group">
-                  <label for="ynh_domain" class="col-sm-3 control-label">_("Main Domain")</label>
+                  <label for="ynh_user" class="col-sm-3 control-label">_("Main Username")</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="ynh_domain" placeholder="example.org" />
+                    <input type="text" class="form-control" id="ynh_user" placeholder="jdoe" />
                   </div>
                 </div>
 
@@ -321,6 +321,20 @@
                   <label for="ynh_password" class="col-sm-3 control-label">_("Main Password")</label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="ynh_password" />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="ynh_domain" class="col-sm-3 control-label">_("Main Domain")</label>
+                  <div class="col-sm-9">
+                    <input type="text" class="form-control" id="ynh_domain" placeholder="example.org" />
+                  </div>
+                </div>
+
+                <div class="form-group dynette">
+                  <label class="col-sm-3"></label>
+                  <div class="col-sm-9">
+                    <img src="../img/loading.gif" /> <span></span>
                   </div>
                 </div>
 
@@ -345,23 +359,16 @@
                 <h4 class="panel-section panel-section-first">_("YunoHost")</h4>
 
                 <div class="form-group">
-                  <label for="ynh_user" class="col-sm-3 control-label">_("Username")</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="ynh_user" placeholder="jdoe" value="admin" />
-                  </div>
-                </div>
-
-                <div class="form-group">
                   <label for="ynh_user_firstname" class="col-sm-3 control-label">_("First name")</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="ynh_user_firstname" placeholder="John" value="admin" />
+                    <input type="text" class="form-control" id="ynh_user_firstname" placeholder="John" value="John" />
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="ynh_user_lastname" class="col-sm-3 control-label">_("Last name")</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="ynh_user_lastname" placeholder="Doe" value="admin" />
+                    <input type="text" class="form-control" id="ynh_user_lastname" placeholder="Doe" value="Doe" />
                   </div>
                 </div>
 
