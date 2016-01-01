@@ -24,31 +24,23 @@ a.btn-danger:hover span {
   color: #fff;
 }
 
-a.not-allowed {
-  cursor: not-allowed;
-}
-
-input.allowed {
-  cursor: default;
-}
-
 a.btn-disabled, a.btn-disabled:hover, a.btn-disabled:active {
   background-color: #999;
   background-image: none;
   border-color: #888;
+  cursor: default;
 }
 
 a.btn-disabled:hover span {
   color: #eee;
 }
 
-div#github {
-  margin: -10px 0 20px 20px;
-  background: url(../img/github.png) no-repeat 0 4px;
+input[type=file] {
+  display: none;
 }
 
-div#github a {
-  margin-left: 17px;
+.input-group.input-chooser {
+  padding: 0 15px;
 }
 
 .nav {
@@ -56,64 +48,64 @@ div#github a {
   margin-bottom: 5px;
 }
 
-.nav > li > a {
+.nav li a {
   text-decoration: none;
   font-size: 10pt;
   padding: 6.75pt 13pt;
 }
 
-.nav-pills.nav-wizard > li {
+.nav-pills.nav-wizard li {
   border-color: #111;
 }
 
-.nav-pills.nav-wizard > li a, .nav-pills.nav-wizard > li.active a, .nav-pills.nav-wizard > li:hover a {
+.nav-pills.nav-wizard li a, .nav-pills.nav-wizard li.active a, .nav-pills.nav-wizard li:hover a {
   background-color: #f00;
   opacity: 0.5;
 }
 
-.nav-pills.nav-wizard > li .nav-wedge, .nav-pills.nav-wizard > li.active .nav-wedge, .nav-pills.nav-wizard > li:hover .nav-wedge {
+.nav-pills.nav-wizard li .nav-wedge, .nav-pills.nav-wizard li.active .nav-wedge, .nav-pills.nav-wizard li:hover .nav-wedge {
   border-color: #f00 #f00 #f00 transparent;
   opacity: 0.5;
 }
 
-.nav-pills.nav-wizard > li .nav-arrow, .nav-pills.nav-wizard > li.active .nav-arrow, .nav-pills.nav-wizard > li:hover .nav-arrow {
+.nav-pills.nav-wizard li .nav-arrow, .nav-pills.nav-wizard li.active .nav-arrow, .nav-pills.nav-wizard li:hover .nav-arrow {
   border-color: transparent transparent transparent #f00;
   opacity: 0.5;
 }
 
-.nav-pills.nav-wizard > li.warnings a, .nav-pills.nav-wizard > li.active.warnings a, .nav-pills.nav-wizard > li.warnings:hover a {
+.nav-pills.nav-wizard li.warnings a, .nav-pills.nav-wizard li.active.warnings a, .nav-pills.nav-wizard li.warnings:hover a {
   background-color: #ff7500;
 }
 
-.nav-pills.nav-wizard > li.warnings .nav-wedge, .nav-pills.nav-wizard > li.active.warnings .nav-wedge, .nav-pills.nav-wizard > li.warnings:hover .nav-wedge {
+.nav-pills.nav-wizard li.warnings .nav-wedge, .nav-pills.nav-wizard li.active.warnings .nav-wedge, .nav-pills.nav-wizard li.warnings:hover .nav-wedge {
   border-color: #ff7500 #ff7500 #ff7500 transparent;
 }
 
-.nav-pills.nav-wizard > li.warnings .nav-arrow, .nav-pills.nav-wizard > li.active.warnings .nav-arrow, .nav-pills.nav-wizard > li.warnings:hover .nav-arrow {
+.nav-pills.nav-wizard li.warnings .nav-arrow, .nav-pills.nav-wizard li.active.warnings .nav-arrow, .nav-pills.nav-wizard li.warnings:hover .nav-arrow {
   border-color: transparent transparent transparent #ff7500;
 }
 
-.nav-pills.nav-wizard > li.validated a, .nav-pills.nav-wizard > li.active.validated a, .nav-pills.nav-wizard > li.validated:hover a {
+.nav-pills.nav-wizard li.validated a, .nav-pills.nav-wizard li.active.validated a, .nav-pills.nav-wizard li.validated:hover a {
   background-color: #09af00;
 }
 
-.nav-pills.nav-wizard > li.validated .nav-wedge, .nav-pills.nav-wizard > li.active.validated .nav-wedge, .nav-pills.nav-wizard > li.validated:hover .nav-wedge {
+.nav-pills.nav-wizard li.validated .nav-wedge, .nav-pills.nav-wizard li.active.validated .nav-wedge, .nav-pills.nav-wizard li.validated:hover .nav-wedge {
   border-color: #09af00 #09af00 #09af00 transparent;
 }
 
-.nav-pills.nav-wizard > li.validated .nav-arrow, .nav-pills.nav-wizard > li.active.validated .nav-arrow, .nav-pills.nav-wizard > li.validated:hover .nav-arrow {
+.nav-pills.nav-wizard li.validated .nav-arrow, .nav-pills.nav-wizard li.active.validated .nav-arrow, .nav-pills.nav-wizard li.validated:hover .nav-arrow {
   border-color: transparent transparent transparent #09af00;
 }
 
-.nav-pills.nav-wizard > li.active:hover a, .nav-pills.nav-wizard > li.active:hover .nav-wedge, .nav-pills.nav-wizard > li.active:hover .nav-arrow {
+.nav-pills.nav-wizard li.active:hover a, .nav-pills.nav-wizard li.active:hover .nav-wedge, .nav-pills.nav-wizard li.active:hover .nav-arrow {
   opacity: 1;
 }
 
-.nav-pills.nav-wizard > li.active a, .nav-pills.nav-wizard > li.active .nav-wedge, .nav-pills.nav-wizard > li.active .nav-arrow {
+.nav-pills.nav-wizard li.active a, .nav-pills.nav-wizard li.active .nav-wedge, .nav-pills.nav-wizard li.active .nav-arrow {
   opacity: 1;
 }
 
-.nav-pills.nav-wizard > li:hover a, .nav-pills.nav-wizard > li:hover .nav-wedge, .nav-pills.nav-wizard > li:hover .nav-arrow {
+.nav-pills.nav-wizard li:hover a, .nav-pills.nav-wizard li:hover .nav-wedge, .nav-pills.nav-wizard li:hover .nav-arrow {
   opacity: 0.75;
 }
 
@@ -274,22 +266,22 @@ iframe {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 1) inset, 0px 0px 8px rgba(0, 0, 0, 1);
 }
 
-.nav-tabs.nav-justified > li > a {
+.nav-tabs.nav-justified li a {
   border-radius: 4px;
   border-width: 0;
 }
 
-.nav-tabs.nav-justified > li.active > a, .nav-tabs.nav-justified > li.active > a:focus, .nav-tabs.nav-justified > li.active > a:active, .nav-tabs.nav-justified > li.active > a:hover {
+.nav-tabs.nav-justified li.active a, .nav-tabs.nav-justified li.active a:focus, .nav-tabs.nav-justified li.active a:active, .nav-tabs.nav-justified li.active a:hover {
   background-color: #111;
   border-color: #f00;
   border-width: 0 0 1px 0;
 }
 
-.nav-tabs.nav-justified > li > a.hasWarnings, .nav-tabs.nav-justified > li.active > a.hasWarnings:hover {
+.nav-tabs.nav-justified li a.hasWarnings, .nav-tabs.nav-justified li.active a.hasWarnings:hover {
   color: #ff7500;
 }
 
-.nav-tabs.nav-justified > li > a.hasWarnings:hover {
+.nav-tabs.nav-justified li a.hasWarnings:hover {
   color: #fff;
 }
 
@@ -301,6 +293,16 @@ label {
 .form-control:focus {
   border-color: #f00;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 0, 0, 0.6);
+}
+
+.form-control.fileinput:focus {
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.form-control.fileedition {
+  display: none;
+  height: 110px;
 }
 
 .btn-primary {
@@ -317,4 +319,39 @@ label {
   color: #bbb;
   text-shadow: 0px 1px 0px #000;
   border-bottom-color: #777;
+}
+
+#panel-submit li, #panel-submit ul {
+  margin: 0pt auto;
+  padding: 0;
+  list-style-type: none;
+}
+
+#panel-submit li {
+  width: 30%;
+  display: none;
+  margin: 10pt auto;
+}
+
+#panel-submit li a {
+  display: block;
+  padding: 10pt 20pt;
+  border: 1px solid #000;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 10px rgba(0, 0, 0, 0.8);
+  background-image: linear-gradient(to bottom, #0bd400 0px, #09af00 80%);
+  text-decoration: none;
+  vertical-align: middle;
+  outline: none;
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
+}
+
+#panel-submit li a:hover {
+  background-image: linear-gradient(to bottom, #09af00 0px, #0bd400 80%);
+}
+
+#panel-submit li a:active {
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 1) inset, 0px 0px 8px rgba(0, 0, 0, 1);
 }

@@ -108,7 +108,7 @@ var cube = {
     var json = {
       server_name: $('#vpn_server_name').val().trim(),
       server_port: $('#vpn_server_port').val().trim(),
-      server_proto: $('input[name=vpn_server_proto]:checked').val().trim(),
+      server_proto: $('input[name=vpn_server_proto]:checked').val(),
       ip6_net: $('#vpn_ip6_net').val().trim(),
       crt_server_ca: cube.crtFilesContent.crt_server_ca,
       crt_client: cube.crtFilesContent.crt_client,
@@ -132,14 +132,12 @@ var cube = {
   proposeDownload: function(json) {
     var fileContent = window.btoa(cube.toJsonTxt(json));
     fileContent = "data:application/octet-stream;base64," + fileContent;
-  
-    var downloadLink = $('<a>', {
-      text: 'config.cube',
-      download: 'config.cube',
-      href: fileContent
-    });
-  
-    downloadLink.appendTo('body');
+
+    $('#cubelink').attr('href', fileContent);
+    $('#cubelink').attr('download', 'config.cube');
+
+    $('#cubelink').parent().hide();
+    $('#cubelink').parent().fadeIn();
   }
 };
 
@@ -186,13 +184,11 @@ var hypercube = {
     var fileContent = window.btoa(hypercube.toJsonTxt(json));
     fileContent = "data:application/octet-stream;base64," + fileContent;
   
-    var downloadLink = $('<a>',{
-      text: 'install.hypercube',
-      download: 'install.hypercube',
-      href: fileContent
-    });
-  
-    downloadLink.appendTo('body');
+    $('#hypercubelink').attr('href', fileContent);
+    $('#hypercubelink').attr('download', 'install.hypercube');
+
+    $('#hypercubelink').parent().hide();
+    $('#hypercubelink').parent().fadeIn();
   }
 };
 
@@ -251,6 +247,20 @@ var view = {
     });
   },
 
+  fileInputDelButtonsSynchro: function() {
+    var delButtons = $('.deletefile');
+
+    delButtons.each(function() {
+      var fileInput = $('#' + $(this).attr('id').replace(/_deletebtn/, ''));
+
+      if(fileInput.val()) {
+        $(this).fadeIn();
+      } else {
+        $(this).hide();
+      }
+    });
+  },
+
   setEvents: function() {
     view.i18n();
 
@@ -263,7 +273,10 @@ var view = {
     $('.nav-tabs a').click(navigation.tabClick);
     $('.nav-pills a').click(navigation.questionClick);
     $('.fileinput').click(controller.fileInputClick);
+    $('.fileinput').change(controller.fileInputChange);
     $('.deletefile').click(controller.deleteFileButtonClick);
+    $('.editfile').click(controller.editFileButtonClick);
+    $('.fileedition').change(controller.fileEditionChange);
     $('input[type="file"]').change(controller.fileInputChange);
     $('#button-next').click(controller.nextButtonClick);
     $('#button-submit').click(controller.submitButtonClick);
@@ -290,40 +303,96 @@ var controller = {
     }
   },
 
-  fileInputClick: function() {
-    if(!$(this).hasClass('btn-danger')) {
-      var realinputid = '#' + $(this).attr('id').replace(/_chooser.*/, '');
-      $(realinputid).click();
-    }
+  deleteFileButtonClick: function() {
+    var textInput = $('#' + $(this).attr('id').replace(/_deletebtn$/, '_choosertxt'));
+    var fileInput = $('#' + $(this).attr('id').replace(/_deletebtn$/, ''));
+    var fileEdition = $('#' + $(this).attr('id').replace(/_deletebtn$/, '_edition'));
+
+    textInput.val('');
+    fileInput.val('');
+    fileEdition.val('');
+
+    $(this).hide();
   },
 
-  deleteFileButtonClick: function() {
-    var chooserbtnid = '#' + $(this).attr('id').replace(/_deletebtn$/, '_chooserbtn');
-    var choosertxtid = '#' + $(this).attr('id').replace(/_deletebtn$/, '_choosertxt');
-    var fileinputid = '#' + $(this).attr('id').replace(/_deletebtn$/, '');
-    var deleteinputid = '#' + $(this).attr('id').replace(/btn$/, '');
+  editFileButtonClick: function() {
+    var delButton = $('#' + $(this).attr('id').replace(/_editbtn$/, '_deletebtn'));
+    var textInput = $('#' + $(this).attr('id').replace(/_editbtn$/, '_choosertxt'));
+    var fileEdition = $('#' + $(this).attr('id').replace(/_editbtn$/, '_edition'));
 
-    $(deleteinputid).click();
-    $(chooserbtnid).toggleClass('btn-danger');
-    $(chooserbtnid).toggleClass('not-allowed');
-    $(choosertxtid).toggleClass('btn-danger');
-    $(choosertxtid).val($(choosertxtid).hasClass('btn-danger') ? 'Removal requested' : '');
-    $(fileinputid).val('');
+    delButton.hide();
+    textInput.hide();
+    fileEdition.show();
 
-    if($(this).attr('id').search('_key') >= 0) {
-      if($(choosertxtid).hasClass('btn-danger') != $('#crt_client_choosertxt').hasClass('btn-danger')) {
-        $('#crt_client_deletebtn').click();
-      }
-    } else if($(this).attr('id').search('_ta') < 0) {
-      if($(choosertxtid).hasClass('btn-danger') != $('#crt_client_key_choosertxt').hasClass('btn-danger')) {
-        $('#crt_client_key_deletebtn').click();
-      }
+    $(this).find('.glyphicon').addClass('glyphicon-upload');
+    $(this).find('.glyphicon').removeClass('glyphicon-pencil');
+    $(this).attr('data-original-title', _("Select file mode"));
+    $(this).unbind('click');
+    $(this).click(controller.uploadFileButtonClick);
+    $(this).tooltip('hide');
+  },
+
+  uploadFileButtonClick: function() {
+    var delButton = $('#' + $(this).attr('id').replace(/_editbtn$/, '_deletebtn'));
+    var fileEdition = $('#' + $(this).attr('id').replace(/_editbtn$/, '_edition'));
+    var textInput = $('#' + $(this).attr('id').replace(/_editbtn$/, '_choosertxt'));
+    var fileInput = $('#' + $(this).attr('id').replace(/_editbtn/, ''));
+
+    if(fileInput.val()) {
+      delButton.show();
     }
+
+    fileEdition.hide();
+    textInput.show();
+
+    $(this).find('.glyphicon').addClass('glyphicon-pencil');
+    $(this).find('.glyphicon').removeClass('glyphicon-upload');
+    $(this).attr('data-original-title', _("Edition mode"));
+    $(this).unbind('click');
+    $(this).click(controller.editFileButtonClick);
+    $(this).tooltip('hide');
+  },
+
+  fileInputClick: function() {
+    var fileInput = $('#' + $(this).attr('id').replace(/_chooser.*$/, ''));
+    var textInput = $('#' + $(this).attr('id').replace(/_chooser.*$/, '_choosertxt'));
+    var fileEdition = $('#' + $(this).attr('id').replace(/_chooser.*$/, '_edition'));
+
+    fileInput.click();
+    textInput.blur();
+    fileEdition.val('');
   },
 
   fileInputChange: function() {
-    var choosertxtid = '#' + $(this).attr('id') + '_choosertxt';
-    $(choosertxtid).val($(this).val().replace(/^.*[\/\\]/, ''));
+    var textInput = $('#' + $(this).attr('id') + '_choosertxt');
+    var delButton = $('#' + $(this).attr('id') + '_deletebtn');
+    var fileEdition = $('#' + $(this).attr('id') + '_edition');
+    var crtFiles = $('#' + $(this).attr('id')).prop('files');
+
+    if(crtFiles.length > 0) {
+      var fileReader = new FileReader();
+      fileReader.readAsText(crtFiles[0]);
+
+      fileReader.onload = function(e) {
+        fileEdition.val(e.target.result);
+      };
+
+      fileReader.onerror = function(e) {
+        alert(_("Cannot read this file"));
+        delButton.click();
+      }
+    }
+
+    textInput.val($(this).val().replace(/^.*[\/\\]/, ''));
+
+    if(!fileEdition.is(':visible')) {
+      delButton.fadeIn();
+    }
+  },
+
+  fileEditionChange: function() {
+    var delButton = $('#' + $(this).attr('id').replace('_edition', '_deletebtn'));
+    delButton.click();
   },
 
   nextButtonClick: function() {
@@ -339,11 +408,11 @@ var controller = {
 
   submitButtonClick: function() {
     if(validation.form()) {
-      controller.formSubmit();
+      controller.submitForm();
     }
   },
 
-  formSubmit: function() {
+  submitForm: function() {
     cube.toJson(cube.proposeDownload);
     hypercube.toJson(hypercube.proposeDownload);
 
@@ -404,7 +473,7 @@ var controller = {
 };
 
 var navigation = {
-  goToStep: function(step, ignoreWarns = false) {
+  goToStep: function(step, ignoreWarns) {
     var currentStep = $('#main').data('current-step');
 
     if(currentStep == 'aboutyou') {
@@ -419,8 +488,8 @@ var navigation = {
       }
     }
 
-    if(currentStep == 'postinstall' && !ignoreWarns) {
-      if(!validation.postinstall()) {
+    if(currentStep == 'postinstall') {
+      if(!validation.postinstall() && !ignoreWarns) {
         return false;
       }
     }
@@ -437,6 +506,10 @@ var navigation = {
 
     if(step == 'postinstall') {
       view.showButtonNext('download');
+    }
+
+    if(step == 'download') {
+      view.hideButtonNext();
     }
 
     view.showStep(step);
@@ -460,7 +533,7 @@ var navigation = {
   },
 
   questionClick: function() {
-    var question = $(this).parents('.question').prop('id');
+    var question = $(this).parents('.question').attr('id');
   
     if(question == 'question-hardware') {
       if($(this).data('answer') == 'yes') {
@@ -486,24 +559,20 @@ var navigation = {
 var validation = {
   warnings: {
     reset: function(panel) {
-      var warnings = $('#panel-' + panel + ' .alert-danger');
+      var mainWarning = $('#panel-' + panel + ' .alert-danger').first();
+      var warnings = $('#panel-' + panel + ' .alert-input');
       var step = panel.match(/^vpn-/) ? 'vpn' : panel;
 
       $('#timeline a[data-tab=' + step + ']').parent().addClass('warnings');
       $('#panel-' + panel + ' .control-label').css('color', 'white');
       $('#panel-' + panel + ' .hasWarnings').removeClass('hasWarnings');
 
-      warnings.each(function(i) {
-        if(i == 0) {
-          $(this).hide();
-          $(this).fadeIn();
-        } else {
-          if($(this).closest('.form-group')) {
-            $(this).closest('.form-group').remove();
-          } else {
-            $(this).remove();
-          }
-        }
+      mainWarning.hide();
+      //mainWarning.fadeIn(); // synchronous
+      mainWarning.show();
+
+      warnings.each(function() {
+        $(this).closest('.form-group').remove();
       });
     },
 
@@ -532,14 +601,13 @@ var validation = {
     },
 
     none: function(panel) {
-      var warnings = $('#panel-' + panel + ' .alert ul');
+      var warnings = $('#panel-' + panel + ' .alert-danger');
       var step = panel.match(/^vpn-/) ? 'vpn' : panel;
 
       $('#timeline a[data-tab=' + step + ']').parent().removeClass('warnings');
       $('#timeline a[data-tab=' + step + ']').parent().addClass('validated');
 
-      $('#panel-' + panel + ' .control-label').css('color', 'white');
-      warnings.parent().hide();
+      warnings.hide();
     }
   },
 
@@ -602,12 +670,18 @@ var validation = {
   },
 
   form: function() {
+    var nbWarns = 0;
     validation.warnings.reset('download');
 
-    if(!validation.vpn() || !validation.postinstall()) {
-      validation.warnings.add('download', _("The configuration files cannot be generated because some steps still have warnings."));
-      validation.warnings.add('download', _("Please fix them, then retry."));
+    if(!validation.vpn()) {
+      nbWarns++;
+    }
 
+    if(!validation.postinstall()) {
+      nbWarns++;
+    }
+
+    if(nbWarns > 0) {
       return false;
     }
 
@@ -641,7 +715,7 @@ var validation = {
       validation.warnings.add('vpn_cubefile', _("No .cube file selected"));
     }
 
-    if(nbWarns == 0) {
+    if(!nbWarns) {
       validation.warnings.none('vpn-auto');
 
       return true;
@@ -689,7 +763,7 @@ var validation = {
       nbWarns++;
     }
 
-    if(nbWarns == 0) {
+    if(!nbWarns) {
       validation.warnings.none('vpn-manual');
 
       return true;
@@ -778,7 +852,7 @@ var validation = {
       nbWarns++;
     }
 
-    if(nbWarns == 0) {
+    if(!nbWarns) {
       validation.warnings.none('postinstall');
 
       return true;
@@ -804,4 +878,5 @@ function _(msg) {
 
 $(document).ready(function() {
   view.setEvents();
+  view.fileInputDelButtonsSynchro();
 });

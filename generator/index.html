@@ -90,13 +90,15 @@
 
             <div class="alert alert-dismissible alert-danger fade in" role="alert">
               <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">_("Close")</span></button>
-              <strong>_("You have some issues to fix in this step.")</strong>
-              <ul></ul>
+              <strong>_("You before have to fix the issues raised in the previous steps.")</strong>
             </div>
 
-            <div class="panel-inside panel-text">
-              <button type="button" class="btn btn-default" id="button-submit">_("Validate")</button>
-              <ul></ul>
+            <div class="panel-inside panel-text" id="panel-submit">
+              <button type="button" class="btn btn-default" id="button-submit">_("Create files")</button>
+              <ul>
+                <li><a id="cubelink">config.cube</a></li>
+                <li><a id="hypercubelink">install.hypercube</a></li>
+              </ul>
             </div>
           </div>
 
@@ -108,7 +110,6 @@
             <div class="alert alert-dismissible alert-danger fade in" role="alert">
               <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">_("Close")</span></button>
               <strong>_("You have some issues to fix in this step.")</strong>
-              <ul></ul>
             </div>
 
             <ul class="nav nav-tabs nav-justified">
@@ -157,10 +158,13 @@
                 <h4 class="panel-section">_("Authentication")</h4>
 
                 <div class="form-group">
-                  <label for="vpn_crt_server_ca" class="col-sm-3 control-label">_("Upload Server CA")</label>
-                  <div class="input-group col-sm-9" style="padding: 0 15px">
+                  <label for="vpn_crt_server_ca" class="col-sm-3 control-label">_("Server CA")</label>
+                  <div class="input-group input-chooser col-sm-9">
+                    <a class="btn btn-default input-group-addon editfile" id="vpn_crt_server_ca_editbtn" data-toggle="tooltip" data-title="_('Edition mode')"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a class="btn btn-danger input-group-addon deletefile" id="vpn_crt_server_ca_deletebtn" data-toggle="tooltip" data-title="_('Unselect this certificate')"><span class="glyphicon glyphicon-remove"></span></a>
                     <input type="text" class="form-control fileinput" id="vpn_crt_server_ca_choosertxt" placeholder="-----BEGIN CERTIFICATE-----" readonly="readonly" />
-                    <input id="vpn_crt_server_ca" type="file" style="display: none" />
+                    <textarea class="form-control fileedition" id="vpn_crt_server_ca_edition"></textarea>
+                    <input id="vpn_crt_server_ca" type="file" />
                     <a class="btn input-group-addon fileinput" id="vpn_crt_server_ca_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
                   </div>
                 </div>
@@ -185,19 +189,25 @@
                 <div id="vpn_auth_type_crt">  
                   <div class="form-group">
                     <label for="vpn_crt_client" class="col-sm-3 control-label">_("Upload Client Cert")</label>
-                    <div class="input-group col-sm-9" style="padding: 0 15px">
+                    <div class="input-group input-chooser col-sm-9">
+                      <a class="btn btn-default input-group-addon editfile" id="vpn_crt_client_editbtn" data-toggle="tooltip" data-title="_('Edition mode')"><span class="glyphicon glyphicon-pencil"></span></a>
+                      <a class="btn btn-danger input-group-addon deletefile" id="vpn_crt_client_deletebtn" data-toggle="tooltip" data-title="_('Unselect this certificate')"><span class="glyphicon glyphicon-remove"></span></a>
                       <input type="text" class="form-control fileinput" id="vpn_crt_client_choosertxt" placeholder="-----BEGIN CERTIFICATE-----" readonly="readonly" />
-                      <input id="vpn_crt_client" type="file" style="display: none" />
+                      <textarea class="form-control fileedition" id="vpn_crt_client_edition"></textarea>
+                      <input id="vpn_crt_client" type="file" />
                       <a class="btn input-group-addon fileinput" id="vpn_crt_client_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
                     </div>
                   </div>
     
                   <div class="form-group">
                     <label for="vpn_crt_client_key" class="col-sm-3 control-label">_("Upload Client Key")</label>
-                    <div class="input-group col-sm-9" style="padding: 0 15px">
-                      <input type="text" class="form-control fileinput" id="vpn_crt_client_key_choosertxt" data-toggle="tooltip" data-title="_('Make sure your browser is able to read the key file before uploading')" placeholder="-----BEGIN PRIVATE KEY-----" readonly="readonly" />
-                      <input id="vpn_crt_client_key" type="file" style="display: none" />
-                      <a class="btn input-group-addon fileinput" id="vpn_crt_client_key_chooserbtn" data-toggle="tooltip" data-title="_('Browse (make sure your browser is able to read the key file before uploading)')"><span class="glyphicon glyphicon-search"></span></a>
+                    <div class="input-group input-chooser col-sm-9">
+                      <a class="btn btn-default input-group-addon editfile" id="vpn_crt_client_key_editbtn" data-toggle="tooltip" data-title="_('Edition mode')"><span class="glyphicon glyphicon-pencil"></span></a>
+                      <a class="btn btn-danger input-group-addon deletefile" id="vpn_crt_client_key_deletebtn" data-toggle="tooltip" data-title="_('Unselect this certificate')"><span class="glyphicon glyphicon-remove"></span></a>
+                      <input type="text" class="form-control fileinput" id="vpn_crt_client_key_choosertxt" placeholder="-----BEGIN PRIVATE KEY-----" readonly="readonly" />
+                      <textarea class="form-control fileedition" id="vpn_crt_client_key_edition"></textarea>
+                      <input id="vpn_crt_client_key" type="file" />
+                      <a class="btn input-group-addon fileinput" id="vpn_crt_client_key_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
                     </div>
                   </div>
                 </div>
@@ -221,10 +231,13 @@
                 <div id="vpn_auth_type_ta">
                   <div class="form-group">
                     <label for="vpn_crt_client_ta" class="col-sm-3 control-label">_("Upload Shared-Secret")</label>
-                    <div class="input-group col-sm-9" style="padding: 0 15px">
-                      <input type="text" class="form-control fileinput" id="vpn_crt_client_ta_choosertxt" data-toggle="tooltip" data-title="_('Make sure your browser is able to read the key file before uploading')" placeholder="ta.key" readonly="readonly" />
-                      <input id="vpn_crt_client_ta" type="file" style="display: none" />
-                      <a class="btn input-group-addon fileinput" id="vpn_crt_client_ta_chooserbtn" data-toggle="tooltip" data-title="_('Browse (make sure your browser is able to read the key file before uploading)')"><span class="glyphicon glyphicon-search"></span></a>
+                    <div class="input-group input-chooser col-sm-9">
+                      <a class="btn btn-default input-group-addon editfile" id="vpn_crt_client_ta_editbtn" data-toggle="tooltip" data-title="_('Edition mode')"><span class="glyphicon glyphicon-pencil"></span></a>
+                      <a class="btn btn-danger input-group-addon deletefile" id="vpn_crt_client_ta_deletebtn" data-toggle="tooltip" data-title="_('Unselect this certificate')"><span class="glyphicon glyphicon-remove"></span></a>
+                      <input type="text" class="form-control fileinput" id="vpn_crt_client_ta_choosertxt" placeholder="-----BEGIN PRIVATE KEY-----" readonly="readonly" />
+                      <textarea class="form-control fileedition" id="vpn_crt_client_ta_edition"></textarea>
+                      <input id="vpn_crt_client_ta" type="file" />
+                      <a class="btn input-group-addon fileinput" id="vpn_crt_client_ta_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
                     </div>
                   </div>
                 </div>
@@ -274,15 +287,17 @@
             <div class="alert alert-dismissible alert-danger fade in" role="alert">
               <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">_("Close")</span></button>
               <strong>_("You have some issues to fix in this step.")</strong>
-              <ul></ul>
             </div>
   
             <div class="panel-inside">
               <div class="form-group">
-                <label for="vpn_cubefile" class="col-sm-3 control-label">_("Upload Config")</label>
-                <div class="input-group col-sm-9" style="padding: 0 15px">
+                <label for="vpn_cubefile" class="col-sm-3 control-label">_("Select VPN Config")</label>
+                <div class="input-group input-chooser col-sm-9">
+                  <a class="btn btn-default input-group-addon editfile" id="vpn_cubefile_editbtn" data-toggle="tooltip" data-title="_('Edition mode')"><span class="glyphicon glyphicon-pencil"></span></a>
+                  <a class="btn btn-danger input-group-addon deletefile" id="vpn_cubefile_deletebtn" data-toggle="tooltip" data-title="_('Unselect this certificate')"><span class="glyphicon glyphicon-remove"></span></a>
                   <input type="text" class="form-control fileinput" id="vpn_cubefile_choosertxt" placeholder="config.cube" readonly="readonly" />
-                  <input id="vpn_cubefile" type="file" style="display: none" />
+                  <textarea class="form-control fileedition" id="vpn_cubefile_edition"></textarea>
+                  <input id="vpn_cubefile" type="file" />
                   <a class="btn input-group-addon fileinput" id="vpn_cubefile_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
                 </div>
               </div>
@@ -298,7 +313,6 @@
             <div class="alert alert-dismissible alert-danger fade in" role="alert">
               <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">_("Close")</span></button>
               <strong>_("You have some issues to fix in this step.")</strong>
-              <ul></ul>
             </div>
 
             <ul class="nav nav-tabs nav-justified">
