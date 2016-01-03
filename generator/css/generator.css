@@ -48,6 +48,10 @@ input[type=file] {
   margin-bottom: 5px;
 }
 
+.container {
+  width: 100%;
+}
+
 .nav li a {
   text-decoration: none;
   font-size: 10pt;
@@ -189,7 +193,7 @@ ul.nav a {
   padding: 2pt 35px 2pt 2pt;
 }
 
-.panel, #vpn_auth_type_crt, #vpn_auth_type_login, #vpn_auth_type_ta, #question-level, #question-dotcube {
+.panel, #vpn_auth_type_crt, #vpn_auth_type_login, #vpn_auth_type_ta, #question-level, #question-dotcube, #modifycubefile {
   display: none;
 }
 
@@ -354,4 +358,8 @@ label {
 
 #panel-submit li a:active {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 1) inset, 0px 0px 8px rgba(0, 0, 0, 1);
+}
+
+.cubefilelink {
+  text-align: center;
 }

@@ -16,8 +16,8 @@
   <script src="js/generator.js"></script>
 </head>
 
-<body>
 <!-- <? -->
+<body>
   <header>
     <ul class="language-links">
         <li><a hreflang="en" href="http://repo.internetcu.be" title="View the English version">EN</a></li>
@@ -27,448 +27,447 @@
   </header>
 
   <main>
-  <div class="container" id="main" data-current-step="aboutyou">
-    <ul class="nav nav-pills nav-wizard" id="timeline">
-      <li class="active"><a href="javascript:" data-tab="aboutyou">_("About You")</a><div class="nav-arrow"></div></li>
-      <li><div class="nav-wedge"></div><a href="javascript:" class="nav-main" data-tab="vpn" id="vpn-choice" data-auto="no">_("VPN")</a><div class="nav-arrow"></div></li>
-      <li><div class="nav-wedge"></div><a href="javascript:" class="nav-main" data-tab="postinstall">_("Post-Installation")</a><div class="nav-arrow"></div></li>
-      <li><div class="nav-wedge"></div><a href="javascript:" data-tab="download">_("Download")</a></li>
-    </ul>
+    <div class="container" id="main" data-current-step="aboutyou">
+      <ul class="nav nav-pills nav-wizard" id="timeline">
+        <li class="active"><a href="javascript:" data-tab="aboutyou">_("About You")</a><div class="nav-arrow"></div></li>
+        <li><div class="nav-wedge"></div><a href="javascript:" class="nav-main" data-tab="vpn" id="vpn-choice" data-auto="no">_("VPN")</a><div class="nav-arrow"></div></li>
+        <li><div class="nav-wedge"></div><a href="javascript:" class="nav-main" data-tab="postinstall">_("Post-Installation")</a><div class="nav-arrow"></div></li>
+        <li><div class="nav-wedge"></div><a href="javascript:" data-tab="download">_("Download")</a></li>
+      </ul>
+    
+      <div class="row">
+        <div class="col-sm-offset-1 col-sm-10">
+          <form class="form-horizontal" role="form">
+            <div class="panel panel-default tab" id="panel-aboutyou">
+              <div class="panel-heading">
+                <h3 class="panel-title">_("About You")</h3>
+              </div>
   
-    <div class="row">
-      <div class="col-sm-offset-1 col-sm-10">
-        <form class="form-horizontal" role="form">
-          <div class="panel panel-default tab" id="panel-aboutyou">
-            <div class="panel-heading">
-              <h3 class="panel-title">_("About You")</h3>
+              <div class="panel-inside">
+                <div id="question-hardware" class="question">
+                  <span>_("Do you have an Internet Cube and a VPN Account?")</span>
+    
+                  <ul class="nav nav-pills questions">
+                    <li><a href="javascript:" data-answer="yes">_("Yes")</a></li>
+                    <li><a href="javascript:" data-answer="no">_("No")</a></li>
+                  </ul>
+                </div>
+  
+                <div id="question-level" class="question">
+                  <span>_("Do you know how to use a terminal on GNU/Linux?")</span>
+    
+                  <ul class="nav nav-pills questions">
+                    <li><a href="javascript:" data-answer="yes">_("Yes")</a></li>
+                    <li><a href="javascript:" data-answer="no">_("No")</a></li>
+                  </ul>
+                </div>
+  
+                <div id="question-dotcube" class="question">
+                  <span>_("Do you have a .cube file in the files provided by your VPN provider?")</span>
+    
+                  <ul class="nav nav-pills questions">
+                    <li><a href="javascript:" data-answer="yes">_("Yes")</a></li>
+                    <li><a href="javascript:" data-answer="no">_("No")</a></li>
+                  </ul>
+                </div>
+              </div>
             </div>
-
-            <div class="panel-inside">
-              <div id="question-hardware" class="question">
-                <span>_("Do you have an Internet Cube and a VPN Account?")</span>
   
-                <ul class="nav nav-pills questions">
-                  <li><a href="javascript:" data-answer="yes">_("Yes")</a></li>
-                  <li><a href="javascript:" data-answer="no">_("No")</a></li>
+            <div class="panel panel-default" id="panel-ffdn">
+              <div class="panel-heading">
+                <h3 class="panel-title">_("Internet Cube and VPN providers")</h3>
+              </div>
+  
+              <div class="panel-inside">
+                <!-- <iframe src="//db.ffdn.org/embed_map_cube/"></iframe> -->
+              </div>
+            </div>
+  
+            <div class="panel panel-default" id="panel-download">
+              <div class="panel-heading">
+                <h3 class="panel-title">_("Configuration Files")</h3>
+              </div>
+  
+              <div class="alert alert-dismissible alert-danger fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">_("Close")</span></button>
+                <strong>_("You before have to fix the issues raised in the previous steps.")</strong>
+              </div>
+  
+              <div class="panel-inside panel-text" id="panel-submit">
+                <button type="button" class="btn btn-default" id="button-submit">_("Create files")</button>
+                <ul>
+                  <li><a id="cubelink">config.cube</a></li>
+                  <li><a id="hypercubelink">install.hypercube</a></li>
                 </ul>
               </div>
-
-              <div id="question-level" class="question">
-                <span>_("Do you know how to use a terminal on GNU/Linux?")</span>
+            </div>
   
-                <ul class="nav nav-pills questions">
-                  <li><a href="javascript:" data-answer="yes">_("Yes")</a></li>
-                  <li><a href="javascript:" data-answer="no">_("No")</a></li>
-                </ul>
+            <div class="panel panel-default tab" id="panel-vpn-manual">
+              <div class="panel-heading">
+                <h3 class="panel-title">_("VPN")</h3>
               </div>
-
-              <div id="question-dotcube" class="question">
-                <span>_("Do you have a .cube file in the files provided by your VPN provider?")</span>
   
-                <ul class="nav nav-pills questions">
-                  <li><a href="javascript:" data-answer="yes">_("Yes")</a></li>
-                  <li><a href="javascript:" data-answer="no">_("No")</a></li>
-                </ul>
+              <div class="alert alert-dismissible alert-danger fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">_("Close")</span></button>
+                <strong>_("You have some issues to fix in this step.")</strong>
               </div>
-            </div>
-          </div>
-
-          <div class="panel panel-default" id="panel-ffdn">
-            <div class="panel-heading">
-              <h3 class="panel-title">_("Internet Cube and VPN providers")</h3>
-            </div>
-
-            <div class="panel-inside">
-              <!-- <iframe src="//db.ffdn.org/embed_map_cube/"></iframe> -->
-            </div>
-          </div>
-
-          <div class="panel panel-default" id="panel-download">
-            <div class="panel-heading">
-              <h3 class="panel-title">_("Configuration Files")</h3>
-            </div>
-
-            <div class="alert alert-dismissible alert-danger fade in" role="alert">
-              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">_("Close")</span></button>
-              <strong>_("You before have to fix the issues raised in the previous steps.")</strong>
-            </div>
-
-            <div class="panel-inside panel-text" id="panel-submit">
-              <button type="button" class="btn btn-default" id="button-submit">_("Create files")</button>
-              <ul>
-                <li><a id="cubelink">config.cube</a></li>
-                <li><a id="hypercubelink">install.hypercube</a></li>
+  
+              <ul class="nav nav-tabs nav-justified">
+                <li class="active"><a href="javascript:" data-tab="tab-vpn-main">_("Main")</a></li>
+                <li><a href="javascript:" data-tab="tab-vpn-advanced">_("Advanced")</a></li>
               </ul>
-            </div>
-          </div>
-
-          <div class="panel panel-default tab" id="panel-vpn-manual">
-            <div class="panel-heading">
-              <h3 class="panel-title">_("VPN")</h3>
-            </div>
-
-            <div class="alert alert-dismissible alert-danger fade in" role="alert">
-              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">_("Close")</span></button>
-              <strong>_("You have some issues to fix in this step.")</strong>
-            </div>
-
-            <ul class="nav nav-tabs nav-justified">
-              <li class="active"><a href="javascript:" data-tab="tab-vpn-main">_("Main")</a></li>
-              <li><a href="javascript:" data-tab="tab-vpn-advanced">_("Advanced")</a></li>
-            </ul>
+    
+              <div class="panel-inside">
+                <div class="tab" id="tab-vpn-main">
+                  <h4 class="panel-section panel-section-first">_("Settings")</h4>
   
-            <div class="panel-inside">
-              <div class="tab" id="tab-vpn-main">
-                <h4 class="panel-section panel-section-first">_("Settings")</h4>
-
-                <div class="form-group">
-                  <label for="vpn_server_name" class="col-sm-3 control-label">_("Server Address")</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="vpn_server_name" placeholder="vpn.example.net" />
+                  <div class="form-group">
+                    <label for="vpn_server_name" class="col-sm-3 control-label">_("Server Address")</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="vpn_server_name" placeholder="vpn.example.net" />
+                    </div>
+                  </div>
+      
+                  <div class="form-group">
+                    <label for="vpn_server_port" class="col-sm-3 control-label">_("Server Port")</label>
+                    <div class="col-sm-9">
+                      <input type="text" data-toggle="tooltip" data-title="_('With restricted access, you should use 443 (TCP) or 53 (UDP)')" class="form-control" id="vpn_server_port" value="1194" placeholder="1194" />
+                    </div>
+                  </div>
+      
+                  <div class="form-group">
+                    <label for="vpn_server_proto" class="col-sm-3 control-label">_("Protocol")</label>
+                    <div class="btn-group col-sm-9" data-toggle="buttons">
+                      <label class="btn btn-default active">
+                        <input type="radio" id="vpn_server_proto_udp" value="udp" checked="checked" /> <span class="i18n">_("UDP")</span>
+                      </label>
+      
+                      <label class="btn btn-default" data-toggle="tooltip" data-title="_('UDP is more efficient than TCP (but more filtered in case of restrictive access)')">
+                        <input type="radio" id="vpn_server_proto_tcp" value="tcp" /> <span class="i18n">_("TCP")</span>
+                      </label>
+                    </div>
+                  </div>
+   
+                  <div class="form-group">
+                    <label for="vpn_ip6_net" class="col-sm-3 control-label">_("Delegated Prefix (IPv6)")</label>
+                    <div class="col-sm-9">
+                      <input type="text" data-toggle="tooltip" data-title="_('Leave empty if your Internet Service Provider does not give you a delegated prefix')" class="form-control" id="vpn_ip6_net" placeholder="2001:db8:42::" />
+                    </div>
+                  </div>
+  
+                  <h4 class="panel-section">_("Authentication")</h4>
+  
+                  <div class="form-group">
+                    <label for="vpn_crt_server_ca" class="col-sm-3 control-label">_("Server CA")</label>
+                    <div class="input-group input-chooser col-sm-9">
+                      <a class="btn btn-default input-group-addon editfile" id="vpn_crt_server_ca_editbtn" data-toggle="tooltip" data-title="_('Edition mode')"><span class="glyphicon glyphicon-pencil"></span></a>
+                      <a class="btn btn-danger input-group-addon deletefile" id="vpn_crt_server_ca_deletebtn" data-toggle="tooltip" data-title="_('Unselect this certificate')"><span class="glyphicon glyphicon-remove"></span></a>
+                      <input type="text" class="form-control fileinput" id="vpn_crt_server_ca_choosertxt" placeholder="-----BEGIN CERTIFICATE-----" readonly="readonly" />
+                      <textarea class="form-control fileedition" id="vpn_crt_server_ca_edition"></textarea>
+                      <input id="vpn_crt_server_ca" type="file" />
+                      <a class="btn input-group-addon fileinput" id="vpn_crt_server_ca_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
+                    </div>
+                  </div>
+  
+                  <div class="form-group" id="vpn_auth_type">
+                    <label for="vpn_auth_type" class="col-sm-3 control-label">_("Authentication Type")</label>
+                    <div class="btn-group col-sm-9" data-toggle="buttons">
+                      <label class="btn btn-default">
+                        <input type="checkbox" data-auth="vpn_auth_type_crt" value="1" /> <span class="i18n">_("Certificates")</span>
+                      </label>
+      
+                      <label class="btn btn-default">
+                        <input type="checkbox" data-auth="vpn_auth_type_login" value="1" /> <span class="i18n">_("Login")</span>
+                      </label>
+  
+                      <label class="btn btn-default">
+                        <input type="checkbox" data-auth="vpn_auth_type_ta" value="1" /> <span class="i18n">_("Shared-Secret")</span>
+                      </label>
+                    </div>
+                  </div>
+    
+                  <div id="vpn_auth_type_crt">  
+                    <div class="form-group">
+                      <label for="vpn_crt_client" class="col-sm-3 control-label">_("Upload Client Cert")</label>
+                      <div class="input-group input-chooser col-sm-9">
+                        <a class="btn btn-default input-group-addon editfile" id="vpn_crt_client_editbtn" data-toggle="tooltip" data-title="_('Edition mode')"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a class="btn btn-danger input-group-addon deletefile" id="vpn_crt_client_deletebtn" data-toggle="tooltip" data-title="_('Unselect this certificate')"><span class="glyphicon glyphicon-remove"></span></a>
+                        <input type="text" class="form-control fileinput" id="vpn_crt_client_choosertxt" placeholder="-----BEGIN CERTIFICATE-----" readonly="readonly" />
+                        <textarea class="form-control fileedition" id="vpn_crt_client_edition"></textarea>
+                        <input id="vpn_crt_client" type="file" />
+                        <a class="btn input-group-addon fileinput" id="vpn_crt_client_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
+                      </div>
+                    </div>
+      
+                    <div class="form-group">
+                      <label for="vpn_crt_client_key" class="col-sm-3 control-label">_("Upload Client Key")</label>
+                      <div class="input-group input-chooser col-sm-9">
+                        <a class="btn btn-default input-group-addon editfile" id="vpn_crt_client_key_editbtn" data-toggle="tooltip" data-title="_('Edition mode')"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a class="btn btn-danger input-group-addon deletefile" id="vpn_crt_client_key_deletebtn" data-toggle="tooltip" data-title="_('Unselect this certificate')"><span class="glyphicon glyphicon-remove"></span></a>
+                        <input type="text" class="form-control fileinput" id="vpn_crt_client_key_choosertxt" placeholder="-----BEGIN PRIVATE KEY-----" readonly="readonly" />
+                        <textarea class="form-control fileedition" id="vpn_crt_client_key_edition"></textarea>
+                        <input id="vpn_crt_client_key" type="file" />
+                        <a class="btn input-group-addon fileinput" id="vpn_crt_client_key_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
+                      </div>
+                    </div>
+                  </div>
+    
+                  <div id="vpn_auth_type_login">
+                    <div class="form-group">
+                      <label for="vpn_login_user" class="col-sm-3 control-label">_("Username")</label>
+                      <div class="col-sm-9">
+                        <input type="text" data-toggle="tooltip" class="form-control" id="vpn_login_user" placeholder="jdoe" />
+                      </div>
+                    </div>
+      
+                    <div class="form-group">
+                      <label for="vpn_login_passphrase" class="col-sm-3 control-label">_("Password")</label>
+                      <div class="col-sm-9">
+                        <input type="text" data-toggle="tooltip" class="form-control" id="vpn_login_passphrase" />
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div id="vpn_auth_type_ta">
+                    <div class="form-group">
+                      <label for="vpn_crt_client_ta" class="col-sm-3 control-label">_("Upload Shared-Secret")</label>
+                      <div class="input-group input-chooser col-sm-9">
+                        <a class="btn btn-default input-group-addon editfile" id="vpn_crt_client_ta_editbtn" data-toggle="tooltip" data-title="_('Edition mode')"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a class="btn btn-danger input-group-addon deletefile" id="vpn_crt_client_ta_deletebtn" data-toggle="tooltip" data-title="_('Unselect this certificate')"><span class="glyphicon glyphicon-remove"></span></a>
+                        <input type="text" class="form-control fileinput" id="vpn_crt_client_ta_choosertxt" placeholder="-----BEGIN PRIVATE KEY-----" readonly="readonly" />
+                        <textarea class="form-control fileedition" id="vpn_crt_client_ta_edition"></textarea>
+                        <input id="vpn_crt_client_ta" type="file" />
+                        <a class="btn input-group-addon fileinput" id="vpn_crt_client_ta_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
+                      </div>
+                    </div>
                   </div>
                 </div>
     
-                <div class="form-group">
-                  <label for="vpn_server_port" class="col-sm-3 control-label">_("Server Port")</label>
-                  <div class="col-sm-9">
-                    <input type="text" data-toggle="tooltip" data-title="_('With restricted access, you should use 443 (TCP) or 53 (UDP)')" class="form-control" id="vpn_server_port" value="1194" placeholder="1194" />
+                <div class="tab" id="tab-vpn-advanced">
+                  <h4 class="panel-section panel-section-first">_("DNS")</h4>
+  
+                  <div class="form-group">
+                    <label for="vpn_dns0" class="col-sm-3 control-label">_("First resolver")</label>
+                    <div class="col-sm-9">
+                      <input type="text" data-toggle="tooltip" data-title="_('IPv6 or IPv4')" class="form-control" id="vpn_dns0" placeholder="89.234.141.66" value="89.234.141.66" />
+                    </div>
                   </div>
-                </div>
     
-                <div class="form-group">
-                  <label for="vpn_server_proto" class="col-sm-3 control-label">_("Protocol")</label>
-                  <div class="btn-group col-sm-9" data-toggle="buttons">
-                    <label class="btn btn-default active">
-                      <input type="radio" id="vpn_server_proto_udp" value="udp" checked="checked" /> <span class="i18n">_("UDP")</span>
-                    </label>
+                  <div class="form-group">
+                    <label for="vpn_dns1" class="col-sm-3 control-label">_("Second resolver")</label>
+                    <div class="col-sm-9">
+                      <input type="text" data-toggle="tooltip" data-title="_('IPv6 or IPv4')" class="form-control" id="vpn_dns1" placeholder="2001:913::8" value="2001:913::8" />
+                    </div>
+                  </div>
+  
+                  <h4 class="panel-section">_("OpenVPN")</h4>
+  
+                  <div class="form-group">
+                    <label for="vpn_openvpn_add" class="col-sm-3 control-label">_("Options to add")</label>
+                    <div class="col-sm-9">
+                      <textarea class="form-control" id="vpn_openvpn_add"></textarea>
+                    </div>
+                  </div>
+  
+                  <div class="form-group">
+                    <label for="vpn_openvpn_rm" class="col-sm-3 control-label">_("Options to remove")</label>
+                    <div class="col-sm-9">
+                      <textarea class="form-control" id="vpn_openvpn_rm"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
     
-                    <label class="btn btn-default" data-toggle="tooltip" data-title="_('UDP is more efficient than TCP (but more filtered in case of restrictive access)')">
-                      <input type="radio" id="vpn_server_proto_tcp" value="tcp" /> <span class="i18n">_("TCP")</span>
-                    </label>
-                  </div>
-                </div>
- 
+            <div class="panel panel-default" id="panel-vpn-auto">
+              <div class="panel-heading">
+                <h3 class="panel-title">_("VPN")</h3>
+              </div>
+  
+              <div class="alert alert-dismissible alert-danger fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">_("Close")</span></button>
+                <strong>_("You have some issues to fix in this step.")</strong>
+              </div>
+    
+              <div class="panel-inside">
                 <div class="form-group">
-                  <label for="vpn_ip6_net" class="col-sm-3 control-label">_("Delegated Prefix (IPv6)")</label>
-                  <div class="col-sm-9">
-                    <input type="text" data-toggle="tooltip" data-title="_('Leave empty if your Internet Service Provider does not give you a delegated prefix')" class="form-control" id="vpn_ip6_net" placeholder="2001:db8:42::" />
-                  </div>
-                </div>
-
-                <h4 class="panel-section">_("Authentication")</h4>
-
-                <div class="form-group">
-                  <label for="vpn_crt_server_ca" class="col-sm-3 control-label">_("Server CA")</label>
+                  <label for="vpn_cubefile" class="col-sm-3 control-label">_("Select VPN Config")</label>
                   <div class="input-group input-chooser col-sm-9">
-                    <a class="btn btn-default input-group-addon editfile" id="vpn_crt_server_ca_editbtn" data-toggle="tooltip" data-title="_('Edition mode')"><span class="glyphicon glyphicon-pencil"></span></a>
-                    <a class="btn btn-danger input-group-addon deletefile" id="vpn_crt_server_ca_deletebtn" data-toggle="tooltip" data-title="_('Unselect this certificate')"><span class="glyphicon glyphicon-remove"></span></a>
-                    <input type="text" class="form-control fileinput" id="vpn_crt_server_ca_choosertxt" placeholder="-----BEGIN CERTIFICATE-----" readonly="readonly" />
-                    <textarea class="form-control fileedition" id="vpn_crt_server_ca_edition"></textarea>
-                    <input id="vpn_crt_server_ca" type="file" />
-                    <a class="btn input-group-addon fileinput" id="vpn_crt_server_ca_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
+                    <input type="text" class="form-control fileinput" id="vpn_cubefile_choosertxt" placeholder="config.cube" readonly="readonly" />
+                    <textarea class="form-control fileedition" id="vpn_cubefile_edition"></textarea>
+                    <input id="vpn_cubefile" type="file" />
+                    <a class="btn input-group-addon fileinput" id="vpn_cubefile_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
                   </div>
                 </div>
-
-                <div class="form-group" id="vpn_auth_type">
-                  <label for="vpn_auth_type" class="col-sm-3 control-label">_("Authentication Type")</label>
-                  <div class="btn-group col-sm-9" data-toggle="buttons">
-                    <label class="btn btn-default">
-                      <input type="checkbox" data-auth="vpn_auth_type_crt" value="1" /> <span class="i18n">_("Certificates")</span>
-                    </label>
+                <p class="cubefilelink"><a href="http://internetcu.be/dotcubefiles.html">_("What is a dot cube file?")</a></p>
+                <p class="cubefilelink" id="modifycubefile"><a href="javascript:">_("Edit values")</a></p>
+              </div>
+            </div>
+  
+            <div class="panel panel-default tab" id="panel-postinstall">
+              <div class="panel-heading">
+                <h3 class="panel-title">_("Post-Installation")</h3>
+              </div>
+  
+              <div class="alert alert-dismissible alert-danger fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">_("Close")</span></button>
+                <strong>_("You have some issues to fix in this step.")</strong>
+              </div>
+  
+              <ul class="nav nav-tabs nav-justified">
+                <li class="active"><a href="javascript:" data-tab="tab-postinstall-main">_("Main")</a></li>
+                <li><a href="javascript:" data-tab="tab-postinstall-advanced">_("Advanced")</a></li>
+              </ul>
     
-                    <label class="btn btn-default">
-                      <input type="checkbox" data-auth="vpn_auth_type_login" value="1" /> <span class="i18n">_("Login")</span>
-                    </label>
+              <div class="panel-inside">
+                <div class="tab" id="tab-postinstall-main">
+                  <h4 class="panel-section panel-section-first">_("YunoHost")</h4>
 
-                    <label class="btn btn-default">
-                      <input type="checkbox" data-auth="vpn_auth_type_ta" value="1" /> <span class="i18n">_("Shared-Secret")</span>
-                    </label>
+                  <div class="form-group">
+                    <label for="ynh_user" class="col-sm-3 control-label">_("Main Username")</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="ynh_user" placeholder="jdoe" />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="ynh_password" class="col-sm-3 control-label">_("Main Password")</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="ynh_password" />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="ynh_domain" class="col-sm-3 control-label">_("Main Domain")</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="ynh_domain" placeholder="example.org" />
+                    </div>
+                  </div>
+
+                  <div class="form-group dynette">
+                    <label class="col-sm-3"></label>
+                    <div class="col-sm-9">
+                      <img src="../img/loading.gif" /> <span></span>
+                    </div>
+                  </div>
+
+                  <h4 class="panel-section">_("Wifi Hotspot")</h4>
+
+                  <div class="form-group">
+                    <label for="hotspot_wifi_ssid" class="col-sm-3 control-label">_("Name (SSID)")</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="hotspot_wifi_ssid" placeholder="myNeutralNetwork" />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="hotspot_wifi_passphrase" class="col-sm-3 control-label">_("Password")</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="hotspot_wifi_passphrase" />
+                    </div>
                   </div>
                 </div>
   
-                <div id="vpn_auth_type_crt">  
-                  <div class="form-group">
-                    <label for="vpn_crt_client" class="col-sm-3 control-label">_("Upload Client Cert")</label>
-                    <div class="input-group input-chooser col-sm-9">
-                      <a class="btn btn-default input-group-addon editfile" id="vpn_crt_client_editbtn" data-toggle="tooltip" data-title="_('Edition mode')"><span class="glyphicon glyphicon-pencil"></span></a>
-                      <a class="btn btn-danger input-group-addon deletefile" id="vpn_crt_client_deletebtn" data-toggle="tooltip" data-title="_('Unselect this certificate')"><span class="glyphicon glyphicon-remove"></span></a>
-                      <input type="text" class="form-control fileinput" id="vpn_crt_client_choosertxt" placeholder="-----BEGIN CERTIFICATE-----" readonly="readonly" />
-                      <textarea class="form-control fileedition" id="vpn_crt_client_edition"></textarea>
-                      <input id="vpn_crt_client" type="file" />
-                      <a class="btn input-group-addon fileinput" id="vpn_crt_client_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
-                    </div>
-                  </div>
-    
-                  <div class="form-group">
-                    <label for="vpn_crt_client_key" class="col-sm-3 control-label">_("Upload Client Key")</label>
-                    <div class="input-group input-chooser col-sm-9">
-                      <a class="btn btn-default input-group-addon editfile" id="vpn_crt_client_key_editbtn" data-toggle="tooltip" data-title="_('Edition mode')"><span class="glyphicon glyphicon-pencil"></span></a>
-                      <a class="btn btn-danger input-group-addon deletefile" id="vpn_crt_client_key_deletebtn" data-toggle="tooltip" data-title="_('Unselect this certificate')"><span class="glyphicon glyphicon-remove"></span></a>
-                      <input type="text" class="form-control fileinput" id="vpn_crt_client_key_choosertxt" placeholder="-----BEGIN PRIVATE KEY-----" readonly="readonly" />
-                      <textarea class="form-control fileedition" id="vpn_crt_client_key_edition"></textarea>
-                      <input id="vpn_crt_client_key" type="file" />
-                      <a class="btn input-group-addon fileinput" id="vpn_crt_client_key_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
-                    </div>
-                  </div>
-                </div>
+                <div class="tab" id="tab-postinstall-advanced">
+                  <h4 class="panel-section panel-section-first">_("YunoHost")</h4>
   
-                <div id="vpn_auth_type_login">
                   <div class="form-group">
-                    <label for="vpn_login_user" class="col-sm-3 control-label">_("Username")</label>
+                    <label for="ynh_user_firstname" class="col-sm-3 control-label">_("First name")</label>
                     <div class="col-sm-9">
-                      <input type="text" data-toggle="tooltip" class="form-control" id="vpn_login_user" placeholder="jdoe" />
+                      <input type="text" class="form-control" id="ynh_user_firstname" placeholder="John" value="John" />
                     </div>
                   </div>
-    
-                  <div class="form-group">
-                    <label for="vpn_login_passphrase" class="col-sm-3 control-label">_("Password")</label>
-                    <div class="col-sm-9">
-                      <input type="text" data-toggle="tooltip" class="form-control" id="vpn_login_passphrase" />
-                    </div>
-                  </div>
-                </div>
 
-                <div id="vpn_auth_type_ta">
                   <div class="form-group">
-                    <label for="vpn_crt_client_ta" class="col-sm-3 control-label">_("Upload Shared-Secret")</label>
-                    <div class="input-group input-chooser col-sm-9">
-                      <a class="btn btn-default input-group-addon editfile" id="vpn_crt_client_ta_editbtn" data-toggle="tooltip" data-title="_('Edition mode')"><span class="glyphicon glyphicon-pencil"></span></a>
-                      <a class="btn btn-danger input-group-addon deletefile" id="vpn_crt_client_ta_deletebtn" data-toggle="tooltip" data-title="_('Unselect this certificate')"><span class="glyphicon glyphicon-remove"></span></a>
-                      <input type="text" class="form-control fileinput" id="vpn_crt_client_ta_choosertxt" placeholder="-----BEGIN PRIVATE KEY-----" readonly="readonly" />
-                      <textarea class="form-control fileedition" id="vpn_crt_client_ta_edition"></textarea>
-                      <input id="vpn_crt_client_ta" type="file" />
-                      <a class="btn input-group-addon fileinput" id="vpn_crt_client_ta_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
+                    <label for="ynh_user_lastname" class="col-sm-3 control-label">_("Last name")</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="ynh_user_lastname" placeholder="Doe" value="Doe" />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="ynh_user_password" class="col-sm-3 control-label">_("Password")</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="ynh_user_password" data-toggle="tooltip" data-title="_('Default: same as Main Password')" />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="ynh_add_domain" class="col-sm-3 control-label">_("Additional domain")</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="ynh_add_domain" placeholder="example.org" />
+                    </div>
+                  </div>
+
+                  <h4 class="panel-section">_("Wifi Hotspot")</h4>
+
+                  <div class="form-group">
+                    <label for="hotspot_ip6_net" class="col-sm-3 control-label">_("IPv6 delegated Prefix")</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="hotspot_ip6_net" placeholder="2001:db8:42::" />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="hotspot_ip6_dns0" class="col-sm-3 control-label">_("First IPv6 DNS resolver")</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="hotspot_ip6_dns0" placeholder="2001:913::8" value="2001:913::8" />
+                    </div>
+                  </div>
+  
+                  <div class="form-group">
+                    <label for="hotspot_ip6_dns1" class="col-sm-3 control-label">_("Second IPv6 DNS resolver")</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="hotspot_ip6_dns1" placeholder="2001:910:800::40" value="2001:910:800::40" />
+                    </div>
+                  </div>
+  
+                  <div class="form-group">
+                    <label for="hotspot_ip4_dns0" class="col-sm-3 control-label">_("First IPv4 DNS resolver")</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="hotspot_ip4_dns0" placeholder="80.67.188.188" value="80.67.188.188" />
+                    </div>
+                  </div>
+  
+                  <div class="form-group">
+                    <label for="hotspot_ip4_dns1" class="col-sm-3 control-label">_("Second IPv4 DNS resolver")</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="hotspot_ip4_dns1" placeholder="80.67.169.12" value="80.67.169.12" />
+                    </div>
+                  </div>
+  
+                  <div class="form-group">
+                    <label for="hotspot_ip4_nat_prefix" class="col-sm-3 control-label">_("IPv4 NAT Prefix (/24)")</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="hotspot_ip4_nat_prefix" placeholder="10.0.242" value="10.0.242" />
+                    </div>
+                  </div>
+  
+                  <div class="form-group">
+                    <label for="hotspot_firmware_nonfree" class="col-sm-3 control-label">_("Non-free firmwares")</label>
+                    <div class="col-sm-9 input-group-btn">
+                      <div class="input-group">
+                        <input type="checkbox" class="form-control switch" id="hotspot_firmware_nonfree" value="1" checked="checked" />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-  
-              <div class="tab" id="tab-vpn-advanced">
-                <h4 class="panel-section panel-section-first">_("DNS")</h4>
-
-                <div class="form-group">
-                  <label for="vpn_dns0" class="col-sm-3 control-label">_("First resolver")</label>
-                  <div class="col-sm-9">
-                    <input type="text" data-toggle="tooltip" data-title="_('IPv6 or IPv4')" class="form-control" id="vpn_dns0" placeholder="89.234.141.66" value="89.234.141.66" />
-                  </div>
-                </div>
-  
-                <div class="form-group">
-                  <label for="vpn_dns1" class="col-sm-3 control-label">_("Second resolver")</label>
-                  <div class="col-sm-9">
-                    <input type="text" data-toggle="tooltip" data-title="_('IPv6 or IPv4')" class="form-control" id="vpn_dns1" placeholder="2001:913::8" value="2001:913::8" />
-                  </div>
-                </div>
-
-                <h4 class="panel-section">_("OpenVPN")</h4>
-
-                <div class="form-group">
-                  <label for="vpn_openvpn_add" class="col-sm-3 control-label">_("Options to add")</label>
-                  <div class="col-sm-9">
-                    <textarea class="form-control" id="vpn_openvpn_add"></textarea>
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="vpn_openvpn_rm" class="col-sm-3 control-label">_("Options to remove")</label>
-                  <div class="col-sm-9">
-                    <textarea class="form-control" id="vpn_openvpn_rm"></textarea>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
-  
-          <div class="panel panel-default" id="panel-vpn-auto">
-            <div class="panel-heading">
-              <h3 class="panel-title">_("VPN")</h3>
-            </div>
-
-            <div class="alert alert-dismissible alert-danger fade in" role="alert">
-              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">_("Close")</span></button>
-              <strong>_("You have some issues to fix in this step.")</strong>
-            </div>
-  
-            <div class="panel-inside">
+      
+            <div id="buttons">
               <div class="form-group">
-                <label for="vpn_cubefile" class="col-sm-3 control-label">_("Select VPN Config")</label>
-                <div class="input-group input-chooser col-sm-9">
-                  <a class="btn btn-default input-group-addon editfile" id="vpn_cubefile_editbtn" data-toggle="tooltip" data-title="_('Edition mode')"><span class="glyphicon glyphicon-pencil"></span></a>
-                  <a class="btn btn-danger input-group-addon deletefile" id="vpn_cubefile_deletebtn" data-toggle="tooltip" data-title="_('Unselect this certificate')"><span class="glyphicon glyphicon-remove"></span></a>
-                  <input type="text" class="form-control fileinput" id="vpn_cubefile_choosertxt" placeholder="config.cube" readonly="readonly" />
-                  <textarea class="form-control fileedition" id="vpn_cubefile_edition"></textarea>
-                  <input id="vpn_cubefile" type="file" />
-                  <a class="btn input-group-addon fileinput" id="vpn_cubefile_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
-                </div>
-              </div>
-              <p style="text-align: center"><a href="http://internetcu.be/dotcubefiles.html">_("What is a dot cube file?")</a></p>
-            </div>
-          </div>
-
-          <div class="panel panel-default tab" id="panel-postinstall">
-            <div class="panel-heading">
-              <h3 class="panel-title">_("Post-Installation")</h3>
-            </div>
-
-            <div class="alert alert-dismissible alert-danger fade in" role="alert">
-              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">_("Close")</span></button>
-              <strong>_("You have some issues to fix in this step.")</strong>
-            </div>
-
-            <ul class="nav nav-tabs nav-justified">
-              <li class="active"><a href="javascript:" data-tab="tab-postinstall-main">_("Main")</a></li>
-              <li><a href="javascript:" data-tab="tab-postinstall-advanced">_("Advanced")</a></li>
-            </ul>
-  
-            <div class="panel-inside">
-              <div class="tab" id="tab-postinstall-main">
-                <h4 class="panel-section panel-section-first">_("YunoHost")</h4>
-
-                <div class="form-group">
-                  <label for="ynh_user" class="col-sm-3 control-label">_("Main Username")</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="ynh_user" placeholder="jdoe" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="ynh_password" class="col-sm-3 control-label">_("Main Password")</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="ynh_password" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="ynh_domain" class="col-sm-3 control-label">_("Main Domain")</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="ynh_domain" placeholder="example.org" />
-                  </div>
-                </div>
-
-                <div class="form-group dynette">
-                  <label class="col-sm-3"></label>
-                  <div class="col-sm-9">
-                    <img src="../img/loading.gif" /> <span></span>
-                  </div>
-                </div>
-
-                <h4 class="panel-section">_("Wifi Hotspot")</h4>
-
-                <div class="form-group">
-                  <label for="hotspot_wifi_ssid" class="col-sm-3 control-label">_("Name (SSID)")</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="hotspot_wifi_ssid" placeholder="myNeutralNetwork" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="hotspot_wifi_passphrase" class="col-sm-3 control-label">_("Password")</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="hotspot_wifi_passphrase" />
-                  </div>
-                </div>
-              </div>
-
-              <div class="tab" id="tab-postinstall-advanced">
-                <h4 class="panel-section panel-section-first">_("YunoHost")</h4>
-
-                <div class="form-group">
-                  <label for="ynh_user_firstname" class="col-sm-3 control-label">_("First name")</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="ynh_user_firstname" placeholder="John" value="John" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="ynh_user_lastname" class="col-sm-3 control-label">_("Last name")</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="ynh_user_lastname" placeholder="Doe" value="Doe" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="ynh_user_password" class="col-sm-3 control-label">_("Password")</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="ynh_user_password" data-toggle="tooltip" data-title="_('Default: same as Main Password')" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="ynh_add_domain" class="col-sm-3 control-label">_("Additional domain")</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="ynh_add_domain" placeholder="example.org" />
-                  </div>
-                </div>
-
-                <h4 class="panel-section">_("Wifi Hotspot")</h4>
-
-                <div class="form-group">
-                  <label for="hotspot_ip6_net" class="col-sm-3 control-label">_("IPv6 delegated Prefix")</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="hotspot_ip6_net" placeholder="2001:db8:42::" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="hotspot_ip6_dns0" class="col-sm-3 control-label">_("First IPv6 DNS resolver")</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="hotspot_ip6_dns0" placeholder="2001:913::8" value="2001:913::8" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="hotspot_ip6_dns1" class="col-sm-3 control-label">_("Second IPv6 DNS resolver")</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="hotspot_ip6_dns1" placeholder="2001:910:800::40" value="2001:910:800::40" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="hotspot_ip4_dns0" class="col-sm-3 control-label">_("First IPv4 DNS resolver")</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="hotspot_ip4_dns0" placeholder="80.67.188.188" value="80.67.188.188" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="hotspot_ip4_dns1" class="col-sm-3 control-label">_("Second IPv4 DNS resolver")</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="hotspot_ip4_dns1" placeholder="80.67.169.12" value="80.67.169.12" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="hotspot_ip4_nat_prefix" class="col-sm-3 control-label">_("IPv4 NAT Prefix (/24)")</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="hotspot_ip4_nat_prefix" placeholder="10.0.242" value="10.0.242" />
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label for="hotspot_firmware_nonfree" class="col-sm-3 control-label">_("Non-free firmwares")</label>
-                  <div class="col-sm-9 input-group-btn">
-                    <div class="input-group">
-                      <input type="checkbox" class="form-control switch" id="hotspot_firmware_nonfree" value="1" checked="checked" />
-                    </div>
-                  </div>
-                </div>
+                <button type="button" class="btn btn-default" id="button-next">_("Next step")</button>
               </div>
             </div>
-          </div>
-    
-          <div id="buttons">
-            <div class="form-group">
-              <button type="button" class="btn btn-default" id="button-next">_("Next step")</button>
-            </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-</main>
+  </main>
 
-<footer>
-  <a href="http://labriqueinter.net">Internet Cube</a>
-</footer>
+  <footer>
+    <a href="http://labriqueinter.net">Internet Cube</a>
+  </footer>
 </body>
 </html>

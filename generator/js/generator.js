@@ -16,104 +16,135 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+// <?
+
 
 /**************
  *** MODELS ***
  **************/
 
 var cube = {
-  crtFilesContent: {
-    index: 0,
-    read: false,
-    crt_server_ca: '',
-    crt_client: '',
-    crt_client_key: '',
-    crt_client_ta: ''
-  },
-
-  readCrtFiles: function() {
-    var filesToRead = [
-      'crt_server_ca',
-      'crt_client',
-      'crt_client_key',
-      'crt_client_ta'
-    ];
-
-    cube.crtFilesContent.read = true;
-  
-    $.each(filesToRead, function(i, fileName) {
-      cube.readCrtFileContent(fileName);
-    });
-  },
-
-  readCrtFileContent: function(id) {
-    var crtFiles = $('#vpn_' + id).prop('files');
-
-    if(crtFiles.length > 0) {
-      var fileReader = new FileReader();
-      fileReader.readAsText(crtFiles[0]);
-  
-      fileReader.onload = function(e) {
-        var fileContent = e.target.result;
-        var crtFileContent = cube.formatCrtFileContent(fileContent);
-
-        cube.crtFilesContent[id] = crtFileContent;
-        cube.crtFilesContent.index++;
-      };
-  
-      return true;
-    }
-  
-    cube.crtFilesContent.index++;
-  
-    return false;
-  },
-
-  formatCrtFileContent: function (txt) {
-    txt = txt.replace(/\n/g, '|');
-    txt = txt.replace(/^.*\|(-.*-\|.*\|-.*-)\|.*$/, '$1');
-  
-    return txt;
-  },
-
-  hasConfigToUpload: function() {
-    var cubeFiles = $('#vpn_cubefile').prop('files');
-
-    if(cubeFiles.length > 0) {
-      
-    }
-  },
-
-  toJson: function(callback, callbackArg1) {
-    var stalker = function() {
-      if(cube.crtFilesContent.index < 4) {
-        setTimeout(stalker, 100);
-      } else {
-        cube.doToJson(callback, callbackArg1);
+  helpers: {
+    compressCertificate: function (txt) {
+      if(txt) {
+        txt = txt.replace(/\n/g, '|');
+        txt = txt.replace(/^.*\|(-.*-\|.*\|-.*-)\|.*$/, '$1');
       }
-    };
+    
+      return txt;
+    },
 
-    if(!cube.crtFilesContent.read) {
-      cube.readCrtFiles();
+    decompressCertificate: function(txt) {
+      if(txt) {
+        txt = txt.replace(/\|/g, "\n");
+      }
+
+      return txt;
     }
-
-    stalker();
   },
 
-  doToJson: function(callback, callbackArg1) {
-    if(cube.crtFilesContent.index < 4) {
-      return false;
+  fromJson: function(json) {
+    $('#vpn_server_name').val(json['server_name']);
+    $('#vpn_server_port').val(json['server_port']);
+    $('#vpn_dns0').val(json['dns0']);
+    $('#vpn_dns1').val(json['dns1']);
+    $('#vpn_ip6_net').val(json['ip6_net']);
+    $('#vpn_login_user').val(json['login_user']);
+    $('#vpn_login_passphrase').val(json['login_passphrase']);
+    $('#vpn_openvpn_rm').val(json['openvpn_rm'].join("\n"));
+    $('#vpn_openvpn_add').val(json['openvpn_add'].join("\n"));
+
+    if(!$('#vpn_server_proto_' + json['server_proto']).is(':checked')) {
+      $('#vpn_server_proto_' + json['server_proto']).click();
     }
 
+    if($('input[data-auth=vpn_auth_type_login]').is(':checked') ? !json['login_user'] : json['login_user']) {
+      $('input[data-auth=vpn_auth_type_login]').click();
+    }
+
+    $('#vpn_crt_server_ca_deletebtn').click();
+    $('#vpn_crt_server_ca_edition').val(cube.helpers.decompressCertificate(json['crt_server_ca']));
+
+    if(json['crt_server_ca']) {
+      if($('#vpn_crt_server_ca_editbtn').find('span').hasClass('glyphicon-pencil')) {
+        $('#vpn_crt_server_ca_editbtn').click();
+      }
+    } else {
+      if($('#vpn_crt_server_ca_editbtn').hasClass('glyphicon-upload')) {
+        $('#vpn_crt_server_ca_editbtn').click();
+      }
+    }
+
+    $('#vpn_crt_client_key_deletebtn').click();
+    $('#vpn_crt_client_key_edition').val(cube.helpers.decompressCertificate(json['crt_client_key']));
+
+    if(json['crt_client_key']) {
+      if(!$('input[data-auth=vpn_auth_type_crt]').is(':checked')) {
+        $('input[data-auth=vpn_auth_type_crt]').click();
+      }
+
+      if($('#vpn_crt_client_key_editbtn').find('span').hasClass('glyphicon-pencil')) {
+        $('#vpn_crt_client_key_editbtn').click();
+      }
+    } else {
+      if($('input[data-auth=vpn_auth_type_crt]').is(':checked')) {
+        $('input[data-auth=vpn_auth_type_crt]').click();
+      }
+
+      if($('#vpn_crt_client_key_editbtn').hasClass('glyphicon-upload')) {
+        $('#vpn_crt_client_key_editbtn').click();
+      }
+    }
+
+    $('#vpn_crt_client_deletebtn').click();
+    $('#vpn_crt_client_edition').val(cube.helpers.decompressCertificate(json['crt_client']));
+
+    if(json['crt_client']) {
+      if($('#vpn_crt_client_editbtn').find('span').hasClass('glyphicon-pencil')) {
+        $('#vpn_crt_client_editbtn').click();
+      }
+    } else {
+      if($('#vpn_crt_client_editbtn').hasClass('glyphicon-upload')) {
+        $('#vpn_crt_client_editbtn').click();
+      }
+    }
+
+    $('#vpn_crt_ta_deletebtn').click();
+    $('#vpn_crt_ta_edition').val(cube.helpers.decompressCertificate(json['crt_ta']));
+
+    if(json['crt_ta']) {
+      if(!$('input[data-auth=vpn_auth_type_ta]').is(':checked')) {
+        $('input[data-auth=vpn_auth_type_ta]').click();
+      }
+
+      if($('#vpn_crt_ta_editbtn').find('span').hasClass('glyphicon-pencil')) {
+        $('#vpn_crt_ta_editbtn').click();
+      }
+    } else {
+      if($('input[data-auth=vpn_auth_type_ta]').is(':checked')) {
+        $('input[data-auth=vpn_auth_type_ta]').click();
+      }
+
+      if($('#vpn_crt_ta_editbtn').hasClass('glyphicon-upload')) {
+        $('#vpn_crt_ta_editbtn').click();
+      }
+    }
+  },
+
+  fromJsonTxt: function(json) {
+    return cube.fromJson(JSON.parse(json));
+  },
+
+  toJson: function() {
     var json = {
       server_name: $('#vpn_server_name').val().trim(),
       server_port: $('#vpn_server_port').val().trim(),
       server_proto: $('input[name=vpn_server_proto]:checked').val(),
       ip6_net: $('#vpn_ip6_net').val().trim(),
-      crt_server_ca: cube.crtFilesContent.crt_server_ca,
-      crt_client: cube.crtFilesContent.crt_client,
-      crt_client_key: cube.crtFilesContent.crt_client_key,
-      crt_client_ta: cube.crtFilesContent.crt_client_ta,
+      crt_server_ca: cube.helpers.compressCertificate($('#vpn_crt_server_ca_edition').val()),
+      crt_client: cube.helpers.compressCertificate($('#vpn_crt_client_edition').val()),
+      crt_client_key: cube.helpers.compressCertificate($('#vpn_crt_client_key_edition').val()),
+      crt_client_ta: cube.helpers.compressCertificate($('#vpn_crt_client_ta_edition').val()),
       login_user: $('#vpn_login_user').val().trim(),
       login_passphrase: $('#vpn_login_passphrase').val().trim(),
       dns0: $('#vpn_dns0').val().trim(),
@@ -122,14 +153,14 @@ var cube = {
       openvpn_add: $('#vpn_openvpn_add').val().split("\n")
     };
 
-    callback(json, callbackArg1);
+    return json;
   },
 
   toJsonTxt: function(json) {
     return JSON.stringify(json, null, 2);
   },
 
-  proposeDownload: function(json) {
+  downloadLink: function(json) {
     var fileContent = window.btoa(cube.toJsonTxt(json));
     fileContent = "data:application/octet-stream;base64," + fileContent;
 
@@ -142,13 +173,9 @@ var cube = {
 };
 
 var hypercube = {
-  toJson: function(callback) {
-    cube.toJson(hypercube.doToJson, callback);
-  },
-
-  doToJson: function(cubeJson, callback) {
+  toJson: function() {
     var json = {
-      vpnclient: cubeJson,
+      vpnclient: cube.toJson(),
 
       hotspot: {
         wifi_ssid: $('#hotspot_wifi_ssid').val().trim(),
@@ -173,14 +200,14 @@ var hypercube = {
       }
     };
 
-    callback(json);
+    return json;
   },
 
   toJsonTxt: function(json) {
     return JSON.stringify(json, null, 2);
   },
 
-  proposeDownload: function(json) {
+  downloadLink: function(json) {
     var fileContent = window.btoa(hypercube.toJsonTxt(json));
     fileContent = "data:application/octet-stream;base64," + fileContent;
   
@@ -261,6 +288,14 @@ var view = {
     });
   },
 
+  checkboxesSynchro: function() {
+    $('input[type=radio],input[type=checkbox]').each(function() {
+      if($(this).is(':checked') ? !$(this).parent().hasClass('active') : $(this).parent().hasClass('active')) {
+        $(this).click();
+      }
+    });
+  },
+
   setEvents: function() {
     view.i18n();
 
@@ -284,6 +319,7 @@ var view = {
     $('#vpn_ip6_net').blur(controller.vpnIp6NetBlur);
     $('#ynh_password').blur(controller.ynhPasswordBlur);
     $('#vpn_auth_type').find('input').change(controller.vpnAuthTypeChange);
+    $('#modifycubefile').click(controller.modifyCubeFileClick);
   }
 };
 
@@ -338,7 +374,9 @@ var controller = {
     var textInput = $('#' + $(this).attr('id').replace(/_editbtn$/, '_choosertxt'));
     var fileInput = $('#' + $(this).attr('id').replace(/_editbtn/, ''));
 
-    if(fileInput.val()) {
+    if(fileEdition.data('changed')) {
+      delButton.click();
+    } else if(fileInput.val()) {
       delButton.show();
     }
 
@@ -360,7 +398,6 @@ var controller = {
 
     fileInput.click();
     textInput.blur();
-    fileEdition.val('');
   },
 
   fileInputChange: function() {
@@ -368,13 +405,21 @@ var controller = {
     var delButton = $('#' + $(this).attr('id') + '_deletebtn');
     var fileEdition = $('#' + $(this).attr('id') + '_edition');
     var crtFiles = $('#' + $(this).attr('id')).prop('files');
+    var fileInput = $(this);
 
     if(crtFiles.length > 0) {
       var fileReader = new FileReader();
       fileReader.readAsText(crtFiles[0]);
+      fileEdition.val('');
 
       fileReader.onload = function(e) {
         fileEdition.val(e.target.result);
+        fileEdition.data('changed', false);
+
+        if(fileInput.attr('id') == 'vpn_cubefile') {
+          controller.loadCubeFile();
+          $('#modifycubefile').fadeIn();
+        }
       };
 
       fileReader.onerror = function(e) {
@@ -391,8 +436,12 @@ var controller = {
   },
 
   fileEditionChange: function() {
-    var delButton = $('#' + $(this).attr('id').replace('_edition', '_deletebtn'));
-    delButton.click();
+    $(this).data('changed', true);
+  },
+
+  loadCubeFile: function() {
+    var fileEdition = $('#vpn_cubefile_edition');
+    cube.fromJsonTxt(fileEdition.val());
   },
 
   nextButtonClick: function() {
@@ -413,8 +462,8 @@ var controller = {
   },
 
   submitForm: function() {
-    cube.toJson(cube.proposeDownload);
-    hypercube.toJson(hypercube.proposeDownload);
+    cube.downloadLink(cube.toJson());
+    hypercube.downloadLink(hypercube.toJson());
 
     return false;
   },
@@ -468,8 +517,15 @@ var controller = {
     if(!$('#ynh_user_password').val().trim()) {
       $('#ynh_user_password').val($(this).val().trim());
     }
-  }
+  },
 
+  modifyCubeFileClick: function() {
+    $('#vpn-choice').data('auto', 'no');
+    $('#vpn_cubefile').val('');
+    $('#vpn_cubefile_edition').val('');
+
+    navigation.goToStep('vpn-manual', true);
+  }
 };
 
 var navigation = {
@@ -673,6 +729,10 @@ var validation = {
     var nbWarns = 0;
     validation.warnings.reset('download');
 
+    $('#vpn-choice').data('auto', 'no');
+    $('#vpn_cubefile').val('');
+    $('#vpn_cubefile_edition').val('');
+
     if(!validation.vpn()) {
       nbWarns++;
     }
@@ -730,11 +790,11 @@ var validation = {
 
     var ip6Fields = [ 'vpn_ip6_net' ];
     var ipFields = [ 'vpn_dns0', 'vpn_dns1' ];
-    var mandatoryFields = [ 'vpn_server_name', 'vpn_server_port', 'vpn_crt_server_ca', 'vpn_dns0', 'vpn_dns1' ];
+    var mandatoryFields = [ 'vpn_server_name', 'vpn_server_port', 'vpn_crt_server_ca_edition', 'vpn_dns0', 'vpn_dns1' ];
 
     if($('input[data-auth=vpn_auth_type_crt]').is(':checked')) {
-      mandatoryFields.push('vpn_crt_client');
-      mandatoryFields.push('vpn_crt_client_key');
+      mandatoryFields.push('vpn_crt_client_edition');
+      mandatoryFields.push('vpn_crt_client_key_edition');
     }
 
     if($('input[data-auth=vpn_auth_type_login]').is(':checked')) {
@@ -743,7 +803,7 @@ var validation = {
     }
 
     if($('input[data-auth=vpn_auth_type_ta]').is(':checked')) {
-      mandatoryFields.push('vpn_crt_client_ta');
+      mandatoryFields.push('vpn_crt_client_ta_edition');
     }
 
     if(!validation.helpers.testMandatoryFields(mandatoryFields)) {
@@ -758,7 +818,7 @@ var validation = {
       nbWarns++;
     }
 
-    if($('#vpn_server_port').val().trim() && !$('#vpn_server_port').val().match(/^[0-9]+/)) {
+    if($('#vpn_server_port').val().trim() && !$('#vpn_server_port').val().match(/^[0-9]+$/)) {
       validation.warnings.add('vpn_server_port', _("Must be only composed of digits"));
       nbWarns++;
     }
@@ -837,7 +897,7 @@ var validation = {
       }
     }
 
-    if($('#ynh_password').val().trim() && !$('#ynh_password').val().trim().length < 4) {
+    if($('#ynh_password').val().trim() && $('#ynh_password').val().trim().length < 4) {
       validation.warnings.add('ynh_password', _("Must be greater than 4 characters"));
       nbWarns++;
     }
@@ -879,4 +939,5 @@ function _(msg) {
 $(document).ready(function() {
   view.setEvents();
   view.fileInputDelButtonsSynchro();
+  view.checkboxesSynchro();
 });
