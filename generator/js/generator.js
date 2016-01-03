@@ -315,9 +315,9 @@ var view = {
     $('input[type="file"]').change(controller.fileInputChange);
     $('#button-next').click(controller.nextButtonClick);
     $('#button-submit').click(controller.submitButtonClick);
-    $('#ynh_domain').blur(controller.dynetteCheckingBlur);
-    $('#vpn_ip6_net').blur(controller.vpnIp6NetBlur);
-    $('#ynh_password').blur(controller.ynhPasswordBlur);
+    $('#ynh_domain').change(controller.dynetteCheckingChange);
+    $('#vpn_ip6_net').change(controller.vpnIp6NetChange);
+    $('#ynh_password').change(controller.ynhPasswordChange);
     $('#vpn_auth_type').find('input').change(controller.vpnAuthTypeChange);
     $('#modifycubefile').click(controller.modifyCubeFileClick);
   }
@@ -418,6 +418,8 @@ var controller = {
 
         if(fileInput.attr('id') == 'vpn_cubefile') {
           controller.loadCubeFile();
+
+          $('#vpn_ip6_net').change();
           $('#modifycubefile').fadeIn();
         }
       };
@@ -468,7 +470,7 @@ var controller = {
     return false;
   },
 
-  dynetteCheckingBlur: function() {
+  dynetteCheckingChange: function() {
     var dynette = $('.dynette');
     var dynetteText = dynette.find('span');
 
@@ -507,13 +509,13 @@ var controller = {
     }
   },
 
-  vpnIp6NetBlur: function() {
+  vpnIp6NetChange: function() {
     if(!$('#hotspot_ip6_net').val().trim()) {
       $('#hotspot_ip6_net').val($(this).val().trim());
     }
   },
 
-  ynhPasswordBlur: function() {
+  ynhPasswordChange: function() {
     if(!$('#ynh_user_password').val().trim()) {
       $('#ynh_user_password').val($(this).val().trim());
     }
