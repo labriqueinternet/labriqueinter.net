@@ -44,6 +44,10 @@ var cube = {
   },
 
   fromJson: function(json) {
+    if(!json['server_name']) {
+      return false;
+    }
+
     $('#vpn_server_name').val(json['server_name']);
     $('#vpn_server_port').val(json['server_port']);
     $('#vpn_dns0').val(json['dns0']);
@@ -56,10 +60,12 @@ var cube = {
 
     if(!$('#vpn_server_proto_' + json['server_proto']).is(':checked')) {
       $('#vpn_server_proto_' + json['server_proto']).click();
+      $('#vpn_server_proto_' + json['server_proto']).prop('checked', true);
     }
 
     if($('input[data-auth=vpn_auth_type_login]').is(':checked') ? !json['login_user'] : json['login_user']) {
       $('input[data-auth=vpn_auth_type_login]').click();
+      $('input[data-auth=vpn_auth_type_login]').prop('checked', json['login_user']);
     }
 
     $('#vpn_crt_server_ca_deletebtn').click();
@@ -81,6 +87,7 @@ var cube = {
     if(json['crt_client_key']) {
       if(!$('input[data-auth=vpn_auth_type_crt]').is(':checked')) {
         $('input[data-auth=vpn_auth_type_crt]').click();
+        $('input[data-auth=vpn_auth_type_crt]').prop('checked', true);
       }
 
       if($('#vpn_crt_client_key_editbtn').find('span').hasClass('glyphicon-pencil')) {
@@ -89,6 +96,7 @@ var cube = {
     } else {
       if($('input[data-auth=vpn_auth_type_crt]').is(':checked')) {
         $('input[data-auth=vpn_auth_type_crt]').click();
+        $('input[data-auth=vpn_auth_type_crt]').prop('checked', false);
       }
 
       if($('#vpn_crt_client_key_editbtn').hasClass('glyphicon-upload')) {
@@ -115,6 +123,7 @@ var cube = {
     if(json['crt_ta']) {
       if(!$('input[data-auth=vpn_auth_type_ta]').is(':checked')) {
         $('input[data-auth=vpn_auth_type_ta]').click();
+        $('input[data-auth=vpn_auth_type_ta]').prop('checked', true);
       }
 
       if($('#vpn_crt_ta_editbtn').find('span').hasClass('glyphicon-pencil')) {
@@ -123,28 +132,40 @@ var cube = {
     } else {
       if($('input[data-auth=vpn_auth_type_ta]').is(':checked')) {
         $('input[data-auth=vpn_auth_type_ta]').click();
+        $('input[data-auth=vpn_auth_type_ta]').prop('checked', false);
       }
 
       if($('#vpn_crt_ta_editbtn').hasClass('glyphicon-upload')) {
         $('#vpn_crt_ta_editbtn').click();
       }
     }
+
+    return true;
   },
 
   fromJsonTxt: function(json) {
-    return cube.fromJson(JSON.parse(json));
+    try {
+      return cube.fromJson(JSON.parse(json));
+
+    } catch(e) {
+      if(/JSON/.test(e)) {
+        throw 'syntax';
+      }
+
+      throw e;
+    }
   },
 
   toJson: function() {
     var json = {
-      server_name: $('#vpn_server_name').val().trim(),
+      server_name: $('#vpn_server_name').val().trim().toLowerCase(),
       server_port: $('#vpn_server_port').val().trim(),
       server_proto: $('input[name=vpn_server_proto]:checked').val(),
       ip6_net: $('#vpn_ip6_net').val().trim(),
       crt_server_ca: cube.helpers.compressCertificate($('#vpn_crt_server_ca_edition').val()),
       crt_client: cube.helpers.compressCertificate($('#vpn_crt_client_edition').val()),
       crt_client_key: cube.helpers.compressCertificate($('#vpn_crt_client_key_edition').val()),
-      crt_client_ta: cube.helpers.compressCertificate($('#vpn_crt_client_ta_edition').val()),
+      crt_client_ta: cube.helpers.compressCertificate($('#vpn_crt_ta_edition').val()),
       login_user: $('#vpn_login_user').val().trim(),
       login_passphrase: $('#vpn_login_passphrase').val().trim(),
       dns0: $('#vpn_dns0').val().trim(),
@@ -173,6 +194,51 @@ var cube = {
 };
 
 var hypercube = {
+  fromJson: function(json) {
+    if(!json['vpnclient'] || !cube.fromJson(json['vpnclient'])) {
+      return false;
+    }
+
+    $('#hotspot_wifi_ssid').val(json['hotspot']['wifi_ssid']);
+    $('#hotspot_wifi_passphrase').val(json['hotspot']['wifi_passphrase']);
+    $('#hotspot_ip6_net').val(json['hotspot']['ip6_net']);
+    $('#hotspot_ip6_dns0').val(json['hotspot']['ip6_dns0']);
+    $('#hotspot_ip6_dns1').val(json['hotspot']['ip6_dns1']);
+    $('#hotspot_ip4_dns0').val(json['hotspot']['ip4_dns0']);
+    $('#hotspot_ip4_dns1').val(json['hotspot']['ip4_dns1']);
+    $('#hotspot_ip4_nat_prefix').val(json['hotspot']['ip4_nat_prefix']);
+
+    if($('#hotspot_firmware_nonfree').is(':checked') ? !json['hotspot']['firmware_nonfree'] : json['hotspot']['firmware_nonfree']) {
+      $('#hotspot_firmware_nonfree').click();
+      $('#hotspot_firmware_nonfree').prop('checked', json['hotspot']['firmware_nonfree']);
+    }
+
+    $('#yunohost_domain').val(json['yunohost']['domain']);
+    $('#yunohost_add_domain').val(json['yunohost']['add_domain']);
+    $('#yunohost_password').val(json['yunohost']['password']);
+    $('#yunohost_user').val(json['yunohost']['user']);
+    $('#yunohost_user_firstname').val(json['yunohost']['user_firstname']);
+    $('#yunohost_user_lastname').val(json['yunohost']['user_lastname']);
+    $('#yunohost_user_password').val(json['yunohost']['user_password']);
+
+    validation.all();
+
+    return true;
+  },
+
+  fromJsonTxt: function(json) {
+    try {
+      return hypercube.fromJson(JSON.parse(json));
+
+    } catch(e) {
+      if(/JSON/.test(e)) {
+        throw 'syntax';
+      }
+
+      throw e;
+    }
+  },
+
   toJson: function() {
     var json = {
       vpnclient: cube.toJson(),
@@ -190,8 +256,8 @@ var hypercube = {
       },
 
       yunohost: {
-        domain: $('#ynh_domain').val().trim(),
-        add_domain: $('#ynh_add_domain').val().trim(),
+        domain: $('#ynh_domain').val().trim().toLowerCase(),
+        add_domain: $('#ynh_add_domain').val().trim().toLowerCase(),
         password: $('#ynh_password').val().trim(),
         user: $('#ynh_user').val().trim(),
         user_firstname: $('#ynh_user_firstname').val().trim(),
@@ -274,16 +340,22 @@ var view = {
     });
   },
 
-  fileInputDelButtonsSynchro: function() {
-    var delButtons = $('.deletefile');
+  fileInputSynchro: function() {
+    var fileInputs = $('.fileinput');
 
-    delButtons.each(function() {
-      var fileInput = $('#' + $(this).attr('id').replace(/_deletebtn/, ''));
+    fileInputs.each(function() {
+      var delButton = $('#' + $(this).attr('id').replace(/_choosertxt$/, '_deletebtn'));
+      var editButton = $('#' + $(this).attr('id').replace(/_choosertxt$/, '_editbtn'));
+      var fileEdition = $('#' + $(this).attr('id').replace(/_choosertxt$/, '_edition'));
 
-      if(fileInput.val()) {
-        $(this).fadeIn();
+      if($(this).val()) {
+        delButton.show();
       } else {
-        $(this).hide();
+        delButton.hide();
+
+        if(fileEdition.val()) {
+          editButton.click();
+        }
       }
     });
   },
@@ -320,6 +392,8 @@ var view = {
     $('#ynh_password').change(controller.ynhPasswordChange);
     $('#vpn_auth_type').find('input').change(controller.vpnAuthTypeChange);
     $('#modifycubefile').click(controller.modifyCubeFileClick);
+    $('#loadhypercube').click(controller.loadHyperCubeClick);
+    $('#hypercube').change(controller.hyperCubeFileChange);
   }
 };
 
@@ -407,6 +481,10 @@ var controller = {
     var crtFiles = $('#' + $(this).attr('id')).prop('files');
     var fileInput = $(this);
 
+    if(fileInput.attr('id') == 'vpn_cubefile') {
+      $('#modifycubefile').hide();
+    }
+
     if(crtFiles.length > 0) {
       var fileReader = new FileReader();
       fileReader.readAsText(crtFiles[0]);
@@ -418,9 +496,6 @@ var controller = {
 
         if(fileInput.attr('id') == 'vpn_cubefile') {
           controller.loadCubeFile();
-
-          $('#vpn_ip6_net').change();
-          $('#modifycubefile').fadeIn();
         }
       };
 
@@ -442,8 +517,29 @@ var controller = {
   },
 
   loadCubeFile: function() {
-    var fileEdition = $('#vpn_cubefile_edition');
-    cube.fromJsonTxt(fileEdition.val());
+    try {
+      if(cube.fromJsonTxt($('#vpn_cubefile_edition').val())) {
+        $('#vpn_ip6_net').change();
+        $('#modifycubefile').fadeIn();
+
+      } else {
+        throw 'content';
+      }
+
+    } catch(e) {
+      switch(e) {
+        case 'syntax':
+          alert(_("Invalid file (syntax error):") + ' ' + _("are you sure that this is your .cube file?"));
+        break;
+
+        case 'content':
+          alert(_("Invalid file (content error):") + ' ' + _("are you sure that this is your .cube file?"));
+        break;
+
+        default:
+          throw e;
+      }
+    }
   },
 
   nextButtonClick: function() {
@@ -458,7 +554,7 @@ var controller = {
   },
 
   submitButtonClick: function() {
-    if(validation.form()) {
+    if(validation.all()) {
       controller.submitForm();
     }
   },
@@ -479,30 +575,35 @@ var controller = {
     dynette.removeClass('dynetterror');
 
     if($(this).val().trim().match(/\.nohost\.me$/) || $(this).val().trim().match(/\.noho\.st$/)) {
+      dynette.hide();
+      dynetteText.text(_("Checking the avaibility of this domain..."));
+      dynette.fadeIn();
+
       $.ajax({
         url: 'http://dyndns.yunohost.org/test/' + $(this).val().trim(),
         crossDomain: true,
 
         error: function(jqXHR, textStatus, errorThrown) {
-          dynette.addClass('dynetterror');
-          dynetteText.text(_("Cannot check the domain availability"));
-
           dynette.hide();
+
+          if(jqXHR.status == 409) {
+            dynette.addClass('notavailable');
+            dynetteText.text(_("This domain is not available"));
+
+          } else {
+            dynette.addClass('dynetterror');
+            dynetteText.text(_("Cannot check the domain availability (does not work offline)"));
+          }
+
           dynette.fadeIn();
         },
 
         success: function(data) {
-          var msg = $.parseJSON(data.responseText);
-  
-          if(msg['error']) {
-            dynette.addClass('notavailable');
-            dynetteText.text(_("This domain is not available"));
-          } else {
-            dynette.addClass('available');
-            dynetteText.text(_("This domain is available"));
-          }
-  
           dynette.hide();
+
+          dynette.addClass('available');
+          dynetteText.text(_("This domain is available"));
+
           dynette.fadeIn();
         }
       });
@@ -527,6 +628,49 @@ var controller = {
     $('#vpn_cubefile_edition').val('');
 
     navigation.goToStep('vpn-manual', true);
+  },
+
+  loadHyperCubeClick: function() {
+    if(confirm(_("Loading an existing HyperCube file will replace all values currently set.") + "\n\n" + _("Are you sure?"))) {
+      $('#hypercube').click();
+    }
+  },
+
+  hyperCubeFileChange: function() {
+    var hypercubeFiles = $(this).prop('files');
+
+    if(hypercubeFiles.length > 0) {
+      var fileReader = new FileReader();
+      fileReader.readAsText(hypercubeFiles[0]);
+
+      fileReader.onload = function(e) {
+        try {
+          if(hypercube.fromJsonTxt(e.target.result)) {
+
+          } else {
+            throw 'content';
+          }
+
+        } catch(e) {
+          switch(e) {
+            case 'syntax':
+              alert(_("Invalid file (syntax error):") + ' ' + _("are you sure that this is an HyperCube file?"));
+            break;
+
+            case 'content':
+              alert(_("Invalid file (content error):") + ' ' + _("are you sure that this is an HyperCube file?"));
+            break;
+
+            default:
+              throw e;
+          }
+        }
+      };
+
+      fileReader.onerror = function(e) {
+        alert(_("Cannot read this file"));
+      }
+    }
   }
 };
 
@@ -621,12 +765,12 @@ var validation = {
       var warnings = $('#panel-' + panel + ' .alert-input');
       var step = panel.match(/^vpn-/) ? 'vpn' : panel;
 
+      $('#timeline a[data-tab=' + step + ']').parent().removeClass('validated');
       $('#timeline a[data-tab=' + step + ']').parent().addClass('warnings');
       $('#panel-' + panel + ' .control-label').css('color', 'white');
       $('#panel-' + panel + ' .hasWarnings').removeClass('hasWarnings');
 
       mainWarning.hide();
-      //mainWarning.fadeIn(); // synchronous
       mainWarning.show();
 
       warnings.each(function() {
@@ -727,7 +871,7 @@ var validation = {
     }
   },
 
-  form: function() {
+  all: function() {
     var nbWarns = 0;
     validation.warnings.reset('download');
 
@@ -805,7 +949,7 @@ var validation = {
     }
 
     if($('input[data-auth=vpn_auth_type_ta]').is(':checked')) {
-      mandatoryFields.push('vpn_crt_client_ta_edition');
+      mandatoryFields.push('vpn_crt_ta_edition');
     }
 
     if(!validation.helpers.testMandatoryFields(mandatoryFields)) {
@@ -940,6 +1084,6 @@ function _(msg) {
 
 $(document).ready(function() {
   view.setEvents();
-  view.fileInputDelButtonsSynchro();
+  view.fileInputSynchro();
   view.checkboxesSynchro();
 });

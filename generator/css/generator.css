@@ -1,4 +1,4 @@
-/* VPN Client app for YunoHost 
+hypercube/* VPN Client app for YunoHost 
  * Copyright (C) 2015 Julien Vaubourg <julien@vaubourg.com>
  * Contribute at https://github.com/labriqueinternet/vpnclient_ynh
  * 
@@ -154,22 +154,21 @@ ul.nav a {
 .dynette {
   margin-top: -15px;
   font-size: 11pt;
+  font-style: italic;
   display: none;
 }
 
 .dynette.available {
   color: #09af00;
-  font-weight: bold;
+  font-style: normal;
+}
+
+.dynette.notavailable {
+  font-style: normal;
 }
 
 .dynette.notavailable, .dynette.dynetterror {
   color: #f00;
-  font-weight: bold;
-}
-
-.dynette.notavailable, .dynette.dynetterror {
-  font-weight: normal;
-  font-style: italic;
 }
 
 .dynette.available img, .dynette.notavailable img, .dynette.dynetterror img {
@@ -177,15 +176,15 @@ ul.nav a {
 }
 
 .dynette.available span:before {
-  content:  "\2714 ";
+  content:  "\2714\00A0 ";
 }
 
 .dynette.notavailable span:before {
-  content:  "\2716 ";
+  content:  "\2716\00A0 ";
 }
 
 .dynette.dynetterror span:before {
-  content:  "\27B0 ";
+  content:  "\03DF\00A0 ";
 }
 
 .alert-input .alert {
@@ -362,4 +361,22 @@ label {
 
 .cubefilelink {
   text-align: center;
+}
+
+.language-links {
+  float: left;
+}
+
+#loadhypercube {
+  display: block;
+  float: right;
+  margin: 0.5em 1em;
+  font-size: 0.7em;
+  font-weight: bold;
+  text-decoration: none;
+  outline: none;
+}
+
+h1 {
+  clear: right;
 }
