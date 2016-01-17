@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Generator</title>
+  <title>HyperCube Generator</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link media="all" type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link media="all" type="text/css" href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
@@ -27,11 +27,11 @@
     <input id="hypercube" type="file" />
     <a href="javascript:" id="loadhypercube" data-toggle="tooltip" data-placement="bottom" data-title="_('Load an existing HyperCube file')"><span class="glyphicon glyphicon-cloud-upload"></span> <span>_("LOAD FILE")</span></a>
 
-    <h1><span>generator</span>.ÎnternetCu.be</h1>
+    <h1><span>hypercube</span>.ÎnternetCu.be</h1>
   </header>
 
   <main>
-    <div class="container" id="main" data-current-step="aboutyou">
+    <div class="container" id="main">
       <ul class="nav nav-pills nav-wizard" id="timeline">
         <li class="active"><a href="javascript:" data-tab="aboutyou">_("About You")</a><div class="nav-arrow"></div></li>
         <li><div class="nav-wedge"></div><a href="javascript:" class="nav-main" data-tab="vpn" id="vpn-choice" data-auto="no">_("VPN")</a><div class="nav-arrow"></div></li>
@@ -42,6 +42,16 @@
       <div class="row">
         <div class="col-sm-offset-1 col-sm-10">
           <form class="form-horizontal" role="form">
+            <div class="alert alert-dismissible alert-info info-main fade in" role="alert">
+              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">_("Close")</span></button>
+              <span>_("This generator is in a BETA state and is NOT WORKING with the current version of install-sd.sh and YunoHost.")</span>
+            </div>
+
+            <div class="alert alert-dismissible alert-info info-main fade in" role="alert">
+              <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">_("Close")</span></button>
+              <span>_("You will have to provide secret keys and passwords. This service can work offline.")</span>
+            </div>
+
             <div class="panel panel-default tab" id="panel-aboutyou">
               <div class="panel-heading">
                 <h3 class="panel-title">_("About You")</h3>
@@ -49,7 +59,7 @@
   
               <div class="panel-inside">
                 <div id="question-hardware" class="question">
-                  <span>_("Do you have an Internet Cube and a VPN Account?")</span>
+                  <span>_("Do you have an Internet Cube (LIME or LIME2) and a VPN Account?")</span>
     
                   <ul class="nav nav-pills questions">
                     <li><a href="javascript:" data-answer="yes">_("Yes")</a></li>
@@ -83,13 +93,19 @@
               </div>
   
               <div class="panel-inside">
-                <!-- <iframe src="//db.ffdn.org/embed_map_cube/"></iframe> -->
+                <h2>_("You need help!")</h2>
+                <p class="i18n">_("If you do not have an Internet Cube (LIME/LIME2) or a VPN account, or you do not know how to use a terminal on GNU/Linux, you should not use this service alone now, and should asking someone for some help. It is not a problem, because there are a lot of non-profit organizations, ready to help you :).")</p>
+                <p class="i18n">_("You can choose an organization referenced on the map below, or try to find another one close to you (Linux User Groups, non-profit ISPs, etc).")</p>
+
+                <div id="ffdnmap">
+                  <iframe src="//db.ffdn.org/embed_map_cube/"></iframe>
+                </div>
               </div>
             </div>
   
             <div class="panel panel-default" id="panel-download">
               <div class="panel-heading">
-                <h3 class="panel-title">_("Configuration Files")</h3>
+                <h3 class="panel-title">_("Ready to Download!")</h3>
               </div>
   
               <div class="alert alert-dismissible alert-danger fade in" role="alert">
@@ -110,12 +126,17 @@
               <div class="panel-heading">
                 <h3 class="panel-title">_("VPN")</h3>
               </div>
+
+              <div class="alert alert-dismissible alert-info fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">_("Close")</span></button>
+                <span>_("If you do not know what how to fill this step, please ask your VPN provider for a .cube file, and")</span> <a href="javascript:" id="vpnauto">_("use it")</a>.
+              </div>
   
               <div class="alert alert-dismissible alert-danger fade in" role="alert">
                 <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">_("Close")</span></button>
                 <strong>_("You have some issues to fix in this step.")</strong>
               </div>
-  
+
               <ul class="nav nav-tabs nav-justified">
                 <li class="active"><a href="javascript:" data-tab="tab-vpn-main">_("Main")</a></li>
                 <li><a href="javascript:" data-tab="tab-vpn-advanced">_("Advanced")</a></li>
@@ -143,11 +164,11 @@
                     <label for="vpn_server_proto" class="col-sm-3 control-label">_("Protocol")</label>
                     <div class="btn-group col-sm-9" data-toggle="buttons">
                       <label class="btn btn-default active">
-                        <input type="radio" id="vpn_server_proto_udp" value="udp" checked="checked" /> <span class="i18n">_("UDP")</span>
+                        <input type="radio" id="vpn_server_proto_udp" value="udp" checked="checked" /> <span>_("UDP")</span>
                       </label>
       
                       <label class="btn btn-default" data-toggle="tooltip" data-title="_('UDP is more efficient than TCP (but more filtered in case of restrictive access)')">
-                        <input type="radio" id="vpn_server_proto_tcp" value="tcp" /> <span class="i18n">_("TCP")</span>
+                        <input type="radio" id="vpn_server_proto_tcp" value="tcp" /> <span>_("TCP")</span>
                       </label>
                     </div>
                   </div>
@@ -166,10 +187,10 @@
                     <div class="input-group input-chooser col-sm-9">
                       <a class="btn btn-default input-group-addon editfile" id="vpn_crt_server_ca_editbtn" data-toggle="tooltip" data-title="_('Edition mode')"><span class="glyphicon glyphicon-pencil"></span></a>
                       <a class="btn btn-danger input-group-addon deletefile" id="vpn_crt_server_ca_deletebtn" data-toggle="tooltip" data-title="_('Unselect this certificate')"><span class="glyphicon glyphicon-remove"></span></a>
-                      <input type="text" class="form-control fileinput" id="vpn_crt_server_ca_choosertxt" placeholder="-----BEGIN CERTIFICATE-----" readonly="readonly" />
-                      <textarea class="form-control fileedition" id="vpn_crt_server_ca_edition"></textarea>
+                      <input type="text" class="form-control fileinput" id="vpn_crt_server_ca_choosertxt" placeholder="myisp.crt" readonly="readonly" />
+                      <textarea class="form-control fileedition" placeholder="-----BEGIN CERTIFICATE-----" id="vpn_crt_server_ca_edition"></textarea>
                       <input id="vpn_crt_server_ca" type="file" />
-                      <a class="btn input-group-addon fileinput" id="vpn_crt_server_ca_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
+                      <a class="btn input-group-addon filebrowse" id="vpn_crt_server_ca_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
                     </div>
                   </div>
   
@@ -177,15 +198,15 @@
                     <label for="vpn_auth_type" class="col-sm-3 control-label">_("Authentication Type")</label>
                     <div class="btn-group col-sm-9" data-toggle="buttons">
                       <label class="btn btn-default">
-                        <input type="checkbox" data-auth="vpn_auth_type_crt" value="1" /> <span class="i18n">_("Certificates")</span>
+                        <input type="checkbox" data-auth="vpn_auth_type_crt" value="1" /> <span>_("Certificates")</span>
                       </label>
       
                       <label class="btn btn-default">
-                        <input type="checkbox" data-auth="vpn_auth_type_login" value="1" /> <span class="i18n">_("Login")</span>
+                        <input type="checkbox" data-auth="vpn_auth_type_login" value="1" /> <span>_("Login")</span>
                       </label>
   
                       <label class="btn btn-default">
-                        <input type="checkbox" data-auth="vpn_auth_type_ta" value="1" /> <span class="i18n">_("Shared-Secret")</span>
+                        <input type="checkbox" data-auth="vpn_auth_type_ta" value="1" /> <span>_("Shared-Secret")</span>
                       </label>
                     </div>
                   </div>
@@ -196,10 +217,10 @@
                       <div class="input-group input-chooser col-sm-9">
                         <a class="btn btn-default input-group-addon editfile" id="vpn_crt_client_editbtn" data-toggle="tooltip" data-title="_('Edition mode')"><span class="glyphicon glyphicon-pencil"></span></a>
                         <a class="btn btn-danger input-group-addon deletefile" id="vpn_crt_client_deletebtn" data-toggle="tooltip" data-title="_('Unselect this certificate')"><span class="glyphicon glyphicon-remove"></span></a>
-                        <input type="text" class="form-control fileinput" id="vpn_crt_client_choosertxt" placeholder="-----BEGIN CERTIFICATE-----" readonly="readonly" />
-                        <textarea class="form-control fileedition" id="vpn_crt_client_edition"></textarea>
+                        <input type="text" class="form-control fileinput" id="vpn_crt_client_choosertxt" placeholder="jdoe.crt" readonly="readonly" />
+                        <textarea class="form-control fileedition"  placeholder="-----BEGIN CERTIFICATE-----" id="vpn_crt_client_edition"></textarea>
                         <input id="vpn_crt_client" type="file" />
-                        <a class="btn input-group-addon fileinput" id="vpn_crt_client_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
+                        <a class="btn input-group-addon filebrowse" id="vpn_crt_client_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
                       </div>
                     </div>
       
@@ -208,10 +229,10 @@
                       <div class="input-group input-chooser col-sm-9">
                         <a class="btn btn-default input-group-addon editfile" id="vpn_crt_client_key_editbtn" data-toggle="tooltip" data-title="_('Edition mode')"><span class="glyphicon glyphicon-pencil"></span></a>
                         <a class="btn btn-danger input-group-addon deletefile" id="vpn_crt_client_key_deletebtn" data-toggle="tooltip" data-title="_('Unselect this certificate')"><span class="glyphicon glyphicon-remove"></span></a>
-                        <input type="text" class="form-control fileinput" id="vpn_crt_client_key_choosertxt" placeholder="-----BEGIN PRIVATE KEY-----" readonly="readonly" />
-                        <textarea class="form-control fileedition" id="vpn_crt_client_key_edition"></textarea>
+                        <input type="text" class="form-control fileinput" id="vpn_crt_client_key_choosertxt" placeholder="jdoe.key" readonly="readonly" />
+                        <textarea class="form-control fileedition"  placeholder="-----BEGIN PRIVATE KEY-----" id="vpn_crt_client_key_edition"></textarea>
                         <input id="vpn_crt_client_key" type="file" />
-                        <a class="btn input-group-addon fileinput" id="vpn_crt_client_key_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
+                        <a class="btn input-group-addon filebrowse" id="vpn_crt_client_key_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
                       </div>
                     </div>
                   </div>
@@ -238,10 +259,10 @@
                       <div class="input-group input-chooser col-sm-9">
                         <a class="btn btn-default input-group-addon editfile" id="vpn_crt_ta_editbtn" data-toggle="tooltip" data-title="_('Edition mode')"><span class="glyphicon glyphicon-pencil"></span></a>
                         <a class="btn btn-danger input-group-addon deletefile" id="vpn_crt_ta_deletebtn" data-toggle="tooltip" data-title="_('Unselect this certificate')"><span class="glyphicon glyphicon-remove"></span></a>
-                        <input type="text" class="form-control fileinput" id="vpn_crt_ta_choosertxt" placeholder="-----BEGIN PRIVATE KEY-----" readonly="readonly" />
-                        <textarea class="form-control fileedition" id="vpn_crt_ta_edition"></textarea>
+                        <input type="text" class="form-control fileinput" id="vpn_crt_ta_choosertxt" placeholder="myisp_ta.key" readonly="readonly" />
+                        <textarea class="form-control fileedition" placeholder="-----BEGIN PRIVATE KEY-----" id="vpn_crt_ta_edition"></textarea>
                         <input id="vpn_crt_ta" type="file" />
-                        <a class="btn input-group-addon fileinput" id="vpn_crt_ta_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
+                        <a class="btn input-group-addon filebrowse" id="vpn_crt_ta_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
                       </div>
                     </div>
                   </div>
@@ -300,10 +321,9 @@
                     <input type="text" class="form-control fileinput" id="vpn_cubefile_choosertxt" placeholder="config.cube" readonly="readonly" />
                     <textarea class="form-control fileedition" id="vpn_cubefile_edition"></textarea>
                     <input id="vpn_cubefile" type="file" />
-                    <a class="btn input-group-addon fileinput" id="vpn_cubefile_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
+                    <a class="btn input-group-addon filebrowse" id="vpn_cubefile_chooserbtn" data-toggle="tooltip" data-title="_('Browse')"><span class="glyphicon glyphicon-search"></span></a>
                   </div>
                 </div>
-                <p class="cubefilelink"><a href="http://internetcu.be/dotcubefiles.html">_("What is a dot cube file?")</a></p>
                 <p class="cubefilelink" id="modifycubefile"><a href="javascript:">_("Edit values")</a></p>
               </div>
             </div>
@@ -338,6 +358,16 @@
                     <label for="ynh_password" class="col-sm-3 control-label">_("Main Password")</label>
                     <div class="col-sm-9">
                       <input type="text" class="form-control" id="ynh_password" />
+                    </div>
+                  </div>
+
+                  <div class="form-group info-input">
+                    <label class="col-sm-3"></label>
+                    <div class="col-sm-9">
+                      <div class="alert alert-dismissible alert-info fade in" role="alert">
+                       <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">_("Close")</span></button>
+                       <span>_("If you do not have a domain name, you can choose one ending by nohost.me or noho.st (the availability will be automatically checked).")</span>
+                      </div>
                     </div>
                   </div>
 
@@ -461,7 +491,8 @@
                   
             <div id="buttons">
               <div class="form-group">
-                <button type="button" class="btn btn-default" id="button-next">_("Next step")</button>
+                <button type="button" class="btn btn-default" id="button-prev">_("Previous")</button>
+                <button type="button" class="btn btn-default" id="button-next">_("Next")</button>
               </div>
             </div>
           </form>

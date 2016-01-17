@@ -213,13 +213,13 @@ var hypercube = {
       $('#hotspot_firmware_nonfree').prop('checked', json['hotspot']['firmware_nonfree']);
     }
 
-    $('#yunohost_domain').val(json['yunohost']['domain']);
-    $('#yunohost_add_domain').val(json['yunohost']['add_domain']);
-    $('#yunohost_password').val(json['yunohost']['password']);
-    $('#yunohost_user').val(json['yunohost']['user']);
-    $('#yunohost_user_firstname').val(json['yunohost']['user_firstname']);
-    $('#yunohost_user_lastname').val(json['yunohost']['user_lastname']);
-    $('#yunohost_user_password').val(json['yunohost']['user_password']);
+    $('#ynh_domain').val(json['yunohost']['domain']);
+    $('#ynh_add_domain').val(json['yunohost']['add_domain']);
+    $('#ynh_password').val(json['yunohost']['password']);
+    $('#ynh_user').val(json['yunohost']['user']);
+    $('#ynh_user_firstname').val(json['yunohost']['user_firstname']);
+    $('#ynh_user_lastname').val(json['yunohost']['user_lastname']);
+    $('#ynh_user_password').val(json['yunohost']['user_password']);
 
     validation.all();
 
@@ -292,6 +292,7 @@ var hypercube = {
 
 var view = {
   showQuestion: function(question) {
+    view.hideButtonPrev();
     view.hideButtonNext();
 
     $('.question').hide();
@@ -324,8 +325,17 @@ var view = {
     $('#button-next').show();
   },
 
+  showButtonPrev: function(prevStep) {
+    $('#button-prev').data('prev-panel', prevStep);
+    $('#button-prev').show();
+  },
+
   hideButtonNext: function() {
     $('#button-next').hide();
+  },
+
+  hideButtonPrev: function() {
+    $('#button-prev').hide();
   },
 
   i18n: function() {
@@ -369,7 +379,7 @@ var view = {
   },
 
   setEvents: function() {
-    view.i18n();
+    $(window).on('popstate', controller.browserHistory);
 
     $('.btn-group').button();
     $('[data-toggle="tooltip"]').tooltip();
@@ -381,11 +391,13 @@ var view = {
     $('.nav-pills a').click(navigation.questionClick);
     $('.fileinput').click(controller.fileInputClick);
     $('.fileinput').change(controller.fileInputChange);
+    $('.filebrowse').click(controller.fileInputClick);
     $('.deletefile').click(controller.deleteFileButtonClick);
     $('.editfile').click(controller.editFileButtonClick);
     $('.fileedition').change(controller.fileEditionChange);
     $('input[type="file"]').change(controller.fileInputChange);
     $('#button-next').click(controller.nextButtonClick);
+    $('#button-prev').click(controller.prevButtonClick);
     $('#button-submit').click(controller.submitButtonClick);
     $('#ynh_domain').change(controller.dynetteCheckingChange);
     $('#vpn_ip6_net').change(controller.vpnIp6NetChange);
@@ -394,6 +406,9 @@ var view = {
     $('#modifycubefile').click(controller.modifyCubeFileClick);
     $('#loadhypercube').click(controller.loadHyperCubeClick);
     $('#hypercube').change(controller.hyperCubeFileChange);
+    $('#vpnauto').click(controller.vpnAutoClick);
+
+    controller.browserHistory();
   }
 };
 
@@ -403,6 +418,39 @@ var view = {
 /*******************/
 
 var controller = {
+  browserHistory: function(e) {
+    var url = $(location).attr('href');
+    var targetStep = url.match(/#(.*)$/);
+
+    if(targetStep && targetStep.length > 1) {
+      targetStep = targetStep[1];
+    }
+
+    if(targetStep == 'vpnmanual') {
+      $('#vpn-choice').data('auto', 'no');
+      targetStep = 'vpn';
+    }
+
+    if(targetStep == 'vpnauto') {
+      $('#vpn-choice').data('auto', 'yes');
+      targetStep = 'vpn';
+    }
+
+    switch(targetStep) {
+      case 'aboutyou':
+      case 'ffdn':
+      case 'vpn':
+      case 'postinstall':
+      case 'download':
+        navigation.goToStep(targetStep, true, true);
+      break;
+
+      default:
+        navigation.goToStep('aboutyou', true, true);
+        history.pushState({}, '', '/generator/#aboutyou');
+    }
+  },
+
   vpnAuthTypeChange: function() {
     var name = $(this).data('auth');
   
@@ -547,6 +595,11 @@ var controller = {
     navigation.goToStep(nextStep);
   },
 
+  prevButtonClick: function() {
+    var prevStep = $(this).data('prev-panel');
+    navigation.goToStep(prevStep, true, false);
+  },
+
   formNextSubmit: function() {
     if($('#button-next').is(':visible')) {
       $('#button-next').click();
@@ -671,12 +724,22 @@ var controller = {
         alert(_("Cannot read this file"));
       }
     }
+  },
+
+  vpnAutoClick: function() {
+    $('#vpn-choice').data('auto', 'yes');
+    $('#main').data('current-step', '');
+
+    navigation.goToStep('vpn', true);
   }
 };
 
 var navigation = {
-  goToStep: function(step, ignoreWarns) {
+  goToStep: function(step, ignoreWarns, ignoreHistory) {
     var currentStep = $('#main').data('current-step');
+
+    ignoreWarns = (typeof ignoreWarns === 'undefined') ? false : ignoreWarns;
+    ignoreHistory = (typeof ignoreHistory === 'undefined') ? false : ignoreHistory;
 
     if(currentStep == 'aboutyou') {
       if(!validation.aboutyou() && !ignoreWarns) {
@@ -698,19 +761,33 @@ var navigation = {
 
     $('#main').data('current-step', step);
 
+    if(!ignoreHistory) {
+      var historyStep = step;
+
+      if(historyStep == 'vpn') {
+        historyStep += $('#vpn-choice').data('auto') == 'yes' ? 'auto' : 'manual';
+      }
+
+      history.pushState({}, '', '/generator/#' + historyStep);
+    }
+
     if(step == 'aboutyou' || step == 'ffdn') {
+      view.hideButtonPrev();
       view.hideButtonNext();
     }
 
     if(step == 'vpn') {
+      view.showButtonPrev('aboutyou');
       view.showButtonNext('postinstall');
     }
 
     if(step == 'postinstall') {
+      view.showButtonPrev('vpn');
       view.showButtonNext('download');
     }
 
     if(step == 'download') {
+      view.showButtonPrev('postinstall');
       view.hideButtonNext();
     }
 
@@ -743,7 +820,9 @@ var navigation = {
       } else {
         navigation.goToStep('ffdn');
       }
-  
+
+      $('.info-main').fadeOut();
+
     } else if(question == 'question-level') {
       if($(this).data('answer') == 'yes') {
         view.showQuestion('dotcube');
@@ -879,6 +958,10 @@ var validation = {
     $('#vpn_cubefile').val('');
     $('#vpn_cubefile_edition').val('');
 
+    if(!validation.aboutyou()) {
+      nbWarns++;
+    }
+
     if(!validation.vpn()) {
       nbWarns++;
     }
@@ -941,6 +1024,16 @@ var validation = {
     if($('input[data-auth=vpn_auth_type_crt]').is(':checked')) {
       mandatoryFields.push('vpn_crt_client_edition');
       mandatoryFields.push('vpn_crt_client_key_edition');
+
+      if($('#vpn_crt_client_edition').val() && !$('#vpn_crt_client_edition').val().match(/-----BEGIN CERTIFICATE-----/)) {
+        validation.warnings.add('vpn_crt_client_edition', _("Must contain a line with <LINE>").replace('<LINE>', '-----BEGIN CERTIFICATE-----'));
+        nbWarns++;
+      }
+
+      if($('#vpn_crt_client_key_edition').val() && !$('#vpn_crt_client_key_edition').val().match(/-----BEGIN PRIVATE KEY-----/)) {
+        validation.warnings.add('vpn_crt_client_key_edition', _("Must contain a line with <LINE>").replace('<LINE>', '-----BEGIN PRIVATE KEY-----'));
+        nbWarns++;
+      }
     }
 
     if($('input[data-auth=vpn_auth_type_login]').is(':checked')) {
@@ -950,9 +1043,18 @@ var validation = {
 
     if($('input[data-auth=vpn_auth_type_ta]').is(':checked')) {
       mandatoryFields.push('vpn_crt_ta_edition');
+
+      if($('#vpn_crt_ta_edition').val() && !$('#vpn_crt_ta_edition').val().match(/-----BEGIN PRIVATE KEY-----/)) {
+        validation.warnings.add('vpn_crt_ta_edition', _("Must contain a line with <LINE>").replace('<LINE>', '-----BEGIN PRIVATE KEY-----'));
+      }
     }
 
     if(!validation.helpers.testMandatoryFields(mandatoryFields)) {
+      nbWarns++;
+    }
+
+    if($('#vpn_crt_server_ca_edition').val() && !$('#vpn_crt_server_ca_edition').val().match(/-----BEGIN CERTIFICATE-----/)) {
+      validation.warnings.add('vpn_crt_server_ca_edition', _("Must contain a line with <LINE>").replace('<LINE>', '-----BEGIN CERTIFICATE-----'));
       nbWarns++;
     }
 
@@ -1083,7 +1185,9 @@ function _(msg) {
 /************/
 
 $(document).ready(function() {
+  view.i18n();
   view.setEvents();
+
   view.fileInputSynchro();
   view.checkboxesSynchro();
 });
