@@ -523,36 +523,40 @@
               <h2>_("Installation Guide")</h2>
   
               <div class="panel-inside panel-text" id="panel-submit">
-                <h3>Step 1: Personal Settings</h3>
+                <h3>_("Step 1: About your Internet Cube")</h3>
 
                 <div id="customization">
                   <div class="form-group">
                     <div class="col-sm-3 input-group-btn">
                       <div class="input-group">
-                        <input type="checkbox" class="form-control switch" id="custom_preinstall" value="1" checked="checked" />
+                        <input type="checkbox" class="form-control switch" id="custom_preinstalled" value="1" checked="checked" />
                       </div>
                     </div>
-                    <label for="custom_preinstall" class="col-sm-9 control-label">_("My Cube is already pre-installed")</label>
+                    <label for="custom_preinstalled" class="col-sm-9 control-label">_("My Cube is already pre-installed")</label>
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group custom-install">
                     <div class="col-sm-9 input-group-btn">
                       <div class="input-group">
-                        <input type="checkbox" class="form-control switch" id="custom_encrypted" value="1" checked="checked" />
+                        <input type="checkbox" class="form-control switch" id="custom_encrypted" value="1" />
                       </div>
                     </div>
                     <label for="custom_encrypted" class="col-sm-3 control-label">_("I want an encrypted file system")</label>
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group custom-install">
                     <div class="col-sm-3 input-group-btn">
                       <div class="input-group">
-                        <input type="checkbox" class="form-control switch" id="custom_lime2" value="1" checked="checked" />
+                        <input type="checkbox" class="form-control switch" id="custom_lime2" value="1" />
                       </div>
                     </div>
                     <label for="custom_lime2" class="col-sm-9 control-label">_("I have a LIME2")</label>
                   </div>
                 </div>
+
+                <h3>_("Step 2: Post-Installation")</h3>
+
+
 
                 <button type="button" class="btn btn-default" id="button-submit">_("Create files")</button>
                 <ul>

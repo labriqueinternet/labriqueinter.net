@@ -412,6 +412,9 @@ var view = {
     $('#hypercube').change(controller.hyperCubeFileChange);
     $('#vpnauto').click(controller.vpnAutoClick);
     $('#start').click(controller.startClick);
+    $('#custom_preinstalled').change(controller.customPreinstalledChange);
+    $('#custom_encrypted').change(controller.customEncryptedChange);
+    $('#custom_lime2').change(controller.customLime2Change);
 
     controller.browserHistory();
   }
@@ -740,6 +743,23 @@ var controller = {
     $('#main').data('current-step', '');
 
     navigation.goToStep('vpn', true);
+  },
+
+  customPreinstalledChange: function() {
+    if($(this).is(':checked')) {
+      $('.custom-install').fadeOut();
+
+    } else {
+      $('.custom-install').fadeIn();
+    }
+  },
+
+  customEncryptedChange: function() {
+
+  },
+
+  customLime2Change: function() {
+
   }
 };
 

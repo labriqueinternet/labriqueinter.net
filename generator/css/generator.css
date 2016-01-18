@@ -464,3 +464,7 @@ a.btn-danger:hover span {
   background-image: linear-gradient(to bottom, #09af00 0px, #0ac400 100%);
   text-shadow: none;
 }
+
+.custom-install {
+  display: none;
+}
