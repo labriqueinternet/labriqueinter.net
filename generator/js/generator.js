@@ -55,6 +55,7 @@ var cube = {
     $('#vpn_ip6_net').val(json['ip6_net']);
     $('#vpn_login_user').val(json['login_user']);
     $('#vpn_login_passphrase').val(json['login_passphrase']);
+    $('#vpn_login_passphrase_repeat').val(json['login_passphrase']);
     $('#vpn_openvpn_rm').val(json['openvpn_rm'].join("\n"));
     $('#vpn_openvpn_add').val(json['openvpn_add'].join("\n"));
 
@@ -201,6 +202,7 @@ var hypercube = {
 
     $('#hotspot_wifi_ssid').val(json['hotspot']['wifi_ssid']);
     $('#hotspot_wifi_passphrase').val(json['hotspot']['wifi_passphrase']);
+    $('#hotspot_wifi_passphrase_repeat').val(json['hotspot']['wifi_passphrase']);
     $('#hotspot_ip6_net').val(json['hotspot']['ip6_net']);
     $('#hotspot_ip6_dns0').val(json['hotspot']['ip6_dns0']);
     $('#hotspot_ip6_dns1').val(json['hotspot']['ip6_dns1']);
@@ -216,10 +218,12 @@ var hypercube = {
     $('#ynh_domain').val(json['yunohost']['domain']);
     $('#ynh_add_domain').val(json['yunohost']['add_domain']);
     $('#ynh_password').val(json['yunohost']['password']);
+    $('#ynh_password_repeat').val(json['yunohost']['password']);
     $('#ynh_user').val(json['yunohost']['user']);
     $('#ynh_user_firstname').val(json['yunohost']['user_firstname']);
     $('#ynh_user_lastname').val(json['yunohost']['user_lastname']);
     $('#ynh_user_password').val(json['yunohost']['user_password']);
+    $('#ynh_user_password_repeat').val(json['yunohost']['user_password']);
 
     validation.all();
 
@@ -407,6 +411,7 @@ var view = {
     $('#loadhypercube').click(controller.loadHyperCubeClick);
     $('#hypercube').change(controller.hyperCubeFileChange);
     $('#vpnauto').click(controller.vpnAutoClick);
+    $('#start').click(controller.startClick);
 
     controller.browserHistory();
   }
@@ -446,9 +451,13 @@ var controller = {
       break;
 
       default:
-        navigation.goToStep('aboutyou', true, true);
-        history.pushState({}, '', '/generator/#aboutyou');
+        navigation.goToStep('welcome', true, true);
+        history.pushState({}, '', '/generator/#welcome');
     }
+  },
+
+  startClick: function() {
+    navigation.goToStep('aboutyou');
   },
 
   vpnAuthTypeChange: function() {
@@ -821,8 +830,6 @@ var navigation = {
         navigation.goToStep('ffdn');
       }
 
-      $('.info-main').fadeOut();
-
     } else if(question == 'question-level') {
       if($(this).data('answer') == 'yes') {
         view.showQuestion('dotcube');
@@ -1039,6 +1046,11 @@ var validation = {
     if($('input[data-auth=vpn_auth_type_login]').is(':checked')) {
       mandatoryFields.push('vpn_login_user');
       mandatoryFields.push('vpn_login_passphrase');
+      mandatoryFields.push('vpn_login_passphrase_repeat');
+
+      if($('#vpn_login_passphrase').val() && $('#vpn_login_passphrase_repeat').val() && $('#vpn_login_passphrase').val() != $('#vpn_login_passphrase_repeat').val()) {
+        validation.warnings.add('vpn_login_passphrase_repeat', _("Must be the same than the previous input"));
+      }
     }
 
     if($('input[data-auth=vpn_auth_type_ta]').is(':checked')) {
@@ -1087,12 +1099,25 @@ var validation = {
     var ip6Fields = [ 'hotspot_ip6_net', 'hotspot_ip6_dns0', 'hotspot_ip6_dns1' ];
     var ip4Fields = [ 'hotspot_ip4_dns0', 'hotspot_ip4_dns1' ];
 
-    var mandatoryFields = [ 'ynh_user', 'ynh_password', 'ynh_domain', 'hotspot_wifi_ssid',
-      'hotspot_wifi_passphrase', 'ynh_user_firstname', 'ynh_user_lastname', 'ynh_user_password',
-      'hotspot_ip6_dns0', 'hotspot_ip6_dns1', 'hotspot_ip4_dns0', 'hotspot_ip4_dns1', 'hotspot_ip4_nat_prefix' ];
+    var mandatoryFields = [ 'ynh_user', 'ynh_password', 'ynh_password_repeat', 'ynh_domain',
+      'hotspot_wifi_ssid', 'hotspot_wifi_passphrase', 'hotspot_wifi_passphrase_repeat', 'ynh_user_firstname',
+      'ynh_user_lastname', 'ynh_user_password', 'ynh_user_password_repeat', 'hotspot_ip6_dns0',
+      'hotspot_ip6_dns1', 'hotspot_ip4_dns0', 'hotspot_ip4_dns1', 'hotspot_ip4_nat_prefix' ];
 
     if(!validation.helpers.testMandatoryFields(mandatoryFields)) {
       nbWarns++;
+    }
+
+    if($('#ynh_password').val() && $('#ynh_password_repeat').val() && $('#ynh_password').val() != $('#ynh_password_repeat').val()) {
+      validation.warnings.add('ynh_password_repeat', _("Must be the same than the previous input"));
+    }
+
+    if($('#ynh_user_password').val() && $('#ynh_user_password_repeat').val() && $('#ynh_user_password').val() != $('#ynh_user_password_repeat').val()) {
+      validation.warnings.add('ynh_user_password_repeat', _("Must be the same than the previous input"));
+    }
+
+    if($('#hotspot_wifi_passphrase').val() && $('#hotspot_wifi_passphrase_repeat').val() && $('#hotspot_wifi_passphrase').val() != $('#hotspot_wifi_passphrase_repeat').val()) {
+      validation.warnings.add('hotspot_wifi_passphrase_repeat', _("Must be the same than the previous input"));
     }
 
     if(!validation.helpers.testIpFields(ip6Fields, 6)) {

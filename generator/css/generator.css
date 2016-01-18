@@ -153,10 +153,6 @@ ul.nav a {
   font-style: italic;
 }
 
-.info-main {
-  margin: -5px 0 15px;
-}
-
 .alert-info .close {
   color: #fff;
 }
@@ -276,14 +272,14 @@ iframe {
   overflow: hidden;
 }
 
-#panel-ffdn h2 {
+.panel h2 {
   font-weight: bold;
   text-align: center;
   margin: 20px;
   text-shadow: 0px 1px 0px #000;
 }
 
-#panel-ffdn p {
+.panel p {
   padding: 5px 20px;
   font-size: 12pt;
   text-align: justify;
@@ -366,6 +362,16 @@ label {
   list-style-type: none;
 }
 
+#panel-submit .control-label {
+  text-align: left;
+  margin-left: 40px;
+  width: 30em;
+}
+
+#panel-submit h3, #panel-submit p {
+  text-align: left;
+}
+
 #panel-submit li {
   width: 30%;
   display: none;
@@ -393,6 +399,10 @@ label {
 
 #panel-submit li a:active {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 1) inset, 0px 0px 8px rgba(0, 0, 0, 1);
+}
+
+#customization {
+  margin: 20px 0 0 20px;
 }
 
 .cubefilelink {
@@ -424,4 +434,33 @@ a.btn-danger span {
 
 a.btn-danger:hover span {
   color: #fff;
+}
+
+#panel-welcome .alert-info {
+  margin: -2px 0 10px;
+}
+
+#start {
+  text-align: center;
+}
+
+#start {
+  display: block;
+  padding: 20px 25px;
+  margin: 5px auto 10px;
+  width: 7em;
+  background-image: linear-gradient(to bottom, #0ac400 0px, #09af00 100%);
+  text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.6);
+  border: 1px solid #fff;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 20pt;
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+}
+
+#start:hover {
+  background-image: linear-gradient(to bottom, #09af00 0px, #0ac400 100%);
+  text-shadow: none;
 }
