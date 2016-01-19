@@ -149,7 +149,7 @@ var cube = {
       return cube.fromJson(JSON.parse(json));
 
     } catch(e) {
-      if(/JSON/.test(e)) {
+      if(/json/i.test(e)) {
         throw 'syntax';
       }
 
@@ -182,12 +182,12 @@ var cube = {
     return JSON.stringify(json, null, 2);
   },
 
-  downloadLink: function(json) {
+  installationLink: function(json) {
     var fileContent = window.btoa(cube.toJsonTxt(json));
     fileContent = "data:application/octet-stream;base64," + fileContent;
 
     $('#cubelink').attr('href', fileContent);
-    $('#cubelink').attr('download', 'config.cube');
+    $('#cubelink').attr('installation', 'config.cube');
 
     $('#cubelink').parent().hide();
     $('#cubelink').parent().fadeIn();
@@ -200,21 +200,6 @@ var hypercube = {
       return false;
     }
 
-    $('#hotspot_wifi_ssid').val(json['hotspot']['wifi_ssid']);
-    $('#hotspot_wifi_passphrase').val(json['hotspot']['wifi_passphrase']);
-    $('#hotspot_wifi_passphrase_repeat').val(json['hotspot']['wifi_passphrase']);
-    $('#hotspot_ip6_net').val(json['hotspot']['ip6_net']);
-    $('#hotspot_ip6_dns0').val(json['hotspot']['ip6_dns0']);
-    $('#hotspot_ip6_dns1').val(json['hotspot']['ip6_dns1']);
-    $('#hotspot_ip4_dns0').val(json['hotspot']['ip4_dns0']);
-    $('#hotspot_ip4_dns1').val(json['hotspot']['ip4_dns1']);
-    $('#hotspot_ip4_nat_prefix').val(json['hotspot']['ip4_nat_prefix']);
-
-    if($('#hotspot_firmware_nonfree').is(':checked') ? !json['hotspot']['firmware_nonfree'] : json['hotspot']['firmware_nonfree']) {
-      $('#hotspot_firmware_nonfree').click();
-      $('#hotspot_firmware_nonfree').prop('checked', json['hotspot']['firmware_nonfree']);
-    }
-
     $('#ynh_domain').val(json['yunohost']['domain']);
     $('#ynh_add_domain').val(json['yunohost']['add_domain']);
     $('#ynh_password').val(json['yunohost']['password']);
@@ -224,6 +209,25 @@ var hypercube = {
     $('#ynh_user_lastname').val(json['yunohost']['user_lastname']);
     $('#ynh_user_password').val(json['yunohost']['user_password']);
     $('#ynh_user_password_repeat').val(json['yunohost']['user_password']);
+
+    $('#hotspot_wifi_ssid').val(json['hotspot']['wifi_ssid']);
+    $('#hotspot_wifi_passphrase').val(json['hotspot']['wifi_passphrase']);
+    $('#hotspot_wifi_passphrase_repeat').val(json['hotspot']['wifi_passphrase']);
+    $('#hotspot_ip6_net').val(json['hotspot']['ip6_net']);
+    $('#hotspot_ip6_dns0').val(json['hotspot']['ip6_dns0']);
+    $('#hotspot_ip6_dns1').val(json['hotspot']['ip6_dns1']);
+    $('#hotspot_ip4_dns0').val(json['hotspot']['ip4_dns0']);
+    $('#hotspot_ip4_dns1').val(json['hotspot']['ip4_dns1']);
+    $('#hotspot_ip4_nat_prefix').val(json['hotspot']['ip4_nat_prefix']);
+    $('#hotspot_ip4_nat_prefix').val(json['hotspot']['ip4_nat_prefix']);
+
+    if($('#hotspot_firmware_nonfree').is(':checked') ? !json['hotspot']['firmware_nonfree'] : json['hotspot']['firmware_nonfree']) {
+      $('#hotspot_firmware_nonfree').click();
+      $('#hotspot_firmware_nonfree').prop('checked', json['hotspot']['firmware_nonfree']);
+    }
+
+    $('#unix_root_password').val(json['unix']['root_password']);
+    $('#unix_root_password_repeat').val(json['unix']['root_password']);
 
     validation.all();
 
@@ -235,7 +239,7 @@ var hypercube = {
       return hypercube.fromJson(JSON.parse(json));
 
     } catch(e) {
-      if(/JSON/.test(e)) {
+      if(/json/i.test(e)) {
         throw 'syntax';
       }
 
@@ -267,6 +271,10 @@ var hypercube = {
         user_firstname: $('#ynh_user_firstname').val().trim(),
         user_lastname: $('#ynh_user_lastname').val().trim(),
         user_password: $('#ynh_user_password').val().trim()
+      },
+
+      unix: {
+        root_password: $('#unix_root_password').val().trim()
       }
     };
 
@@ -277,12 +285,12 @@ var hypercube = {
     return JSON.stringify(json, null, 2);
   },
 
-  downloadLink: function(json) {
+  installationLink: function(json) {
     var fileContent = window.btoa(hypercube.toJsonTxt(json));
     fileContent = "data:application/octet-stream;base64," + fileContent;
   
     $('#hypercubelink').attr('href', fileContent);
-    $('#hypercubelink').attr('download', 'install.hypercube');
+    $('#hypercubelink').attr('installation', 'install.hypercube');
 
     $('#hypercubelink').parent().hide();
     $('#hypercubelink').parent().fadeIn();
@@ -448,8 +456,8 @@ var controller = {
       case 'aboutyou':
       case 'ffdn':
       case 'vpn':
-      case 'postinstall':
-      case 'download':
+      case 'yunohost':
+      case 'installation':
         navigation.goToStep(targetStep, true, true);
       break;
 
@@ -625,8 +633,8 @@ var controller = {
   },
 
   submitForm: function() {
-    cube.downloadLink(cube.toJson());
-    hypercube.downloadLink(hypercube.toJson());
+    cube.installationLink(cube.toJson());
+    hypercube.installationLink(hypercube.toJson());
 
     return false;
   },
@@ -684,6 +692,12 @@ var controller = {
   ynhPasswordChange: function() {
     if(!$('#ynh_user_password').val().trim()) {
       $('#ynh_user_password').val($(this).val().trim());
+      $('#ynh_user_password_repeat').val($(this).val().trim());
+    }
+
+    if(!$('#unix_root_password').val().trim()) {
+      $('#unix_root_password').val($(this).val().trim());
+      $('#unix_root_password_repeat').val($(this).val().trim());
     }
   },
 
@@ -711,6 +725,8 @@ var controller = {
       fileReader.onload = function(e) {
         try {
           if(hypercube.fromJsonTxt(e.target.result)) {
+            $('#ynh_domain').change();
+            $('#ynh_password').change();
 
           } else {
             throw 'content';
@@ -782,8 +798,8 @@ var navigation = {
       }
     }
 
-    if(currentStep == 'postinstall') {
-      if(!validation.postinstall() && !ignoreWarns) {
+    if(currentStep == 'yunohost') {
+      if(!validation.yunohost() && !ignoreWarns) {
         return false;
       }
     }
@@ -807,16 +823,16 @@ var navigation = {
 
     if(step == 'vpn') {
       view.showButtonPrev('aboutyou');
-      view.showButtonNext('postinstall');
+      view.showButtonNext('yunohost');
     }
 
-    if(step == 'postinstall') {
+    if(step == 'yunohost') {
       view.showButtonPrev('vpn');
-      view.showButtonNext('download');
+      view.showButtonNext('installation');
     }
 
-    if(step == 'download') {
-      view.showButtonPrev('postinstall');
+    if(step == 'installation') {
+      view.showButtonPrev('yunohost');
       view.hideButtonNext();
     }
 
@@ -974,12 +990,31 @@ var validation = {
       });
 
       return !nbWarns;
+    },
+
+    testPasswordRepeat: function(fields) {
+      var nbWarns = 0;
+
+      $.each(fields, function(i, id) {
+        var isWarn = false;
+
+        if(!$('#' + id).val().trim() || !$('#' + id + '_repeat').val().trim()) {
+          return;
+        }
+
+        if($('#' + id).val().trim() != $('#' + id + '_repeat').val().trim()) {
+          validation.warnings.add(id + '_repeat', _("Must be the same than the previous input"));
+          nbWarns++;
+        }
+      });
+
+      return !nbWarns;
     }
   },
 
   all: function() {
     var nbWarns = 0;
-    validation.warnings.reset('download');
+    validation.warnings.reset('installation');
 
     $('#vpn-choice').data('auto', 'no');
     $('#vpn_cubefile').val('');
@@ -993,7 +1028,7 @@ var validation = {
       nbWarns++;
     }
 
-    if(!validation.postinstall()) {
+    if(!validation.yunohost()) {
       nbWarns++;
     }
 
@@ -1001,7 +1036,7 @@ var validation = {
       return false;
     }
 
-    validation.warnings.none('download');
+    validation.warnings.none('installation');
 
     return true;
   },
@@ -1068,8 +1103,8 @@ var validation = {
       mandatoryFields.push('vpn_login_passphrase');
       mandatoryFields.push('vpn_login_passphrase_repeat');
 
-      if($('#vpn_login_passphrase').val() && $('#vpn_login_passphrase_repeat').val() && $('#vpn_login_passphrase').val() != $('#vpn_login_passphrase_repeat').val()) {
-        validation.warnings.add('vpn_login_passphrase_repeat', _("Must be the same than the previous input"));
+      if(!validation.helpers.testPasswordRepeat('vpn_login_passphrase')) {
+        nbWarns++;
       }
     }
 
@@ -1112,32 +1147,25 @@ var validation = {
     return false;
   },
 
-  postinstall: function() {
+  yunohost: function() {
     var nbWarns = 0;
-    validation.warnings.reset('postinstall');
+    validation.warnings.reset('yunohost');
 
     var ip6Fields = [ 'hotspot_ip6_net', 'hotspot_ip6_dns0', 'hotspot_ip6_dns1' ];
     var ip4Fields = [ 'hotspot_ip4_dns0', 'hotspot_ip4_dns1' ];
+    var passwordFields = [ 'ynh_password', 'ynh_user_password', 'hotspot_wifi_passphrase', 'unix_root_password' ];
 
     var mandatoryFields = [ 'ynh_user', 'ynh_password', 'ynh_password_repeat', 'ynh_domain',
       'hotspot_wifi_ssid', 'hotspot_wifi_passphrase', 'hotspot_wifi_passphrase_repeat', 'ynh_user_firstname',
       'ynh_user_lastname', 'ynh_user_password', 'ynh_user_password_repeat', 'hotspot_ip6_dns0',
-      'hotspot_ip6_dns1', 'hotspot_ip4_dns0', 'hotspot_ip4_dns1', 'hotspot_ip4_nat_prefix' ];
+      'hotspot_ip6_dns1', 'hotspot_ip4_dns0', 'hotspot_ip4_dns1', 'hotspot_ip4_nat_prefix', 'unix_root_password' ];
 
     if(!validation.helpers.testMandatoryFields(mandatoryFields)) {
       nbWarns++;
     }
 
-    if($('#ynh_password').val() && $('#ynh_password_repeat').val() && $('#ynh_password').val() != $('#ynh_password_repeat').val()) {
-      validation.warnings.add('ynh_password_repeat', _("Must be the same than the previous input"));
-    }
-
-    if($('#ynh_user_password').val() && $('#ynh_user_password_repeat').val() && $('#ynh_user_password').val() != $('#ynh_user_password_repeat').val()) {
-      validation.warnings.add('ynh_user_password_repeat', _("Must be the same than the previous input"));
-    }
-
-    if($('#hotspot_wifi_passphrase').val() && $('#hotspot_wifi_passphrase_repeat').val() && $('#hotspot_wifi_passphrase').val() != $('#hotspot_wifi_passphrase_repeat').val()) {
-      validation.warnings.add('hotspot_wifi_passphrase_repeat', _("Must be the same than the previous input"));
+    if(!validation.helpers.testPasswordRepeat(passwordFields)) {
+      nbWarns++;
     }
 
     if(!validation.helpers.testIpFields(ip6Fields, 6)) {
@@ -1206,7 +1234,7 @@ var validation = {
     }
 
     if(!nbWarns) {
-      validation.warnings.none('postinstall');
+      validation.warnings.none('yunohost');
 
       return true;
     }

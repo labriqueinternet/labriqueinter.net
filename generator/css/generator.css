@@ -210,6 +210,10 @@ ul.nav a {
   display: none;
 }
 
+#modifycubefile {
+  text-align: center;
+}
+
 .question span {
   display: block;
   margin: 25pt;
@@ -292,7 +296,7 @@ iframe {
 
 .nav-wizard {
   margin: 10px auto 30px;
-  width: 500px;
+  width: 445px;
 }
 
 .panel-default {

@@ -35,8 +35,8 @@
       <ul class="nav nav-pills nav-wizard" id="timeline">
         <li class="active"><a href="javascript:" data-tab="aboutyou">_("About You")</a><div class="nav-arrow"></div></li>
         <li><div class="nav-wedge"></div><a href="javascript:" class="nav-main" data-tab="vpn" id="vpn-choice" data-auto="no">_("VPN")</a><div class="nav-arrow"></div></li>
-        <li><div class="nav-wedge"></div><a href="javascript:" class="nav-main" data-tab="postinstall">_("Post-Installation")</a><div class="nav-arrow"></div></li>
-        <li><div class="nav-wedge"></div><a href="javascript:" data-tab="download">_("Download")</a></li>
+        <li><div class="nav-wedge"></div><a href="javascript:" class="nav-main" data-tab="yunohost">_("YunoHost")</a><div class="nav-arrow"></div></li>
+        <li><div class="nav-wedge"></div><a href="javascript:" data-tab="installation">_("Installation")</a></li>
       </ul>
     
       <div class="row">
@@ -328,9 +328,9 @@
               </div>
             </div>
   
-            <div class="panel panel-default tab" id="panel-postinstall">
+            <div class="panel panel-default tab" id="panel-yunohost">
               <div class="panel-heading">
-                <h3 class="panel-title">_("Post-Installation")</h3>
+                <h3 class="panel-title">_("YunoHost")</h3>
               </div>
   
               <div class="alert alert-dismissible alert-danger fade in" role="alert">
@@ -339,12 +339,12 @@
               </div>
   
               <ul class="nav nav-tabs nav-justified">
-                <li class="active"><a href="javascript:" data-tab="tab-postinstall-main">_("Main")</a></li>
-                <li><a href="javascript:" data-tab="tab-postinstall-advanced">_("Advanced")</a></li>
+                <li class="active"><a href="javascript:" data-tab="tab-yunohost-main">_("Main")</a></li>
+                <li><a href="javascript:" data-tab="tab-yunohost-advanced">_("Advanced")</a></li>
               </ul>
     
               <div class="panel-inside">
-                <div class="tab" id="tab-postinstall-main">
+                <div class="tab" id="tab-yunohost-main">
                   <h4 class="panel-section panel-section-first">_("YunoHost")</h4>
 
                   <div class="form-group">
@@ -416,7 +416,7 @@
                   </div>
                 </div>
   
-                <div class="tab" id="tab-postinstall-advanced">
+                <div class="tab" id="tab-yunohost-advanced">
                   <h4 class="panel-section panel-section-first">_("YunoHost")</h4>
   
                   <div class="form-group">
@@ -443,7 +443,7 @@
                   <div class="form-group">
                     <label for="ynh_user_password_repeat" class="col-sm-3 control-label">_("Password (again)")</label>
                     <div class="col-sm-9">
-                      <iput type="password" class="form-control" id="ynh_user_password_repeat" data-toggle="tooltip" data-title="_('Default: same as Main Password')" />
+                      <input type="password" class="form-control" id="ynh_user_password_repeat" data-toggle="tooltip" data-title="_('Default: same as Main Password')" />
                     </div>
                   </div>
 
@@ -506,13 +506,29 @@
                       </div>
                     </div>
                   </div>
+
+                  <h4 class="panel-section">_("Unix")</h4>
+
+                  <div class="form-group">
+                    <label for="unix_root_password" class="col-sm-3 control-label">_("Root Password")</label>
+                    <div class="col-sm-9">
+                      <input type="password" class="form-control" id="unix_root_password" />
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="unix_root_password_repeat" class="col-sm-3 control-label">_("Password (again)")</label>
+                    <div class="col-sm-9">
+                      <input type="password" class="form-control" id="unix_root_password_repeat" />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div class="panel panel-default" id="panel-download">
+            <div class="panel panel-default" id="panel-installation">
               <div class="panel-heading">
-                <h3 class="panel-title">_("Ready to Download!")</h3>
+                <h3 class="panel-title">_("Ready to install!")</h3>
               </div>
   
               <div class="alert alert-dismissible alert-danger fade in" role="alert">
