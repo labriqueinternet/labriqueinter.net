@@ -206,7 +206,7 @@ ul.nav a {
   padding: 2pt 35px 2pt 2pt;
 }
 
-.panel, #vpn_auth_type_crt, #vpn_auth_type_login, #vpn_auth_type_ta, #question-level, #question-dotcube, #modifycubefile {
+.panel, #vpn_auth_type_crt, #vpn_auth_type_login, #vpn_auth_type_ta, #question-level, #question-dotcube, #modifycubefile, #installguide, #downloadcube {
   display: none;
 }
 
@@ -257,6 +257,16 @@ ul.nav a {
 
 #buttons button {
   display: none;
+  margin: 0 5px;
+  outline: none;
+}
+
+#button-next {
+  background-image: linear-gradient(to bottom, #09AF00 0px, #24af1d 100%);
+}
+
+#button-next:hover {
+  background-color: #289e22;
 }
 
 #panel-aboutyou .panel-inside ul {
@@ -360,49 +370,87 @@ label {
   border-bottom-color: #777;
 }
 
-#panel-submit li, #panel-submit ul {
-  margin: 0pt auto;
-  padding: 0;
-  list-style-type: none;
-}
-
 #panel-submit .control-label {
   text-align: left;
   margin-left: 40px;
   width: 30em;
 }
 
+#panel-submit ol {
+  font-size: 12pt;
+  text-align: left;
+}
+
+#panel-submit pre {
+  border-radius: 0;
+  border: none;
+  color: #fff;
+  text-align: left;
+  margin-top: 5px;
+}
+
+.installsd {
+  display: none;
+}
+
+#installsd-noopt {
+  display: block;
+}
+
 #panel-submit h3, #panel-submit p {
   text-align: left;
 }
 
-#panel-submit li {
-  width: 30%;
+#panel-submit h2 {
+  margin-top: 0;
+}
+
+#nodownloads, #candownload {
   display: none;
-  margin: 10pt auto;
 }
 
-#panel-submit li a {
-  display: block;
-  padding: 10pt 20pt;
-  border: 1px solid #000;
-  border-radius: 4px;
-  color: #fff;
-  font-weight: bold;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 10px rgba(0, 0, 0, 0.8);
-  background-image: linear-gradient(to bottom, #0bd400 0px, #09af00 80%);
+#showwifipwd, #showynhpwd {
+  margin: -11px 0 5px;
+}
+
+#showwifipwd > div, #showynhpwd > div {
+  display: none;
+  margin-top: 20px;
+}
+
+#nodownloads p, #candownload p {
+  font-style: italic;
+  text-align: center;
+}
+
+p#showwifiname, p#showdomainname, #panel-submit p.ynhdoc {
+  text-align: center;
+  font-size: 20pt;
+}
+
+p#showwifipwd {
+  text-align: center;
+}
+
+#showwifipwd a, #showynhpwd a {
+  font-size: 10pt;
+}
+
+#showdomainname a, .ynhdoc a {
   text-decoration: none;
-  vertical-align: middle;
-  outline: none;
-  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
 }
 
-#panel-submit li a:hover {
-  background-image: linear-gradient(to bottom, #09af00 0px, #0bd400 80%);
+#wifipwd, #ynhpwd {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  background-color: #111;
+  font-weight: bold;
 }
 
-#panel-submit li a:active {
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 1) inset, 0px 0px 8px rgba(0, 0, 0, 1);
+#notpreinstalled, .unlockencryptedfs {
+  display: none;
 }
 
 #customization {
@@ -471,4 +519,8 @@ a.btn-danger:hover span {
 
 .custom-install {
   display: none;
+}
+
+footer {
+  margin-top: 1em;
 }

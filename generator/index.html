@@ -443,7 +443,7 @@
                   <div class="form-group">
                     <label for="ynh_user_password_repeat" class="col-sm-3 control-label">_("Password (again)")</label>
                     <div class="col-sm-9">
-                      <input type="password" class="form-control" id="ynh_user_password_repeat" data-toggle="tooltip" data-title="_('Default: same as Main Password')" />
+                      <input type="password" class="form-control" id="ynh_user_password_repeat" />
                     </div>
                   </div>
 
@@ -459,7 +459,7 @@
                   <div class="form-group">
                     <label for="hotspot_ip6_net" class="col-sm-3 control-label">_("IPv6 delegated Prefix")</label>
                     <div class="col-sm-9">
-                      <input type="text" class="form-control" id="hotspot_ip6_net" placeholder="2001:db8:42::" />
+                      <input type="text" class="form-control" id="hotspot_ip6_net" placeholder="2001:db8:42::" data-toggle="tooltip" data-title="_('Default: same as for VPN')" />
                     </div>
                   </div>
 
@@ -512,7 +512,7 @@
                   <div class="form-group">
                     <label for="unix_root_password" class="col-sm-3 control-label">_("Root Password")</label>
                     <div class="col-sm-9">
-                      <input type="password" class="form-control" id="unix_root_password" />
+                      <input type="password" class="form-control" id="unix_root_password" data-toggle="tooltip" data-title="_('Default: same as Main Password')" />
                     </div>
                   </div>
 
@@ -528,64 +528,132 @@
 
             <div class="panel panel-default" id="panel-installation">
               <div class="panel-heading">
-                <h3 class="panel-title">_("Ready to install!")</h3>
+                <h3 class="panel-title">_("Ready to Install!")</h3>
               </div>
   
               <div class="alert alert-dismissible alert-danger fade in" role="alert">
                 <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">_("Close")</span></button>
                 <strong>_("You before have to fix the issues raised in the previous steps.")</strong>
               </div>
-
-              <h2>_("Installation Guide")</h2>
   
               <div class="panel-inside panel-text" id="panel-submit">
-                <h3>_("Step 1: About your Internet Cube")</h3>
+                <h2>_("Installation Guide")</h2>
 
-                <div id="customization">
-                  <div class="form-group">
-                    <div class="col-sm-3 input-group-btn">
-                      <div class="input-group">
-                        <input type="checkbox" class="form-control switch" id="custom_preinstalled" value="1" checked="checked" />
-                      </div>
-                    </div>
-                    <label for="custom_preinstalled" class="col-sm-9 control-label">_("My Cube is already pre-installed")</label>
-                  </div>
-
-                  <div class="form-group custom-install">
-                    <div class="col-sm-9 input-group-btn">
-                      <div class="input-group">
-                        <input type="checkbox" class="form-control switch" id="custom_encrypted" value="1" />
-                      </div>
-                    </div>
-                    <label for="custom_encrypted" class="col-sm-3 control-label">_("I want an encrypted file system")</label>
-                  </div>
-
-                  <div class="form-group custom-install">
-                    <div class="col-sm-3 input-group-btn">
-                      <div class="input-group">
-                        <input type="checkbox" class="form-control switch" id="custom_lime2" value="1" />
-                      </div>
-                    </div>
-                    <label for="custom_lime2" class="col-sm-9 control-label">_("I have a LIME2")</label>
-                  </div>
+                <div id="nodownloads">
+                  <p class="i18n">_("Sorry, but you cannot use the Installation Guide while you have issues to fix in the previous steps.")</p>
                 </div>
 
-                <h3>_("Step 2: Post-Installation")</h3>
+                <div id="candownload">
+                  <p class="i18n">_("Congratulations! You now just have to follow the Installation Guide, to install your Internet Cube.")</p>
+                </div>
 
+                <div id="downloadcube">
+                  <h3>_("Download Cube File")</h3>
 
+                  <p class="i18n">_("You cannot generate an HyperCube file, because you have some issues to fix in the previous steps. Instead, you just can download the Cube File corresponding to your VPN configuration :")</p>
+                  <p><a href="#" class="cubelink">_("Download Cube File")</a></p>
+                </div>
 
-                <button type="button" class="btn btn-default" id="button-submit">_("Create files")</button>
-                <ul>
-                  <li><a id="cubelink">config.cube</a></li>
-                  <li><a id="hypercubelink">install.hypercube</a></li>
-                </ul>
+                <div id="installguide">
+                  <h3>_("Step 1: About your Internet Cube")</h3>
+  
+                  <div id="customization">
+                    <div class="form-group">
+                      <div class="col-sm-3 input-group-btn">
+                        <div class="input-group">
+                          <input type="checkbox" class="form-control switch" id="custom_preinstalled" value="1" checked="checked" />
+                        </div>
+                      </div>
+                      <label for="custom_preinstalled" class="col-sm-9 control-label">_("My Cube is already pre-installed")</label>
+                    </div>
+  
+                    <div class="form-group custom-install">
+                      <div class="col-sm-3 input-group-btn">
+                        <div class="input-group">
+                          <input type="checkbox" class="form-control switch" id="custom_lime2" value="1" />
+                        </div>
+                      </div>
+                      <label for="custom_lime2" class="col-sm-9 control-label">_("I have a LIME2")</label>
+                    </div>
+  
+                    <div class="form-group custom-install">
+                      <div class="col-sm-9 input-group-btn">
+                        <div class="input-group">
+                          <input type="checkbox" class="form-control switch" id="custom_encrypted" value="1" />
+                        </div>
+                      </div>
+                      <label for="custom_encrypted" class="col-sm-3 control-label">_("I want an encrypted file system (experts only)")</label>
+                    </div>
+                  </div>
+  
+                  <div id="preinstalled">
+                    <h3>_("Step 2: Post-Installation")</h3>
+  
+                    <p class="i18n">_("You just have to do the post-installation, using your HyperCube file:")</p>
+  
+                    <ol>
+                      <li><span class="i18n">_("Download your")</span> <a href="#" class="hypercubelink">_("HyperCube File")</a></li>
+                      <li class="i18n">_("Put it on the root of a USB stick (not into a folder)")</li>
+                      <li class="i18n">_("Unplug your Internet Cube if powered on")</li>
+                      <li class="i18n">_("Plug your USB stick to your Internet Cube")</li>
+                      <li class="i18n">_("Connect your Internet Cube to an outlet")</li>
+                    </ol>
+                  </div>
+
+                  <div id="notpreinstalled">
+                    <h3>_("Step 2: Installation")</h3>
+
+                    <p class="i18n">_("Install the Cube system on a micro-SD card, using your HyperCube file:")</p>
+
+                    <ol>
+                      <li><span class="i18n">_("Download your")</span> <a href="#" class="hypercubelink">_("HyperCube File")</a></li>
+                      <li><span class="i18n">_("Download the")</span> <a href="https://repo.labriqueinter.net/install-sd.sh">_("SD Card Installer")</a></li>
+                      <li><span class="i18n">_("Use the SD Card Installer this way:")</span>
+                        <pre class="installsd" id="installsd-noopt">% bash install-sd.sh -y /path/to/your/install.hypercube</pre>
+                        <pre class="installsd" id="installsd-e">% bash install-sd.sh -ey /path/to/your/install.hypercube</pre>
+                        <pre class="installsd" id="installsd-2">% bash install-sd.sh -2y /path/to/your/install.hypercube</pre>
+                        <pre class="installsd" id="installsd-2e">% bash install-sd.sh -e2y /path/to/your/install.hypercube</pre>
+                      </li>
+                      <li class="i18n">_("Carefully follow the instructions of the Installer, until the end")</li>
+                      <li class="i18n">_("Unplug your Internet Cube if powered on")</li>
+                      <li class="i18n">_("Insert your micro-SD card in your Internet Cube")</li>
+                      <li class="i18n">_("Connect your Internet Cube to an outlet")</li>
+                      <li class="unlockencryptedfs"><span class="i18n">_("After some minutes, find the private IPv4 address of your Internet Cube, using:")</span>
+                        <pre>% bash install-sd.sh -l</pre>
+                      </li>
+                      <li class="unlockencryptedfs"><span class="i18n">_("Unlock the file system of your Cube, using your passphrase:")</span>
+                        <pre>https://my.cu.be.ip/</pre>
+                      </li>
+                    </ol>
+
+                  </div>
+
+                  <h3>_("Step 3: You Got a New Wifi!")</h3>
+
+                  <p class="i18n">_("Once you can see your new wifi hotspot from your computer (this can take several dozen of minutes), this means that your Internet Cube is ready and that you can use it, right now!")</p>
+                  <p id="showwifiname"><span class="glyphicon glyphicon-signal"></span> <span id="wifiname"></span></p>
+                  <div id="showwifipwd"><a href="javascript:">_("Show wifi password")</a> <div><div id="wifipwd"></div></div></div>
+
+                  <p class="i18n">_("Congratulations, you now have a clean Internet access \o/.")</p>
+
+                  <h3>_("Step 4: Self-Hosting")</h3>
+
+                  <p class="i18n">_("If you want to update your settings or configure some web services to host, you just have to go to your new web administration:")</p>
+
+                  <p id="showdomainname"><span class="glyphicon glyphicon-wrench"></span> <a href="#" id="domainname" target="_blank"></a></p>
+                  <div id="showynhpwd"><a href="javascript:">_("Show admin password")</a> <div><div id="ynhpwd"></div></div></div>
+
+                  <p class="i18n">_("If you experience problems using your new administration, please read the YunoHost documentation written by the community or ask some help to a non-profit organization:")</p>
+
+                  <p class="ynhdoc"><span class="glyphicon glyphicon-book"></span> <a href="#" target="_blank">_("Doc")</a> / <span class="glyphicon glyphicon-user"></span> <a href="http://db.ffdn.org" target="_blank">_("Get Help")</a></p>
+                </div>
               </div>
             </div>
                   
             <div id="buttons">
               <div class="form-group">
-                <button type="button" class="btn btn-default" id="button-prev">_("Previous")</button>
-                <button type="button" class="btn btn-default" id="button-next">_("Next")</button>
+                <button type="button" class="btn btn-default" id="button-prev"><span class="glyphicon glyphicon-arrow-left"></span> <span class="i18n">_("Previous")</span></button>
+                <button type="button" class="btn btn-success" id="button-next"><span class="i18n">_("Next")</span> <span class="glyphicon glyphicon-arrow-right"></span></button>
               </div>
             </div>
           </form>

@@ -182,15 +182,12 @@ var cube = {
     return JSON.stringify(json, null, 2);
   },
 
-  installationLink: function(json) {
+  downloadLink: function(json) {
     var fileContent = window.btoa(cube.toJsonTxt(json));
     fileContent = "data:application/octet-stream;base64," + fileContent;
 
-    $('#cubelink').attr('href', fileContent);
-    $('#cubelink').attr('installation', 'config.cube');
-
-    $('#cubelink').parent().hide();
-    $('#cubelink').parent().fadeIn();
+    $('.cubelink').attr('href', fileContent);
+    $('.cubelink').attr('download', 'config.cube');
   }
 };
 
@@ -229,7 +226,7 @@ var hypercube = {
     $('#unix_root_password').val(json['unix']['root_password']);
     $('#unix_root_password_repeat').val(json['unix']['root_password']);
 
-    validation.all();
+    controller.submitForm();
 
     return true;
   },
@@ -285,15 +282,12 @@ var hypercube = {
     return JSON.stringify(json, null, 2);
   },
 
-  installationLink: function(json) {
+  downloadLink: function(json) {
     var fileContent = window.btoa(hypercube.toJsonTxt(json));
     fileContent = "data:application/octet-stream;base64," + fileContent;
-  
-    $('#hypercubelink').attr('href', fileContent);
-    $('#hypercubelink').attr('installation', 'install.hypercube');
 
-    $('#hypercubelink').parent().hide();
-    $('#hypercubelink').parent().fadeIn();
+    $('.hypercubelink').attr('href', fileContent);
+    $('.hypercubelink').attr('download', 'install.hypercube');
   }
 };
 
@@ -350,6 +344,14 @@ var view = {
     $('#button-prev').hide();
   },
 
+  updateInstallGuide: function() {
+    $('#wifiname').text($('#hotspot_wifi_ssid').val().trim());
+    $('#domainname').text('https://' + $('#ynh_domain').val().trim() + '/admin/');
+    $('#domainname').attr('href', 'https://' + $('#ynh_domain').val().trim() + '/admin/');
+    $('#wifipwd').text($('#hotspot_wifi_passphrase').val().trim());
+    $('#ynhpwd').text($('#ynh_password').val().trim());
+  },
+
   i18n: function() {
     $('[data-title]').each(function() {
       $(this).data('title', $(this).data('title').replace("_('", '').replace("')", ''));
@@ -387,20 +389,18 @@ var view = {
       if($(this).is(':checked') ? !$(this).parent().hasClass('active') : $(this).parent().hasClass('active')) {
         $(this).click();
       }
+
+      $(this).change();
     });
   },
 
   setEvents: function() {
-    $(window).on('popstate', controller.browserHistory);
+    $(window).on('popstate', navigation.browserHistory);
 
     $('.btn-group').button();
     $('[data-toggle="tooltip"]').tooltip();
     $('.switch').bootstrapToggle();
 
-    $('form').submit(navigation.formNextSubmit);
-    $('.nav-wizard a').click(navigation.timelineClick);
-    $('.nav-tabs a').click(navigation.tabClick);
-    $('.nav-pills a').click(navigation.questionClick);
     $('.fileinput').click(controller.fileInputClick);
     $('.fileinput').change(controller.fileInputChange);
     $('.filebrowse').click(controller.fileInputClick);
@@ -408,23 +408,30 @@ var view = {
     $('.editfile').click(controller.editFileButtonClick);
     $('.fileedition').change(controller.fileEditionChange);
     $('input[type="file"]').change(controller.fileInputChange);
-    $('#button-next').click(controller.nextButtonClick);
-    $('#button-prev').click(controller.prevButtonClick);
-    $('#button-submit').click(controller.submitButtonClick);
     $('#ynh_domain').change(controller.dynetteCheckingChange);
     $('#vpn_ip6_net').change(controller.vpnIp6NetChange);
     $('#ynh_password').change(controller.ynhPasswordChange);
     $('#vpn_auth_type').find('input').change(controller.vpnAuthTypeChange);
-    $('#modifycubefile').click(controller.modifyCubeFileClick);
-    $('#loadhypercube').click(controller.loadHyperCubeClick);
     $('#hypercube').change(controller.hyperCubeFileChange);
     $('#vpnauto').click(controller.vpnAutoClick);
-    $('#start').click(controller.startClick);
     $('#custom_preinstalled').change(controller.customPreinstalledChange);
-    $('#custom_encrypted').change(controller.customEncryptedChange);
-    $('#custom_lime2').change(controller.customLime2Change);
+    $('#custom_encrypted').change(controller.customInstallSdChange);
+    $('#custom_lime2').change(controller.customInstallSdChange);
+    $('#showwifipwd a').click(controller.showWifiPwdClick);
+    $('#showynhpwd a').click(controller.showYnhPwdClick);
 
-    controller.browserHistory();
+    $('form').submit(navigation.formSubmit);
+    $('input').keypress(navigation.formSubmitEnterKey);
+    $('.nav-wizard a').click(navigation.timelineClick);
+    $('.nav-tabs a').click(navigation.tabClick);
+    $('.nav-pills a').click(navigation.questionClick);
+    $('#button-next').click(navigation.nextButtonClick);
+    $('#button-prev').click(navigation.prevButtonClick);
+    $('#modifycubefile').click(navigation.modifyCubeFileClick);
+    $('#loadhypercube').click(navigation.loadHyperCubeClick);
+    $('#start').click(navigation.startClick);
+
+    navigation.browserHistory();
   }
 };
 
@@ -434,53 +441,6 @@ var view = {
 /*******************/
 
 var controller = {
-  browserHistory: function(e) {
-    var url = $(location).attr('href');
-    var targetStep = url.match(/#(.*)$/);
-
-    if(targetStep && targetStep.length > 1) {
-      targetStep = targetStep[1];
-    }
-
-    if(targetStep == 'vpnmanual') {
-      $('#vpn-choice').data('auto', 'no');
-      targetStep = 'vpn';
-    }
-
-    if(targetStep == 'vpnauto') {
-      $('#vpn-choice').data('auto', 'yes');
-      targetStep = 'vpn';
-    }
-
-    switch(targetStep) {
-      case 'aboutyou':
-      case 'ffdn':
-      case 'vpn':
-      case 'yunohost':
-      case 'installation':
-        navigation.goToStep(targetStep, true, true);
-      break;
-
-      default:
-        navigation.goToStep('welcome', true, true);
-        history.pushState({}, '', '/generator/#welcome');
-    }
-  },
-
-  startClick: function() {
-    navigation.goToStep('aboutyou');
-  },
-
-  vpnAuthTypeChange: function() {
-    var name = $(this).data('auth');
-  
-    if($(this).is(':checked')) {
-      $('#' + name).show();
-    } else {
-      $('#' + name).hide();
-    }
-  },
-
   deleteFileButtonClick: function() {
     var textInput = $('#' + $(this).attr('id').replace(/_deletebtn$/, '_choosertxt'));
     var fileInput = $('#' + $(this).attr('id').replace(/_deletebtn$/, ''));
@@ -584,6 +544,16 @@ var controller = {
     $(this).data('changed', true);
   },
 
+  vpnAuthTypeChange: function() {
+    var name = $(this).data('auth');
+  
+    if($(this).is(':checked')) {
+      $('#' + name).show();
+    } else {
+      $('#' + name).hide();
+    }
+  },
+
   loadCubeFile: function() {
     try {
       if(cube.fromJsonTxt($('#vpn_cubefile_edition').val())) {
@@ -610,33 +580,30 @@ var controller = {
     }
   },
 
-  nextButtonClick: function() {
-    var nextStep = $(this).data('next-panel');
-    navigation.goToStep(nextStep);
-  },
-
-  prevButtonClick: function() {
-    var prevStep = $(this).data('prev-panel');
-    navigation.goToStep(prevStep, true, false);
-  },
-
-  formNextSubmit: function() {
-    if($('#button-next').is(':visible')) {
-      $('#button-next').click();
-    }
-  },
-
-  submitButtonClick: function() {
-    if(validation.all()) {
-      controller.submitForm();
-    }
-  },
-
   submitForm: function() {
-    cube.installationLink(cube.toJson());
-    hypercube.installationLink(hypercube.toJson());
+    $('#nodownloads').hide();
+    $('#candownload').hide();
+    $('#downloadcube').hide();
+    $('#installguide').hide();
 
-    return false;
+    view.updateInstallGuide();
+
+    if(validation.all()) {
+      cube.downloadLink(cube.toJson());
+      hypercube.downloadLink(hypercube.toJson());
+
+      $('#candownload').fadeIn();
+      $('#installguide').fadeIn();
+
+    } else if(validation.vpn()) {
+      cube.downloadLink(cube.toJson());
+
+      $('#nodownloads').fadeIn();
+      $('#downloadcube').fadeIn();
+
+    } else {
+      $('#nodownloads').fadeIn();
+    }
   },
 
   dynetteCheckingChange: function() {
@@ -701,20 +668,6 @@ var controller = {
     }
   },
 
-  modifyCubeFileClick: function() {
-    $('#vpn-choice').data('auto', 'no');
-    $('#vpn_cubefile').val('');
-    $('#vpn_cubefile_edition').val('');
-
-    navigation.goToStep('vpn-manual', true);
-  },
-
-  loadHyperCubeClick: function() {
-    if(confirm(_("Loading an existing HyperCube file will replace all values currently set.") + "\n\n" + _("Are you sure?"))) {
-      $('#hypercube').click();
-    }
-  },
-
   hyperCubeFileChange: function() {
     var hypercubeFiles = $(this).prop('files');
 
@@ -763,19 +716,46 @@ var controller = {
 
   customPreinstalledChange: function() {
     if($(this).is(':checked')) {
-      $('.custom-install').fadeOut();
+      $('.custom-install').hide();
+      $('#notpreinstalled').hide();
+      $('#preinstalled').show();
 
     } else {
       $('.custom-install').fadeIn();
+      $('#notpreinstalled').show();
+      $('#preinstalled').hide();
     }
   },
 
-  customEncryptedChange: function() {
+  customInstallSdChange: function() {
+    $('.installsd').hide();
+    $('.unlockencryptedfs').hide();
 
+    if($('#custom_encrypted').is(':checked')) {
+      $('.unlockencryptedfs').show();
+
+      if($('#custom_lime2').is(':checked')) {
+        $('#installsd-2e').show();
+      } else {
+        $('#installsd-e').show();
+      }
+    } else {
+      if($('#custom_lime2').is(':checked')) {
+        $('#installsd-2').show();
+      } else {
+        $('#installsd-noopt').show();
+      }
+    }
   },
 
-  customLime2Change: function() {
+  showWifiPwdClick: function() {
+    $('#wifipwd').parent().parent().find('a').hide();
+    $('#wifipwd').parent().fadeIn();
+  },
 
+  showYnhPwdClick: function() {
+    $('#ynhpwd').parent().parent().find('a').hide();
+    $('#ynhpwd').parent().fadeIn();
   }
 };
 
@@ -834,6 +814,8 @@ var navigation = {
     if(step == 'installation') {
       view.showButtonPrev('yunohost');
       view.hideButtonNext();
+
+      controller.submitForm();
     }
 
     view.showStep(step);
@@ -876,6 +858,82 @@ var navigation = {
     } else if(question == 'question-dotcube') {
       $('#vpn-choice').data('auto', $(this).data('answer'));
       navigation.goToStep('vpn');
+    }
+  },
+
+  browserHistory: function(e) {
+    var url = $(location).attr('href');
+    var targetStep = url.match(/#(.*)$/);
+
+    if(targetStep && targetStep.length > 1) {
+      targetStep = targetStep[1];
+    }
+
+    if(targetStep == 'vpnmanual') {
+      $('#vpn-choice').data('auto', 'no');
+      targetStep = 'vpn';
+    }
+
+    if(targetStep == 'vpnauto') {
+      $('#vpn-choice').data('auto', 'yes');
+      targetStep = 'vpn';
+    }
+
+    switch(targetStep) {
+      case 'aboutyou':
+      case 'ffdn':
+      case 'vpn':
+      case 'yunohost':
+      case 'installation':
+        navigation.goToStep(targetStep, true, true);
+      break;
+
+      default:
+        navigation.goToStep('welcome', true, true);
+        history.pushState({}, '', '/generator/#welcome');
+    }
+  },
+
+  startClick: function() {
+    navigation.goToStep('aboutyou');
+  },
+
+  nextButtonClick: function() {
+    var nextStep = $(this).data('next-panel');
+    navigation.goToStep(nextStep);
+  },
+
+  prevButtonClick: function() {
+    var prevStep = $(this).data('prev-panel');
+    navigation.goToStep(prevStep, true, false);
+  },
+
+  formSubmitEnterKey: function(e) {
+    if(e.which == 13) {
+      e.preventDefault();
+      $('form').submit();
+    }
+  },
+
+  formSubmit: function(e) {
+    e.preventDefault();
+
+    if($('#button-next').is(':visible')) {
+      $('#button-next').click();
+    }
+  },
+
+  modifyCubeFileClick: function() {
+    $('#vpn-choice').data('auto', 'no');
+    $('#vpn_cubefile').val('');
+    $('#vpn_cubefile_edition').val('');
+
+    navigation.goToStep('vpn-manual', true);
+  },
+
+  loadHyperCubeClick: function() {
+    if(confirm(_("Loading an existing HyperCube file will replace all values currently set.") + "\n\n" + _("Are you sure?"))) {
+      $('#hypercube').click();
     }
   }
 };
@@ -920,6 +978,7 @@ var validation = {
         $('a[data-tab=' + tab.attr('id') + ']').addClass('hasWarnings');
       }
 
+      warnings.hide();
       $('#' + field).closest('.form-group').before(formGroup);
       warnings.fadeIn();
     },
