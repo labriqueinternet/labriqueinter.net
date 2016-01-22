@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-22 15:25+0100\n"
-"PO-Revision-Date: 2016-01-22 15:27+0100\n"
+"POT-Creation-Date: 2016-01-22 18:49+0100\n"
+"PO-Revision-Date: 2016-01-22 18:50+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -18,56 +18,56 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 1.8.6\n"
 
-#: index.html:28
+#: /dev/fd/63:27
+msgid "Load an existing HyperCube file"
+msgstr ""
+
+#: /dev/fd/63:27
 msgid "LOAD FILE"
 msgstr ""
 
-#: index.html:30
+#: /dev/fd/63:29
 msgid "ÎnternetCu.be"
-msgstr "labrîqueinter.net"
+msgstr "labriqueÎnter.net"
 
-#: index.html:36 index.html:70
+#: /dev/fd/63:35 /dev/fd/63:69
 msgid "About You"
 msgstr ""
 
-#: index.html:37 index.html:123 index.html:312
+#: /dev/fd/63:36 /dev/fd/63:122 /dev/fd/63:311
 msgid "VPN"
 msgstr ""
 
-#: index.html:38 index.html:336 index.html:351 index.html:423
-msgid "YunoHost"
-msgstr ""
-
-#: index.html:39
+#: /dev/fd/63:38
 msgid "Installation"
 msgstr ""
 
-#: index.html:47
+#: /dev/fd/63:46
 msgid "Welcome"
 msgstr ""
 
-#: index.html:52 index.html:57 index.html:127 index.html:132 index.html:316
-#: index.html:340 index.html:378 index.html:538
+#: /dev/fd/63:51 /dev/fd/63:56 /dev/fd/63:126 /dev/fd/63:131 /dev/fd/63:315
+#: /dev/fd/63:339 /dev/fd/63:377 /dev/fd/63:537
 msgid "Close"
 msgstr ""
 
-#: index.html:53
+#: /dev/fd/63:52
 msgid ""
 "This service is in a BETA state and is NOT WORKING with the current version "
 "of install-sd.sh and YunoHost."
 msgstr ""
 
-#: index.html:58
+#: /dev/fd/63:57
 msgid ""
 "You will have to provide secret keys and passwords. This service can work "
 "offline."
 msgstr ""
 
-#: index.html:61
+#: /dev/fd/63:60
 msgid "Welcome!"
 msgstr ""
 
-#: index.html:63
+#: /dev/fd/63:62
 msgid ""
 "You are the happy owner of an Internet Cube, but you do not know how to "
 "bootstrap it? This service was designed for you! After some questions about "
@@ -75,39 +75,39 @@ msgid ""
 "installation guide."
 msgstr ""
 
-#: index.html:64
+#: /dev/fd/63:63
 msgid "Let's Go!"
 msgstr ""
 
-#: index.html:75
+#: /dev/fd/63:74
 msgid "Do you have an Internet Cube (LIME or LIME2) and a VPN Account?"
 msgstr ""
 
-#: index.html:78 index.html:87 index.html:96
+#: /dev/fd/63:77 /dev/fd/63:86 /dev/fd/63:95
 msgid "Yes"
 msgstr ""
 
-#: index.html:79 index.html:88 index.html:97
+#: /dev/fd/63:78 /dev/fd/63:87 /dev/fd/63:96
 msgid "No"
 msgstr ""
 
-#: index.html:84
+#: /dev/fd/63:83
 msgid "Do you know how to use a terminal on GNU/Linux?"
 msgstr ""
 
-#: index.html:93
+#: /dev/fd/63:92
 msgid "Do you have a .cube file in the files provided by your VPN provider?"
 msgstr ""
 
-#: index.html:105
+#: /dev/fd/63:104
 msgid "Internet Cube and VPN providers"
 msgstr ""
 
-#: index.html:109
+#: /dev/fd/63:108
 msgid "You need help!"
 msgstr ""
 
-#: index.html:110
+#: /dev/fd/63:109
 msgid ""
 "If you do not have an Internet Cube (LIME/LIME2) or a VPN account, or you do "
 "not know how to use a terminal on GNU/Linux, you should not use this service "
@@ -116,511 +116,542 @@ msgid ""
 "to help you :)."
 msgstr ""
 
-#: index.html:111
+#: /dev/fd/63:110
 msgid ""
 "You can choose an organization referenced on the map below, or try to find "
 "another one close to you (Linux User Groups, non-profit ISPs, etc):"
 msgstr ""
 
-#: index.html:117
+#: /dev/fd/63:116
 msgid "db.ffdn.org"
 msgstr ""
 
-#: index.html:128
+#: /dev/fd/63:127
 msgid ""
 "If you do not know what how to fill this step, please ask your VPN provider "
 "for a .cube file, and"
 msgstr ""
 
-#: index.html:128
+#: /dev/fd/63:127
 msgid "use it"
 msgstr ""
 
-#: index.html:133 index.html:317 index.html:341
+#: /dev/fd/63:132 /dev/fd/63:316 /dev/fd/63:340
 msgid "You have some issues to fix in this step."
 msgstr ""
 
-#: index.html:137 index.html:345
+#: /dev/fd/63:136 /dev/fd/63:344
 msgid "Main"
 msgstr ""
 
-#: index.html:138 index.html:346
+#: /dev/fd/63:137 /dev/fd/63:345
 msgid "Advanced"
 msgstr ""
 
-#: index.html:143
+#: /dev/fd/63:142
 msgid "Settings"
 msgstr ""
 
-#: index.html:146
+#: /dev/fd/63:145
 msgid "Server Address"
 msgstr ""
 
-#: index.html:153
+#: /dev/fd/63:152
 msgid "Server Port"
 msgstr ""
 
-#: index.html:160
+#: /dev/fd/63:154
+msgid "With restricted access, you should use 443 (TCP) or 53 (UDP)"
+msgstr ""
+
+#: /dev/fd/63:159
 msgid "Protocol"
 msgstr ""
 
-#: index.html:163
+#: /dev/fd/63:162
 msgid "UDP"
 msgstr ""
 
-#: index.html:167
+#: /dev/fd/63:165
+msgid ""
+"UDP is more efficient than TCP (but more filtered in case of restrictive "
+"access)"
+msgstr ""
+
+#: /dev/fd/63:166
 msgid "TCP"
 msgstr ""
 
-#: index.html:173
+#: /dev/fd/63:172
 msgid "Delegated Prefix (IPv6)"
 msgstr ""
 
-#: index.html:179
+#: /dev/fd/63:174
+msgid ""
+"Leave empty if your Internet Service Provider does not give you a delegated "
+"prefix"
+msgstr ""
+
+#: /dev/fd/63:178
 msgid "Authentication"
 msgstr ""
 
-#: index.html:182
+#: /dev/fd/63:181
 msgid "Server CA"
 msgstr ""
 
-#: index.html:194
+#: /dev/fd/63:183 /dev/fd/63:213 /dev/fd/63:225 /dev/fd/63:262 /dev/fd/63:1148
+msgid "Edition mode"
+msgstr ""
+
+#: /dev/fd/63:184 /dev/fd/63:214 /dev/fd/63:226 /dev/fd/63:263
+msgid "Unselect this certificate"
+msgstr ""
+
+#: /dev/fd/63:188 /dev/fd/63:218 /dev/fd/63:230 /dev/fd/63:267 /dev/fd/63:326
+msgid "Browse"
+msgstr ""
+
+#: /dev/fd/63:193
 msgid "Authentication Type"
 msgstr ""
 
-#: index.html:197
+#: /dev/fd/63:196
 msgid "Certificates"
 msgstr ""
 
-#: index.html:201
+#: /dev/fd/63:200
 msgid "Login"
 msgstr ""
 
-#: index.html:205
+#: /dev/fd/63:204
 msgid "Shared-Secret"
 msgstr ""
 
-#: index.html:212
+#: /dev/fd/63:211
 msgid "Upload Client Cert"
 msgstr ""
 
-#: index.html:224
+#: /dev/fd/63:223
 msgid "Upload Client Key"
 msgstr ""
 
-#: index.html:238
+#: /dev/fd/63:237
 msgid "Username"
 msgstr ""
 
-#: index.html:245 index.html:408
+#: /dev/fd/63:244 /dev/fd/63:407
 msgid "Password"
 msgstr ""
 
-#: index.html:252 index.html:368 index.html:415 index.html:447 index.html:523
+#: /dev/fd/63:251 /dev/fd/63:367 /dev/fd/63:414 /dev/fd/63:446 /dev/fd/63:522
 msgid "Password (again)"
 msgstr ""
 
-#: index.html:261
+#: /dev/fd/63:260
 msgid "Upload Shared-Secret"
 msgstr ""
 
-#: index.html:275
+#: /dev/fd/63:274
 msgid "DNS"
 msgstr ""
 
-#: index.html:278
+#: /dev/fd/63:277
 msgid "First resolver"
 msgstr ""
 
-#: index.html:285
+#: /dev/fd/63:279 /dev/fd/63:286
+msgid "IPv6 or IPv4"
+msgstr ""
+
+#: /dev/fd/63:284
 msgid "Second resolver"
 msgstr ""
 
-#: index.html:291
+#: /dev/fd/63:290
 msgid "OpenVPN"
 msgstr ""
 
-#: index.html:294
+#: /dev/fd/63:293
 msgid "Options to add"
 msgstr ""
 
-#: index.html:301
+#: /dev/fd/63:300
 msgid "Options to remove"
 msgstr ""
 
-#: index.html:322
+#: /dev/fd/63:321
 msgid "Select VPN Config"
 msgstr ""
 
-#: index.html:330
+#: /dev/fd/63:329
 msgid "Edit values"
 msgstr ""
 
-#: index.html:354
+#: /dev/fd/63:353
 msgid "Main Username"
 msgstr ""
 
-#: index.html:361
+#: /dev/fd/63:360
 msgid "Main Password"
 msgstr ""
 
-#: index.html:379
+#: /dev/fd/63:378
 msgid ""
 "If you do not have a domain name, you can choose one ending by nohost.me or "
 "noho.st (the availability will be automatically checked)."
 msgstr ""
 
-#: index.html:385
+#: /dev/fd/63:384
 msgid "Main Domain"
 msgstr ""
 
-#: index.html:398 index.html:460
+#: /dev/fd/63:397 /dev/fd/63:459
 msgid "Wifi Hotspot"
 msgstr ""
 
-#: index.html:401
+#: /dev/fd/63:400
 msgid "Name (SSID)"
 msgstr ""
 
-#: index.html:426
+#: /dev/fd/63:425
 msgid "First name"
 msgstr ""
 
-#: index.html:433
+#: /dev/fd/63:432
 msgid "Last name"
 msgstr ""
 
-#: index.html:440
+#: /dev/fd/63:439
 msgid "User Password"
 msgstr ""
 
-#: index.html:454
+#: /dev/fd/63:441 /dev/fd/63:517
+msgid "Default: same as Main Password"
+msgstr ""
+
+#: /dev/fd/63:453
 msgid "Additional domain"
 msgstr ""
 
-#: index.html:463
+#: /dev/fd/63:462
 msgid "IPv6 delegated Prefix"
 msgstr ""
 
-#: index.html:470
+#: /dev/fd/63:464
+msgid "Default: same as for VPN"
+msgstr ""
+
+#: /dev/fd/63:469
 msgid "First IPv6 DNS resolver"
 msgstr ""
 
-#: index.html:477
+#: /dev/fd/63:476
 msgid "Second IPv6 DNS resolver"
 msgstr ""
 
-#: index.html:484
+#: /dev/fd/63:483
 msgid "First IPv4 DNS resolver"
 msgstr ""
 
-#: index.html:491
+#: /dev/fd/63:490
 msgid "Second IPv4 DNS resolver"
 msgstr ""
 
-#: index.html:498
+#: /dev/fd/63:497
 msgid "IPv4 NAT Prefix (/24)"
 msgstr ""
 
-#: index.html:505
+#: /dev/fd/63:504
 msgid "Non-free firmwares"
 msgstr ""
 
-#: index.html:513
+#: /dev/fd/63:512
 msgid "Unix"
 msgstr ""
 
-#: index.html:516
+#: /dev/fd/63:515
 msgid "Root Password"
 msgstr ""
 
-#: index.html:534
+#: /dev/fd/63:533
 msgid "Ready to Install!"
 msgstr ""
 
-#: index.html:539
+#: /dev/fd/63:538
 msgid "You before have to fix the issues raised in the previous steps."
 msgstr ""
 
-#: index.html:543
+#: /dev/fd/63:542
 msgid "Installation Guide"
 msgstr ""
 
-#: index.html:546
+#: /dev/fd/63:545
 msgid ""
 "Sorry, but you cannot use the Installation Guide while you have issues to "
 "fix in the previous steps."
 msgstr ""
 
-#: index.html:550
+#: /dev/fd/63:549
 msgid ""
 "Congratulations! You now just have to follow the Installation Guide, to "
 "install your Internet Cube."
 msgstr ""
 
-#: index.html:554 index.html:557
+#: /dev/fd/63:553 /dev/fd/63:556
 msgid "Download Cube File"
 msgstr ""
 
-#: index.html:556
+#: /dev/fd/63:555
 msgid ""
 "You cannot generate an HyperCube file, because you have some issues to fix "
 "in the previous steps. Instead, you just can download the Cube File "
 "corresponding to your VPN configuration :"
 msgstr ""
 
-#: index.html:561
+#: /dev/fd/63:560
 msgid "Step 1: About your Internet Cube"
 msgstr ""
 
-#: index.html:570
+#: /dev/fd/63:569
 msgid "My Cube is already pre-installed"
 msgstr ""
 
-#: index.html:579
+#: /dev/fd/63:578
 msgid "I have a LIME2"
 msgstr ""
 
-#: index.html:588
+#: /dev/fd/63:587
 msgid "I want an encrypted file system (experts only)"
 msgstr ""
 
-#: index.html:593
+#: /dev/fd/63:592
 msgid "Step 2: Post-Installation"
 msgstr ""
 
-#: index.html:595
+#: /dev/fd/63:594
 msgid "You just have to do the post-installation, using your HyperCube file:"
 msgstr ""
 
-#: index.html:598 index.html:612
-msgid "Download your"
+#: /dev/fd/63:597 /dev/fd/63:611
+msgid "Download your HyperCube File"
 msgstr ""
 
-#: index.html:598 index.html:612
-msgid "HyperCube File"
-msgstr ""
-
-#: index.html:599
+#: /dev/fd/63:598
 msgid "Put it on the root of a USB stick (not into a folder)"
 msgstr ""
 
-#: index.html:600 index.html:621
+#: /dev/fd/63:599 /dev/fd/63:620
 msgid "Unplug your Internet Cube if powered on"
 msgstr ""
 
-#: index.html:601
+#: /dev/fd/63:600
 msgid "Plug your USB stick to your Internet Cube"
 msgstr ""
 
-#: index.html:602 index.html:623
+#: /dev/fd/63:601 /dev/fd/63:622
 msgid "Connect your Internet Cube to an outlet"
 msgstr ""
 
-#: index.html:607
+#: /dev/fd/63:606
 msgid "Step 2: Installation"
 msgstr ""
 
-#: index.html:609
+#: /dev/fd/63:608
 msgid "Install the Cube system on a micro-SD card, using your HyperCube file:"
 msgstr ""
 
-#: index.html:613
-msgid "Download the"
+#: /dev/fd/63:612
+msgid "Download the SD Card Installer"
 msgstr ""
 
-#: index.html:613
-msgid "SD Card Installer"
-msgstr ""
-
-#: index.html:614
+#: /dev/fd/63:613
 msgid "Use the SD Card Installer this way:"
 msgstr ""
 
-#: index.html:620
+#: /dev/fd/63:619
 msgid "Carefully follow the instructions of the Installer, until the end"
 msgstr ""
 
-#: index.html:622
+#: /dev/fd/63:621
 msgid "Insert your micro-SD card in your Internet Cube"
 msgstr ""
 
-#: index.html:624
+#: /dev/fd/63:623
 msgid ""
 "After some minutes, find the private IPv4 address of your Internet Cube, "
 "using:"
 msgstr ""
 
-#: index.html:627
+#: /dev/fd/63:626
 msgid "Unlock the file system of your Cube, using your passphrase:"
 msgstr ""
 
-#: index.html:634
+#: /dev/fd/63:633
 msgid "Step 3: You Got a New Wifi!"
 msgstr ""
 
-#: index.html:636
+#: /dev/fd/63:635
 msgid ""
 "Once you can see your new wifi hotspot from your computer (this can take "
 "several dozen of minutes), this means that your Internet Cube is ready and "
-"that you can use it, right now!"
+"that you can use it, right now."
 msgstr ""
 
-#: index.html:638
+#: /dev/fd/63:637
 msgid "Show wifi password"
 msgstr ""
 
-#: index.html:640
-msgid "Congratulations, you now have a clean Internet access \\o/."
+#: /dev/fd/63:639
+msgid "Congratulations, you now have a clean Internet access!"
 msgstr ""
 
-#: index.html:642
+#: /dev/fd/63:641
 msgid "Step 4: Self-Hosting"
 msgstr ""
 
-#: index.html:644
+#: /dev/fd/63:643
 msgid ""
 "If you want to update your settings or configure some web services to host, "
 "you just have to go to your new web administration:"
 msgstr ""
 
-#: index.html:647
+#: /dev/fd/63:646
 msgid "Show admin password"
 msgstr ""
 
-#: index.html:649
+#: /dev/fd/63:648
 msgid ""
 "If you experience problems using your new administration, please read the "
 "YunoHost documentation written by the community or ask some help to a non-"
 "profit organization:"
 msgstr ""
 
-#: index.html:651
+#: /dev/fd/63:650
 msgid "Doc"
 msgstr ""
 
-#: index.html:651
+#: /dev/fd/63:650
 msgid "Get Help"
 msgstr ""
 
-#: index.html:658
+#: /dev/fd/63:657
 msgid "Previous"
 msgstr ""
 
-#: index.html:659
+#: /dev/fd/63:658
 msgid "Next"
 msgstr ""
 
-#: js/hypercube.js:469
+#: /dev/fd/63:668
+msgid "Internet Cube"
+msgstr "La Brique Internet"
+
+#: /dev/fd/63:1125
 msgid "Select file mode"
 msgstr ""
 
-#: js/hypercube.js:492
-msgid "Edition mode"
-msgstr ""
-
-#: js/hypercube.js:533 js/hypercube.js:707
+#: /dev/fd/63:1189 /dev/fd/63:1363
 msgid "Cannot read this file"
 msgstr ""
 
-#: js/hypercube.js:572 js/hypercube.js:693
+#: /dev/fd/63:1228 /dev/fd/63:1349
 msgid "Invalid file (syntax error):"
 msgstr ""
 
-#: js/hypercube.js:572 js/hypercube.js:576
+#: /dev/fd/63:1228 /dev/fd/63:1232
 msgid "are you sure that this is your .cube file?"
 msgstr ""
 
-#: js/hypercube.js:576 js/hypercube.js:697
+#: /dev/fd/63:1232 /dev/fd/63:1353
 msgid "Invalid file (content error):"
 msgstr ""
 
-#: js/hypercube.js:621
+#: /dev/fd/63:1277
 msgid "Checking the avaibility of this domain..."
 msgstr ""
 
-#: js/hypercube.js:633
+#: /dev/fd/63:1289
 msgid "This domain is not available"
 msgstr ""
 
-#: js/hypercube.js:637
+#: /dev/fd/63:1293
 msgid "Cannot check the domain availability (does not work offline)"
 msgstr ""
 
-#: js/hypercube.js:647
+#: /dev/fd/63:1303
 msgid "This domain is available"
 msgstr ""
 
-#: js/hypercube.js:693 js/hypercube.js:697
+#: /dev/fd/63:1349 /dev/fd/63:1353
 msgid "are you sure that this is an HyperCube file?"
 msgstr ""
 
-#: js/hypercube.js:937
+#: /dev/fd/63:1593
 msgid ""
 "Loading an existing HyperCube file will replace all values currently set."
 msgstr ""
 
-#: js/hypercube.js:937
+#: /dev/fd/63:1593
 msgid "Are you sure?"
 msgstr ""
 
-#: js/hypercube.js:1005
+#: /dev/fd/63:1661
 msgid "This field is mandatory"
 msgstr ""
 
-#: js/hypercube.js:1026
+#: /dev/fd/63:1682
 msgid "This IP format looks bad"
 msgstr ""
 
-#: js/hypercube.js:1033
+#: /dev/fd/63:1689
 msgid "This IPv4 format looks bad"
 msgstr ""
 
-#: js/hypercube.js:1040
+#: /dev/fd/63:1696
 msgid "This IPv6 format looks bad"
 msgstr ""
 
-#: js/hypercube.js:1067
+#: /dev/fd/63:1723
 msgid "Must be the same than the previous input"
 msgstr ""
 
-#: js/hypercube.js:1127
+#: /dev/fd/63:1783
 msgid "No .cube file selected"
 msgstr ""
 
-#: js/hypercube.js:1152 js/hypercube.js:1157 js/hypercube.js:1176
-#: js/hypercube.js:1185
+#: /dev/fd/63:1808 /dev/fd/63:1813 /dev/fd/63:1832 /dev/fd/63:1841
 msgid "Must contain a line with <LINE>"
 msgstr ""
 
-#: js/hypercube.js:1198
+#: /dev/fd/63:1854
 msgid "Must be only composed of digits"
 msgstr ""
 
-#: js/hypercube.js:1252
+#: /dev/fd/63:1908
 msgid "This IPv4 prefix looks bad (required format is x.x.x or x.x.x.0)"
 msgstr ""
 
-#: js/hypercube.js:1265
+#: /dev/fd/63:1921
 msgid "This prefix must be part of an IPv4 private range"
 msgstr ""
 
-#: js/hypercube.js:1273
+#: /dev/fd/63:1929
 msgid "Only lowercase letters and digits are allowed"
 msgstr ""
 
-#: js/hypercube.js:1277
+#: /dev/fd/63:1933
 msgid "Admin is not an authorized value"
 msgstr ""
 
-#: js/hypercube.js:1283
+#: /dev/fd/63:1939
 msgid "Must be greater than 4 characters"
 msgstr ""
 
-#: js/hypercube.js:1288
+#: /dev/fd/63:1944
 msgid "Only printable ASCII characters are allowed"
 msgstr ""
 
-#: js/hypercube.js:1293
+#: /dev/fd/63:1949
 msgid "Must from 8 to 63 characters (WPA2 passphrase)"
 msgstr ""

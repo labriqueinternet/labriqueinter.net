@@ -1,6 +1,7 @@
-/* VPN Client app for YunoHost 
- * Copyright (C) 2015 Julien Vaubourg <julien@vaubourg.com>
- * Contribute at https://github.com/labriqueinternet/vpnclient_ynh
+/* HyperCube Service for the Internet Cube Project
+ * Copyright (C) 2016 Julien Vaubourg <julien@vaubourg.com>
+ * Contribute at https://github.com/labriqueinternet/labriqueinter.net/tree/master/hypercube
+ * Report issues at https://dev.yunohost.org/projects/la-brique-internet/issues
  * 
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
@@ -15,9 +16,6 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-// <?
-
 
 /**************
  *** MODELS ***
@@ -388,7 +386,6 @@ var view = {
     $(window).on('popstate', navigation.browserHistory);
 
     $('.btn-group').button();
-    $('[data-toggle="tooltip"]').tooltip();
     $('.switch').bootstrapToggle();
 
     $('.fileinput').click(controller.fileInputClick);
@@ -1351,7 +1348,7 @@ var i18n = {
       }
     });
   
-    $('h1, h2, h3, h4, label, span, a, strong, em, button, .i18n').each(function() {
+    $('h1, h2, h3, h4, label, span, a, li, strong, p, em, button, .i18n').each(function() {
       if($(this).children().length == 0) {
         var text = $(this).text();
         var matches = /^\s*_\(["'](.*)["']\)\s*$/.exec(text);
@@ -1360,17 +1357,23 @@ var i18n = {
           $(this).text(_(matches[1]));
         }
       }
+
+      if($(this).attr('href') && $(this).attr('hreflang') != 'en') {
+        var host = $(location).attr('host').replace(/.*\.([^.]+\.[^.]+)$/, '$1');
+        $(this).attr('href', $(this).attr('href').replace('internetcu.be', host));
+      }
     });
+
+    $('[data-toggle="tooltip"]').tooltip();
   },
 
   translate: function(msg) {
-    if(i18n.lang == 'en') {
-      return msg;
-
-    } else {
-      alert(msg);
-      return i18n.json[msg][1];
+    if(i18n.lang != 'en' && i18n.json[msg]) {
+      var translation = i18n.json[msg][1];
+      return translation ? translation : msg;
     }
+
+    return msg;
   }
 };
 

@@ -2,14 +2,14 @@
 
 Updating the pot file from template files:
 ```
-xgettext -Lphp --from-code UTF-8 index.html js/hypercube.js -o i18n/localization.pot
+xgettext --from-code UTF-8 -Llua -o i18n/localization.pot <(sed 's/title="\([^"]\+\)"/\1/g' index.html js/hypercube.js)
 ```
 
 ## Add a new language
 
 Create a new directory path (e.g. for French):
 ```
-mkdir -p sources/i18n/fr/
+mkdir -p i18n/fr/
 ```
 
 Generate the po file:
@@ -24,9 +24,9 @@ Use poedit for editing the po:
 poedit i18n/fr/localization.po
 ```
 
-Save the modifications in poedit.
+Select Catalog > Update from POT file, then update the strings and Save.
 
-Then, convert the po to JSON:
+Finally, convert the po to JSON:
 
 ```
 ./po2json i18n/fr/localization.po > i18n/fr/localization.json
