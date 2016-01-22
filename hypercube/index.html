@@ -1,3 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>HyperCube Service</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link media="all" type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link media="all" type="text/css" href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+  <link media="all" type="text/css" href="bootstrap/css/bootstrap-toggle.min.css" rel="stylesheet">
+  <link media="all" type="text/css" href="bootstrap/css/bootstrap-nav-wizard.css" rel="stylesheet">
+  <link media="all" type="text/css" href="../css/main.css" rel="stylesheet">
+  <link media="all" type="text/css" href="css/hypercube.css" rel="stylesheet">
+  <script src="jquery/jquery-2.1.1.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script src="bootstrap/js/bootstrap-toggle.min.js"></script>
+  <script src="js/ipaddr.js"></script>
+  <script src="js/hypercube.js"></script>
+</head>
+
 <!--
  HyperCube Service for the Internet Cube Project
  Copyright (C) 2016 Julien Vaubourg <julien@vaubourg.com>
@@ -18,29 +37,11 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>HyperCube Service</title>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <link media="all" type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link media="all" type="text/css" href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
-  <link media="all" type="text/css" href="bootstrap/css/bootstrap-toggle.min.css" rel="stylesheet">
-  <link media="all" type="text/css" href="bootstrap/css/bootstrap-nav-wizard.css" rel="stylesheet">
-  <link media="all" type="text/css" href="../css/main.css" rel="stylesheet">
-  <link media="all" type="text/css" href="css/hypercube.css" rel="stylesheet">
-  <script src="jquery/jquery-2.1.1.min.js"></script>
-  <script src="bootstrap/js/bootstrap.min.js"></script>
-  <script src="bootstrap/js/bootstrap-toggle.min.js"></script>
-  <script src="js/ipaddr.js"></script>
-  <script src="js/hypercube.js"></script>
-</head>
-
 <body>
   <header>
     <ul class="language-links">
         <li><a hreflang="en" href="http://hypercube.internetcu.be"  data-toggle="tooltip" data-placement="bottom" data-title="View the English version">EN</a></li>
-        <li><a href="http://hypercube.labriqueinter.net" data-toggle="tooltip" data-placement="bottom" data-title="Voir la version française" class="active">FR</a></li>
+        <li><a hreflang="fr" href="http://hypercube.labriqueinter.net" data-toggle="tooltip" data-placement="bottom" data-title="Voir la version française" class="active">FR</a></li>
     </ul>
 
     <input id="hypercube" type="file" />
@@ -133,7 +134,7 @@
                   <iframe src="//db.ffdn.org/embed_map_cube/"></iframe>
                 </div>
 
-                <p id="ffdnlink"><span class="glyphicon glyphicon-user"></span> <a href="http://db.ffdn.org">_("db.ffdn.org")</a></p>
+                <p id="ffdnlink"><span class="glyphicon glyphicon-user"></span> <a href="http://db.ffdn.org">db.ffdn.org</a></p>
               </div>
             </div>
   
@@ -182,7 +183,7 @@
                         <input type="radio" id="vpn_server_proto_udp" value="udp" checked="checked" /> <span>_("UDP")</span>
                       </label>
       
-                      <label class="btn btn-default" data-toggle="tooltip" data-title="_('UDP is more efficient than TCP (but more filtered in case of restrictive access)')">
+                      <label class="btn btn-default" id="tcpchbx" data-toggle="tooltip" data-title="_('UDP is more efficient than TCP (but more filtered in case of restrictive access)')">
                         <input type="radio" id="vpn_server_proto_tcp" value="tcp" /> <span>_("TCP")</span>
                       </label>
                     </div>

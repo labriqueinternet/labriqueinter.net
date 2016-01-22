@@ -17,17 +17,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-a.btn-disabled, a.btn-disabled:hover, a.btn-disabled:active {
-  background-color: #999;
-  background-image: none;
-  border-color: #888;
-  cursor: default;
-}
-
-a.btn-disabled:hover span {
-  color: #eee;
-}
-
 input[type=file] {
   display: none;
 }
@@ -325,6 +314,7 @@ iframe {
   background-color: #111;
   border-color: #f00;
   border-width: 0 0 1px 0;
+  color: #555;
 }
 
 .nav-tabs.nav-justified li a.hasWarnings, .nav-tabs.nav-justified li.active a.hasWarnings:hover {
@@ -353,6 +343,10 @@ label {
 .form-control.fileedition {
   display: none;
   height: 110px;
+}
+
+#tcpchbx {
+  border-radius: 0 4px 4px 0;
 }
 
 .btn-primary {
