@@ -814,7 +814,7 @@ var navigation = {
         historyStep += $('#vpn-choice').data('auto') == 'yes' ? 'auto' : 'manual';
       }
 
-      history.pushState({}, '', '/hypercube/#' + historyStep);
+      history.pushState({}, '', '/beta/#' + historyStep);
     }
 
     if(step == 'aboutyou' || step == 'ffdn') {
@@ -911,7 +911,7 @@ var navigation = {
 
       default:
         navigation.goToStep('welcome', true, true);
-        history.pushState({}, '', '/hypercube/#welcome');
+        history.pushState({}, '', '/beta/#welcome');
     }
   },
 
@@ -1362,7 +1362,7 @@ var i18n = {
     }
 
     $.ajax({
-      url: '/hypercube/i18n/' + locale + '/localization.json',
+      url: '/beta/i18n/' + locale + '/localization.json',
 
       error: function() {
         i18n.translateHtmlStrings();
