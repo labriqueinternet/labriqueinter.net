@@ -485,7 +485,7 @@ var controller = {
     var textInput = $('#' + $(this).attr('id').replace(/_editbtn$/, '_choosertxt'));
     var fileInput = $('#' + $(this).attr('id').replace(/_editbtn/, ''));
 
-    if(fileEdition.data('changed')) {
+    if(fileEdition.data('changed') || !fileInput.val()) {
       delButton.click();
     } else if(fileInput.val()) {
       delButton.show();
