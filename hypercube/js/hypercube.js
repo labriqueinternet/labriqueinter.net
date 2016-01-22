@@ -226,7 +226,7 @@ var hypercube = {
     $('#unix_root_password').val(json['unix']['root_password']);
     $('#unix_root_password_repeat').val(json['unix']['root_password']);
 
-    controller.submitForm();
+    navigation.goToStep('installation');
 
     return true;
   },
@@ -324,6 +324,8 @@ var view = {
     $('.panel').hide();
     $('#panel-' + step + ' .nav-tabs li:first-child a').click();
     $('#panel-' + step).show();
+
+    $('html, body').animate({ scrollTop: 0 }, 'slow');
   },
   
   showButtonNext: function(nextStep) {
@@ -350,18 +352,6 @@ var view = {
     $('#domainname').attr('href', 'https://' + $('#ynh_domain').val().trim() + '/admin/');
     $('#wifipwd').text($('#hotspot_wifi_passphrase').val().trim());
     $('#ynhpwd').text($('#ynh_password').val().trim());
-  },
-
-  i18n: function() {
-    $('[data-title]').each(function() {
-      $(this).data('title', $(this).data('title').replace("_('", '').replace("')", ''));
-    });
-  
-    $('h1, h2, h3, h4, label, span, a, strong, em, button, .i18n').each(function() {
-      if($(this).children().length == 0) {
-        $(this).text($(this).text().replace('_("', '').replace('")', ''));
-      }
-    });
   },
 
   fileInputSynchro: function() {
@@ -793,7 +783,7 @@ var navigation = {
         historyStep += $('#vpn-choice').data('auto') == 'yes' ? 'auto' : 'manual';
       }
 
-      history.pushState({}, '', '/generator/#' + historyStep);
+      history.pushState({}, '', '/hypercube/#' + historyStep);
     }
 
     if(step == 'aboutyou' || step == 'ffdn') {
@@ -890,7 +880,7 @@ var navigation = {
 
       default:
         navigation.goToStep('welcome', true, true);
-        history.pushState({}, '', '/generator/#welcome');
+        history.pushState({}, '', '/hypercube/#welcome');
     }
   },
 
@@ -1308,8 +1298,81 @@ var validation = {
  ************/
 
 function _(msg) {
-  return msg;
+  return i18n.translate(msg);
 }
+
+var i18n = {
+  lang: 'en',
+  json: {},
+
+  detectLanguage: function() {
+    var host = $(location).attr('host');
+
+    if(host.match('\.labriqueinter\.net$')) {
+      return 'fr';
+    }
+
+    return 'en';
+  },
+
+  load: function() {
+    var locale = i18n.detectLanguage();
+
+    if(locale == 'en') {
+      i18n.translateHtmlStrings();
+
+      return;
+    }
+
+    $.ajax({
+      url: '/hypercube/i18n/' + locale + '/localization.json',
+
+      error: function() {
+        i18n.translateHtmlStrings();
+        alert(url);
+      },
+
+      success: function(data) {
+        i18n.lang = locale;
+        i18n.json = data;
+
+        i18n.translateHtmlStrings();
+      }
+    });
+  },
+
+  translateHtmlStrings: function() {
+    $('[data-title]').each(function() {
+      var title = $(this).data('title');
+      var matches = /^\s*_\(["'](.*)["']\)\s*$/.exec(title);
+
+      if(matches != null) {
+        $(this).data('title', _(matches[1]));
+      }
+    });
+  
+    $('h1, h2, h3, h4, label, span, a, strong, em, button, .i18n').each(function() {
+      if($(this).children().length == 0) {
+        var text = $(this).text();
+        var matches = /^\s*_\(["'](.*)["']\)\s*$/.exec(text);
+
+        if(matches != null) {
+          $(this).text(_(matches[1]));
+        }
+      }
+    });
+  },
+
+  translate: function(msg) {
+    if(i18n.lang == 'en') {
+      return msg;
+
+    } else {
+      alert(msg);
+      return i18n.json[msg][1];
+    }
+  }
+};
 
 
 /************/
@@ -1317,7 +1380,7 @@ function _(msg) {
 /************/
 
 $(document).ready(function() {
-  view.i18n();
+  i18n.load();
   view.setEvents();
 
   view.fileInputSynchro();

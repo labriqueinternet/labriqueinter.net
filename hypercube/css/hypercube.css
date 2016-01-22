@@ -301,7 +301,7 @@ iframe {
 
 #ffdnmap {
   width: 770px;
-  margin: 20px auto 40px;
+  margin: 20px auto 15px;
 }
 
 .nav-wizard {
@@ -423,9 +423,13 @@ label {
   text-align: center;
 }
 
-p#showwifiname, p#showdomainname, #panel-submit p.ynhdoc {
+p#showwifiname, p#showdomainname, #panel-submit p.ynhdoc, .panel p#ffdnlink {
   text-align: center;
   font-size: 20pt;
+}
+
+.panel p#ffdnlink {
+  margin-bottom: 20px;
 }
 
 p#showwifipwd {
@@ -436,7 +440,7 @@ p#showwifipwd {
   font-size: 10pt;
 }
 
-#showdomainname a, .ynhdoc a {
+#showdomainname a, .ynhdoc a, #ffdnlink a {
   text-decoration: none;
 }
 
@@ -478,6 +482,10 @@ p#showwifipwd {
 h1 {
   clear: right;
   margin-bottom: 20px;
+}
+
+h1 span.i18n {
+  color: #fff;
 }
 
 a.btn-danger span {

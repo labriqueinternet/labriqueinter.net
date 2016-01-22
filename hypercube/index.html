@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HyperCube Generator</title>
+  <title>HyperCube Service</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link media="all" type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link media="all" type="text/css" href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
   <link media="all" type="text/css" href="bootstrap/css/bootstrap-toggle.min.css" rel="stylesheet">
   <link media="all" type="text/css" href="bootstrap/css/bootstrap-nav-wizard.css" rel="stylesheet">
   <link media="all" type="text/css" href="../css/main.css" rel="stylesheet">
-  <link media="all" type="text/css" href="css/generator.css" rel="stylesheet">
+  <link media="all" type="text/css" href="css/hypercube.css" rel="stylesheet">
   <script src="jquery/jquery-2.1.1.min.js"></script>
   <script src="bootstrap/js/bootstrap.min.js"></script>
   <script src="bootstrap/js/bootstrap-toggle.min.js"></script>
   <script src="js/ipaddr.js"></script>
-  <script src="js/generator.js"></script>
+  <script src="js/hypercube.js"></script>
 </head>
 
 <!-- <? -->
@@ -27,7 +27,7 @@
     <input id="hypercube" type="file" />
     <a href="javascript:" id="loadhypercube" data-toggle="tooltip" data-placement="bottom" data-title="_('Load an existing HyperCube file')"><span class="glyphicon glyphicon-cloud-upload"></span> <span>_("LOAD FILE")</span></a>
 
-    <h1><span>hypercube</span>.ÎnternetCu.be</h1>
+    <h1><span>hypercube</span>.<span class="i18n">_("ÎnternetCu.be")</span></h1>
   </header>
 
   <main>
@@ -50,7 +50,7 @@
               <div class="panel-inside">
                 <div class="alert alert-dismissible alert-info fade in" role="alert">
                   <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">_("Close")</span></button>
-                  <span>_("This generator is in a BETA state and is NOT WORKING with the current version of install-sd.sh and YunoHost.")</span>
+                  <span>_("This service is in a BETA state and is NOT WORKING with the current version of install-sd.sh and YunoHost.")</span>
                 </div>
     
                 <div class="alert alert-dismissible alert-info fade in" role="alert">
@@ -59,6 +59,7 @@
                 </div>
 
                 <h2>_("Welcome!")</h2>
+
                 <p class="i18n">_("You are the happy owner of an Internet Cube, but you do not know how to bootstrap it? This service was designed for you! After some questions about you, you will have to choose some settings, then to follow a quick installation guide.")</p>
                 <p><a href="javascript:" id="start">_("Let's Go!")</a></p>
               </div>
@@ -106,12 +107,14 @@
   
               <div class="panel-inside">
                 <h2>_("You need help!")</h2>
-                <p class="i18n">_("If you do not have an Internet Cube (LIME/LIME2) or a VPN account, or you do not know how to use a terminal on GNU/Linux, you should not use this service alone now, and should asking someone for some help. It is not a problem, because there are a lot of non-profit organizations, ready to help you :).")</p>
-                <p class="i18n">_("You can choose an organization referenced on the map below, or try to find another one close to you (Linux User Groups, non-profit ISPs, etc).")</p>
+                <p class="i18n">_("If you do not have an Internet Cube (LIME/LIME2) or a VPN account, or you do not know how to use a terminal on GNU/Linux, you should not use this service alone now, and should ask someone for some help. It is not a problem, because there are a lot lovely peoples, from non-profit organizations, ready to help you :).")</p>
+                <p class="i18n">_("You can choose an organization referenced on the map below, or try to find another one close to you (Linux User Groups, non-profit ISPs, etc):")</p>
 
                 <div id="ffdnmap">
                   <iframe src="//db.ffdn.org/embed_map_cube/"></iframe>
                 </div>
+
+                <p id="ffdnlink"><span class="glyphicon glyphicon-user"></span> <a href="http://db.ffdn.org">_("db.ffdn.org")</a></p>
               </div>
             </div>
   

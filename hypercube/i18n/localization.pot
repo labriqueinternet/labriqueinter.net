@@ -1,0 +1,625 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-01-22 17:06+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: js/hypercube.js:457
+msgid "Select file mode"
+msgstr ""
+
+#: js/hypercube.js:480
+msgid "Edition mode"
+msgstr ""
+
+#: js/hypercube.js:521 js/hypercube.js:695
+msgid "Cannot read this file"
+msgstr ""
+
+#: js/hypercube.js:560 js/hypercube.js:681
+msgid "Invalid file (syntax error):"
+msgstr ""
+
+#: js/hypercube.js:560 js/hypercube.js:564
+msgid "are you sure that this is your .cube file?"
+msgstr ""
+
+#: js/hypercube.js:564 js/hypercube.js:685
+msgid "Invalid file (content error):"
+msgstr ""
+
+#: js/hypercube.js:609
+msgid "Checking the avaibility of this domain..."
+msgstr ""
+
+#: js/hypercube.js:621
+msgid "This domain is not available"
+msgstr ""
+
+#: js/hypercube.js:625
+msgid "Cannot check the domain availability (does not work offline)"
+msgstr ""
+
+#: js/hypercube.js:635
+msgid "This domain is available"
+msgstr ""
+
+#: js/hypercube.js:681 js/hypercube.js:685
+msgid "are you sure that this is an HyperCube file?"
+msgstr ""
+
+#: js/hypercube.js:925
+msgid ""
+"Loading an existing HyperCube file will replace all values currently set."
+msgstr ""
+
+#: js/hypercube.js:925
+msgid "Are you sure?"
+msgstr ""
+
+#: js/hypercube.js:993
+msgid "This field is mandatory"
+msgstr ""
+
+#: js/hypercube.js:1014
+msgid "This IP format looks bad"
+msgstr ""
+
+#: js/hypercube.js:1021
+msgid "This IPv4 format looks bad"
+msgstr ""
+
+#: js/hypercube.js:1028
+msgid "This IPv6 format looks bad"
+msgstr ""
+
+#: js/hypercube.js:1055
+msgid "Must be the same than the previous input"
+msgstr ""
+
+#: js/hypercube.js:1115
+msgid "No .cube file selected"
+msgstr ""
+
+#: js/hypercube.js:1140 js/hypercube.js:1145 js/hypercube.js:1164
+#: js/hypercube.js:1173
+msgid "Must contain a line with <LINE>"
+msgstr ""
+
+#: js/hypercube.js:1186
+msgid "Must be only composed of digits"
+msgstr ""
+
+#: js/hypercube.js:1240
+msgid "This IPv4 prefix looks bad (required format is x.x.x or x.x.x.0)"
+msgstr ""
+
+#: js/hypercube.js:1253
+msgid "This prefix must be part of an IPv4 private range"
+msgstr ""
+
+#: js/hypercube.js:1261
+msgid "Only lowercase letters and digits are allowed"
+msgstr ""
+
+#: js/hypercube.js:1265
+msgid "Admin is not an authorized value"
+msgstr ""
+
+#: js/hypercube.js:1271
+msgid "Must be greater than 4 characters"
+msgstr ""
+
+#: js/hypercube.js:1276
+msgid "Only printable ASCII characters are allowed"
+msgstr ""
+
+#: js/hypercube.js:1281
+msgid "Must from 8 to 63 characters (WPA2 passphrase)"
+msgstr ""
+
+#: index.html:28
+msgid "LOAD FILE"
+msgstr ""
+
+#: index.html:30
+msgid "ÎnternetCu.be"
+msgstr ""
+
+#: index.html:36 index.html:70
+msgid "About You"
+msgstr ""
+
+#: index.html:37 index.html:123 index.html:314
+msgid "VPN"
+msgstr ""
+
+#: index.html:38 index.html:338 index.html:353 index.html:425
+msgid "YunoHost"
+msgstr ""
+
+#: index.html:39
+msgid "Installation"
+msgstr ""
+
+#: index.html:47
+msgid "Welcome"
+msgstr ""
+
+#: index.html:52 index.html:57 index.html:127 index.html:132 index.html:318
+#: index.html:342 index.html:380 index.html:540
+msgid "Close"
+msgstr ""
+
+#: index.html:53
+msgid ""
+"This service is in a BETA state and is NOT WORKING with the current version "
+"of install-sd.sh and YunoHost."
+msgstr ""
+
+#: index.html:58
+msgid ""
+"You will have to provide secret keys and passwords. This service can work "
+"offline."
+msgstr ""
+
+#: index.html:61
+msgid "Welcome!"
+msgstr ""
+
+#: index.html:63
+msgid ""
+"You are the happy owner of an Internet Cube, but you do not know how to "
+"bootstrap it? This service was designed for you! After some questions about "
+"you, you will have to choose some settings, then to follow a quick "
+"installation guide."
+msgstr ""
+
+#: index.html:64
+msgid "Let's Go!"
+msgstr ""
+
+#: index.html:75
+msgid "Do you have an Internet Cube (LIME or LIME2) and a VPN Account?"
+msgstr ""
+
+#: index.html:78 index.html:87 index.html:96
+msgid "Yes"
+msgstr ""
+
+#: index.html:79 index.html:88 index.html:97
+msgid "No"
+msgstr ""
+
+#: index.html:84
+msgid "Do you know how to use a terminal on GNU/Linux?"
+msgstr ""
+
+#: index.html:93
+msgid "Do you have a .cube file in the files provided by your VPN provider?"
+msgstr ""
+
+#: index.html:105
+msgid "Internet Cube and VPN providers"
+msgstr ""
+
+#: index.html:109
+msgid "You need help!"
+msgstr ""
+
+#: index.html:110
+msgid ""
+"If you do not have an Internet Cube (LIME/LIME2) or a VPN account, or you do "
+"not know how to use a terminal on GNU/Linux, you should not use this service "
+"alone now, and should ask someone for some help. It is not a problem, "
+"because there are a lot lovely peoples, from non-profit organizations, ready "
+"to help you :)."
+msgstr ""
+
+#: index.html:111
+msgid ""
+"You can choose an organization referenced on the map below, or try to find "
+"another one close to you (Linux User Groups, non-profit ISPs, etc):"
+msgstr ""
+
+#: index.html:117
+msgid "db.ffdn.org"
+msgstr ""
+
+#: index.html:128
+msgid ""
+"If you do not know what how to fill this step, please ask your VPN provider "
+"for a .cube file, and"
+msgstr ""
+
+#: index.html:128
+msgid "use it"
+msgstr ""
+
+#: index.html:133 index.html:319 index.html:343
+msgid "You have some issues to fix in this step."
+msgstr ""
+
+#: index.html:137 index.html:347
+msgid "Main"
+msgstr ""
+
+#: index.html:138 index.html:348
+msgid "Advanced"
+msgstr ""
+
+#: index.html:143
+msgid "Settings"
+msgstr ""
+
+#: index.html:146
+msgid "Server Address"
+msgstr ""
+
+#: index.html:153
+msgid "Server Port"
+msgstr ""
+
+#: index.html:162
+msgid "Protocol"
+msgstr ""
+
+#: index.html:165
+msgid "UDP"
+msgstr ""
+
+#: index.html:169
+msgid "TCP"
+msgstr ""
+
+#: index.html:175
+msgid "Delegated Prefix (IPv6)"
+msgstr ""
+
+#: index.html:181
+msgid "Authentication"
+msgstr ""
+
+#: index.html:184
+msgid "Server CA"
+msgstr ""
+
+#: index.html:196
+msgid "Authentication Type"
+msgstr ""
+
+#: index.html:199
+msgid "Certificates"
+msgstr ""
+
+#: index.html:203
+msgid "Login"
+msgstr ""
+
+#: index.html:207
+msgid "Shared-Secret"
+msgstr ""
+
+#: index.html:214
+msgid "Upload Client Cert"
+msgstr ""
+
+#: index.html:226
+msgid "Upload Client Key"
+msgstr ""
+
+#: index.html:240
+msgid "Username"
+msgstr ""
+
+#: index.html:247 index.html:410
+msgid "Password"
+msgstr ""
+
+#: index.html:254 index.html:370 index.html:417 index.html:449 index.html:525
+msgid "Password (again)"
+msgstr ""
+
+#: index.html:263
+msgid "Upload Shared-Secret"
+msgstr ""
+
+#: index.html:277
+msgid "DNS"
+msgstr ""
+
+#: index.html:280
+msgid "First resolver"
+msgstr ""
+
+#: index.html:287
+msgid "Second resolver"
+msgstr ""
+
+#: index.html:293
+msgid "OpenVPN"
+msgstr ""
+
+#: index.html:296
+msgid "Options to add"
+msgstr ""
+
+#: index.html:303
+msgid "Options to remove"
+msgstr ""
+
+#: index.html:324
+msgid "Select VPN Config"
+msgstr ""
+
+#: index.html:332
+msgid "Edit values"
+msgstr ""
+
+#: index.html:356
+msgid "Main Username"
+msgstr ""
+
+#: index.html:363
+msgid "Main Password"
+msgstr ""
+
+#: index.html:381
+msgid ""
+"If you do not have a domain name, you can choose one ending by nohost.me or "
+"noho.st (the availability will be automatically checked)."
+msgstr ""
+
+#: index.html:387
+msgid "Main Domain"
+msgstr ""
+
+#: index.html:400 index.html:462
+msgid "Wifi Hotspot"
+msgstr ""
+
+#: index.html:403
+msgid "Name (SSID)"
+msgstr ""
+
+#: index.html:428
+msgid "First name"
+msgstr ""
+
+#: index.html:435
+msgid "Last name"
+msgstr ""
+
+#: index.html:442
+msgid "User Password"
+msgstr ""
+
+#: index.html:456
+msgid "Additional domain"
+msgstr ""
+
+#: index.html:465
+msgid "IPv6 delegated Prefix"
+msgstr ""
+
+#: index.html:472
+msgid "First IPv6 DNS resolver"
+msgstr ""
+
+#: index.html:479
+msgid "Second IPv6 DNS resolver"
+msgstr ""
+
+#: index.html:486
+msgid "First IPv4 DNS resolver"
+msgstr ""
+
+#: index.html:493
+msgid "Second IPv4 DNS resolver"
+msgstr ""
+
+#: index.html:500
+msgid "IPv4 NAT Prefix (/24)"
+msgstr ""
+
+#: index.html:507
+msgid "Non-free firmwares"
+msgstr ""
+
+#: index.html:515
+msgid "Unix"
+msgstr ""
+
+#: index.html:518
+msgid "Root Password"
+msgstr ""
+
+#: index.html:536
+msgid "Ready to Install!"
+msgstr ""
+
+#: index.html:541
+msgid "You before have to fix the issues raised in the previous steps."
+msgstr ""
+
+#: index.html:545
+msgid "Installation Guide"
+msgstr ""
+
+#: index.html:548
+msgid ""
+"Sorry, but you cannot use the Installation Guide while you have issues to "
+"fix in the previous steps."
+msgstr ""
+
+#: index.html:552
+msgid ""
+"Congratulations! You now just have to follow the Installation Guide, to "
+"install your Internet Cube."
+msgstr ""
+
+#: index.html:556 index.html:559
+msgid "Download Cube File"
+msgstr ""
+
+#: index.html:558
+msgid ""
+"You cannot generate an HyperCube file, because you have some issues to fix "
+"in the previous steps. Instead, you just can download the Cube File "
+"corresponding to your VPN configuration :"
+msgstr ""
+
+#: index.html:563
+msgid "Step 1: About your Internet Cube"
+msgstr ""
+
+#: index.html:572
+msgid "My Cube is already pre-installed"
+msgstr ""
+
+#: index.html:581
+msgid "I have a LIME2"
+msgstr ""
+
+#: index.html:590
+msgid "I want an encrypted file system (experts only)"
+msgstr ""
+
+#: index.html:595
+msgid "Step 2: Post-Installation"
+msgstr ""
+
+#: index.html:597
+msgid "You just have to do the post-installation, using your HyperCube file:"
+msgstr ""
+
+#: index.html:600 index.html:614
+msgid "Download your"
+msgstr ""
+
+#: index.html:600 index.html:614
+msgid "HyperCube File"
+msgstr ""
+
+#: index.html:601
+msgid "Put it on the root of a USB stick (not into a folder)"
+msgstr ""
+
+#: index.html:602 index.html:623
+msgid "Unplug your Internet Cube if powered on"
+msgstr ""
+
+#: index.html:603
+msgid "Plug your USB stick to your Internet Cube"
+msgstr ""
+
+#: index.html:604 index.html:625
+msgid "Connect your Internet Cube to an outlet"
+msgstr ""
+
+#: index.html:609
+msgid "Step 2: Installation"
+msgstr ""
+
+#: index.html:611
+msgid "Install the Cube system on a micro-SD card, using your HyperCube file:"
+msgstr ""
+
+#: index.html:615
+msgid "Download the"
+msgstr ""
+
+#: index.html:615
+msgid "SD Card Installer"
+msgstr ""
+
+#: index.html:616
+msgid "Use the SD Card Installer this way:"
+msgstr ""
+
+#: index.html:622
+msgid "Carefully follow the instructions of the Installer, until the end"
+msgstr ""
+
+#: index.html:624
+msgid "Insert your micro-SD card in your Internet Cube"
+msgstr ""
+
+#: index.html:626
+msgid ""
+"After some minutes, find the private IPv4 address of your Internet Cube, "
+"using:"
+msgstr ""
+
+#: index.html:629
+msgid "Unlock the file system of your Cube, using your passphrase:"
+msgstr ""
+
+#: index.html:636
+msgid "Step 3: You Got a New Wifi!"
+msgstr ""
+
+#: index.html:638
+msgid ""
+"Once you can see your new wifi hotspot from your computer (this can take "
+"several dozen of minutes), this means that your Internet Cube is ready and "
+"that you can use it, right now!"
+msgstr ""
+
+#: index.html:640
+msgid "Show wifi password"
+msgstr ""
+
+#: index.html:642
+msgid "Congratulations, you now have a clean Internet access \\o/."
+msgstr ""
+
+#: index.html:644
+msgid "Step 4: Self-Hosting"
+msgstr ""
+
+#: index.html:646
+msgid ""
+"If you want to update your settings or configure some web services to host, "
+"you just have to go to your new web administration:"
+msgstr ""
+
+#: index.html:649
+msgid "Show admin password"
+msgstr ""
+
+#: index.html:651
+msgid ""
+"If you experience problems using your new administration, please read the "
+"YunoHost documentation written by the community or ask some help to a non-"
+"profit organization:"
+msgstr ""
+
+#: index.html:653
+msgid "Doc"
+msgstr ""
+
+#: index.html:653
+msgid "Get Help"
+msgstr ""
+
+#: index.html:660
+msgid "Previous"
+msgstr ""
+
+#: index.html:661
+msgid "Next"
+msgstr ""
