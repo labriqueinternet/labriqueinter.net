@@ -84,7 +84,6 @@ a:focus {
 .language-links {
   padding: 0.5em 1em;
   font-size: 0.7em;
-  font-weight: bold;
   text-align: left;
   list-style: none;
   margin: 0;
@@ -100,6 +99,7 @@ a:focus {
   text-decoration: none;
   display: inline-block;
   color: #bbb;
+  font-weight: bold;
 }
 .language-links a:hover,
 .language-links a:focus {color: #ff3c3c;}
