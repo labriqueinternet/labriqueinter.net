@@ -473,7 +473,7 @@ var controller = {
 
     $(this).find('.glyphicon').addClass('glyphicon-upload');
     $(this).find('.glyphicon').removeClass('glyphicon-pencil');
-    $(this).attr('data-original-title', _("Select file mode"));
+    $(this).attr('data-original-title', _("File selection mode"));
     $(this).unbind('click');
     $(this).click(controller.uploadFileButtonClick);
     $(this).tooltip('hide');
@@ -629,7 +629,7 @@ var controller = {
       dynette.fadeIn();
 
       $.ajax({
-        url: 'http://dyndns.yunohost.org/test/' + $(this).val().trim(),
+        url: '//dyndns.yunohost.org/test/' + $(this).val().trim(),
         crossDomain: true,
 
         error: function(jqXHR, textStatus, errorThrown) {
