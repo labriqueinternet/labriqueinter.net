@@ -151,6 +151,13 @@ ul.nav a {
   color: #fff;
 }
 
+#alert-next {
+  display: none;
+  width: 100%;
+  padding: 5px;
+  margin: -10px 0 10px;
+}
+
 .alert-input, .info-input, .dynette {
   margin: 0;
 }
@@ -296,7 +303,7 @@ iframe {
 
 .nav-wizard {
   margin: 10px auto 30px;
-  width: 445px;
+  width: 450px;
 }
 
 .panel-default {
@@ -317,7 +324,7 @@ iframe {
   color: #555;
 }
 
-.nav-tabs.nav-justified li a.hasWarnings, .nav-tabs.nav-justified li.active a.hasWarnings:hover {
+.nav-tabs.nav-justified li a.hasWarnings, .nav-tabs.nav-justified li.active a.hasWarnings:focus, .nav-tabs.nav-justified li.active a.hasWarnings:active, .nav-tabs.nav-justified li.active a.hasWarnings:hover {
   color: #ff7500;
 }
 
@@ -333,6 +340,10 @@ label {
 .form-control:focus {
   border-color: #f00;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 0, 0, 0.6);
+}
+
+.form-control.fileinput {
+  cursor: default;
 }
 
 .form-control.fileinput:focus {
@@ -475,7 +486,7 @@ p#showwifipwd {
 }
 
 h1 {
-  clear: right;
+  clear: left;
   margin-bottom: 20px;
 }
 

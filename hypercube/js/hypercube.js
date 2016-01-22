@@ -181,11 +181,22 @@ var cube = {
   },
 
   downloadLink: function(json) {
-    var fileContent = window.btoa(cube.toJsonTxt(json));
-    fileContent = "data:application/octet-stream;base64," + fileContent;
+    try {
+      var fileContent = window.btoa(cube.toJsonTxt(json));
 
-    $('.cubelink').attr('href', fileContent);
-    $('.cubelink').attr('download', 'config.cube');
+      fileContent = "data:application/octet-stream;base64," + fileContent;
+
+      $('.cubelink').attr('href', fileContent);
+      $('.cubelink').attr('download', 'config.cube');
+
+    } catch(e) {
+      if(/invalid/i.test(e)) {
+        alert(_("ERROR: Invalid character found when preparing the download link."));
+
+      } else {
+        throw e;
+      }
+    }
   }
 };
 
@@ -281,11 +292,21 @@ var hypercube = {
   },
 
   downloadLink: function(json) {
-    var fileContent = window.btoa(hypercube.toJsonTxt(json));
-    fileContent = "data:application/octet-stream;base64," + fileContent;
+    try {
+      var fileContent = window.btoa(hypercube.toJsonTxt(json));
+      fileContent = "data:application/octet-stream;base64," + fileContent;
+  
+      $('.hypercubelink').attr('href', fileContent);
+      $('.hypercubelink').attr('download', 'install.hypercube');
 
-    $('.hypercubelink').attr('href', fileContent);
-    $('.hypercubelink').attr('download', 'install.hypercube');
+    } catch(e) {
+      if(/invalid/i.test(e)) {
+        alert(_("ERROR: Invalid character found when preparing the download link."));
+
+      } else {
+        throw e;
+      }
+    }
   }
 };
 
@@ -323,6 +344,7 @@ var view = {
     $('#panel-' + step + ' .nav-tabs li:first-child a').click();
     $('#panel-' + step).show();
 
+    $('#alert-next').hide();
     $('html, body').animate({ scrollTop: 0 }, 'slow');
   },
   
@@ -634,25 +656,36 @@ var controller = {
           dynette.fadeIn();
         }
       });
+
+    } else {
+      dynette.hide();
     }
   },
 
   vpnIp6NetChange: function() {
-    if(!$('#hotspot_ip6_net').val().trim()) {
+    var oldValue = $(this).data('old-value');
+
+    if(!$('#hotspot_ip6_net').val().trim() || $('#hotspot_ip6_net').val().trim() == oldValue) {
       $('#hotspot_ip6_net').val($(this).val().trim());
     }
+
+    $(this).data('old-value', $(this).val().trim());
   },
 
   ynhPasswordChange: function() {
-    if(!$('#ynh_user_password').val().trim()) {
+    var oldValue = $(this).data('old-value');
+
+    if(!$('#ynh_user_password').val().trim() || $('#ynh_user_password').val().trim() == oldValue) {
       $('#ynh_user_password').val($(this).val().trim());
       $('#ynh_user_password_repeat').val($(this).val().trim());
     }
 
-    if(!$('#unix_root_password').val().trim()) {
+    if(!$('#unix_root_password').val().trim() || $('#unix_root_password').val().trim() == oldValue) {
       $('#unix_root_password').val($(this).val().trim());
       $('#unix_root_password_repeat').val($(this).val().trim());
     }
+
+    $(this).data('old-value', $(this).val().trim());
   },
 
   hyperCubeFileChange: function() {
@@ -665,6 +698,7 @@ var controller = {
       fileReader.onload = function(e) {
         try {
           if(hypercube.fromJsonTxt(e.target.result)) {
+            $('#vpn_ip6_net').change();
             $('#ynh_domain').change();
             $('#ynh_password').change();
 
@@ -915,7 +949,7 @@ var navigation = {
     $('#vpn_cubefile').val('');
     $('#vpn_cubefile_edition').val('');
 
-    navigation.goToStep('vpn-manual', true);
+    navigation.goToStep('vpn', true);
   },
 
   loadHyperCubeClick: function() {
@@ -943,6 +977,11 @@ var validation = {
       warnings.each(function() {
         $(this).closest('.form-group').remove();
       });
+
+      if($('#button-next').is(':visible')) {
+        $('#alert-next').hide();
+        $('#alert-next').fadeIn();
+      }
     },
 
     add: function(field, msg) {
@@ -978,6 +1017,7 @@ var validation = {
       $('#timeline a[data-tab=' + step + ']').parent().addClass('validated');
 
       warnings.hide();
+      $('#alert-next').hide();
     }
   },
 
