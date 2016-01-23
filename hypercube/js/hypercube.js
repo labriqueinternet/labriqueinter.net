@@ -1189,7 +1189,7 @@ var validation = {
       mandatoryFields.push('vpn_login_passphrase');
       mandatoryFields.push('vpn_login_passphrase_repeat');
 
-      if(!validation.helpers.testPasswordRepeat('vpn_login_passphrase')) {
+      if(!validation.helpers.testPasswordRepeat([ 'vpn_login_passphrase' ])) {
         nbWarns++;
       }
     }
@@ -1244,7 +1244,8 @@ var validation = {
     var mandatoryFields = [ 'ynh_user', 'ynh_password', 'ynh_password_repeat', 'ynh_domain',
       'hotspot_wifi_ssid', 'hotspot_wifi_passphrase', 'hotspot_wifi_passphrase_repeat', 'ynh_user_firstname',
       'ynh_user_lastname', 'ynh_user_password', 'ynh_user_password_repeat', 'hotspot_ip6_dns0',
-      'hotspot_ip6_dns1', 'hotspot_ip4_dns0', 'hotspot_ip4_dns1', 'hotspot_ip4_nat_prefix', 'unix_root_password' ];
+      'hotspot_ip6_dns1', 'hotspot_ip4_dns0', 'hotspot_ip4_dns1', 'hotspot_ip4_nat_prefix',
+      'unix_root_password', 'unix_root_password_repeat' ];
 
     if(!validation.helpers.testMandatoryFields(mandatoryFields)) {
       nbWarns++;
