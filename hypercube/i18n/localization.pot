@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-22 23:42+0100\n"
+"POT-Creation-Date: 2016-01-23 12:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -118,7 +118,9 @@ msgstr ""
 #: /dev/fd/63:138
 msgid ""
 "You can choose a non-profit organization referenced on the map below, or try "
-"to find another one close to you (Linux User Groups, non-profit ISPs, etc):"
+"to find another one close to you (Linux User Groups, non-profit ISPs, etc). "
+"Be carefull when choosing your VPN provider, because you need to trust it "
+"more than your current ISP and you should try to meet the people doing it."
 msgstr ""
 
 #: /dev/fd/63:155
@@ -564,7 +566,7 @@ msgid "ERROR: Invalid character found when preparing the download link."
 msgstr ""
 
 #: /dev/fd/63:1182
-msgid "Select file mode"
+msgid "File selection mode"
 msgstr ""
 
 #: /dev/fd/63:1246 /dev/fd/63:1432
