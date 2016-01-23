@@ -576,7 +576,7 @@ var controller = {
     } catch(e) {
       switch(e) {
         case 'syntax':
-          alert(_("Invalid file (syntax error):") + ' ' + _("are you sure that this is your .cube file?"));
+          alert(_("Invalid file (syntax error):") + ' ' + _("are you sure that this is a .cube file?"));
         break;
 
         case 'content':

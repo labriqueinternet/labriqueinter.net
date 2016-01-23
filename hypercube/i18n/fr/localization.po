@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-23 12:30+0100\n"
-"PO-Revision-Date: 2016-01-23 12:30+0100\n"
+"POT-Creation-Date: 2016-01-23 20:44+0100\n"
+"PO-Revision-Date: 2016-01-23 20:44+0100\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -462,7 +462,8 @@ msgid "Download the SD Card Installer"
 msgstr ""
 
 #: /dev/fd/63:644
-msgid "On your computer, use the SD Card Installer this way:"
+msgid ""
+"On your computer with Debian or Ubuntu, use the SD Card Installer this way:"
 msgstr ""
 
 #: /dev/fd/63:650
@@ -578,12 +579,16 @@ msgstr ""
 msgid "Invalid file (syntax error):"
 msgstr ""
 
-#: /dev/fd/63:1285 /dev/fd/63:1289
-msgid "are you sure that this is your .cube file?"
+#: /dev/fd/63:1285
+msgid "are you sure that this is a .cube file?"
 msgstr ""
 
 #: /dev/fd/63:1289 /dev/fd/63:1422
 msgid "Invalid file (content error):"
+msgstr ""
+
+#: /dev/fd/63:1289
+msgid "are you sure that this is your .cube file?"
 msgstr ""
 
 #: /dev/fd/63:1334
@@ -647,30 +652,30 @@ msgstr ""
 msgid "Must be only composed of digits"
 msgstr ""
 
-#: /dev/fd/63:1983
+#: /dev/fd/63:1984
 msgid "This IPv4 prefix looks bad (required format is x.x.x or x.x.x.0)"
 msgstr ""
 
-#: /dev/fd/63:1996
+#: /dev/fd/63:1997
 msgid "This prefix must be part of an IPv4 private range"
 msgstr ""
 
-#: /dev/fd/63:2004
+#: /dev/fd/63:2005
 msgid "Only lowercase letters and digits are allowed"
 msgstr ""
 
-#: /dev/fd/63:2008
+#: /dev/fd/63:2009
 msgid "Admin is not an authorized value"
 msgstr ""
 
-#: /dev/fd/63:2014
+#: /dev/fd/63:2015
 msgid "Must be greater than 4 characters"
 msgstr ""
 
-#: /dev/fd/63:2019
+#: /dev/fd/63:2020
 msgid "Only printable ASCII characters are allowed"
 msgstr ""
 
-#: /dev/fd/63:2024
+#: /dev/fd/63:2025
 msgid "Must from 8 to 63 characters (WPA2 passphrase)"
 msgstr ""
