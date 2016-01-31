@@ -891,7 +891,7 @@ var navigation = {
       history.pushState({}, '', '/beta/#' + historyStep);
     }
 
-    if(step == 'aboutyou' || step == 'ffdn') {
+    if(step == 'welcome' || step == 'aboutyou' || step == 'ffdn') {
       view.hideButtonPrev();
       view.hideButtonNext();
     }
