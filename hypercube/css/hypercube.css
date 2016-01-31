@@ -538,7 +538,7 @@ a.btn-danger:hover span {
   padding: 20px 25px;
   margin: 5px auto 10px;
   width: 7em;
-  background-image: linear-gradient(to bottom, #0ac400 0px, #09af00 100%);
+  background-image: linear-gradient(to bottom, #09AF00 0px, #24AF1D 100%);
   text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.6);
   border: 1px solid #fff;
   border-radius: 4px;
@@ -550,8 +550,9 @@ a.btn-danger:hover span {
 }
 
 #start:hover {
-  background-image: linear-gradient(to bottom, #09af00 0px, #0ac400 100%);
-  text-shadow: none;
+  background-color: #289e22;
+  background-position: 0px -30px;
+  background-repeat: repeat-x;
 }
 
 .custom-install {
