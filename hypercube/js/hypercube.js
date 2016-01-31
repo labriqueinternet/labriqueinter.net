@@ -211,8 +211,7 @@ var hypercube = {
     $('#ynh_password').val(json['yunohost']['password']);
     $('#ynh_password_repeat').val(json['yunohost']['password']);
     $('#ynh_user').val(json['yunohost']['user']);
-    $('#ynh_user_firstname').val(json['yunohost']['user_firstname']);
-    $('#ynh_user_lastname').val(json['yunohost']['user_lastname']);
+    $('#ynh_user_name').val((json['yunohost']['user_firstname'] + ' ' + json['yunohost']['user_lastname']).trim());
     $('#ynh_user_password').val(json['yunohost']['user_password']);
     $('#ynh_user_password_repeat').val(json['yunohost']['user_password']);
 
@@ -254,6 +253,10 @@ var hypercube = {
   },
 
   toJson: function() {
+    var name = $('#ynh_user_name').val().trim();
+    var firstname = name.replace(/^([^\s]+).*/, '$1');
+    var lastname = name.replace(/^[^\s]+(.*)/, '$1');
+
     var json = {
       vpnclient: cube.toJson(),
 
@@ -274,8 +277,8 @@ var hypercube = {
         add_domain: $('#ynh_add_domain').val().trim().toLowerCase(),
         password: $('#ynh_password').val().trim(),
         user: $('#ynh_user').val().trim(),
-        user_firstname: $('#ynh_user_firstname').val().trim(),
-        user_lastname: $('#ynh_user_lastname').val().trim(),
+        user_firstname: firstname.trim(),
+        user_lastname: lastname.trim(),
         user_password: $('#ynh_user_password').val().trim()
       },
 
@@ -420,6 +423,7 @@ var view = {
     $('#ynh_domain').change(controller.dynetteCheckingChange);
     $('#vpn_ip6_net').change(controller.vpnIp6NetChange);
     $('#ynh_password').change(controller.ynhPasswordChange);
+    $('#ynh_user_name').change(controller.ynhUserNameChange);
     $('#vpn_auth_type').find('input').change(controller.vpnAuthTypeChange);
     $('#hypercube').change(controller.hyperCubeFileChange);
     $('#vpnauto').click(controller.vpnAutoClick);
@@ -688,6 +692,48 @@ var controller = {
     $(this).data('old-value', $(this).val().trim());
   },
 
+  ynhUserNameChange: function() {
+    var genUsername = function(name) {
+      var username = '';
+
+      if(name) {
+        var nameparts = name.trim().split(/[-\s]+/);
+
+        $.each(nameparts, function(i, part) {
+          if(i != nameparts.length - 1) {
+            username += part.trim().replace(/(.).*/, '$1');
+          }
+        });
+        
+        username += nameparts[nameparts.length - 1];
+        username = username.toLowerCase();
+
+        username = username.replace(/[àáâãäå]/g,'a');
+        username = username.replace(/æ/g,'ae');
+        username = username.replace(/ç/g,'c');
+        username = username.replace(/[èéêë]/g,'e');
+        username = username.replace(/[ìíîï]/g,'i');
+        username = username.replace(/ñ/g,'n');                
+        username = username.replace(/[òóôõö]/g,'o');
+        username = username.replace(/œ/g,'oe');
+        username = username.replace(/[ùúûü]/g,'u');
+        username = username.replace(/[ýÿ]/g,'y');
+        username = username.replace(/\W/g,'');
+      }
+
+      return username;
+    };
+
+    var oldValue = $(this).data('old-value');
+    var oldUsername = genUsername(oldValue);
+
+    if(!$('#ynh_user').val().trim() || $('#ynh_user').val().trim() == oldUsername) {
+      $('#ynh_user').val(genUsername($(this).val()));
+    }
+    
+    $(this).data('old-value', $(this).val().trim());
+  },
+
   hyperCubeFileChange: function() {
     var hypercubeFiles = $(this).prop('files');
 
@@ -700,6 +746,7 @@ var controller = {
           if(hypercube.fromJsonTxt(e.target.result)) {
             $('#vpn_ip6_net').change();
             $('#ynh_domain').change();
+            $('#ynh_user_name').change();
             $('#ynh_password').change();
 
           } else {
@@ -1242,10 +1289,10 @@ var validation = {
     var passwordFields = [ 'ynh_password', 'ynh_user_password', 'hotspot_wifi_passphrase', 'unix_root_password' ];
 
     var mandatoryFields = [ 'ynh_user', 'ynh_password', 'ynh_password_repeat', 'ynh_domain',
-      'hotspot_wifi_ssid', 'hotspot_wifi_passphrase', 'hotspot_wifi_passphrase_repeat', 'ynh_user_firstname',
-      'ynh_user_lastname', 'ynh_user_password', 'ynh_user_password_repeat', 'hotspot_ip6_dns0',
-      'hotspot_ip6_dns1', 'hotspot_ip4_dns0', 'hotspot_ip4_dns1', 'hotspot_ip4_nat_prefix',
-      'unix_root_password', 'unix_root_password_repeat' ];
+      'hotspot_wifi_ssid', 'hotspot_wifi_passphrase', 'hotspot_wifi_passphrase_repeat', 'ynh_user_name',
+      'ynh_user_password', 'ynh_user_password_repeat', 'hotspot_ip6_dns0', 'hotspot_ip6_dns1',
+      'hotspot_ip4_dns0', 'hotspot_ip4_dns1', 'hotspot_ip4_nat_prefix', 'unix_root_password',
+      'unix_root_password_repeat' ];
 
     if(!validation.helpers.testMandatoryFields(mandatoryFields)) {
       nbWarns++;
