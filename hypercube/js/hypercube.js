@@ -189,6 +189,9 @@ var cube = {
       $('.cubelink').attr('href', fileContent);
       $('.cubelink').attr('download', 'config.cube');
 
+      var downloadViewTxt = $('.cubelink').parent().next();
+      downloadViewTxt.val(cube.toJsonTxt(json));
+
     } catch(e) {
       if(/invalid/i.test(e)) {
         alert(_("ERROR: Invalid character found when preparing the download link."));
@@ -301,6 +304,9 @@ var hypercube = {
   
       $('.hypercubelink').attr('href', fileContent);
       $('.hypercubelink').attr('download', 'install.hypercube');
+
+      var downloadViewTxt = $('.hypercubelink').parent().next();
+      downloadViewTxt.val(hypercube.toJsonTxt(json));
 
     } catch(e) {
       if(/invalid/i.test(e)) {
@@ -419,6 +425,7 @@ var view = {
     $('.deletefile').click(controller.deleteFileButtonClick);
     $('.editfile').click(controller.editFileButtonClick);
     $('.fileedition').change(controller.fileEditionChange);
+    $('.downloadview').click(controller.downloadViewClick);
     $('input[type="file"]').change(controller.fileInputChange);
     $('#ynh_domain').change(controller.dynetteCheckingChange);
     $('#vpn_ip6_net').change(controller.vpnIp6NetChange);
@@ -564,6 +571,26 @@ var controller = {
       $('#' + name).show();
     } else {
       $('#' + name).hide();
+    }
+  },
+
+  downloadViewClick: function() {
+    var downloadViewTxt = $(this).parent().next();
+
+    if(downloadViewTxt.is(':visible')) {
+      downloadViewTxt.hide();
+      $(this).find('span').addClass('glyphicon-eye-open');
+      $(this).find('span').removeClass('glyphicon-eye-close');
+
+    } else {
+      downloadViewTxt.fadeIn();
+      $(this).find('span').addClass('glyphicon-eye-close');
+      $(this).find('span').removeClass('glyphicon-eye-open');
+
+      downloadViewTxt.select();
+      setTimeout(function() {
+        downloadViewTxt.scrollTop(0);
+      }, 100);
     }
   },
 
@@ -789,7 +816,7 @@ var controller = {
       $('#preinstalled').show();
 
     } else {
-      $('.custom-install').fadeIn();
+      $('.custom-install').show();
       $('#notpreinstalled').show();
       $('#preinstalled').hide();
     }

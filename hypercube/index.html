@@ -574,7 +574,8 @@
                   <h3>_("Download Cube File")</h3>
 
                   <p>_("You cannot generate an HyperCube file, because you have some issues to fix in the previous steps. Instead, you just can download the Cube file corresponding to your VPN configuration :")</p>
-                  <p><a href="#" class="cubelink">_("Download Cube File")</a></p>
+                  <p><a href="#" class="cubelink">_("Download Cube File")</a> <a href="javascript:" class="downloadview"><span class="glyphicon glyphicon-eye-open"></span></a></p>
+                  <textarea class="downloadviewtxt" data-toggle="tooltip" data-title="_('If you cannot directly download the file (e.g. because of Internet Explorer), please copy-paste by yourself this content, into a file named config.cube(.txt)')" readonly="readonly"></textarea>
                 </div>
 
                 <div id="installguide">
@@ -615,7 +616,10 @@
                     <p>_("You just have to do the post-installation, using your HyperCube file:")</p>
   
                     <ol>
-                      <li><a href="javascript:" class="hypercubelink">_("Download your HyperCube file")</a></li>
+                      <li>
+                        <div><a href="javascript:" class="hypercubelink">_("Download your HyperCube file")</a> <a href="javascript:" class="downloadview"><span class="glyphicon glyphicon-eye-open"></span></a></div>
+                        <textarea class="downloadviewtxt" data-toggle="tooltip" data-title="_('If you cannot directly download the file (e.g. because of Internet Explorer), please copy-paste by yourself this content, into a file named install.hypercube(.txt)')" readonly="readonly"></textarea>
+                      </li>
                       <li>_("Put it on the root of a USB stick (not into a folder)")</li>
                       <li>_("Unplug your Internet Cube from the outlet if powered on")</li>
                       <li>_("Plug your USB stick (1) to your Internet Cube")</li>
@@ -632,7 +636,10 @@
                     <p>_("Install the Cube system on a micro-SD card, using your HyperCube file:")</p>
 
                     <ol>
-                      <li><a href="javascript:" class="hypercubelink">_("Download your HyperCube file")</a></li>
+                      <li>
+                        <div><a href="javascript:" class="hypercubelink">_("Download your HyperCube file")</a> <a href="javascript:" class="downloadview"><span class="glyphicon glyphicon-eye-open"></span></a></div>
+                        <textarea class="downloadviewtxt" data-toggle="tooltip" data-title="_('If you cannot directly download the file (e.g. because of Internet Explorer), please copy-paste by yourself this content, into a file named install.hypercube(.txt)')" readonly="readonly"></textarea>
+                      </li>
                       <li><a href="https://repo.internetcu.be/install-sd.sh" target="_blank">_("Download the SD Card Installer")</a></li>
                       <li><span>_("On your computer with Debian or Ubuntu, use the SD Card Installer this way:")</span>
                         <pre class="installsd" id="installsd-noopt">% bash install-sd.sh -y /path/to/your/install.hypercube</pre>

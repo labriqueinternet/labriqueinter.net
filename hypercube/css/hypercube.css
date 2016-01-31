@@ -207,6 +207,12 @@ ul.nav a {
   display: none;
 }
 
+.downloadview, .downloadview:active, .downloadview:focus {
+  font-size: 10pt;
+  padding-left: 2px;
+  outline: none;
+}
+
 #modifycubefile {
   text-align: center;
 }
@@ -387,7 +393,7 @@ label {
   text-align: left;
 }
 
-#panel-submit pre {
+#panel-submit pre, .downloadviewtxt {
   border-radius: 0;
   border: none;
   color: #fff;
@@ -395,7 +401,24 @@ label {
   margin-top: 5px;
 }
 
-.installsd {
+.downloadviewtxt {
+  text-shadow: 1px 1px #000;
+  box-shadow: 3px 3px 2px #000;
+  background-color: #222;
+  padding: 10px;
+  display: block;
+  height: 10em;
+  font-size: 12pt;
+  margin: -4px 20px 10px;
+  width: 90%;
+}
+
+li .downloadviewtxt {
+  margin: 7px 0 10px;
+  width: 100%;
+}
+
+.installsd, .downloadviewtxt {
   display: none;
 }
 
