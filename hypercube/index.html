@@ -197,14 +197,21 @@
                       </label>
                     </div>
                   </div>
-   
+
                   <div class="form-group">
-                    <label for="vpn_ip6_net" class="col-sm-3 control-label">_("Delegated Prefix (IPv6)")</label>
+                    <label for="vpn_ip4_addr" class="col-sm-3 control-label">_("IPv4 Address")</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="vpn_ip4_addr" placeholder="203.0.113.42" />
+                    </div>
+                  </div>
+ 
+                  <div class="form-group">
+                    <label for="vpn_ip6_net" class="col-sm-3 control-label">_("IPv6 Delegated Prefix")</label>
                     <div class="col-sm-9">
                       <input type="text" data-toggle="tooltip" data-title="_('Leave empty if your VPN Provider does not provide you an IPv6 delegated prefix (and complain!)')" class="form-control" id="vpn_ip6_net" placeholder="2001:db8:42::" />
                     </div>
                   </div>
-  
+
                   <h4 class="panel-section">_("Authentication")</h4>
   
                   <div class="form-group">
@@ -472,13 +479,6 @@
                     </div>
                   </div>
 
-                  <div class="form-group">
-                    <label for="ynh_add_domain" class="col-sm-3 control-label">_("Additional domain")</label>
-                    <div class="col-sm-9">
-                      <input type="text" class="form-control" id="ynh_add_domain" placeholder="example.org" />
-                    </div>
-                  </div>
-
                   <h4 class="panel-section">_("Wifi Hotspot")</h4>
 
                   <div class="form-group">
@@ -576,7 +576,7 @@
                   <h3>_("Download Cube File")</h3>
 
                   <p>_("You cannot generate an HyperCube file, because you have some issues to fix in the previous steps. Instead, you just can download the Cube file corresponding to your VPN configuration :")</p>
-                  <p><a href="#" class="cubelink">_("Download Cube File")</a> <a href="javascript:" class="downloadview"><span class="glyphicon glyphicon-eye-open"></span></a></p>
+                  <p><a href="javascript:" class="cubelink">_("Download Cube File")</a> <a href="javascript:" class="downloadview"><span class="glyphicon glyphicon-eye-open"></span></a></p>
                   <textarea class="downloadviewtxt" data-toggle="tooltip" data-title="_('If you cannot directly download the file (e.g. because of Internet Explorer), please copy-paste by yourself this content, into a file named config.cube(.txt)')" readonly="readonly"></textarea>
                 </div>
 
@@ -670,12 +670,61 @@
 
                   <p>_("Congratulations, you now have a clean Internet access!")</p>
 
-                  <h3>_("Step 4: Self-Hosting")</h3>
+                  <h3>_("Step 4: DNS Configuration")</h3>
 
-                  <p>_("If you want to update your settings or configure some web services to host, you just have to access your new web administration, named YunoHost:")</p>
+                  <p id="nodnsconfig">_("For being able to use the self-hosting features of your Cube, you have to configure your domain name, on the registrar side. But, because you have not filled out the IPv4 Address field in the VPN step, your DNS Configuration can not be generated here. Please, fill out this field and go back here, or get help from a non-profit organization.")</p>
+                  <p id="dnsconfigdynette">_("You have no DNS configuration to do, because you chose a domain ending by nohost.me or noho.st. However, you should do the steps described above quickly, because your domain will only be registered during your Cube installation.")</p>
 
-                  <p id="showdomainname"><span class="glyphicon glyphicon-wrench"></span> <a href="#" id="domainname" target="_blank"></a></p>
-                  <div id="showynhpwd"><a href="javascript:">_("Show admin password")</a> <div><div id="ynhpwd"></div></div></div>
+                  <div id="dnsconfig">
+                    <p>_("For being able to use the self-hosting features of your Cube, you have to configure your domain name, on the registrar side. Please, click on the registrar you chose for your domain name (if yours is not listed, please get help from a non-profit organization):")</p>
+  
+                    <ul id="registrars">
+                      <li><a href="javascript:">OVH</a>
+                        <ol>
+                          <li><span>_("Go to your OVH manager:")</span> <a href="https://www.ovh.com/manager/" target="_blank">https://www.ovh.com/manager/</a></li>
+                          <li>_("Sign in, using your OVH Account ID (should be something like aa0000-ovh)")</li>
+                          <li><span>_("Click on your domain name, in the list on the left")</span> (<strong class="domainname"></strong>)</li>
+                          <li><span>_("Click on the tab:")</span> <strong>_("DNS Zone")</strong>
+                          <li><span>_("On the right, click on the button:")</span> <strong>_("Change in text format")</strong></li>
+                          <li>_("In the text area, keep only the 4 first lines (SOA + NS) and delete the other ones")</li>
+                          <li>
+                            <span>_("Then, at the end of the text area, add these ones:")</span>
+                            <textarea class="dnszone" readonly="readonly"></textarea>
+                          </li>
+                          <li>_("Click on Next, then Confirm")</li>
+                        </ol>
+                      </li>
+                      <li><a href="javascript:">Gandi.net</a>
+                        <ol>
+                          <li><span>_("Go to your Gandi.net account:")</span> <a href="https://www.gandi.net/login" target="_blank">https://www.gandi.net/login</a></li>
+                          <li>_("Sign in, using your Gandi.net Handle (should be something like AA0000-GANDI)")</li>
+                          <li><span>_("Click on your domain name, in the list")</span> (<strong class="domainname"></strong>)</li>
+                          <li><span>_("At the bottom right, under Zone files, click on the link:")</span> <strong>_("Edit the zone")</strong>
+                          <li><span>_("In the warning bubble, click on the blue button:")</span> <strong>_("Create a new version")</strong></li>
+                          <li>_("At the left, change the Edit mode to Expert")</li>
+                          <li>
+                            <span>_("In the text area, replace all by:")</span>
+                            <textarea class="dnszone" readonly="readonly"></textarea>
+                          </li>
+                          <li><span>_("Above, click on the blue button:")</span> <strong>_("Use this version")</strong></li>
+                          <li>_("In the popup, click on Submit")</li>
+                        </ol>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <h3>_("Step 5: Self-Hosting")</h3>
+
+                  <p>_("If you want to update your settings or configure some web services to host, you just have to access the web administration, named YunoHost:")</p>
+
+                  <p id="showadmindomain"><span class="glyphicon glyphicon-wrench"></span> <a href="javascript:" id="admindomain" target="_blank"></a></p>
+                  <div id="showadminalt"><a href="javascript:">_("Show alternative URLs")</a></div>
+                  <div id="showadminurls">
+                    <p id="showadminip6"><span class="glyphicon glyphicon-wrench"></span> <a href="javascript:" id="adminip6" target="_blank"></a></p>
+                    <p id="showadminip4"><span class="glyphicon glyphicon-wrench"></span> <a href="javascript:" id="adminip4" target="_blank"></a></p>
+                    <p id="showadminip4priv"><span class="glyphicon glyphicon-wrench"></span> <a href="javascript:" id="adminip4priv" target="_blank"></a></p>
+                  </div>
+                  <div class="showynhpwd"><a href="javascript:">_("Show admin password")</a> <div><div class="ynhpwd"></div></div></div>
 
                   <p>_("If you experience problems using the web administration, please read the YunoHost Documentation, or ask for some help to a non-profit organization:")</p>
 

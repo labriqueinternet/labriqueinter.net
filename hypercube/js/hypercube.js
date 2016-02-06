@@ -51,6 +51,7 @@ var cube = {
     $('#vpn_dns0').val(json['dns0']);
     $('#vpn_dns1').val(json['dns1']);
     $('#vpn_ip6_net').val(json['ip6_net']);
+    $('#vpn_ip4_addr').val(json['ip4_addr']);
     $('#vpn_login_user').val(json['login_user']);
     $('#vpn_login_passphrase').val(json['login_passphrase']);
     $('#vpn_login_passphrase_repeat').val(json['login_passphrase']);
@@ -161,6 +162,7 @@ var cube = {
       server_port: $('#vpn_server_port').val().trim(),
       server_proto: $('input[name=vpn_server_proto]:checked').val(),
       ip6_net: $('#vpn_ip6_net').val().trim(),
+      ip4_addr: $('#vpn_ip4_addr').val().trim(),
       crt_server_ca: cube.helpers.compressCertificate($('#vpn_crt_server_ca_edition').val()),
       crt_client: cube.helpers.compressCertificate($('#vpn_crt_client_edition').val()),
       crt_client_key: cube.helpers.compressCertificate($('#vpn_crt_client_key_edition').val()),
@@ -210,7 +212,6 @@ var hypercube = {
     }
 
     $('#ynh_domain').val(json['yunohost']['domain']);
-    $('#ynh_add_domain').val(json['yunohost']['add_domain']);
     $('#ynh_password').val(json['yunohost']['password']);
     $('#ynh_password_repeat').val(json['yunohost']['password']);
     $('#ynh_user').val(json['yunohost']['user']);
@@ -277,7 +278,6 @@ var hypercube = {
 
       yunohost: {
         domain: $('#ynh_domain').val().trim().toLowerCase(),
-        add_domain: $('#ynh_add_domain').val().trim().toLowerCase(),
         password: $('#ynh_password').val().trim(),
         user: $('#ynh_user').val().trim(),
         user_firstname: firstname.trim(),
@@ -295,6 +295,32 @@ var hypercube = {
 
   toJsonTxt: function(json) {
     return JSON.stringify(json, null, 2);
+  },
+
+  generateDnsZone: function() {
+    var domain = $('#ynh_domain').val().trim();
+    var ip6 = $('#vpn_ip6_net').val().trim() + '42';
+    var ip4 = $('#vpn_ip4_addr').val().trim();
+
+    var zone = '@ 14400 IN A ' + ip4
+      + "\n" + '* 14400 IN A ' + ip4;
+
+    if(ip6 != 42) {
+      zone += "\n" + '@ 14400 IN AAAA ' + ip6
+        + "\n" + '* 14400 IN AAAA ' + ip6;
+    }
+
+    zone += "\n" + '_xmpp-client._tcp 14400 IN SRV 0 5 5222 ' + domain + '.'
+      + "\n" + '_xmpp-server._tcp 14400 IN SRV 0 5 5269 ' + domain + '.'
+      + "\n" + '@ 14400 IN MX 5 ' + domain + '.';
+
+    if(ip6 != 42) {
+      zone += "\n" + '@ 14400 IN TXT "v=spf1 a mx ip4:' + ip4 + ' ip6:' + ip6 + ' -all"';
+    } else {
+      zone += "\n" + '@ 14400 IN TXT "v=spf1 a mx ip4:' + ip4 + ' -all"';
+    }
+
+    return zone;
   },
 
   downloadLink: function(json) {
@@ -376,11 +402,48 @@ var view = {
   },
 
   updateInstallGuide: function() {
+
+    if($('#vpn_ip6_net').val().trim()) {
+      $('#adminip6').text('https://[' + $('#vpn_ip6_net').val().trim() + '42]/admin/');
+      $('#adminip6').attr('href', 'https://[' + $('#vpn_ip6_net').val().trim() + '42]/admin/');
+      $('#showadminip6').show();
+    } else {
+      $('#showadminip6').hide();
+    }
+
+    if($('#vpn_ip4_addr').val().trim()) {
+      $('#adminip4').text('https://' + $('#vpn_ip4_addr').val().trim() + '/admin/');
+      $('#adminip4').attr('href', 'https://' + $('#vpn_ip4_addr').val().trim() + '/admin/');
+      $('#showadminip4').show();
+    } else {
+      $('#showadminip4').hide();
+    }
+
+    if($('#ynh_domain').val().trim().match(/\.nohost\.me$/) || $('#ynh_domain').val().trim().match(/\.noho\.st$/)) {
+      $('#dnsconfig').hide();
+      $('#nodnsconfig').hide();
+      $('#dnsconfigdynette').show();
+
+    } else if($('#vpn_ip4_addr').val().trim()) {
+      $('#dnsconfig').show();
+      $('#nodnsconfig').hide();
+      $('#dnsconfigdynette').hide();
+
+    } else {
+      $('#dnsconfig').hide();
+      $('#nodnsconfig').show();
+      $('#dnsconfigdynette').hide();
+    }
+
+    $('#adminip4priv').text('https://' + $('#hotspot_ip4_nat_prefix').val().trim() + '.1/admin/');
+    $('#adminip4priv').attr('href', 'https://' + $('#hotspot_ip4_nat_prefix').val().trim() + '.1/admin/');
+    $('#admindomain').text('https://' + $('#ynh_domain').val().trim() + '/admin/');
+    $('#admindomain').attr('href', 'https://' + $('#ynh_domain').val().trim() + '/admin/');
     $('#wifiname').text($('#hotspot_wifi_ssid').val().trim());
-    $('#domainname').text('https://' + $('#ynh_domain').val().trim() + '/admin/');
-    $('#domainname').attr('href', 'https://' + $('#ynh_domain').val().trim() + '/admin/');
     $('#wifipwd').text($('#hotspot_wifi_passphrase').val().trim());
-    $('#ynhpwd').text($('#ynh_password').val().trim());
+    $('.ynhpwd').text($('#ynh_password').val().trim());
+    $('.domainname').text($('#ynh_domain').val().trim());
+    $('.dnszone').val(hypercube.generateDnsZone());
   },
 
   fileInputSynchro: function() {
@@ -438,7 +501,9 @@ var view = {
     $('#custom_encrypted').change(controller.customInstallSdChange);
     $('#custom_lime2').change(controller.customInstallSdChange);
     $('#showwifipwd a').click(controller.showWifiPwdClick);
-    $('#showynhpwd a').click(controller.showYnhPwdClick);
+    $('#showadminalt a').click(controller.showAlternativeAdminUrlsClick);
+    $('.showynhpwd a').click(controller.showYnhPwdClick);
+    $('#registrars a').click(controller.registrarNameClick);
 
     $('form').submit(navigation.formSubmit);
     $('input').keypress(navigation.formSubmitEnterKey);
@@ -848,9 +913,25 @@ var controller = {
     $('#wifipwd').parent().fadeIn();
   },
 
+  showAlternativeAdminUrlsClick: function() {
+    $('#showadminurls').fadeIn();
+    $('#showadminalt').hide();
+  },
+
   showYnhPwdClick: function() {
-    $('#ynhpwd').parent().parent().find('a').hide();
-    $('#ynhpwd').parent().fadeIn();
+    $('.ynhpwd').parent().parent().find('a').hide();
+    $('.ynhpwd').parent().fadeIn();
+  },
+
+  registrarNameClick: function() {
+    var registrar = $(this).next();
+    var visible = registrar.is(':visible');
+
+    $('#registrars ol').hide();
+
+    if(!visible) {
+      registrar.fadeIn();
+    }
   }
 };
 
@@ -1240,6 +1321,7 @@ var validation = {
     validation.warnings.reset('vpn-manual');
 
     var ip6Fields = [ 'vpn_ip6_net' ];
+    var ip4Fields = [ 'vpn_ip4_addr' ];
     var ipFields = [ 'vpn_dns0', 'vpn_dns1' ];
     var mandatoryFields = [ 'vpn_server_name', 'vpn_server_port', 'vpn_crt_server_ca_edition', 'vpn_dns0', 'vpn_dns1' ];
 
@@ -1286,6 +1368,10 @@ var validation = {
     }
 
     if(!validation.helpers.testIpFields(ip6Fields, 6)) {
+      nbWarns++;
+    }
+
+    if(!validation.helpers.testIpFields(ip4Fields, 4)) {
       nbWarns++;
     }
 
