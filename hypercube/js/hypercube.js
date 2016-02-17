@@ -1076,7 +1076,7 @@ var controller = {
     $('#ig-poweroff').find('h3, p').each(add);
     pdf.addImage(poweroffImg, 'JPEG', 5*15, verticalOffset + 2, 50, 39);
 
-    pdf.save('toto.pdf');
+    pdf.save(_('internetcube_installguide') + '.pdf');
   }
 };
 
