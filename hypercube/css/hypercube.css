@@ -438,13 +438,8 @@ li textarea[readonly=readonly] {
   display: none;
 }
 
-#showwifipwd, .showynhpwd, #showadminalt {
+.showpwd, #showadminalt {
   margin: -11px 0 5px;
-}
-
-#showwifipwd > div, .showynhpwd > div {
-  display: none;
-  margin-top: 20px;
 }
 
 #nodownloads p, #candownload p {
@@ -461,11 +456,11 @@ p#showwifiname, p#showadmindomain, p#showadminip6, p#showadminip4, p#showadminip
   margin-bottom: 20px;
 }
 
-p#showwifipwd {
+p.showpwd {
   text-align: center;
 }
 
-#showwifipwd a, .showynhpwd a, #showadminalt a {
+.showpwd a, #showadminalt a {
   font-size: 10pt;
 }
 
@@ -473,7 +468,12 @@ p#showwifipwd {
   text-decoration: none;
 }
 
-#wifipwd, .ynhpwd {
+.hiddenpwd {
+  display: none;
+  margin-top: 20px;
+}
+
+.hiddenpwd div {
   display: inline-block;
   padding: 5px 10px;
   border: 1px solid #eee;
@@ -494,12 +494,17 @@ p#showwifipwd {
   display: none;
 }
 
-#notpreinstalled, .unlockencryptedfs {
+#ig-install, .unlockencryptedfs {
   display: none;
 }
 
-#customization {
+#ig-customization div.form-group {
   margin: 20px 0 0 20px;
+}
+
+#ig-downloadpdf {
+  margin: 20px 0 2px 5px;
+  text-align: left;
 }
 
 .cubefilelink {

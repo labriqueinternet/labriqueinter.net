@@ -14,6 +14,7 @@
   <script src="bootstrap/js/bootstrap.min.js"></script>
   <script src="bootstrap/js/bootstrap-toggle.min.js"></script>
   <script src="js/ipaddr.js"></script>
+  <script src="js/jspdf.min.js"></script>
   <script src="js/hypercube.js"></script>
 </head>
 
@@ -581,9 +582,9 @@
                 </div>
 
                 <div id="installguide">
-                  <h3>_("Step 1: About your Internet Cube")</h3>
-  
-                  <div id="customization">
+                  <div id="ig-customization">
+                    <h3>_("Step 1: About your Internet Cube")</h3>
+
                     <div class="form-group">
                       <div class="col-sm-3 input-group-btn">
                         <div class="input-group">
@@ -593,7 +594,7 @@
                       <label for="custom_preinstalled" class="col-sm-9 control-label">_("My Cube is already pre-installed")</label>
                     </div>
   
-                    <div class="form-group custom-install">
+                    <div class="form-group -install">
                       <div class="col-sm-3 input-group-btn">
                         <div class="input-group">
                           <input type="checkbox" class="form-control switch" id="custom_lime2" value="1" />
@@ -612,7 +613,7 @@
                     </div>
                   </div>
   
-                  <div id="preinstalled">
+                  <div id="ig-postinstall">
                     <h3>_("Step 2: Post-Installation")</h3>
   
                     <p>_("You just have to do the post-installation, using your HyperCube file:")</p>
@@ -629,10 +630,10 @@
                       <li>_("Finally, plug the ethernet cable to your router, and the power cable into an outlet")</li>
                     </ol>
 
-                    <img src="img/wires.png" alt="Internet Cube Wires" />
+                    <img src="img/wires.png" alt="Internet Cube Cables" />
                   </div>
 
-                  <div id="notpreinstalled">
+                  <div id="ig-install">
                     <h3>_("Step 2: Installation")</h3>
 
                     <p>_("Install the Cube system on a micro-SD card, using your HyperCube file:")</p>
@@ -662,73 +663,93 @@
                     </ol>
                   </div>
 
-                  <h3>_("Step 3: You Got a New Wifi!")</h3>
-
-                  <p><strong>_("Wait for something like a dozen of minutes, without unplugging the cables.")</strong> <span>_("Once you can see your new wifi access point from your computer, this means that your Internet Cube is ready and that you can use it. Connect your computer to the new wifi access point.")</span></p>
-                  <p id="showwifiname"><span class="glyphicon glyphicon-signal"></span> <span id="wifiname"></span></p>
-                  <div id="showwifipwd"><a href="javascript:">_("Show wifi password")</a> <div><div id="wifipwd"></div></div></div>
-
-                  <p>_("Congratulations, you now have a clean Internet access!")</p>
-
-                  <h3>_("Step 4: DNS Configuration")</h3>
-
-                  <p id="nodnsconfig">_("For being able to use the self-hosting features of your Cube, you have to configure your domain name, on the registrar side. But, because you have not filled out the IPv4 Address field in the VPN step, your DNS Configuration can not be generated here. Please, fill out this field and go back here, or get help from a non-profit organization.")</p>
-                  <p id="dnsconfigdynette">_("You have no DNS configuration to do, because you chose a domain ending by nohost.me or noho.st. However, you should do the steps described above quickly, because your domain will only be registered during your Cube installation.")</p>
-
-                  <div id="dnsconfig">
-                    <p>_("For being able to use the self-hosting features of your Cube, you have to configure your domain name, on the registrar side. Please, click on the registrar you chose for your domain name (if yours is not listed, please get help from a non-profit organization):")</p>
+                  <div id="ig-newwifi">
+                    <h3>_("Step 3: You Got a New Wifi!")</h3>
   
-                    <ul id="registrars">
-                      <li><a href="javascript:">OVH</a>
-                        <ol>
-                          <li><span>_("Go to your OVH manager:")</span> <a href="https://www.ovh.com/manager/" target="_blank">https://www.ovh.com/manager/</a></li>
-                          <li>_("Sign in, using your OVH Account ID (should be something like aa0000-ovh)")</li>
-                          <li><span>_("Click on your domain name, in the list on the left")</span> (<strong class="domainname"></strong>)</li>
-                          <li><span>_("Click on the tab:")</span> <strong>_("DNS Zone")</strong>
-                          <li><span>_("On the right, click on the button:")</span> <strong>_("Change in text format")</strong></li>
-                          <li>_("In the text area, keep only the 4 first lines (SOA + NS) and delete the other ones")</li>
-                          <li>
-                            <span>_("Then, at the end of the text area, add these ones:")</span>
-                            <textarea class="dnszone" readonly="readonly"></textarea>
-                          </li>
-                          <li>_("Click on Next, then Confirm")</li>
-                        </ol>
-                      </li>
-                      <li><a href="javascript:">Gandi.net</a>
-                        <ol>
-                          <li><span>_("Go to your Gandi.net account:")</span> <a href="https://www.gandi.net/login" target="_blank">https://www.gandi.net/login</a></li>
-                          <li>_("Sign in, using your Gandi.net Handle (should be something like AA0000-GANDI)")</li>
-                          <li><span>_("Click on your domain name, in the list")</span> (<strong class="domainname"></strong>)</li>
-                          <li><span>_("At the bottom right, under Zone files, click on the link:")</span> <strong>_("Edit the zone")</strong>
-                          <li><span>_("In the warning bubble, click on the blue button:")</span> <strong>_("Create a new version")</strong></li>
-                          <li>_("At the left, change the Edit mode to Expert")</li>
-                          <li>
-                            <span>_("In the text area, replace all by:")</span>
-                            <textarea class="dnszone" readonly="readonly"></textarea>
-                          </li>
-                          <li><span>_("Above, click on the blue button:")</span> <strong>_("Use this version")</strong></li>
-                          <li>_("In the popup, click on Submit")</li>
-                        </ol>
-                      </li>
-                    </ul>
+                    <p><strong>_("Wait for something like a dozen of minutes, without unplugging the cables.")</strong> <span>_("Once you can see your new wifi access point from your computer, this means that your Internet Cube is ready and that you can use it. Connect your computer to the new wifi access point.")</span></p>
+                    <p id="showwifiname"><span class="glyphicon glyphicon-signal"></span> <span id="wifiname"></span></p>
+                    <div class="showpwd"><a href="javascript:">_("Show wifi password")</a> <div class="hiddenpwd"><div id="wifipwd"></div></div></div>
+  
+                    <p>_("Congratulations, you now have a clean Internet access!")</p>
                   </div>
 
-                  <h3>_("Step 5: Self-Hosting")</h3>
+                  <div id="ig-dnsconfig">
+                    <h3>_("Step 4: DNS Configuration")</h3>
 
-                  <p>_("If you want to update your settings or configure some web services to host, you just have to access the web administration, named YunoHost:")</p>
+                    <p id="nodnsconfig">_("For being able to use the self-hosting features of your Cube, you have to configure your domain name, on the registrar side. But, because you have not filled out the IPv4 Address field in the VPN step, your DNS Configuration can not be generated here. Please, fill out this field and go back here, or get help from a non-profit organization.")</p>
+                    <p id="dnsconfigdynette">_("You have no DNS configuration to do, because you chose a domain ending by nohost.me or noho.st. However, you should do the steps described above quickly, because your domain will only be registered during your Cube installation.")</p>
 
-                  <p id="showadmindomain"><span class="glyphicon glyphicon-wrench"></span> <a href="javascript:" id="admindomain" target="_blank"></a></p>
-                  <div id="showadminalt"><a href="javascript:">_("Show alternative URLs")</a></div>
-                  <div id="showadminurls">
-                    <p id="showadminip6"><span class="glyphicon glyphicon-wrench"></span> <a href="javascript:" id="adminip6" target="_blank"></a></p>
-                    <p id="showadminip4"><span class="glyphicon glyphicon-wrench"></span> <a href="javascript:" id="adminip4" target="_blank"></a></p>
-                    <p id="showadminip4priv"><span class="glyphicon glyphicon-wrench"></span> <a href="javascript:" id="adminip4priv" target="_blank"></a></p>
+                    <div id="dnsconfig">
+                      <p>_("For being able to use the self-hosting features of your Cube, you have to configure your domain name, on the registrar side. Please, click on the registrar you chose for your domain name (if yours is not listed, please get help from a non-profit organization):")</p>
+  
+                      <ul id="registrars">
+                        <li><a href="javascript:">OVH</a>
+                          <ol>
+                            <li><span>_("Go to your OVH manager:")</span> <a href="https://www.ovh.com/manager/" target="_blank">https://www.ovh.com/manager/</a></li>
+                            <li>_("Sign in, using your OVH Account ID (should be something like aa0000-ovh)")</li>
+                            <li><span>_("Click on your domain name, in the list on the left")</span> (<strong class="domainname"></strong>)</li>
+                            <li><span>_("Click on the tab:")</span> <strong>_("DNS Zone")</strong>
+                            <li><span>_("On the right, click on the button:")</span> <strong>_("Change in text format")</strong></li>
+                            <li>_("In the text area, keep only the 4 first lines (SOA + NS) and delete the other ones")</li>
+                            <li>
+                              <span>_("Then, at the end of the text area, add these ones:")</span>
+                              <textarea class="dnszone" readonly="readonly"></textarea>
+                            </li>
+                            <li>_("Click on Next, then Confirm")</li>
+                          </ol>
+                        </li>
+                        <li><a href="javascript:">Gandi.net</a>
+                          <ol>
+                            <li><span>_("Go to your Gandi.net account:")</span> <a href="https://www.gandi.net/login" target="_blank">https://www.gandi.net/login</a></li>
+                            <li>_("Sign in, using your Gandi.net Handle (should be something like AA0000-GANDI)")</li>
+                            <li><span>_("Click on your domain name, in the list")</span> (<strong class="domainname"></strong>)</li>
+                            <li><span>_("At the bottom right, under Zone files, click on the link:")</span> <strong>_("Edit the zone")</strong>
+                            <li><span>_("In the warning bubble, click on the blue button:")</span> <strong>_("Create a new version")</strong></li>
+                            <li>_("At the left, change the Edit mode to Expert")</li>
+                            <li>
+                              <span>_("In the text area, replace all by:")</span>
+                              <textarea class="dnszone" readonly="readonly"></textarea>
+                            </li>
+                            <li><span>_("Above, click on the blue button:")</span> <strong>_("Use this version")</strong></li>
+                            <li>_("In the popup, click on Submit")</li>
+                          </ol>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                  <div class="showynhpwd"><a href="javascript:">_("Show admin password")</a> <div><div class="ynhpwd"></div></div></div>
 
-                  <p>_("If you experience problems using the web administration, please read the YunoHost Documentation, or ask for some help to a non-profit organization:")</p>
+                  <div id="ig-selfhosting">
+                    <h3>_("Step 5: Self-Hosting")</h3>
+  
+                    <p>_("If you want to update your settings or configure some web services to host, you just have to access the web administration, named YunoHost (you will have to accept the security exception proposed by your browser):")</p>
+  
+                    <p id="showadmindomain"><span class="glyphicon glyphicon-wrench"></span> <a href="javascript:" id="admindomain" target="_blank"></a></p>
+                    <div id="showadminalt"><a href="javascript:">_("Show alternative URLs")</a></div>
+                    <div id="showadminurls">
+                      <p id="showadminip6"><span class="glyphicon glyphicon-wrench"></span> <a href="javascript:" id="adminip6" target="_blank"></a></p>
+                      <p id="showadminip4"><span class="glyphicon glyphicon-wrench"></span> <a href="javascript:" id="adminip4" target="_blank"></a></p>
+                      <p id="showadminip4priv"><span class="glyphicon glyphicon-wrench"></span> <a href="javascript:" id="adminip4priv" target="_blank"></a></p>
+                    </div>
+                    <div class="showpwd"><a href="javascript:">_("Show admin password")</a> <div class="hiddenpwd"><div id="ynhpwd"></div></div></div>
+  
+                    <p>_("If you experience problems using the web administration, please read the YunoHost Documentation, or ask for some help to a non-profit organization:")</p>
+  
+                    <p class="ynhdoc"><span class="glyphicon glyphicon-book"></span> <a href="https://yunohost.org/docs" target="_blank">_("Documentation")</a> / <span class="glyphicon glyphicon-user"></span> <a href="http://db.ffdn.org" target="_blank">_("Getting Help")</a></p>
 
-                  <p class="ynhdoc"><span class="glyphicon glyphicon-book"></span> <a href="https://yunohost.org/docs" target="_blank">_("Documentation")</a> / <span class="glyphicon glyphicon-user"></span> <a href="http://db.ffdn.org" target="_blank">_("Getting Help")</a></p>
+                    <p><span>_("You also can install Cube-specific applications, like a second wifi access point")</span> <a href="https://wiki.internetcu.be" target="_blank">_("with a ShareBox")</a>.</p>
+                  </div>
+
+                  <div id="ig-poweroff">
+                    <h3>_("How to properly power off my Cube?")</h3>
+  
+                    <p>_("Whenever possible, do not disconnect the power supply from your Internet Cube, without having first switched it off (otherwise, this could lead to database errors). For turning off your Internet Cube, just quick press the bottom-left button, using a pen. Then, wait until all the lights are turned off (especially the orange one, close to the ethernet cable, on the opposite side). You now can disconnect the power supply.")</p>
+
+                    <img src="img/poweroff.png" alt="Powering Off a Cube" />
+                  </div>
+
+                  <div id="ig-downloadpdf">
+                    <span class="glyphicon glyphicon-camera"></span> <a href="javascript:" id="downloadpdf">_("Download this custom guide")</a>
+                  </div>
                 </div>
               </div>
             </div>
