@@ -1056,11 +1056,22 @@ var controller = {
     $('#ig-newwifi').find('h3, p, li, div#wifipwd').each(add);
     verticalOffset += 4;
 
-    $('#ig-dnsconfig').find('h3, p, li, textarea').each(add);
-    verticalOffset += 7;
+    if($('#dnsconfig').is(':visible')) {
+      $('#ig-dnsconfig').find('h3, p, li, textarea').each(add);
+      verticalOffset += 7;
+
+    } else {
+      $('#ig-dnsconfig').find('h3, p').each(add);
+      verticalOffset += 4;
+    }
 
     $('#ig-selfhosting').find('h3, p, li, div#ynhpwd').each(add);
     verticalOffset += 4;
+
+    if(!$('#dnsconfig').is(':visible')) {
+      pdf.addPage();
+      verticalOffset = 20;
+    }
 
     $('#ig-poweroff').find('h3, p').each(add);
     pdf.addImage(poweroffImg, 'JPEG', 5*15, verticalOffset + 2, 50, 39);
