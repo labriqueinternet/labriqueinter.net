@@ -343,6 +343,15 @@ label {
   font-weight: normal;
 }
 
+label.optionalfield span.glyphicon {
+  margin-right: 7px;
+  font-size: 13px;
+}
+
+label.optionalfield span.glyphicon:hover {
+  color: #ff5003;
+}
+
 .form-control:focus {
   border-color: #f00;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 0, 0, 0.6);

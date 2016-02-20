@@ -109,6 +109,15 @@
                     <li><a href="javascript:" data-answer="no">_("No")</a></li>
                   </ul>
                 </div>
+
+                <div id="question-preinstalled" class="question">
+                  <span>_("Is your Internet Cube already pre-installed?")</span>
+    
+                  <ul class="nav nav-pills questions">
+                    <li><a href="javascript:" data-answer="yes">_("Yes")</a></li>
+                    <li><a href="javascript:" data-answer="no">_("No")</a></li>
+                  </ul>
+                </div>
   
                 <div id="question-level" class="question">
                   <span>_("Do you know how to use a terminal on GNU/Linux?")</span>
@@ -200,14 +209,14 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="vpn_ip4_addr" class="col-sm-3 control-label">_("IPv4 Address")</label>
+                    <label for="vpn_ip4_addr" class="col-sm-3 control-label optionalfield">_("IPv4 Assigned Address")</label>
                     <div class="col-sm-9">
                       <input type="text" class="form-control" id="vpn_ip4_addr" placeholder="203.0.113.42" />
                     </div>
                   </div>
  
                   <div class="form-group">
-                    <label for="vpn_ip6_net" class="col-sm-3 control-label">_("IPv6 Delegated Prefix")</label>
+                    <label for="vpn_ip6_net" class="col-sm-3 control-label optionalfield">_("IPv6 Delegated Prefix")</label>
                     <div class="col-sm-9">
                       <input type="text" data-toggle="tooltip" data-title="_('Leave empty if your VPN Provider does not provide you an IPv6 delegated prefix (and complain!)')" class="form-control" id="vpn_ip6_net" placeholder="2001:db8:42::" />
                     </div>
@@ -328,14 +337,14 @@
                   <h4 class="panel-section">_("OpenVPN")</h4>
   
                   <div class="form-group">
-                    <label for="vpn_openvpn_add" class="col-sm-3 control-label">_("Options to add")</label>
+                    <label for="vpn_openvpn_add" class="col-sm-3 control-label optionalfield">_("Options to add")</label>
                     <div class="col-sm-9">
                       <textarea class="form-control" id="vpn_openvpn_add"></textarea>
                     </div>
                   </div>
   
                   <div class="form-group">
-                    <label for="vpn_openvpn_rm" class="col-sm-3 control-label">_("Options to remove")</label>
+                    <label for="vpn_openvpn_rm" class="col-sm-3 control-label optionalfield">_("Options to remove")</label>
                     <div class="col-sm-9">
                       <textarea class="form-control" id="vpn_openvpn_rm"></textarea>
                     </div>
@@ -483,7 +492,7 @@
                   <h4 class="panel-section">_("Wifi Hotspot")</h4>
 
                   <div class="form-group">
-                    <label for="hotspot_ip6_net" class="col-sm-3 control-label">_("IPv6 delegated Prefix")</label>
+                    <label for="hotspot_ip6_net" class="col-sm-3 control-label optionalfield">_("IPv6 Delegated Prefix")</label>
                     <div class="col-sm-9">
                       <input type="text" class="form-control" id="hotspot_ip6_net" placeholder="2001:db8:42::" data-toggle="tooltip" data-title="_('Default: same as for VPN')" />
                     </div>
@@ -576,7 +585,7 @@
                 <div id="downloadcube">
                   <h3>_("Download Cube File")</h3>
 
-                  <p>_("You cannot generate an HyperCube file, because you have some issues to fix in the previous steps. Instead, you just can download the Cube file corresponding to your VPN configuration :")</p>
+                  <p>_("You cannot generate an HyperCube file, because you have some issues to fix in the previous steps. Instead, you just can download the Cube file corresponding to your VPN configuration (this file contains private keys and passwords):")</p>
                   <p><a href="javascript:" class="cubelink">_("Download Cube File")</a> <a href="javascript:" class="downloadview"><span class="glyphicon glyphicon-eye-open"></span></a></p>
                   <textarea class="downloadviewtxt" data-toggle="tooltip" data-title="_('If you cannot directly download the file (e.g. because of Internet Explorer), please copy-paste by yourself this content, into a file named config.cube(.txt)')" readonly="readonly"></textarea>
                 </div>
@@ -676,14 +685,14 @@
                   <div id="ig-dnsconfig">
                     <h3>_("Step 4: DNS Configuration")</h3>
 
-                    <p id="nodnsconfig">_("For being able to use the self-hosting features of your Cube, you have to configure your domain name, on the registrar side. But, because you have not filled out the IPv4 Address field in the VPN step, your DNS Configuration can not be generated here. Please, fill out this field and go back here, or get help from a non-profit organization.")</p>
+                    <p id="nodnsconfig">_("For being able to use the self-hosting features of your Cube, you have to configure your domain name, on the registrar side. But, because you have not filled out the IPv4 Assigned Address field in the VPN step, your DNS Configuration can not be generated here. Please, fill out this field and go back here, or get help from a non-profit organization.")</p>
                     <p id="dnsconfigdynette">_("You have no DNS configuration to do, because you chose a domain ending by nohost.me or noho.st. However, you should do the steps described above quickly, because your domain will only be registered during your Cube installation.")</p>
 
                     <div id="dnsconfig">
                       <p>_("For being able to use the self-hosting features of your Cube, you have to configure your domain name, on the registrar side. Please, click on the registrar you chose for your domain name (if yours is not listed, please get help from a non-profit organization):")</p>
   
                       <ul id="registrars">
-                        <li><a href="javascript:">OVH</a>
+                        <li id="ovh"><a href="javascript:">OVH</a>
                           <ol>
                             <li><span>_("Go to your OVH manager:")</span> <a href="https://www.ovh.com/manager/" target="_blank">https://www.ovh.com/manager/</a></li>
                             <li>_("Sign in, using your OVH Account ID (should be something like aa0000-ovh)")</li>
@@ -698,7 +707,7 @@
                             <li>_("Click on Next, then Confirm")</li>
                           </ol>
                         </li>
-                        <li><a href="javascript:">Gandi.net</a>
+                        <li id="gandi"><a href="javascript:">Gandi.net</a>
                           <ol>
                             <li><span>_("Go to your Gandi.net account:")</span> <a href="https://www.gandi.net/login" target="_blank">https://www.gandi.net/login</a></li>
                             <li>_("Sign in, using your Gandi.net Handle (should be something like AA0000-GANDI)")</li>
@@ -735,12 +744,17 @@
                     <p>_("If you experience problems using the web administration, please read the YunoHost Documentation, or ask for some help to a non-profit organization:")</p>
   
                     <p class="ynhdoc"><span class="glyphicon glyphicon-book"></span> <a href="https://yunohost.org/docs" target="_blank">_("Documentation")</a> / <span class="glyphicon glyphicon-user"></span> <a href="http://db.ffdn.org" target="_blank">_("Getting Help")</a></p>
+                  </div>
 
-                    <p><span>_("You also can install Cube-specific applications, like a second wifi access point")</span> <a href="https://wiki.internetcu.be" target="_blank">_("with a ShareBox")</a>.</p>
+                  <div id="ig-security">
+                    <h3>_("A Word About Security")</h3>
+  
+                    <p>_("1) Your HyperCube file contains private keys and passwords. Keep it secret and never provide it to anyone.")</p>
+                    <p>_("2) A Cube is just a computer, so keep in mind that it can die any time. Therefore, if you use it for self-hosting, be sure to make regular backups of your data (emails, files, etc).")</p>
                   </div>
 
                   <div id="ig-poweroff">
-                    <h3>_("How to properly power off my Cube?")</h3>
+                    <h3>_("How to Properly Power Off my Cube?")</h3>
   
                     <p>_("Whenever possible, do not disconnect the power supply from your Internet Cube, without having first switched it off (otherwise, this could lead to database errors). For turning off your Internet Cube, just quick press the bottom-left button, using a pen. Then, wait until all the lights are turned off (especially the orange one, close to the ethernet cable, on the opposite side). You now can disconnect the power supply.")</p>
 
