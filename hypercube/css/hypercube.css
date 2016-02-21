@@ -37,11 +37,26 @@ input[type=file] {
 .nav li a {
   text-decoration: none;
   font-size: 10pt;
-  padding: 6.75pt 13pt;
+  padding: 6pt 0 7pt 0;
+  height: 40px;
+}
+
+.nav-pills.nav-wizard {
+  margin: 10px auto 30px;
+  width: 560px;
 }
 
 .nav-pills.nav-wizard li {
   border-color: #111;
+}
+
+.nav-pills.nav-wizard li a {
+  width: 140px;
+  text-align: center;
+}
+
+.nav-pills.nav-wizard li a.nav-main {
+  width: 90px;
 }
 
 .nav-pills.nav-wizard li a, .nav-pills.nav-wizard li.active a, .nav-pills.nav-wizard li:hover a {
@@ -307,11 +322,6 @@ iframe {
   margin: 20px auto 15px;
 }
 
-.nav-wizard {
-  margin: 10px auto 30px;
-  width: 450px;
-}
-
 .panel-default {
   background-color: #303030;
   color: #eee;
@@ -556,14 +566,10 @@ a.btn-danger:hover span {
 }
 
 #start {
-  text-align: center;
-}
-
-#start {
   display: block;
   padding: 20px 25px;
   margin: 5px auto 10px;
-  width: 7em;
+  width: 7.6em;
   background-image: linear-gradient(to bottom, #09AF00 0px, #24AF1D 100%);
   text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.6);
   border: 1px solid #fff;
