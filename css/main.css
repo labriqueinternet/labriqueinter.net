@@ -316,6 +316,10 @@ td.cubecomment {
   color: #f00;
 }
 
+.cuberecommended {
+  color: #ffbb00;
+}
+
 pre {
   text-shadow: 1px 1px #000;
   box-shadow: 3px 3px 2px #000;
