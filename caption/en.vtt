@@ -2,7 +2,7 @@ WEBVTT
 
 00:00:02.370 --> 00:00:04.936
 (Cleaning my Internet access)
-(Just by plugging a cable)
+(Just by plugging in a cable)
 
 00:00:04.936 --> 00:00:07.953
 Let's assume that my internet
@@ -14,7 +14,7 @@ of its common offers
 
 00:00:10.336 --> 00:00:14.461
 At home, all my computers
-are connect via Wifi to my box.
+are connected via Wifi to my box.
 
 00:00:14.461 --> 00:00:18.081
 My problem is that I don't trust
@@ -26,22 +26,21 @@ watch all my online activity
 
 00:00:21.401 --> 00:00:23.661
 and that it might
-sells those informations.
+sell that information.
 
 00:00:23.661 --> 00:00:27.903
 I also know it can decide what kind
-of internet service I'm allowed to use.
+of internet services I'm allowed to use,
 
 00:00:27.903 --> 00:00:29.610
-we speak in this case of locked ports.
+including blocking ports.
 
 00:00:29.610 --> 00:00:32.019
 it can also choose which
-website I'm able to see.
+websites I'm able to see,
 
 00:00:32.019 --> 00:00:35.170
-then we talk about
-liar DNS
+with spoofed or false DNS.
 
 00:00:35.170 --> 00:00:39.811
 Finally I know it can take the initiative
@@ -75,7 +74,7 @@ but also because its
 way of operating is completely opaque.
 
 00:01:01.690 --> 00:01:05.065
-Moreover, the general Term of Use
+Moreover, the general Terms of Use
 that I've signed with it
 
 00:01:05.065 --> 00:01:07.155
@@ -94,7 +93,7 @@ a simple and effective
 solution to those problems.
 
 00:01:19.215 --> 00:01:21.913
-An association which protect
+An association which protects
 a vision of the Internet
 
 00:01:21.933 --> 00:01:23.963
@@ -109,10 +108,10 @@ We will call it
 "the Internet Cube"
 
 00:01:27.715 --> 00:01:29.961
-All *I* have to do to make it works
+All *I* have to do to make it work
 
 00:01:30.019 --> 00:01:32.096
-is to connect it on my Internet modem
+is to connect it to my Internet modem
 
 00:01:32.391 --> 00:01:35.285
 From there, a new Wifi network will be available.
@@ -122,7 +121,7 @@ I can connect computers from my home
 to this Wifi network
 
 00:01:39.228 --> 00:01:43.198
-rather that the one of my ISP
+rather than the one from my ISP
 that I was using before.
 
 00:01:43.198 --> 00:01:46.551
@@ -162,7 +161,7 @@ It is now a simple gateway to my association.
 
 00:02:13.046 --> 00:02:14.936
 The IP addresses I use on
-the Internet from now
+the Internet from now on
 
 00:02:14.936 --> 00:02:16.900
 are those of my association.
@@ -174,10 +173,10 @@ And for the geeks, I also now have native IPv6
 on all my computers at home
 
 00:02:21.846 --> 00:02:23.645
-without having anything to configure
+without having to configure anything
 
 00:02:23.883 --> 00:02:26.548
-For the others, just know that
+For others, just know that
 the adoption of IPv6 is primordial
 
 00:02:26.548 --> 00:02:28.851
@@ -193,10 +192,10 @@ to another by simply modifying
 
 00:02:37.576 --> 00:02:41.466
 the configuration of my VPN tunnel,
-using the information it will gives me.
+using the information it gives me.
 
 00:02:41.466 --> 00:02:44.010
-The UI are also available in French
+The UI is also available in French
 
 00:02:44.753 --> 00:02:47.295
 If I chose to use another ISP because I found a better offer,
@@ -214,14 +213,14 @@ and plug it into the new one.
 my Wifi access stays available and works immediately
 
 00:02:58.033 --> 00:03:01.773
-In the same way, without having anything to configure,
-neither on my Cube
+In the same way, without having to configure anything,
+either on my Cube,
 
 00:03:01.773 --> 00:03:04.103
-nor on my computer or anywhere else
+on my computer or anywhere else.
 
 00:03:04.103 --> 00:03:07.255
-if my ISP offer TV or Phone access,
+If my ISP offers TV or Phone access,
 
 00:03:07.255 --> 00:03:09.335
 I can still use them
@@ -230,11 +229,11 @@ I can still use them
 and if my association has a temporary technical problem
 
 00:03:11.515 --> 00:03:15.467
-I can still connect my computer on my old Wifi network
+I can still connect my computer to my old Wifi network
 
 00:03:15.467 --> 00:03:19.151
 It will be a sort of downgraded Internet
-access but still available.
+access but will still work.
 
 00:03:19.628 --> 00:03:21.671
 (Self Hosting)
@@ -242,7 +241,7 @@ access but still available.
 
 00:03:21.895 --> 00:03:24.911
 The Internet Cube not only
-clean my Internet Access
+cleans my Internet Access
 
 00:03:24.911 --> 00:03:27.026
 Indeed, if I make the step to protect myself
@@ -290,11 +289,11 @@ easily do self-hosting
 
 00:03:55.260 --> 00:03:57.242
 the Internet Cube, actually contains
-a software
+a software platform
 
 00:03:57.261 --> 00:03:59.787
 called YunoHost which allows
-people with a bit of interested
+people with a bit of interest
 
 00:03:59.805 --> 00:04:02.921
 in computers, but without necessarily being an expert,
@@ -304,13 +303,13 @@ to easily host, in their own homes,
 their own internet services
 
 00:04:05.341 --> 00:04:08.308
-available from anywhere in the world.
+and make them available from anywhere in the world.
 
 00:04:08.308 --> 00:04:11.308
 The user interface is also available in French.
 
 00:04:11.308 --> 00:04:14.138
-Since YunoHost knows, by default,
+Since YunoHost knows by default 
 how to manage an email account
 
 00:04:14.138 --> 00:04:15.428
@@ -332,7 +331,7 @@ and I can immediately access
 it from anywhere in the world
 
 00:04:26.971 --> 00:04:29.618
-with, obviously, a secure
+with, obviously, secure
 authentication, in that case.
 
 00:04:29.880 --> 00:04:32.611
@@ -366,7 +365,7 @@ tunnel of the Cube
 my server is also mobile
 
 00:04:51.430 --> 00:04:53.783
-I can plug it on any
+I can plug it in to any
 Internet access
 
 00:04:53.783 --> 00:04:55.693
@@ -378,11 +377,11 @@ or if I go on holidays or if I want to cut off
 
 00:04:59.569 --> 00:05:03.481
 the power in my house, for example, I only
-need to unplug my Internet Cube and to
+need to unplug my Internet Cube and
 
 00:05:03.481 --> 00:05:07.378
 plug it back anywhere else and it will work
-again without requiring to reconfigure something.
+again without any reconfiguration required.
 
 00:05:07.828 --> 00:05:11.188
 At the DNS level, it's the IPs of my
@@ -394,7 +393,7 @@ and those are fixed IPs.
 
 00:05:15.285 --> 00:05:18.179
 I can even plug my Cube
-on a particularly restrained access,
+on a particularly restrained connection,
 
 00:05:18.179 --> 00:05:21.343
 like a smartphone connected in 3 or 4G
@@ -416,7 +415,7 @@ available in IPv6.
 
 00:05:32.633 --> 00:05:37.213
 The FDN Federation is composed of associative 
-ISP who respect Net Neutrality,
+ISPs who respect Net Neutrality,
 
 00:05:37.213 --> 00:05:40.528
 your privacy and who provide,
@@ -439,7 +438,7 @@ Since it is mandatory to
 totally trust the provider
 
 00:05:54.516 --> 00:05:56.630
-you will choose for this service,
+you will choose this service,
 
 00:05:56.630 --> 00:05:58.276
 the associations of the Federation are
@@ -459,7 +458,7 @@ In Belgium, the association Neutrinet,
 who has also started this project
 
 00:06:08.343 --> 00:06:10.665
-will gladly welcomes you.
+will gladly welcome you.
 
 00:06:10.670 --> 00:06:14.050
 In addition, if you wish, you can use
@@ -467,7 +466,7 @@ whichever computer you want
 
 00:06:14.050 --> 00:06:17.160
 and a Wifi antenna to install
-YunoHost by yourself.
+YunoHost by yourself,
 
 00:06:17.160 --> 00:06:20.060
 and the 2 applications needed for
@@ -481,17 +480,17 @@ Then, you'll only have to choose
 a VPN provider
 
 00:06:24.328 --> 00:06:26.523
-and to configure the application.
+and configure the application.
 
 00:06:26.523 --> 00:06:29.029
-The shown box cost 70€ all included
+The shown box costs 70€ all included
 
 00:06:29.039 --> 00:06:32.681
 and an associative VPN service
-cost around 7€ per month.
+costs around 7€ per month.
 
 00:06:33.256 --> 00:06:36.146
-Combined with a classical Internet access
+Combined with traditional Internet access
 at 20€
 
 00:06:36.158 --> 00:06:38.968
