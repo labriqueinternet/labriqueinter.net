@@ -308,15 +308,11 @@ td.cubecomment {
   font-style: italic;
 }
 
-.cubeoptionalyes {
+.cuberequired {
   color: #0f0;
 }
 
-.cubeoptionalno {
-  color: #f00;
-}
-
-.cuberecommended {
+.cubeoptional {
   color: #ffbb00;
 }
 

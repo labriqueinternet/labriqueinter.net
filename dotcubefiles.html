@@ -56,97 +56,97 @@
         <tr>
           <th class="cubekey">Key</th>
           <th class="cubevalue">Value Type</th>
-          <th class="cubeoptional">Optional</th>
+          <th class="cuberequired">Required?</th>
           <th class="cubecomment">Comment</th>
         </tr>
         <tr>
           <td class="cubekey">server_name</td>
           <td class="cubevalue">Domain name</td>
-          <td class="cubeoptional cubeoptionalno">No</td>
+          <td class="cuberequired cuberequired">Required</td>
           <td class="cubecomment">Remote VPN server address</td>
         </tr>
         <tr>
           <td class="cubekey">server_port</td>
           <td class="cubevalue">Port number</td>
-          <td class="cubeoptional cubeoptionalno">No</td>
+          <td class="cuberequired cuberequired">Required</td>
           <td class="cubecomment">Remote VPN server port</td>
         </tr>
         <tr>
           <td class="cubekey">server_proto</td>
           <td class="cubevalue">"udp" or "tcp"</td>
-          <td class="cubeoptional cubeoptionalno">No</td>
+          <td class="cuberequired cuberequired">Required</td>
           <td class="cubecomment">L4 protocol to use</td>
         </tr>
         <tr>
           <td class="cubekey">ip6_net</td>
           <td class="cubevalue">IPv6 network address</td>
-          <td class="cubeoptional cubeoptionalyes">Yes</td>
+          <td class="cuberequired cubeoptional">Optional</td>
           <td class="cubecomment">IPv6 delegated prefix (please, provide IPv6 to your members)</td>
         </tr>
         <tr>
           <td class="cubekey">ip4_addr</td>
           <td class="cubevalue">IPv4 address</td>
-          <td class="cubeoptional cuberecommended">Recommended</td>
+          <td class="cuberequired cubeoptional">Optional</td>
           <td class="cubecomment">Static IPv4 address</td>
         </tr>
         <tr>
           <td class="cubekey">crt_server_ca</td>
           <td class="cubevalue">ASCII certificate (new lines replaced by pipes)</td>
-          <td class="cubeoptional cubeoptionalno">No</td>
+          <td class="cuberequired cuberequired">Required</td>
           <td class="cubecomment">Public server CA (.crt)</td>
         </tr>
         <tr>
           <td class="cubekey">crt_client</td>
           <td class="cubevalue">ASCII certificate (new lines replaced by pipes)</td>
-          <td class="cubeoptional cubeoptionalyes">Yes (except if <em>crt_client_key</em> is defined)</td>
+          <td class="cuberequired cubeoptional">Optional (required if <em>crt_client_key</em> is defined)</td>
           <td class="cubecomment">Public client certificate (.crt)</td>
         </tr>
         <tr>
           <td class="cubekey">crt_client_key</td>
           <td class="cubevalue">ASCII certificate (new lines replaced by pipes)</td>
-          <td class="cubeoptional cubeoptionalyes">Yes (except if <em>crt_client</em> is defined)</td>
+          <td class="cuberequired cubeoptional">Optional (required if <em>crt_client</em> is defined)</td>
           <td class="cubecomment">Private client certificate (.key)</td>
         </tr>
         <tr>
           <td class="cubekey">crt_client_ta</td>
           <td class="cubevalue">ASCII certificate (new lines replaced by pipes)</td>
-          <td class="cubeoptional cubeoptionalyes">Yes</td>
+          <td class="cuberequired cubeoptional">Optional</td>
           <td class="cubecomment">Shared-secret (ta.key)</td>
         </tr>
         <tr>
           <td class="cubekey">login_user</td>
           <td class="cubevalue">Username</td>
-          <td class="cubeoptional cubeoptionalyes">Yes (except if <em>login_passphrase</em> is defined)</td>
+          <td class="cuberequired cubeoptional">Optional (required if <em>login_passphrase</em> is defined)</td>
           <td class="cubecomment">Username</td>
         </tr>
         <tr>
           <td class="cubekey">login_passphrase</td>
           <td class="cubevalue">Passphrase</td>
-          <td class="cubeoptional cubeoptionalyes">Yes (except if <em>login_user</em> is defined)</td>
+          <td class="cuberequired cubeoptional">Optional (required if <em>login_user</em> is defined)</td>
           <td class="cubecomment">Password</td>
         </tr>
         <tr>
           <td class="cubekey">dns0</td>
           <td class="cubevalue">IPv6 or IPv4 address</td>
-          <td class="cubeoptional cubeoptionalno">No</td>
+          <td class="cuberequired cuberequired">Required</td>
           <td class="cubecomment">First public DNS resolver (will be set on the host)</td>
         </tr>
         <tr>
           <td class="cubekey">dns1</td>
           <td class="cubevalue">IPv6 or IPv4 address</td>
-          <td class="cubeoptional cubeoptionalno">No</td>
+          <td class="cuberequired cuberequired">Required</td>
           <td class="cubecomment">Second public DNS resolver (will be set on the host)</td>
         </tr>
         <tr>
           <td class="cubekey">openvpn_rm</td>
           <td class="cubevalue">Array of strings or PCRE regexes</td>
-          <td class="cubeoptional cubeoptionalyes">Yes</td>
+          <td class="cuberequired cubeoptional">Optional</td>
           <td class="cubecomment">OpenVPN options to remove from the <a href="https://github.com/labriqueinternet/vpnclient_ynh/blob/master/conf/openvpn_client.conf.tpl">default configuration</a> (remove all lines containing one of the strings/regexes &mdash; non case-sensitive)</td>
         </tr>
         <tr>
           <td class="cubekey">openvpn_add</td>
           <td class="cubevalue">Array of "key value" pairs</td>
-          <td class="cubeoptional cubeoptionalyes">Yes</td>
+          <td class="cuberequired cubeoptional">Optional</td>
           <td class="cubecomment">OpenVPN options to add to the <a href="https://github.com/labriqueinternet/vpnclient_ynh/blob/master/conf/openvpn_client.conf.tpl">default configuration</a></td>
         </tr>
       </table>
