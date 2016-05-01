@@ -17,6 +17,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+/***************
+ *** GLOBALS ***
+ ***************/
+
+// e.g. /hypercube/ or /
+const WEBPATH = '/beta/';
+
+
 /**************
  *** MODELS ***
  **************/
@@ -1112,6 +1120,9 @@ var controller = {
 
     $('#ig-poweroff').find('h3, p').each(add);
     pdf.addImage(poweroffImg, 'JPEG', 5*15, verticalOffset + 2, 50, 39);
+    verticalOffset += 52;
+
+    $('#ig-debug').find('h3, p, li, pre').each(add);
 
     pdf.save(_('internetcube_installguide') + '.pdf');
   }
@@ -1151,7 +1162,7 @@ var navigation = {
         historyStep += $('#vpn-choice').data('auto') == 'yes' ? 'auto' : 'manual';
       }
 
-      history.pushState({}, '', '/beta/#' + historyStep);
+      history.pushState({}, '', WEBPATH + '#' + historyStep);
     }
 
     if(step == 'welcome' || step == 'aboutyou' || step == 'ffdn') {
@@ -1265,7 +1276,7 @@ var navigation = {
 
       default:
         navigation.goToStep('welcome', true, true);
-        history.pushState({}, '', '/beta/#welcome');
+        history.pushState({}, '', WEBPATH + '#welcome');
     }
   },
 
@@ -1731,7 +1742,7 @@ var i18n = {
     }
 
     $.ajax({
-      url: '/beta/i18n/' + locale + '/localization.json',
+      url: WEBPATH + 'i18n/' + locale + '/localization.json',
 
       error: function() {
         i18n.translateHtmlStrings();

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-20 16:55+0100\n"
-"PO-Revision-Date: 2016-02-21 19:02+0100\n"
+"POT-Creation-Date: 2016-05-01 22:15+0200\n"
+"PO-Revision-Date: 2016-05-01 22:25+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.8.6\n"
+"X-Generator: Poedit 1.8.7\n"
 
 #: /dev/fd/63:58
 msgid "Load an existing HyperCube file"
@@ -38,7 +38,7 @@ msgstr "À propos de vous"
 msgid "VPN"
 msgstr "VPN"
 
-#: /dev/fd/63:69 /dev/fd/63:1864
+#: /dev/fd/63:69 /dev/fd/63:1896
 msgid "Installation"
 msgstr "Installation"
 
@@ -47,7 +47,7 @@ msgid "Welcome"
 msgstr "Bienvenue"
 
 #: /dev/fd/63:82 /dev/fd/63:87 /dev/fd/63:166 /dev/fd/63:171 /dev/fd/63:362
-#: /dev/fd/63:386 /dev/fd/63:431 /dev/fd/63:570 /dev/fd/63:773
+#: /dev/fd/63:386 /dev/fd/63:431 /dev/fd/63:570 /dev/fd/63:797
 msgid "Close"
 msgstr "Fermer"
 
@@ -231,7 +231,7 @@ msgstr "Authentification"
 msgid "Server CA"
 msgstr "CA du serveur"
 
-#: /dev/fd/63:230 /dev/fd/63:260 /dev/fd/63:272 /dev/fd/63:309 /dev/fd/63:1387
+#: /dev/fd/63:230 /dev/fd/63:260 /dev/fd/63:272 /dev/fd/63:309 /dev/fd/63:1419
 msgid "Edition mode"
 msgstr "Mode édition"
 
@@ -415,7 +415,7 @@ msgstr ""
 "Félicitations ! Vous n'avez plus qu'à suivre le Guide d'installation, pour "
 "installer votre Brique Internet"
 
-#: /dev/fd/63:586 /dev/fd/63:589
+#: /dev/fd/63:586 /dev/fd/63:589 /dev/fd/63:788
 msgid "Download Cube File"
 msgstr "Télécharger le fichier Cube"
 
@@ -431,7 +431,7 @@ msgstr ""
 "uniquement télécharger le fichier Cube correspondant à votre configuration "
 "VPN (ce fichier contient des clés et des mots de passe privés)."
 
-#: /dev/fd/63:590
+#: /dev/fd/63:590 /dev/fd/63:789
 msgid ""
 "If you cannot directly download the file (e.g. because of Internet "
 "Explorer), please copy-paste by yourself this content, into a file named "
@@ -572,8 +572,8 @@ msgstr "Étape 3 : Vous avez un nouveau Wifi !"
 
 #: /dev/fd/63:678
 msgid ""
-"Wait for something like a dozen of minutes, without unplugging the cables."
-msgstr "Patientez environ 10 minutes, sans débrancher les câbles "
+"Wait for something like a few dozen minutes, without unplugging the cables."
+msgstr "Patientez quelques dizaines de minutes, sans débrancher les câbles."
 
 #: /dev/fd/63:678
 msgid ""
@@ -775,11 +775,11 @@ msgstr "Documentation"
 msgid "Getting Help"
 msgstr "Obtenir de l'Aide"
 
-#: /dev/fd/63:750
+#: /dev/fd/63:752
 msgid "A Word About Security"
 msgstr "À propos de la sécurité"
 
-#: /dev/fd/63:752
+#: /dev/fd/63:754
 msgid ""
 "1) Your HyperCube file contains private keys and passwords. Keep it secret "
 "and never provide it to anyone."
@@ -787,7 +787,7 @@ msgstr ""
 "1) Votre fichier HyperCube contient des clés et des mots de passe privés. "
 "Gardez-le secret et ne le donnez jamais à personne."
 
-#: /dev/fd/63:753
+#: /dev/fd/63:755
 msgid ""
 "2) A Cube is just a computer, so keep in mind that it can die any time. "
 "Therefore, if you use it for self-hosting, be sure to make regular backups "
@@ -798,11 +798,11 @@ msgstr ""
 "l'autohébergement, assurez-vous de faire très régulièrement des sauvegardes "
 "de vos données (emails, fichiers, etc)."
 
-#: /dev/fd/63:757
+#: /dev/fd/63:759
 msgid "How to Properly Power Off my Cube?"
 msgstr "Comment éteindre proprement ma Brique ?"
 
-#: /dev/fd/63:759
+#: /dev/fd/63:761
 msgid ""
 "Whenever possible, do not disconnect the power supply from your Internet "
 "Cube, without having first switched it off (otherwise, this could lead to "
@@ -819,183 +819,276 @@ msgstr ""
 "éteintes (en particulier la lumière orange, proche du câble ethernet, sur "
 "l'autre face). Vous pouvez maintenant débrancher la prise électrique."
 
-#: /dev/fd/63:765
-msgid "Download this custom guide"
-msgstr "Télécharger le guide personnalisé"
+#: /dev/fd/63:767
+msgid "How to Debug The Installation?"
+msgstr "Comment déboguer l'installation ?"
+
+#: /dev/fd/63:769
+msgid ""
+"Sometimes, things go wrong... To help you to debug, you can follow what your "
+"Cube is doing, during the installation process (i.e. the first time you plug "
+"your Cube after following this guide)."
+msgstr ""
+"Parfois, les choses se passent mal... Pour vous aider à déboguer, vous "
+"pouvez suivre ce que votre Brique est en train de faire, durant le processus "
+"d'installation (i.e. la première fois que vous branchez votre Brique après "
+"avoir suivi ce guide)."
+
+#: /dev/fd/63:770
+msgid ""
+"For that, follow these instructions (you maybe will have to ask for help to "
+"someone):"
+msgstr ""
+"Pour ce faire, suivez les instructions suivantes (vous allez peut-être avoir "
+"à demander de l'aide à quelqu'un) :"
+
+#: /dev/fd/63:772
+msgid ""
+"Be sure to have waited long enough. If you have waited for a few dozen "
+"minutes and you do not see your new wifi access point (step 3), continue to "
+"follow these instructions."
+msgstr ""
+"Soyez bien sûr d'avoir patienté suffisamment longtemps. Si vous avez "
+"patienté quelques dizaines de minutes et que vous ne voyez pas votre nouveau "
+"point d'accès wifi (étape 3), continuez à suivre ces instructions."
+
+#: /dev/fd/63:773
+msgid "Unplug your Cube and start again to follow this guide, from step 1."
+msgstr ""
+"Débranchez votre Brique et recommencez à nouveau à suivre ce guide, à partir "
+"de l'étape 1."
 
 #: /dev/fd/63:774
+msgid ""
+"Once you reached again the step 3, find the HTTP address of the HyperCube "
+"Debug interface, using the SD Card Installer on your computer with Debian or "
+"Ubuntu, this way:"
+msgstr ""
+"Une fois que vous avez de nouveau atteint l'étape 3, trouvez l'adresse HTTP "
+"de l'interface HyperCube Debug, en utilisant le SD Card Installer sur votre "
+"ordinateur Debian ou Ubuntu, de cette façon :"
+
+#: /dev/fd/63:777
+msgid "Open this HTTP address with your web browser."
+msgstr "Ouvrez cette adresse HTTP avec votre navigateur web."
+
+#: /dev/fd/63:778
+msgid ""
+"You probably will get a Not Found error: reload the page until you see the "
+"web page (may take a dozen minutes because the Cube does some stuff before)."
+msgstr ""
+"You allez probablement avoir une erreur Page Non-Trouvée : rechargez la page "
+"jusqu'à ce que vous voyez la page web (ce qui peut prendre une dizaine de "
+"minutes parce que la Brique fait d'autres choses avant)."
+
+#: /dev/fd/63:779
+msgid "Once you got the web page, stop reloading it."
+msgstr ""
+"Une fois que vous avez réussi à afficher la page web, arrêtez de la "
+"recharger."
+
+#: /dev/fd/63:780
+msgid "Wait until you think the installation is finished or crashed."
+msgstr ""
+"Patientez jusqu'à ce que vous pensiez que l'installation est terminée ou "
+"crashée."
+
+#: /dev/fd/63:781
+msgid "Save the HTML file with Ctrl+S."
+msgstr "Enregistrez le fichier HTML avec Ctrl+S."
+
+#: /dev/fd/63:782
+msgid ""
+"You can now provide it to someone able to help you, and find with her/him "
+"what is wrong."
+msgstr ""
+"Vous pouvez maintenant le fournir à quelqu'un qui serait capable de vous "
+"aider, pour trouver avec elle/lui ce qui se passe mal. "
+
+#: /dev/fd/63:787
+msgid "Download this custom guide (PDF)"
+msgstr "Télécharger le guide personnalisé (PDF)"
+
+#: /dev/fd/63:798
 msgid "You have some issues to fix before continuing."
 msgstr "Vous avez quelques problèmes à régler avant de pouvoir continuer."
 
-#: /dev/fd/63:778
+#: /dev/fd/63:802
 msgid "Previous"
 msgstr "Précédent"
 
-#: /dev/fd/63:779
+#: /dev/fd/63:803
 msgid "Next"
 msgstr "Suivant"
 
-#: /dev/fd/63:789 /dev/fd/63:1860
+#: /dev/fd/63:813 /dev/fd/63:1892
 msgid "Internet Cube"
 msgstr "La Brique Internet"
 
-#: /dev/fd/63:991 /dev/fd/63:1133
+#: /dev/fd/63:1023 /dev/fd/63:1165
 msgid "ERROR: Invalid character found when preparing the download link."
 msgstr ""
 "ERREUR : Caractère invalide détecté en préparant le lien de téléchargement."
 
-#: /dev/fd/63:1249
+#: /dev/fd/63:1281
 msgid "Optional Field"
 msgstr "Champ optionnel"
 
-#: /dev/fd/63:1364
+#: /dev/fd/63:1396
 msgid "File selection mode"
 msgstr "Mode sélection de fichiers"
 
-#: /dev/fd/63:1428 /dev/fd/63:1679
+#: /dev/fd/63:1460 /dev/fd/63:1711
 msgid "Cannot read this file"
 msgstr "Impossible de lire ce fichier"
 
-#: /dev/fd/63:1487 /dev/fd/63:1665
+#: /dev/fd/63:1519 /dev/fd/63:1697
 msgid "Invalid file (syntax error):"
 msgstr "Fichier invalide (erreur de syntaxe) :"
 
-#: /dev/fd/63:1487
+#: /dev/fd/63:1519
 msgid "are you sure that this is a .cube file?"
 msgstr "êtes-vous sûr qu'il s'agit bien d'un fichier .cube ?"
 
-#: /dev/fd/63:1491 /dev/fd/63:1669
+#: /dev/fd/63:1523 /dev/fd/63:1701
 msgid "Invalid file (content error):"
 msgstr "Fichier invalide (erreur de contenu) :"
 
-#: /dev/fd/63:1491
+#: /dev/fd/63:1523
 msgid "are you sure that this is your .cube file?"
 msgstr "êtes-vous bien sûr qu'il s'agit de votre fichier .cube ?"
 
-#: /dev/fd/63:1536
+#: /dev/fd/63:1568
 msgid "Checking the avaibility of this domain..."
 msgstr "Vérification de la disponibilité de ce domaine..."
 
-#: /dev/fd/63:1550
+#: /dev/fd/63:1582
 msgid "This domain is not available"
 msgstr "Ce domaine n'est pas disponible"
 
-#: /dev/fd/63:1554
+#: /dev/fd/63:1586
 msgid "Cannot check the domain availability (does not work offline)"
 msgstr ""
 "Impossible de vérifier la disponibilité de ce domaine (ne fonctionne pas "
 "hors-ligne)"
 
-#: /dev/fd/63:1564
+#: /dev/fd/63:1596
 msgid "This domain is available"
 msgstr "Ce domaine est disponible"
 
-#: /dev/fd/63:1665 /dev/fd/63:1669
+#: /dev/fd/63:1697 /dev/fd/63:1701
 msgid "are you sure that this is an HyperCube file?"
 msgstr "êtes-vous bien sûr qu'il s'agit de votre fichier HyperCube ?"
 
-#: /dev/fd/63:1782
+#: /dev/fd/63:1814
 msgid "- Wifi:"
 msgstr "- Wifi :"
 
-#: /dev/fd/63:1787
+#: /dev/fd/63:1819
 msgid "- Address:"
 msgstr "- Adresse :"
 
-#: /dev/fd/63:1795
+#: /dev/fd/63:1827
 msgid "- Password:"
 msgstr "- Mot de passe :"
 
-#: /dev/fd/63:1807
+#: /dev/fd/63:1839
 msgid "YES"
 msgstr "OUI"
 
-#: /dev/fd/63:1809
+#: /dev/fd/63:1841
 msgid "NO"
 msgstr "NON"
 
-#: /dev/fd/63:1908
+#: /dev/fd/63:1943
 msgid "internetcube_installguide"
 msgstr "labriqueinternet_guideinstallation"
 
-#: /dev/fd/63:2102
+#: /dev/fd/63:2137
 msgid ""
 "Loading an existing HyperCube file will replace all values currently set."
 msgstr ""
 "Charger un fichier HyperCube existant va remplacer toutes les valeurs "
 "actuellement renseignées."
 
-#: /dev/fd/63:2102
+#: /dev/fd/63:2137
 msgid "Are you sure?"
 msgstr "Êtes-vous sûr ?"
 
-#: /dev/fd/63:2176
+#: /dev/fd/63:2211
 msgid "This field is mandatory"
 msgstr "Ce champ est obligatoire"
 
-#: /dev/fd/63:2197
+#: /dev/fd/63:2232
 msgid "This IP format looks bad"
 msgstr "Le format de cette IP semble incorrect"
 
-#: /dev/fd/63:2204
+#: /dev/fd/63:2239
 msgid "This IPv4 format looks bad"
 msgstr "Le format de cette IPv4 semble incorrect"
 
-#: /dev/fd/63:2211
+#: /dev/fd/63:2246
 msgid "This IPv6 format looks bad"
 msgstr "Le format de cette IPv6 semble incorrect"
 
-#: /dev/fd/63:2238
+#: /dev/fd/63:2273
 msgid "Must be the same than the previous input"
 msgstr "Devrait avoir la même valeur que le champ précédent"
 
-#: /dev/fd/63:2298
+#: /dev/fd/63:2333
 msgid "No .cube file selected"
 msgstr "Aucun fichier .cube sélectionné"
 
-#: /dev/fd/63:2324 /dev/fd/63:2329 /dev/fd/63:2348 /dev/fd/63:2357
+#: /dev/fd/63:2359 /dev/fd/63:2364 /dev/fd/63:2383 /dev/fd/63:2392
 msgid "Must contain a line with <LINE>"
 msgstr "Devrait contenir une ligne avec <LINE>"
 
-#: /dev/fd/63:2374
+#: /dev/fd/63:2409
 msgid "Must be only composed of digits"
 msgstr "Devrait être composé uniquement de chiffres"
 
-#: /dev/fd/63:2429
+#: /dev/fd/63:2464
 msgid "This IPv4 prefix looks bad (required format is x.x.x or x.x.x.0)"
 msgstr ""
 "Le format de ce préfixe IPv4 semble incorrect (requis : x.x.x ou x.x.x.0)"
 
-#: /dev/fd/63:2442
+#: /dev/fd/63:2477
 msgid "This prefix must be part of an IPv4 private range"
 msgstr "Ce préfixe semble correspondre à un réseau IPv4 privé"
 
-#: /dev/fd/63:2450
+#: /dev/fd/63:2485
 msgid "Only lowercase letters and digits are allowed"
 msgstr "Seules les lettres minuscules et les chiffres sont autorisés"
 
-#: /dev/fd/63:2454
+#: /dev/fd/63:2489
 msgid "Admin is not an authorized value"
 msgstr "Admin n'est pas une valeur autorisée"
 
-#: /dev/fd/63:2460
+#: /dev/fd/63:2495
 msgid "Must be greater than 4 characters"
 msgstr "Devrait être plus grand que 4 caractères"
 
-#: /dev/fd/63:2465
+#: /dev/fd/63:2500
 msgid "Only standard characters are allowed"
 msgstr "Seuls les caractères standards sont autorisés"
 
-#: /dev/fd/63:2470
+#: /dev/fd/63:2505
 msgid "Must from 8 to 63 characters (WPA2 passphrase)"
 msgstr "Devrait avoir entre 8 et 63 caractères (passphrase WPA2)"
 
-#: /dev/fd/63:2475
+#: /dev/fd/63:2510
 msgid "Only lowercase letters, digits, dots and dashes are allowed"
 msgstr ""
 "Seules les lettre minuscules, les chiffres, les points et les tirets sont "
 "autorisés"
 
-#: /dev/fd/63:2479
+#: /dev/fd/63:2514
 msgid "Sorry but this domain is not available"
 msgstr "Désolé mais ce domaine n'est pas disponible"
+
+#~ msgid ""
+#~ "Wait for something like a dozen of minutes, without unplugging the cables."
+#~ msgstr "Patientez environ 10 minutes, sans débrancher les câbles "
+
+#~ msgid "Download this custom guide"
+#~ msgstr "Télécharger le guide personnalisé"

@@ -521,9 +521,14 @@ p.showpwd {
   margin: 20px 0 0 20px;
 }
 
-#ig-downloadpdf {
-  margin: 20px 0 2px 5px;
+#ig-extralinks {
+  margin: 20px 0 1px 5px;
   text-align: left;
+}
+
+#ig-extralinks p {
+  padding: 0;
+  margin: 0;
 }
 
 .cubefilelink {
@@ -589,6 +594,11 @@ a.btn-danger:hover span {
 
 .custom-install {
   display: none;
+}
+
+hr {
+  border: 1px solid #ccc;
+  margin: 40px 0 0;
 }
 
 footer {

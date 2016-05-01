@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-20 16:55+0100\n"
+"POT-Creation-Date: 2016-05-01 22:15+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgstr ""
 msgid "VPN"
 msgstr ""
 
-#: /dev/fd/63:69 /dev/fd/63:1864
+#: /dev/fd/63:69 /dev/fd/63:1896
 msgid "Installation"
 msgstr ""
 
@@ -46,7 +46,7 @@ msgid "Welcome"
 msgstr ""
 
 #: /dev/fd/63:82 /dev/fd/63:87 /dev/fd/63:166 /dev/fd/63:171 /dev/fd/63:362
-#: /dev/fd/63:386 /dev/fd/63:431 /dev/fd/63:570 /dev/fd/63:773
+#: /dev/fd/63:386 /dev/fd/63:431 /dev/fd/63:570 /dev/fd/63:797
 msgid "Close"
 msgstr ""
 
@@ -205,7 +205,7 @@ msgstr ""
 msgid "Server CA"
 msgstr ""
 
-#: /dev/fd/63:230 /dev/fd/63:260 /dev/fd/63:272 /dev/fd/63:309 /dev/fd/63:1387
+#: /dev/fd/63:230 /dev/fd/63:260 /dev/fd/63:272 /dev/fd/63:309 /dev/fd/63:1419
 msgid "Edition mode"
 msgstr ""
 
@@ -383,7 +383,7 @@ msgid ""
 "install your Internet Cube."
 msgstr ""
 
-#: /dev/fd/63:586 /dev/fd/63:589
+#: /dev/fd/63:586 /dev/fd/63:589 /dev/fd/63:788
 msgid "Download Cube File"
 msgstr ""
 
@@ -395,7 +395,7 @@ msgid ""
 "passwords):"
 msgstr ""
 
-#: /dev/fd/63:590
+#: /dev/fd/63:590 /dev/fd/63:789
 msgid ""
 "If you cannot directly download the file (e.g. because of Internet "
 "Explorer), please copy-paste by yourself this content, into a file named "
@@ -511,7 +511,7 @@ msgstr ""
 
 #: /dev/fd/63:678
 msgid ""
-"Wait for something like a dozen of minutes, without unplugging the cables."
+"Wait for something like a few dozen minutes, without unplugging the cables."
 msgstr ""
 
 #: /dev/fd/63:678
@@ -683,28 +683,28 @@ msgstr ""
 msgid "Getting Help"
 msgstr ""
 
-#: /dev/fd/63:750
+#: /dev/fd/63:752
 msgid "A Word About Security"
 msgstr ""
 
-#: /dev/fd/63:752
+#: /dev/fd/63:754
 msgid ""
 "1) Your HyperCube file contains private keys and passwords. Keep it secret "
 "and never provide it to anyone."
 msgstr ""
 
-#: /dev/fd/63:753
+#: /dev/fd/63:755
 msgid ""
 "2) A Cube is just a computer, so keep in mind that it can die any time. "
 "Therefore, if you use it for self-hosting, be sure to make regular backups "
 "of your data (emails, files, etc)."
 msgstr ""
 
-#: /dev/fd/63:757
+#: /dev/fd/63:759
 msgid "How to Properly Power Off my Cube?"
 msgstr ""
 
-#: /dev/fd/63:759
+#: /dev/fd/63:761
 msgid ""
 "Whenever possible, do not disconnect the power supply from your Internet "
 "Cube, without having first switched it off (otherwise, this could lead to "
@@ -714,175 +714,238 @@ msgid ""
 "side). You now can disconnect the power supply."
 msgstr ""
 
-#: /dev/fd/63:765
-msgid "Download this custom guide"
+#: /dev/fd/63:767
+msgid "How to Debug The Installation?"
+msgstr ""
+
+#: /dev/fd/63:769
+msgid ""
+"Sometimes, things go wrong... To help you to debug, you can follow what your "
+"Cube is doing, during the installation process (i.e. the first time you plug "
+"your Cube after following this guide)."
+msgstr ""
+
+#: /dev/fd/63:770
+msgid ""
+"For that, follow these instructions (you maybe will have to ask for help to "
+"someone):"
+msgstr ""
+
+#: /dev/fd/63:772
+msgid ""
+"Be sure to have waited long enough. If you have waited for a few dozen "
+"minutes and you do not see your new wifi access point (step 3), continue to "
+"follow these instructions."
+msgstr ""
+
+#: /dev/fd/63:773
+msgid "Unplug your Cube and start again to follow this guide, from step 1."
 msgstr ""
 
 #: /dev/fd/63:774
-msgid "You have some issues to fix before continuing."
+msgid ""
+"Once you reached again the step 3, find the HTTP address of the HyperCube "
+"Debug interface, using the SD Card Installer on your computer with Debian or "
+"Ubuntu, this way:"
+msgstr ""
+
+#: /dev/fd/63:777
+msgid "Open this HTTP address with your web browser."
 msgstr ""
 
 #: /dev/fd/63:778
-msgid "Previous"
+msgid ""
+"You probably will get a Not Found error: reload the page until you see the "
+"web page (may take a dozen minutes because the Cube does some stuff before)."
 msgstr ""
 
 #: /dev/fd/63:779
+msgid "Once you got the web page, stop reloading it."
+msgstr ""
+
+#: /dev/fd/63:780
+msgid "Wait until you think the installation is finished or crashed."
+msgstr ""
+
+#: /dev/fd/63:781
+msgid "Save the HTML file with Ctrl+S."
+msgstr ""
+
+#: /dev/fd/63:782
+msgid ""
+"You can now provide it to someone able to help you, and find with her/him "
+"what is wrong."
+msgstr ""
+
+#: /dev/fd/63:787
+msgid "Download this custom guide (PDF)"
+msgstr ""
+
+#: /dev/fd/63:798
+msgid "You have some issues to fix before continuing."
+msgstr ""
+
+#: /dev/fd/63:802
+msgid "Previous"
+msgstr ""
+
+#: /dev/fd/63:803
 msgid "Next"
 msgstr ""
 
-#: /dev/fd/63:789 /dev/fd/63:1860
+#: /dev/fd/63:813 /dev/fd/63:1892
 msgid "Internet Cube"
 msgstr ""
 
-#: /dev/fd/63:991 /dev/fd/63:1133
+#: /dev/fd/63:1023 /dev/fd/63:1165
 msgid "ERROR: Invalid character found when preparing the download link."
 msgstr ""
 
-#: /dev/fd/63:1249
+#: /dev/fd/63:1281
 msgid "Optional Field"
 msgstr ""
 
-#: /dev/fd/63:1364
+#: /dev/fd/63:1396
 msgid "File selection mode"
 msgstr ""
 
-#: /dev/fd/63:1428 /dev/fd/63:1679
+#: /dev/fd/63:1460 /dev/fd/63:1711
 msgid "Cannot read this file"
 msgstr ""
 
-#: /dev/fd/63:1487 /dev/fd/63:1665
+#: /dev/fd/63:1519 /dev/fd/63:1697
 msgid "Invalid file (syntax error):"
 msgstr ""
 
-#: /dev/fd/63:1487
+#: /dev/fd/63:1519
 msgid "are you sure that this is a .cube file?"
 msgstr ""
 
-#: /dev/fd/63:1491 /dev/fd/63:1669
+#: /dev/fd/63:1523 /dev/fd/63:1701
 msgid "Invalid file (content error):"
 msgstr ""
 
-#: /dev/fd/63:1491
+#: /dev/fd/63:1523
 msgid "are you sure that this is your .cube file?"
 msgstr ""
 
-#: /dev/fd/63:1536
+#: /dev/fd/63:1568
 msgid "Checking the avaibility of this domain..."
 msgstr ""
 
-#: /dev/fd/63:1550
+#: /dev/fd/63:1582
 msgid "This domain is not available"
 msgstr ""
 
-#: /dev/fd/63:1554
+#: /dev/fd/63:1586
 msgid "Cannot check the domain availability (does not work offline)"
 msgstr ""
 
-#: /dev/fd/63:1564
+#: /dev/fd/63:1596
 msgid "This domain is available"
 msgstr ""
 
-#: /dev/fd/63:1665 /dev/fd/63:1669
+#: /dev/fd/63:1697 /dev/fd/63:1701
 msgid "are you sure that this is an HyperCube file?"
 msgstr ""
 
-#: /dev/fd/63:1782
+#: /dev/fd/63:1814
 msgid "- Wifi:"
 msgstr ""
 
-#: /dev/fd/63:1787
+#: /dev/fd/63:1819
 msgid "- Address:"
 msgstr ""
 
-#: /dev/fd/63:1795
+#: /dev/fd/63:1827
 msgid "- Password:"
 msgstr ""
 
-#: /dev/fd/63:1807
+#: /dev/fd/63:1839
 msgid "YES"
 msgstr ""
 
-#: /dev/fd/63:1809
+#: /dev/fd/63:1841
 msgid "NO"
 msgstr ""
 
-#: /dev/fd/63:1908
+#: /dev/fd/63:1943
 msgid "internetcube_installguide"
 msgstr ""
 
-#: /dev/fd/63:2102
+#: /dev/fd/63:2137
 msgid ""
 "Loading an existing HyperCube file will replace all values currently set."
 msgstr ""
 
-#: /dev/fd/63:2102
+#: /dev/fd/63:2137
 msgid "Are you sure?"
 msgstr ""
 
-#: /dev/fd/63:2176
+#: /dev/fd/63:2211
 msgid "This field is mandatory"
 msgstr ""
 
-#: /dev/fd/63:2197
+#: /dev/fd/63:2232
 msgid "This IP format looks bad"
 msgstr ""
 
-#: /dev/fd/63:2204
+#: /dev/fd/63:2239
 msgid "This IPv4 format looks bad"
 msgstr ""
 
-#: /dev/fd/63:2211
+#: /dev/fd/63:2246
 msgid "This IPv6 format looks bad"
 msgstr ""
 
-#: /dev/fd/63:2238
+#: /dev/fd/63:2273
 msgid "Must be the same than the previous input"
 msgstr ""
 
-#: /dev/fd/63:2298
+#: /dev/fd/63:2333
 msgid "No .cube file selected"
 msgstr ""
 
-#: /dev/fd/63:2324 /dev/fd/63:2329 /dev/fd/63:2348 /dev/fd/63:2357
+#: /dev/fd/63:2359 /dev/fd/63:2364 /dev/fd/63:2383 /dev/fd/63:2392
 msgid "Must contain a line with <LINE>"
 msgstr ""
 
-#: /dev/fd/63:2374
+#: /dev/fd/63:2409
 msgid "Must be only composed of digits"
 msgstr ""
 
-#: /dev/fd/63:2429
+#: /dev/fd/63:2464
 msgid "This IPv4 prefix looks bad (required format is x.x.x or x.x.x.0)"
 msgstr ""
 
-#: /dev/fd/63:2442
+#: /dev/fd/63:2477
 msgid "This prefix must be part of an IPv4 private range"
 msgstr ""
 
-#: /dev/fd/63:2450
+#: /dev/fd/63:2485
 msgid "Only lowercase letters and digits are allowed"
 msgstr ""
 
-#: /dev/fd/63:2454
+#: /dev/fd/63:2489
 msgid "Admin is not an authorized value"
 msgstr ""
 
-#: /dev/fd/63:2460
+#: /dev/fd/63:2495
 msgid "Must be greater than 4 characters"
 msgstr ""
 
-#: /dev/fd/63:2465
+#: /dev/fd/63:2500
 msgid "Only standard characters are allowed"
 msgstr ""
 
-#: /dev/fd/63:2470
+#: /dev/fd/63:2505
 msgid "Must from 8 to 63 characters (WPA2 passphrase)"
 msgstr ""
 
-#: /dev/fd/63:2475
+#: /dev/fd/63:2510
 msgid "Only lowercase letters, digits, dots and dashes are allowed"
 msgstr ""
 
-#: /dev/fd/63:2479
+#: /dev/fd/63:2514
 msgid "Sorry but this domain is not available"
 msgstr ""
