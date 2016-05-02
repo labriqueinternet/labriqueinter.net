@@ -22,7 +22,7 @@
  ***************/
 
 // e.g. /hypercube/ or /
-const WEB_PATH = '/beta/';
+const WEB_PATH = '/';
 
 const LANG_DOMAIN_EN = 'internetcu.be'
 const LANG_DOMAIN_FR = 'labriqueinter.net'
