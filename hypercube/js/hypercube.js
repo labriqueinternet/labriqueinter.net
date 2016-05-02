@@ -22,7 +22,10 @@
  ***************/
 
 // e.g. /hypercube/ or /
-const WEBPATH = '/beta/';
+const WEB_PATH = '/beta/';
+
+const LANG_DOMAIN_EN = 'internetcu.be'
+const LANG_DOMAIN_FR = 'labriqueinter.net'
 
 
 /**************
@@ -1163,7 +1166,7 @@ var navigation = {
         historyStep += $('#vpn-choice').data('auto') == 'yes' ? 'auto' : 'manual';
       }
 
-      history.pushState({}, '', WEBPATH + '#' + historyStep);
+      history.pushState({}, '', WEB_PATH + '#' + historyStep);
     }
 
     if(step == 'welcome' || step == 'aboutyou' || step == 'ffdn') {
@@ -1277,7 +1280,7 @@ var navigation = {
 
       default:
         navigation.goToStep('welcome', true, true);
-        history.pushState({}, '', WEBPATH + '#welcome');
+        history.pushState({}, '', WEB_PATH + '#welcome');
     }
   },
 
@@ -1744,7 +1747,7 @@ var i18n = {
   detectLanguage: function() {
     var host = $(location).attr('host');
 
-    if(host.match('\.labriqueinter\.net$')) {
+    if(host.match('\\.' + LANG_DOMAIN_FR.replace(/[.]/g, '\\$&') + '$')) {
       return 'fr';
     }
 
@@ -1761,7 +1764,7 @@ var i18n = {
     }
 
     $.ajax({
-      url: WEBPATH + 'i18n/' + locale + '/localization.json',
+      url: WEB_PATH + 'i18n/' + locale + '/localization.json',
 
       error: function() {
         i18n.translateHtmlStrings();
@@ -1799,7 +1802,7 @@ var i18n = {
 
       if($(this).attr('href') && $(this).attr('hreflang') != 'en') {
         var host = $(location).attr('host').replace(/.*\.([^.]+\.[^.]+)$/, '$1');
-        $(this).attr('href', $(this).attr('href').replace('internetcu.be', host));
+        $(this).attr('href', $(this).attr('href').replace(LANG_DOMAIN_EN, host));
       }
     });
 
