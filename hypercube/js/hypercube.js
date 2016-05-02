@@ -542,6 +542,7 @@ var view = {
     $('#button-prev').click(navigation.prevButtonClick);
     $('#modifycubefile').click(navigation.modifyCubeFileClick);
     $('#loadhypercube').click(navigation.loadHyperCubeClick);
+    $('.ig-hidden-link').click(navigation.toggleGuideSectionClick);
     $('#start').click(navigation.startClick);
 
     navigation.browserHistory();
@@ -971,7 +972,7 @@ var controller = {
     }
 
     var add = function(i) {
-      if($(this).is(':visible') || $(this).attr('id') == 'wifipwd' || $(this).attr('id') == 'ynhpwd' || $(this).closest('#' + chosenRegistrar).length) {
+      if($(this).is(':visible') || $(this).attr('id') == 'wifipwd' || $(this).attr('id') == 'ynhpwd' || $(this).closest('#' + chosenRegistrar).length || $(this).closest('.ig-hidden').length) {
         var fontFace = 'helvetica';
         var fontSize = 9;
         var margin = 0;
@@ -1282,6 +1283,24 @@ var navigation = {
 
   startClick: function() {
     navigation.goToStep('aboutyou');
+  },
+
+  toggleGuideSectionClick: function() {
+    var div = $(this).closest('.ig-hidden');
+
+    if(div.hasClass('ig-hidden-show')) {
+      $(this).prev().addClass('glyphicon-chevron-right');
+      $(this).prev().removeClass('glyphicon-chevron-down');
+      div.children(':not(h3)').slideUp();
+      div.removeClass('ig-hidden-show');
+
+    } else {
+
+      $(this).prev().addClass('glyphicon-chevron-down');
+      $(this).prev().removeClass('glyphicon-chevron-right');
+      div.children(':not(h3)').slideDown();
+      div.addClass('ig-hidden-show');
+    }
   },
 
   nextButtonClick: function() {

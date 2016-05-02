@@ -531,6 +531,22 @@ p.showpwd {
   margin: 0;
 }
 
+.ig-hidden > * {
+  display: none;
+}
+
+.ig-hidden h3 {
+  display: block;
+}
+
+.ig-hidden h3 .ig-hidden-link {
+  cursor: pointer;
+}
+
+.ig-hidden h3:hover .ig-hidden-link {
+  text-decoration: underline;
+}
+
 .cubefilelink {
   text-align: center;
 }
@@ -597,7 +613,7 @@ a.btn-danger:hover span {
 }
 
 hr {
-  border: 1px solid #ccc;
+  border: 1px solid #555;
   margin: 40px 0 0;
 }
 
