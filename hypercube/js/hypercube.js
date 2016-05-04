@@ -1086,7 +1086,7 @@ var controller = {
         pdf.setFontSize(fontSize);
         pdf.text(15, verticalOffset, lines);
 
-	verticalOffset += (margin + (lines.length * 3) * (fontSize / 8));
+	verticalOffset += (margin + (lines.length * 3) * (fontSize / 8.1));
       }
     }
 
