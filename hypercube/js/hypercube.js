@@ -457,7 +457,12 @@ var view = {
     $('#ynhpwd').text($('#ynh_password').val().trim());
     $('#userdomain').text('https://' + $('#ynh_domain').val().trim() + '/home/');
     $('#userpwd').text($('#ynh_user').val().trim() + ' / ' + $('#ynh_user_password').val().trim());
-    $('#mailaddr').text($('#ynh_user').val().trim() + '@' + $('#ynh_domain').val().trim());
+    $('.mailaddr').text($('#ynh_user').val().trim() + '@' + $('#ynh_domain').val().trim());
+    $('.mailpwd').text($('#ynh_user_password').val().trim());
+    $('.mailuser').text($('#ynh_user').val().trim());
+    $('#mailimap').text($('#ynh_domain').val().trim());
+    $('#mailsmtp').text($('#ynh_domain').val().trim());
+
     $('.domainname').text($('#ynh_domain').val().trim());
     $('.dnszone').val(hypercube.generateDnsZone());
   },
@@ -978,7 +983,7 @@ var controller = {
     }
 
     var add = function(i) {
-      if($(this).is(':visible') || $(this).attr('id') == 'wifipwd' || $(this).attr('id') == 'ynhpwd' || $(this).attr('id') == 'userpwd' || $(this).closest('#' + chosenRegistrar).length || $(this).closest('.ig-hidden').length) {
+      if($(this).is(':visible') || $(this).closest('.hiddenpwd').length || $(this).closest('#' + chosenRegistrar).length || $(this).closest('.ig-hidden').length) {
         var fontFace = 'helvetica';
         var fontSize = 9;
         var margin = 0;
@@ -987,6 +992,10 @@ var controller = {
         cloneText.find('a').each(function() {
           if($(this).attr('href').match(/^http/) && !$(this).text().match(/^http/)) {
             $(this).text($(this).text() + ' [' + $(this).attr('href') + ']');
+          }
+
+          if($(this).closest('.showpwd').length) {
+            $(this).text('');
           }
         });
 
@@ -1045,7 +1054,11 @@ var controller = {
                 text = '  - ' + text.split("\n")[0];
               }
             } else {
-              text = '- ' + text.split("\n")[0];
+              if($(this).parent().closest('li').length) {
+                text = '  - ' + text.split("\n")[0];
+              } else {
+                text = '- ' + text.split("\n")[0];
+              }
             }
 
             break;

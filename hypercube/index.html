@@ -741,15 +741,43 @@
                     </div>
                     <div class="showpwd"><a href="javascript:">_("Show admin password")</a> <div class="hiddenpwd"><div id="ynhpwd"></div></div></div>
 
-                    <p>_("If you want to access to your current apps, go to (the credentials for an SMTPS/IMAPS login, e.g. for configuring an email client on your smartphone, are the same):")</p>
+                    <p>_("If you want to access to your current apps, go to:")</p>
   
                     <p id="showadmindomain"><span class="glyphicon glyphicon-home"></span> <a href="javascript:" id="userdomain" target="_blank"></a></p>
                     <div class="showpwd"><a href="javascript:">_("Show user credentials")</a> <div class="hiddenpwd"><div id="userpwd"></div></div></div>
 
                     <p>_("You first email address is:")</p>
 
-                    <p id="showmailaddr"><span class="glyphicon glyphicon-envelope"></span> <span id="mailaddr"></span></p>
+                    <p id="showmailaddr"><span class="glyphicon glyphicon-envelope"></span> <span class="mailaddr"></span></p>
                     <p>_("You can already use it, using the Roundcube Webmail app, available through the link above!")</p>
+
+                    <p>_("If you want to configure your mailbox on your smartphone (e.g. using K-9 Mail), you can use these settings:")</p>
+
+                    <ul id="mailclient">
+                      <li><span>_("Email address:")</span> <em class="mailaddr"></em></li>
+                      <li><span>_("Password:")</span> <span class="showpwd"><a href="javascript:">_("Show")</a> <span class="hiddenpwd"><span class="mailpwd"></span></span></span></li>
+                      <li><span>_("Account type:")</span> <em>IMAP</em></li>
+                      <li><span>_("Incoming server settings:")</span>
+                        <ul>
+                          <li><span>_("Username:")</span> <em class="mailuser"></em></li>
+                          <li><span>_("Password:")</span> <span class="showpwd"><a href="javascript:">_("Show")</a> <span class="hiddenpwd"><span class="mailpwd"></span></span></span></li>
+                          <li><span>_("IMAP server:")</span> <em id="mailimap"></em></li>
+                          <li><span>_("Security:")</span> <em>_("SSL/TLS (always)")</em></li>
+                          <li><span>_("Authentication:")</span> <em>_("PLAIN")</em></li>
+                          <li><span>_("Port:")</span> <em>993</em></li>
+                        </ul>
+                      </li>
+                      <li><span>_("Outgoing server settings:")</span>
+                        <ul>
+                          <li><span>_("Username:")</span> <em class="mailuser"></em></li>
+                          <li><span>_("Password:")</span> <span class="showpwd"><a href="javascript:">_("Show")</a> <span class="hiddenpwd"><span class="mailpwd"></span></span></span></li>
+                          <li><span>_("SMTP server:")</span> <em id="mailsmtp"></em></li>
+                          <li><span>_("Security:")</span> <em>_("SSL/TLS (always)")</em></li>
+                          <li><span>_("Authentication:")</span> <em>_("PLAIN")</em></li>
+                          <li><span>_("Port:")</span> <em>465</em></li>
+                        </ul>
+                      </li>
+                    </ul>
 
                     <p>_("If you experience problems using the web administration, please read the YunoHost Documentation, or ask for some help to a non-profit organization:")</p>
   

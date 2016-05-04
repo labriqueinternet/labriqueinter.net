@@ -412,7 +412,7 @@ label.optionalfield span.glyphicon:hover {
   text-align: left;
 }
 
-#panel-submit pre, textarea[readonly=readonly] {
+#panel-submit pre, textarea[readonly=readonly], #mailclient {
   border-radius: 0;
   border: none;
   color: #fff;
@@ -471,6 +471,31 @@ p#showwifiname, p#showadmindomain, p#showadminip6, p#showadminip4, p#showadminip
   font-size: 20pt;
 }
 
+#mailclient {
+  text-align: left;
+  box-shadow: 3px 3px 2px #000;
+  background-color: #222;
+  padding: 10px;
+  display: block;
+  font-size: 12pt;
+  margin: -4px 20px 20px;
+  height: 5.7em;
+  overflow: hidden;
+}
+
+#mailclient:hover {
+  height: inherit;
+}
+
+#mailclient li span:first-child {
+  text-shadow: 1px 1px #000;
+}
+
+#mailclient li {
+  list-style-type: square;
+  margin-left: 25px;
+}
+
 .panel p#ffdnlink {
   margin-bottom: 20px;
 }
@@ -492,7 +517,7 @@ p.showpwd {
   margin-top: 20px;
 }
 
-.hiddenpwd div {
+.hiddenpwd div, .hiddenpwd span {
   display: inline-block;
   padding: 5px 10px;
   border: 1px solid #eee;
