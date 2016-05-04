@@ -432,7 +432,7 @@ textarea[readonly=readonly] {
   width: 90%;
 }
 
-li textarea[readonly=readonly] {
+li textarea[readonly=readonly], textarea.downloadviewtxt {
   margin: 7px 0 10px;
   width: 100%;
 }
