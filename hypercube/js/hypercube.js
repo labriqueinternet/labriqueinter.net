@@ -455,6 +455,9 @@ var view = {
     $('#wifiname').text($('#hotspot_wifi_ssid').val().trim());
     $('#wifipwd').text($('#hotspot_wifi_passphrase').val().trim());
     $('#ynhpwd').text($('#ynh_password').val().trim());
+    $('#userdomain').text('https://' + $('#ynh_domain').val().trim() + '/home/');
+    $('#userpwd').text($('#ynh_user').val().trim() + ' / ' + $('#ynh_user_password').val().trim());
+    $('#mailaddr').text($('#ynh_user').val().trim() + '@' + $('#ynh_domain').val().trim());
     $('.domainname').text($('#ynh_domain').val().trim());
     $('.dnszone').val(hypercube.generateDnsZone());
   },
@@ -975,7 +978,7 @@ var controller = {
     }
 
     var add = function(i) {
-      if($(this).is(':visible') || $(this).attr('id') == 'wifipwd' || $(this).attr('id') == 'ynhpwd' || $(this).closest('#' + chosenRegistrar).length || $(this).closest('.ig-hidden').length) {
+      if($(this).is(':visible') || $(this).attr('id') == 'wifipwd' || $(this).attr('id') == 'ynhpwd' || $(this).attr('id') == 'userpwd' || $(this).closest('#' + chosenRegistrar).length || $(this).closest('.ig-hidden').length) {
         var fontFace = 'helvetica';
         var fontSize = 9;
         var margin = 0;
@@ -1011,7 +1014,7 @@ var controller = {
             break;
 
           case 'div':
-            if($(this).attr('id') == 'wifipwd' || $(this).attr('id') == 'ynhpwd') {
+            if($(this).attr('id') == 'wifipwd' || $(this).attr('id') == 'ynhpwd' || $(this).attr('id') == 'userpwd') {
               text = _('- Password:') + ' ' + text;
               margin = 1;
             }
@@ -1103,21 +1106,15 @@ var controller = {
 
     if($('#dnsconfig').is(':visible')) {
       $('#ig-dnsconfig').find('h3, p, li, textarea').each(add);
-      pdf.addPage();
-      verticalOffset = 20;
-
     } else {
       $('#ig-dnsconfig').find('h3, p').each(add);
-      verticalOffset += 4;
     }
 
-    $('#ig-selfhosting').find('h3, p, li, div#ynhpwd').each(add);
+    pdf.addPage();
+    verticalOffset = 20;
+
+    $('#ig-selfhosting').find('h3, p, li, div#ynhpwd, div#userpwd').each(add);
     verticalOffset += 4;
-
-    if(!$('#dnsconfig').is(':visible')) {
-      pdf.addPage();
-      verticalOffset = 20;
-    }
 
     $('#ig-security').find('h3, p').each(add);
     verticalOffset += 4;
@@ -1125,6 +1122,9 @@ var controller = {
     $('#ig-poweroff').find('h3, p').each(add);
     pdf.addImage(poweroffImg, 'JPEG', 5*15, verticalOffset + 2, 50, 39);
     verticalOffset += 52;
+
+    pdf.addPage();
+    verticalOffset = 20;
 
     $('#ig-debug').find('h3, p, li, pre').each(add);
 

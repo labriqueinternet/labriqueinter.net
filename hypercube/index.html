@@ -730,7 +730,7 @@
                   <div id="ig-selfhosting">
                     <h3>_("Step 5: Self-Hosting")</h3>
   
-                    <p>_("If you want to update your settings or configure some web services to host, you just have to access the web administration, named YunoHost (you will have to accept the security exception proposed by your browser):")</p>
+                    <p>_("If you want to update your settings, add accounts, add email addresses or configure some web services to host, you just have to access the web administration, named YunoHost (you will have to accept the security exception proposed by your browser):")</p>
   
                     <p id="showadmindomain"><span class="glyphicon glyphicon-wrench"></span> <a href="javascript:" id="admindomain" target="_blank"></a></p>
                     <div id="showadminalt"><a href="javascript:">_("Show alternative URLs")</a></div>
@@ -740,7 +740,17 @@
                       <p id="showadminip4priv"><span class="glyphicon glyphicon-wrench"></span> <a href="javascript:" id="adminip4priv" target="_blank"></a></p>
                     </div>
                     <div class="showpwd"><a href="javascript:">_("Show admin password")</a> <div class="hiddenpwd"><div id="ynhpwd"></div></div></div>
+
+                    <p>_("If you want to access to your current apps, go to (the credentials for an SMTPS/IMAPS login, e.g. for configuring an email client on your smartphone, are the same):")</p>
   
+                    <p id="showadmindomain"><span class="glyphicon glyphicon-home"></span> <a href="javascript:" id="userdomain" target="_blank"></a></p>
+                    <div class="showpwd"><a href="javascript:">_("Show user credentials")</a> <div class="hiddenpwd"><div id="userpwd"></div></div></div>
+
+                    <p>_("You first email address is:")</p>
+
+                    <p id="showmailaddr"><span class="glyphicon glyphicon-envelope"></span> <span id="mailaddr"></span></p>
+                    <p>_("You can already use it, using the Roundcube Webmail app, available through the link above!")</p>
+
                     <p>_("If you experience problems using the web administration, please read the YunoHost Documentation, or ask for some help to a non-profit organization:")</p>
   
                     <p class="ynhdoc"><span class="glyphicon glyphicon-book"></span> <a href="https://yunohost.org/docs" target="_blank">_("Documentation")</a> / <span class="glyphicon glyphicon-user"></span> <a href="http://db.ffdn.org" target="_blank">_("Getting Help")</a></p>
@@ -751,7 +761,7 @@
                   <div id="ig-security" class="ig-hidden">
                     <h3><span class="glyphicon glyphicon-chevron-right"></span> <span class="ig-hidden-link">_("A Word About Security")</span></h3>
   
-                    <p>_("1) Your HyperCube file contains private keys and passwords. Keep it secret and never provide it to anyone.")</p>
+                    <p>_("1) Your Cube/HyperCube files contain private keys and passwords. Keep them secret and never provide them to anyone.")</p>
                     <p>_("2) A Cube is just a computer, so keep in mind that it can die any time. Therefore, if you use it for self-hosting, be sure to make regular backups of your data (emails, files, etc).")</p>
                   </div>
 
@@ -775,7 +785,7 @@
                         <pre>% bash install-sd.sh -l</pre>
                       </li>
                       <li>_("Open this HTTP address with your web browser.")</li>
-                      <li>_("You probably will get a Not Found error: reload the page until you see the web page (may take a dozen minutes because the Cube does some stuff before).")</li>
+                      <li>_("You probably will get a Not Found error: reload the page until you see the web page (may take a few minutes).")</li>
                       <li>_("Once you got the web page, stop reloading it.")</li>
                       <li>_("Wait until you think the installation is finished or crashed.")</li>
                       <li>_("Save the HTML file with Ctrl+S.")</li>

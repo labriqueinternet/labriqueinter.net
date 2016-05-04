@@ -466,7 +466,7 @@ li textarea[readonly=readonly] {
   text-align: center;
 }
 
-p#showwifiname, p#showadmindomain, p#showadminip6, p#showadminip4, p#showadminip4priv, #panel-submit p.ynhdoc, .panel p#ffdnlink {
+p#showwifiname, p#showadmindomain, p#showadminip6, p#showadminip4, p#showadminip4priv, p#showmailaddr, #panel-submit p.ynhdoc, .panel p#ffdnlink {
   text-align: center;
   font-size: 20pt;
 }
