@@ -1,0 +1,1033 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-05-07 16:32+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /dev/fd/63:58
+msgid "Load an existing HyperCube file"
+msgstr ""
+
+#: /dev/fd/63:58
+msgid "LOAD FILE"
+msgstr ""
+
+#: /dev/fd/63:60
+msgid "ÎnternetCu.be"
+msgstr ""
+
+#: /dev/fd/63:66 /dev/fd/63:100
+msgid "About You"
+msgstr ""
+
+#: /dev/fd/63:67 /dev/fd/63:162 /dev/fd/63:358
+msgid "VPN"
+msgstr ""
+
+#: /dev/fd/63:69 /dev/fd/63:1980
+msgid "Installation"
+msgstr ""
+
+#: /dev/fd/63:77
+msgid "Welcome"
+msgstr ""
+
+#: /dev/fd/63:82 /dev/fd/63:87 /dev/fd/63:166 /dev/fd/63:171 /dev/fd/63:362
+#: /dev/fd/63:386 /dev/fd/63:431 /dev/fd/63:570 /dev/fd/63:835
+msgid "Close"
+msgstr ""
+
+#: /dev/fd/63:83
+msgid ""
+"This service is a BETA TEST and is NOT WORKING with the current version of "
+"install-sd.sh and YunoHost."
+msgstr ""
+
+#: /dev/fd/63:88
+msgid ""
+"Passwords and keys are not sent to a server, and this service can work "
+"offline."
+msgstr ""
+
+#: /dev/fd/63:91
+msgid "Welcome!"
+msgstr ""
+
+#: /dev/fd/63:93
+msgid ""
+"You are the happy owner of an Internet Cube, but you do not know how to "
+"bootstrap it? This service was designed for you! After some questions about "
+"you, you will have to choose some settings, then to follow a quick "
+"installation guide."
+msgstr ""
+
+#: /dev/fd/63:94
+msgid "Let's Go!"
+msgstr ""
+
+#: /dev/fd/63:105
+msgid "Do you have an Internet Cube (LIME or LIME2) and a VPN Account?"
+msgstr ""
+
+#: /dev/fd/63:108 /dev/fd/63:117 /dev/fd/63:126 /dev/fd/63:135
+msgid "Yes"
+msgstr ""
+
+#: /dev/fd/63:109 /dev/fd/63:118 /dev/fd/63:127 /dev/fd/63:136
+msgid "No"
+msgstr ""
+
+#: /dev/fd/63:114
+msgid "Is your Internet Cube already pre-installed?"
+msgstr ""
+
+#: /dev/fd/63:123
+msgid "Do you know how to use a terminal on GNU/Linux?"
+msgstr ""
+
+#: /dev/fd/63:132
+msgid "Do you have a .cube file in the files provided by your VPN provider?"
+msgstr ""
+
+#: /dev/fd/63:144
+msgid "Internet Cube and VPN providers"
+msgstr ""
+
+#: /dev/fd/63:148
+msgid "You need help!"
+msgstr ""
+
+#: /dev/fd/63:149
+msgid ""
+"If you do not have an Internet Cube (LIME/LIME2) or a VPN account, or you do "
+"not know how to use a terminal on GNU/Linux, you should not use this service "
+"alone for now, and you should ask someone for some help. It is not a "
+"problem, because there are a lot of lovely people, from non-profit "
+"organizations, ready to help you :)."
+msgstr ""
+
+#: /dev/fd/63:150
+msgid ""
+"You can choose a non-profit organization referenced on the map below, or try "
+"to find another one close to you (Linux User Groups, non-profit ISPs, etc). "
+"Be carefull when choosing your VPN provider, because you need to trust it "
+"more than your current ISP and you should try to meet the people doing it."
+msgstr ""
+
+#: /dev/fd/63:167
+msgid ""
+"If you do not know how to complete this step, please ask your VPN provider "
+"for a .cube file, and"
+msgstr ""
+
+#: /dev/fd/63:167
+msgid "use it"
+msgstr ""
+
+#: /dev/fd/63:172 /dev/fd/63:363 /dev/fd/63:387
+msgid "You have some issues to fix in this step."
+msgstr ""
+
+#: /dev/fd/63:176 /dev/fd/63:391
+msgid "Main"
+msgstr ""
+
+#: /dev/fd/63:177 /dev/fd/63:392
+msgid "Advanced"
+msgstr ""
+
+#: /dev/fd/63:182
+msgid "Settings"
+msgstr ""
+
+#: /dev/fd/63:185
+msgid "Server Address"
+msgstr ""
+
+#: /dev/fd/63:192
+msgid "Server Port"
+msgstr ""
+
+#: /dev/fd/63:194
+msgid "With restricted access, you should use 443 (TCP) or 53 (UDP)"
+msgstr ""
+
+#: /dev/fd/63:199
+msgid "Protocol"
+msgstr ""
+
+#: /dev/fd/63:202
+msgid "UDP"
+msgstr ""
+
+#: /dev/fd/63:205
+msgid ""
+"UDP is more efficient than TCP (but more filtered in case of restrictive "
+"access)"
+msgstr ""
+
+#: /dev/fd/63:206
+msgid "TCP"
+msgstr ""
+
+#: /dev/fd/63:212
+msgid "IPv4 Assigned Address"
+msgstr ""
+
+#: /dev/fd/63:219 /dev/fd/63:495
+msgid "IPv6 Delegated Prefix"
+msgstr ""
+
+#: /dev/fd/63:221
+msgid ""
+"Leave empty if your VPN Provider does not provide you an IPv6 delegated "
+"prefix (and complain!)"
+msgstr ""
+
+#: /dev/fd/63:225
+msgid "Authentication"
+msgstr ""
+
+#: /dev/fd/63:228
+msgid "Server CA"
+msgstr ""
+
+#: /dev/fd/63:230 /dev/fd/63:260 /dev/fd/63:272 /dev/fd/63:309 /dev/fd/63:1495
+msgid "Edition mode"
+msgstr ""
+
+#: /dev/fd/63:231 /dev/fd/63:261 /dev/fd/63:273 /dev/fd/63:310
+msgid "Unselect this certificate"
+msgstr ""
+
+#: /dev/fd/63:235 /dev/fd/63:265 /dev/fd/63:277 /dev/fd/63:314 /dev/fd/63:373
+msgid "Browse"
+msgstr ""
+
+#: /dev/fd/63:240
+msgid "Authentication Type"
+msgstr ""
+
+#: /dev/fd/63:243
+msgid "Certificates"
+msgstr ""
+
+#: /dev/fd/63:247
+msgid "Login"
+msgstr ""
+
+#: /dev/fd/63:251 /dev/fd/63:307
+msgid "Shared-Secret"
+msgstr ""
+
+#: /dev/fd/63:258
+msgid "Client Cert"
+msgstr ""
+
+#: /dev/fd/63:270
+msgid "Client Key"
+msgstr ""
+
+#: /dev/fd/63:284 /dev/fd/63:407
+msgid "Username"
+msgstr ""
+
+#: /dev/fd/63:291 /dev/fd/63:461
+msgid "Password"
+msgstr ""
+
+#: /dev/fd/63:298 /dev/fd/63:421 /dev/fd/63:468 /dev/fd/63:486 /dev/fd/63:555
+msgid "Password (again)"
+msgstr ""
+
+#: /dev/fd/63:321
+msgid "DNS"
+msgstr ""
+
+#: /dev/fd/63:324
+msgid "First resolver"
+msgstr ""
+
+#: /dev/fd/63:326 /dev/fd/63:333
+msgid "IPv6 or IPv4"
+msgstr ""
+
+#: /dev/fd/63:331
+msgid "Second resolver"
+msgstr ""
+
+#: /dev/fd/63:337
+msgid "OpenVPN"
+msgstr ""
+
+#: /dev/fd/63:340
+msgid "Options to add"
+msgstr ""
+
+#: /dev/fd/63:347
+msgid "Options to remove"
+msgstr ""
+
+#: /dev/fd/63:368
+msgid "Dot Cube File"
+msgstr ""
+
+#: /dev/fd/63:376
+msgid "Edit values"
+msgstr ""
+
+#: /dev/fd/63:400
+msgid "Your Name"
+msgstr ""
+
+#: /dev/fd/63:414
+msgid "Main Password"
+msgstr ""
+
+#: /dev/fd/63:432
+msgid ""
+"If you do not have a domain name, you can choose one ending by nohost.me or "
+"noho.st (the availability will be automatically checked)."
+msgstr ""
+
+#: /dev/fd/63:438
+msgid "Main Domain"
+msgstr ""
+
+#: /dev/fd/63:451 /dev/fd/63:492
+msgid "Wifi Hotspot"
+msgstr ""
+
+#: /dev/fd/63:454
+msgid "Name (SSID)"
+msgstr ""
+
+#: /dev/fd/63:479
+msgid "User Password"
+msgstr ""
+
+#: /dev/fd/63:481 /dev/fd/63:550
+msgid "Default: same as Main Password"
+msgstr ""
+
+#: /dev/fd/63:497
+msgid "Default: same as for VPN"
+msgstr ""
+
+#: /dev/fd/63:502
+msgid "First IPv6 DNS resolver"
+msgstr ""
+
+#: /dev/fd/63:509
+msgid "Second IPv6 DNS resolver"
+msgstr ""
+
+#: /dev/fd/63:516
+msgid "First IPv4 DNS resolver"
+msgstr ""
+
+#: /dev/fd/63:523
+msgid "Second IPv4 DNS resolver"
+msgstr ""
+
+#: /dev/fd/63:530
+msgid "IPv4 NAT Prefix (/24)"
+msgstr ""
+
+#: /dev/fd/63:537
+msgid "Non-free firmwares"
+msgstr ""
+
+#: /dev/fd/63:545
+msgid "Unix"
+msgstr ""
+
+#: /dev/fd/63:548
+msgid "Root Password"
+msgstr ""
+
+#: /dev/fd/63:566
+msgid "Ready to Install!"
+msgstr ""
+
+#: /dev/fd/63:571
+msgid "You must first fix issues raised in the previous steps."
+msgstr ""
+
+#: /dev/fd/63:575
+msgid "Installation Guide"
+msgstr ""
+
+#: /dev/fd/63:578
+msgid ""
+"Sorry, but you cannot use the Installation Guide while you have issues to "
+"fix in the previous steps."
+msgstr ""
+
+#: /dev/fd/63:582
+msgid ""
+"Congratulations! You now just have to follow the Installation Guide, to "
+"install your Internet Cube."
+msgstr ""
+
+#: /dev/fd/63:586 /dev/fd/63:589 /dev/fd/63:826
+msgid "Download Cube File"
+msgstr ""
+
+#: /dev/fd/63:588
+msgid ""
+"You cannot generate an HyperCube file, because you have some issues to fix "
+"in the previous steps. Instead, you just can download the Cube file "
+"corresponding to your VPN configuration (this file contains private keys and "
+"passwords):"
+msgstr ""
+
+#: /dev/fd/63:590 /dev/fd/63:827
+msgid ""
+"If you cannot directly download the file (e.g. because of Internet "
+"Explorer), please copy-paste by yourself this content, into a file named "
+"config.cube(.txt)"
+msgstr ""
+
+#: /dev/fd/63:595
+msgid "Step 1: About your Internet Cube"
+msgstr ""
+
+#: /dev/fd/63:603
+msgid "My Cube is already pre-installed"
+msgstr ""
+
+#: /dev/fd/63:612
+msgid "I have a LIME2"
+msgstr ""
+
+#: /dev/fd/63:621
+msgid "I want an encrypted file system (experts only)"
+msgstr ""
+
+#: /dev/fd/63:626
+msgid "Step 2: Post-Installation"
+msgstr ""
+
+#: /dev/fd/63:628
+msgid "You just have to do the post-installation, using your HyperCube file:"
+msgstr ""
+
+#: /dev/fd/63:632 /dev/fd/63:652
+msgid "Download your HyperCube file"
+msgstr ""
+
+#: /dev/fd/63:633 /dev/fd/63:653
+msgid ""
+"If you cannot directly download the file (e.g. because of Internet "
+"Explorer), please copy-paste by yourself this content, into a file named "
+"install.hypercube(.txt)"
+msgstr ""
+
+#: /dev/fd/63:635
+msgid "Put it on the root of a USB stick (not into a folder)"
+msgstr ""
+
+#: /dev/fd/63:636
+msgid "Unplug your Internet Cube from the outlet if powered on"
+msgstr ""
+
+#: /dev/fd/63:637
+msgid "Plug your USB stick (1) and your wifi dongle (2) to your Internet Cube"
+msgstr ""
+
+#: /dev/fd/63:638
+msgid "Then connect the ethernet cable (3), then the power cable (4)"
+msgstr ""
+
+#: /dev/fd/63:639
+msgid ""
+"Finally, plug the ethernet cable to your router, then the power cable into "
+"an outlet"
+msgstr ""
+
+#: /dev/fd/63:646
+msgid "Step 2: Installation"
+msgstr ""
+
+#: /dev/fd/63:648
+msgid "Install the Cube system on a micro-SD card, using your HyperCube file:"
+msgstr ""
+
+#: /dev/fd/63:655
+msgid "Download the SD Card Installer"
+msgstr ""
+
+#: /dev/fd/63:656
+msgid ""
+"On your computer with Debian or Ubuntu, use the SD Card Installer this way:"
+msgstr ""
+
+#: /dev/fd/63:662
+msgid "Carefully follow the instructions of the Installer, until the end"
+msgstr ""
+
+#: /dev/fd/63:663
+msgid "Unplug your Internet Cube if powered on"
+msgstr ""
+
+#: /dev/fd/63:664
+msgid "Insert your micro-SD card within your Internet Cube"
+msgstr ""
+
+#: /dev/fd/63:665
+msgid ""
+"Connect the ethernet cable and the wifi dongle to your router, then the "
+"power cable to an outlet"
+msgstr ""
+
+#: /dev/fd/63:666
+msgid ""
+"After some minutes, find the private IPv4 address of your Internet Cube, "
+"from your computer (connected via cable to your router), using:"
+msgstr ""
+
+#: /dev/fd/63:669
+msgid ""
+"Unlock your Internet Cube hard disk thanks to a web browser, using the IPv4 "
+"you found in step 8 and the passphrase you chose earlier in step 3:"
+msgstr ""
+
+#: /dev/fd/63:676
+msgid "Step 3: You Got a New Wifi!"
+msgstr ""
+
+#: /dev/fd/63:678
+msgid ""
+"Wait for something like a few dozen minutes, without unplugging the cables."
+msgstr ""
+
+#: /dev/fd/63:678
+msgid ""
+"Once you can see your new wifi access point from your computer, this means "
+"that your Internet Cube is ready and that you can use it. Connect your "
+"computer to the new wifi access point."
+msgstr ""
+
+#: /dev/fd/63:680
+msgid "Show wifi password"
+msgstr ""
+
+#: /dev/fd/63:682
+msgid "Congratulations, you now have a clean Internet access!"
+msgstr ""
+
+#: /dev/fd/63:686
+msgid "Step 4: DNS Configuration"
+msgstr ""
+
+#: /dev/fd/63:688
+msgid ""
+"For being able to use the self-hosting features of your Cube, you have to "
+"configure your domain name, on the registrar side. But, because you have not "
+"filled out the IPv4 Assigned Address field in the VPN step, your DNS "
+"Configuration can not be generated here. Please, fill out this field and go "
+"back here, or get help from a non-profit organization."
+msgstr ""
+
+#: /dev/fd/63:689
+msgid ""
+"You have no DNS configuration to do, because you chose a domain ending by "
+"nohost.me or noho.st. However, you should do the steps described above "
+"quickly, because your domain will only be registered during your Cube "
+"installation."
+msgstr ""
+
+#: /dev/fd/63:692
+msgid ""
+"For being able to use the self-hosting features of your Cube, you have to "
+"configure your domain name, on the registrar side. Please, click on the "
+"registrar you chose for your domain name (if yours is not listed, please get "
+"help from a non-profit organization):"
+msgstr ""
+
+#: /dev/fd/63:697
+msgid "Go to your OVH manager:"
+msgstr ""
+
+#: /dev/fd/63:698
+msgid ""
+"Sign in, using your OVH Account ID (should be something like aa0000-ovh)"
+msgstr ""
+
+#: /dev/fd/63:699
+msgid "Click on your domain name, in the list on the left"
+msgstr ""
+
+#: /dev/fd/63:700
+msgid "Click on the tab:"
+msgstr ""
+
+#: /dev/fd/63:700
+msgid "DNS Zone"
+msgstr ""
+
+#: /dev/fd/63:701
+msgid "On the right, click on the button:"
+msgstr ""
+
+#: /dev/fd/63:701
+msgid "Change in text format"
+msgstr ""
+
+#: /dev/fd/63:702
+msgid ""
+"In the text area, keep only the 4 first lines (SOA + NS) and delete the "
+"other ones"
+msgstr ""
+
+#: /dev/fd/63:704
+msgid "Then, at the end of the text area, add these ones:"
+msgstr ""
+
+#: /dev/fd/63:707
+msgid "Click on Next, then Confirm"
+msgstr ""
+
+#: /dev/fd/63:712
+msgid "Go to your Gandi.net account:"
+msgstr ""
+
+#: /dev/fd/63:713
+msgid ""
+"Sign in, using your Gandi.net Handle (should be something like AA0000-GANDI)"
+msgstr ""
+
+#: /dev/fd/63:714
+msgid "Click on your domain name, in the list"
+msgstr ""
+
+#: /dev/fd/63:715
+msgid "At the bottom right, under Zone files, click on the link:"
+msgstr ""
+
+#: /dev/fd/63:715
+msgid "Edit the zone"
+msgstr ""
+
+#: /dev/fd/63:716
+msgid "In the warning bubble, click on the blue button:"
+msgstr ""
+
+#: /dev/fd/63:716
+msgid "Create a new version"
+msgstr ""
+
+#: /dev/fd/63:717
+msgid "At the left, change the Edit mode to Expert"
+msgstr ""
+
+#: /dev/fd/63:719
+msgid "In the text area, replace all by:"
+msgstr ""
+
+#: /dev/fd/63:722
+msgid "Above, click on the blue button:"
+msgstr ""
+
+#: /dev/fd/63:722
+msgid "Use this version"
+msgstr ""
+
+#: /dev/fd/63:723
+msgid "In the popup, click on Submit"
+msgstr ""
+
+#: /dev/fd/63:731
+msgid "Step 5: Self-Hosting"
+msgstr ""
+
+#: /dev/fd/63:733
+msgid ""
+"If you want to update your settings, add accounts, add email addresses or "
+"configure some web services to host, you just have to access the web "
+"administration, named YunoHost (you will have to accept the security "
+"exception proposed by your browser):"
+msgstr ""
+
+#: /dev/fd/63:736
+msgid "Show alternative URLs"
+msgstr ""
+
+#: /dev/fd/63:742
+msgid "Show admin password"
+msgstr ""
+
+#: /dev/fd/63:744
+msgid "If you want to access to your current apps, go to:"
+msgstr ""
+
+#: /dev/fd/63:747
+msgid "Show user credentials"
+msgstr ""
+
+#: /dev/fd/63:749
+msgid "You first email address is:"
+msgstr ""
+
+#: /dev/fd/63:752
+msgid ""
+"You can already use it, using the Roundcube Webmail app, available through "
+"the link above!"
+msgstr ""
+
+#: /dev/fd/63:754
+msgid ""
+"If you want to configure your mailbox on your smartphone (e.g. using K-9 "
+"Mail), you can use these settings:"
+msgstr ""
+
+#: /dev/fd/63:757
+msgid "Email address:"
+msgstr ""
+
+#: /dev/fd/63:758 /dev/fd/63:763 /dev/fd/63:773
+msgid "Password:"
+msgstr ""
+
+#: /dev/fd/63:758 /dev/fd/63:763 /dev/fd/63:773
+msgid "Show"
+msgstr ""
+
+#: /dev/fd/63:759
+msgid "Account type:"
+msgstr ""
+
+#: /dev/fd/63:760
+msgid "Incoming server settings:"
+msgstr ""
+
+#: /dev/fd/63:762 /dev/fd/63:772
+msgid "Username:"
+msgstr ""
+
+#: /dev/fd/63:764
+msgid "IMAP server:"
+msgstr ""
+
+#: /dev/fd/63:765 /dev/fd/63:775
+msgid "Security:"
+msgstr ""
+
+#: /dev/fd/63:765 /dev/fd/63:775
+msgid "SSL/TLS (always)"
+msgstr ""
+
+#: /dev/fd/63:766 /dev/fd/63:776
+msgid "Authentication:"
+msgstr ""
+
+#: /dev/fd/63:766 /dev/fd/63:776
+msgid "PLAIN"
+msgstr ""
+
+#: /dev/fd/63:767 /dev/fd/63:777
+msgid "Port:"
+msgstr ""
+
+#: /dev/fd/63:770
+msgid "Outgoing server settings:"
+msgstr ""
+
+#: /dev/fd/63:774
+msgid "SMTP server:"
+msgstr ""
+
+#: /dev/fd/63:782
+msgid ""
+"If you experience problems using the web administration, please read the "
+"YunoHost Documentation, or ask for some help to a non-profit organization:"
+msgstr ""
+
+#: /dev/fd/63:784
+msgid "Documentation"
+msgstr ""
+
+#: /dev/fd/63:784
+msgid "Getting Help"
+msgstr ""
+
+#: /dev/fd/63:790
+msgid "A Word About Security"
+msgstr ""
+
+#: /dev/fd/63:792
+msgid ""
+"1) Your Cube/HyperCube files contain private keys and passwords. Keep them "
+"secret and never provide them to anyone."
+msgstr ""
+
+#: /dev/fd/63:793
+msgid ""
+"2) A Cube is just a computer, so keep in mind that it can die any time. "
+"Therefore, if you use it for self-hosting, be sure to make regular backups "
+"of your data (emails, files, etc)."
+msgstr ""
+
+#: /dev/fd/63:797
+msgid "How to Properly Power Off my Cube?"
+msgstr ""
+
+#: /dev/fd/63:799
+msgid ""
+"Whenever possible, do not disconnect the power supply from your Internet "
+"Cube, without having first switched it off (otherwise, this could lead to "
+"database errors). For turning off your Internet Cube, just quick press the "
+"bottom-left button, using a pen. Then, wait until all the lights are turned "
+"off (especially the orange one, close to the ethernet cable, on the opposite "
+"side). You now can disconnect the power supply."
+msgstr ""
+
+#: /dev/fd/63:805
+msgid "How to Debug The Installation?"
+msgstr ""
+
+#: /dev/fd/63:807
+msgid ""
+"Sometimes, things go wrong... To help you to debug, you can follow what your "
+"Cube is doing, during the installation process (i.e. the first time you plug "
+"your Cube after following this guide)."
+msgstr ""
+
+#: /dev/fd/63:808
+msgid ""
+"For that, follow these instructions (you maybe will have to ask for help to "
+"someone):"
+msgstr ""
+
+#: /dev/fd/63:810
+msgid ""
+"Be sure to have waited long enough. If you have waited for a few dozen "
+"minutes and you do not see your new wifi access point (step 3), continue to "
+"follow these instructions."
+msgstr ""
+
+#: /dev/fd/63:811
+msgid "Unplug your Cube and start again to follow this guide, from step 1."
+msgstr ""
+
+#: /dev/fd/63:812
+msgid ""
+"Once you reached again the step 3, find the HTTP address of the HyperCube "
+"Debug interface, using the SD Card Installer on your computer with Debian or "
+"Ubuntu, this way:"
+msgstr ""
+
+#: /dev/fd/63:815
+msgid "Open this HTTP address with your web browser."
+msgstr ""
+
+#: /dev/fd/63:816
+msgid ""
+"You probably will get a Not Found error: reload the page until you see the "
+"web page (may take a few minutes)."
+msgstr ""
+
+#: /dev/fd/63:817
+msgid "Once you got the web page, stop reloading it."
+msgstr ""
+
+#: /dev/fd/63:818
+msgid "Wait until you think the installation is finished or crashed."
+msgstr ""
+
+#: /dev/fd/63:819
+msgid "Save the HTML file with Ctrl+S."
+msgstr ""
+
+#: /dev/fd/63:820
+msgid ""
+"You can now provide it to someone able to help you, and find with her/him "
+"what is wrong."
+msgstr ""
+
+#: /dev/fd/63:825
+msgid "Download this custom guide (PDF)"
+msgstr ""
+
+#: /dev/fd/63:836
+msgid "You have some issues to fix before continuing."
+msgstr ""
+
+#: /dev/fd/63:840
+msgid "Previous"
+msgstr ""
+
+#: /dev/fd/63:841
+msgid "Next"
+msgstr ""
+
+#: /dev/fd/63:851 /dev/fd/63:1976
+msgid "Internet Cube"
+msgstr ""
+
+#: /dev/fd/63:1064 /dev/fd/63:1231
+msgid "ERROR: Invalid character found when preparing the download link."
+msgstr ""
+
+#: /dev/fd/63:1356
+msgid "Optional Field"
+msgstr ""
+
+#: /dev/fd/63:1472
+msgid "File selection mode"
+msgstr ""
+
+#: /dev/fd/63:1536 /dev/fd/63:1787
+msgid "Cannot read this file"
+msgstr ""
+
+#: /dev/fd/63:1595 /dev/fd/63:1773
+msgid "Invalid file (syntax error):"
+msgstr ""
+
+#: /dev/fd/63:1595
+msgid "are you sure that this is a .cube file?"
+msgstr ""
+
+#: /dev/fd/63:1599 /dev/fd/63:1777
+msgid "Invalid file (content error):"
+msgstr ""
+
+#: /dev/fd/63:1599
+msgid "are you sure that this is your .cube file?"
+msgstr ""
+
+#: /dev/fd/63:1644
+msgid "Checking the avaibility of this domain..."
+msgstr ""
+
+#: /dev/fd/63:1658
+msgid "This domain is not available"
+msgstr ""
+
+#: /dev/fd/63:1662
+msgid "Cannot check the domain availability (does not work offline)"
+msgstr ""
+
+#: /dev/fd/63:1672
+msgid "This domain is available"
+msgstr ""
+
+#: /dev/fd/63:1773 /dev/fd/63:1777
+msgid "are you sure that this is an HyperCube file?"
+msgstr ""
+
+#: /dev/fd/63:1894
+msgid "- Wifi:"
+msgstr ""
+
+#: /dev/fd/63:1899
+msgid "- Address:"
+msgstr ""
+
+#: /dev/fd/63:1907
+msgid "- Password:"
+msgstr ""
+
+#: /dev/fd/63:1919
+msgid "YES"
+msgstr ""
+
+#: /dev/fd/63:1921
+msgid "NO"
+msgstr ""
+
+#: /dev/fd/63:2024
+msgid "internetcube_installguide"
+msgstr ""
+
+#: /dev/fd/63:2236
+msgid ""
+"Loading an existing HyperCube file will replace all values currently set."
+msgstr ""
+
+#: /dev/fd/63:2236
+msgid "Are you sure?"
+msgstr ""
+
+#: /dev/fd/63:2310
+msgid "This field is mandatory"
+msgstr ""
+
+#: /dev/fd/63:2331
+msgid "This IP format looks bad"
+msgstr ""
+
+#: /dev/fd/63:2338
+msgid "This IPv4 format looks bad"
+msgstr ""
+
+#: /dev/fd/63:2345
+msgid "This IPv6 format looks bad"
+msgstr ""
+
+#: /dev/fd/63:2372
+msgid "Must be the same than the previous input"
+msgstr ""
+
+#: /dev/fd/63:2432
+msgid "No .cube file selected"
+msgstr ""
+
+#: /dev/fd/63:2458 /dev/fd/63:2463 /dev/fd/63:2482 /dev/fd/63:2491
+msgid "Must contain a line with <LINE>"
+msgstr ""
+
+#: /dev/fd/63:2508
+msgid "Must be only composed of digits"
+msgstr ""
+
+#: /dev/fd/63:2563
+msgid "This IPv4 prefix looks bad (required format is x.x.x or x.x.x.0)"
+msgstr ""
+
+#: /dev/fd/63:2576
+msgid "This prefix must be part of an IPv4 private range"
+msgstr ""
+
+#: /dev/fd/63:2584
+msgid "Only lowercase letters and digits are allowed"
+msgstr ""
+
+#: /dev/fd/63:2588
+msgid "Admin is not an authorized value"
+msgstr ""
+
+#: /dev/fd/63:2594
+msgid "Must be greater than 4 characters"
+msgstr ""
+
+#: /dev/fd/63:2599
+msgid "Only standard characters are allowed"
+msgstr ""
+
+#: /dev/fd/63:2604
+msgid "Must from 8 to 63 characters (WPA2 passphrase)"
+msgstr ""
+
+#: /dev/fd/63:2609
+msgid "Only lowercase letters, digits, dots and dashes are allowed"
+msgstr ""
+
+#: /dev/fd/63:2613
+msgid "Sorry but this domain is not available"
+msgstr ""

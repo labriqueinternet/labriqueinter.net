@@ -1,0 +1,647 @@
+/* HyperCube Service for the Internet Cube Project
+ * Copyright (C) 2016 Julien Vaubourg <julien@vaubourg.com>
+ * Contribute at https://github.com/labriqueinternet/labriqueinter.net/tree/master/hypercube
+ * Report issues at https://dev.yunohost.org/projects/la-brique-internet/issues
+ * 
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+input[type=file] {
+  display: none;
+}
+
+.input-group.input-chooser {
+  padding: 0 15px;
+}
+
+.nav {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.container {
+  width: 100%;
+}
+
+.nav li a {
+  text-decoration: none;
+  font-size: 10pt;
+  padding: 6pt 0 7pt 0;
+  height: 40px;
+}
+
+.nav-pills.nav-wizard {
+  margin: 10px auto 30px;
+  width: 560px;
+}
+
+.nav-pills.nav-wizard li {
+  border-color: #111;
+}
+
+.nav-pills.nav-wizard li a {
+  width: 140px;
+  text-align: center;
+}
+
+.nav-pills.nav-wizard li a.nav-main {
+  width: 90px;
+}
+
+.nav-pills.nav-wizard li a, .nav-pills.nav-wizard li.active a, .nav-pills.nav-wizard li:hover a {
+  background-color: #f00;
+  opacity: 0.5;
+}
+
+.nav-pills.nav-wizard li a:focus {
+  color: #fff;
+}
+
+.nav-pills.nav-wizard li .nav-wedge, .nav-pills.nav-wizard li.active .nav-wedge, .nav-pills.nav-wizard li:hover .nav-wedge {
+  border-color: #f00 #f00 #f00 transparent;
+  opacity: 0.5;
+}
+
+.nav-pills.nav-wizard li .nav-arrow, .nav-pills.nav-wizard li.active .nav-arrow, .nav-pills.nav-wizard li:hover .nav-arrow {
+  border-color: transparent transparent transparent #f00;
+  opacity: 0.5;
+}
+
+.nav-pills.nav-wizard li.warnings a, .nav-pills.nav-wizard li.active.warnings a, .nav-pills.nav-wizard li.warnings:hover a {
+  background-color: #ff7500;
+}
+
+.nav-pills.nav-wizard li.warnings .nav-wedge, .nav-pills.nav-wizard li.active.warnings .nav-wedge, .nav-pills.nav-wizard li.warnings:hover .nav-wedge {
+  border-color: #ff7500 #ff7500 #ff7500 transparent;
+}
+
+.nav-pills.nav-wizard li.warnings .nav-arrow, .nav-pills.nav-wizard li.active.warnings .nav-arrow, .nav-pills.nav-wizard li.warnings:hover .nav-arrow {
+  border-color: transparent transparent transparent #ff7500;
+}
+
+.nav-pills.nav-wizard li.validated a, .nav-pills.nav-wizard li.active.validated a, .nav-pills.nav-wizard li.validated:hover a {
+  background-color: #09af00;
+}
+
+.nav-pills.nav-wizard li.validated .nav-wedge, .nav-pills.nav-wizard li.active.validated .nav-wedge, .nav-pills.nav-wizard li.validated:hover .nav-wedge {
+  border-color: #09af00 #09af00 #09af00 transparent;
+}
+
+.nav-pills.nav-wizard li.validated .nav-arrow, .nav-pills.nav-wizard li.active.validated .nav-arrow, .nav-pills.nav-wizard li.validated:hover .nav-arrow {
+  border-color: transparent transparent transparent #09af00;
+}
+
+.nav-pills.nav-wizard li.active:hover a, .nav-pills.nav-wizard li.active:hover .nav-wedge, .nav-pills.nav-wizard li.active:hover .nav-arrow {
+  opacity: 1;
+}
+
+.nav-pills.nav-wizard li.active a, .nav-pills.nav-wizard li.active .nav-wedge, .nav-pills.nav-wizard li.active .nav-arrow {
+  opacity: 1;
+}
+
+.nav-pills.nav-wizard li:hover a, .nav-pills.nav-wizard li:hover .nav-wedge, .nav-pills.nav-wizard li:hover .nav-arrow {
+  opacity: 0.75;
+}
+
+.panel-default .nav li a {
+  text-decoration: none;
+  background-color: #111;
+  margin: 0 10px;
+}
+
+.panel-default .nav li a:hover {
+  background-color: #f00;
+  color: #fff;
+}
+
+ul.nav a {
+  outline: none;
+}
+
+.alert-danger {
+  margin: 14px 10px 10px;
+  background-image: linear-gradient(to bottom, #ff7500 0px, #ff5003 100%);
+  border-color: #833c00;
+  color: #fff;
+  font-size: 12pt;
+  display: none;
+}
+
+.alert-danger .close {
+  opacity: 0.5;
+}
+
+.alert-danger strong {
+  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
+  display: block;
+  text-align: center;
+}
+
+.alert-info {
+  margin: 14px 10px 10px;
+  background-image: linear-gradient(to bottom, #248aa3 0px, #177086 100%);
+  border-color: #104350;
+  color: #fff;
+  font-size: 12pt;
+  text-align: center;
+  font-style: italic;
+}
+
+.alert-info .close {
+  color: #fff;
+}
+
+.alert-info a {
+  color: #fff;
+}
+
+#alert-next {
+  display: none;
+  width: 100%;
+  padding: 5px;
+  margin: -10px 0 10px;
+}
+
+.alert-input, .info-input, .dynette {
+  margin: 0;
+}
+
+.dynette {
+  margin-top: -15px;
+  font-size: 11pt;
+  font-style: italic;
+  display: none;
+}
+
+.dynette.available {
+  color: #09af00;
+  font-style: normal;
+}
+
+.dynette.notavailable {
+  font-style: normal;
+}
+
+.dynette.notavailable, .dynette.dynetterror {
+  color: #f00;
+}
+
+.dynette.available img, .dynette.notavailable img, .dynette.dynetterror img {
+  display: none;
+}
+
+.dynette.available span:before {
+  content:  "\2714\00A0 ";
+}
+
+.dynette.notavailable span:before {
+  content:  "\2716\00A0 ";
+}
+
+.dynette.dynetterror span:before {
+  content:  "\03DF\00A0 ";
+}
+
+.alert-input .alert, .info-input .alert {
+  margin: 3pt 0;
+  padding: 2pt 35px 2pt 2pt;
+}
+
+.panel, #vpn_auth_type_crt, #vpn_auth_type_login, #vpn_auth_type_ta, #question-level, #question-dotcube, #modifycubefile, #installguide, #downloadcube {
+  display: none;
+}
+
+.downloadview, .downloadview:active, .downloadview:focus {
+  font-size: 10pt;
+  padding-left: 2px;
+  outline: none;
+}
+
+#modifycubefile {
+  text-align: center;
+}
+
+.question span {
+  display: block;
+  margin: 25pt;
+  text-shadow: 0px 1px 0px #000;
+}
+
+#panel-aboutyou {
+  display: block;
+}
+
+.panel-inside {
+  padding: 14px 14px 0 10px;
+}
+
+.panel-text {
+  padding: 20px;
+  text-align: center;
+}
+
+.panel-section {
+  font-weight: bold;
+  color: #888;
+  border-bottom: 1px solid #ddd;
+  padding: 5px 5px 5px 5px;
+  font-size: inherit;
+  margin-top: 30px;
+}
+
+.panel-section-first {
+  padding-top: 0;
+  margin-top: 0;
+}
+
+#panel-aboutyou .panel-inside {
+  text-align: center;
+}
+
+#buttons {
+  text-align: center;
+}
+
+#buttons button {
+  display: none;
+  margin: 0 5px;
+  outline: none;
+}
+
+#button-next {
+  background-image: linear-gradient(to bottom, #09AF00 0px, #24af1d 100%);
+}
+
+#button-next:hover {
+  background-color: #289e22;
+}
+
+#panel-aboutyou .panel-inside ul {
+  margin: 25pt auto;
+  width: 205px;
+}
+
+#panel-aboutyou .panel-inside li {
+  margin: 10px auto;
+  width: 100px;
+}
+
+iframe {
+  width: 770px;
+  height: 500px;
+  border: 0;
+  overflow: hidden;
+}
+
+.panel h2 {
+  font-weight: bold;
+  text-align: center;
+  margin: 20px;
+  text-shadow: 0px 1px 0px #000;
+}
+
+.panel p {
+  padding: 5px 20px;
+  font-size: 12pt;
+  text-align: justify;
+}
+
+#ffdnmap {
+  width: 770px;
+  margin: 20px auto 15px;
+}
+
+.panel-default {
+  background-color: #303030;
+  color: #eee;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 1) inset, 0px 0px 8px rgba(0, 0, 0, 1);
+}
+
+.nav-tabs.nav-justified li a {
+  border-radius: 4px;
+  border-width: 0;
+}
+
+.nav-tabs.nav-justified li.active a, .nav-tabs.nav-justified li.active a:focus, .nav-tabs.nav-justified li.active a:active, .nav-tabs.nav-justified li.active a:hover {
+  background-color: #111;
+  border-color: #f00;
+  border-width: 0 0 1px 0;
+  color: #555;
+}
+
+.nav-tabs.nav-justified li a.hasWarnings, .nav-tabs.nav-justified li.active a.hasWarnings:focus, .nav-tabs.nav-justified li.active a.hasWarnings:active, .nav-tabs.nav-justified li.active a.hasWarnings:hover {
+  color: #ff7500;
+}
+
+.nav-tabs.nav-justified li a.hasWarnings:hover {
+  color: #fff;
+}
+
+label {
+  font-size: 12pt;
+  font-weight: normal;
+}
+
+label.optionalfield span.glyphicon {
+  margin-right: 7px;
+  font-size: 13px;
+}
+
+label.optionalfield span.glyphicon:hover {
+  color: #ff5003;
+}
+
+.form-control:focus {
+  border-color: #f00;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(255, 0, 0, 0.6);
+}
+
+.form-control.fileinput {
+  cursor: default;
+}
+
+.form-control.fileinput:focus {
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.form-control.fileedition {
+  display: none;
+  height: 110px;
+}
+
+#tcpchbx {
+  border-radius: 0 4px 4px 0;
+}
+
+.btn-primary {
+  background-image: linear-gradient(to bottom, #f00 0px, #800000 100%);
+  border-color: #111;
+}
+
+.btn-primary:hover, .btn-primary:active {
+  background-color: #800000;
+  border-color: #111;
+}
+
+.panel-section {
+  color: #bbb;
+  text-shadow: 0px 1px 0px #000;
+  border-bottom-color: #777;
+}
+
+#panel-submit .control-label {
+  text-align: left;
+  margin-left: 40px;
+  width: 30em;
+}
+
+#panel-submit ol {
+  font-size: 12pt;
+  text-align: left;
+}
+
+#panel-submit pre, textarea[readonly=readonly], #mailclient {
+  border-radius: 0;
+  border: none;
+  color: #fff;
+  text-align: left;
+  margin-top: 5px;
+}
+
+textarea[readonly=readonly] {
+  text-shadow: 1px 1px #000;
+  box-shadow: 3px 3px 2px #000;
+  background-color: #222;
+  padding: 10px;
+  display: block;
+  height: 10em;
+  font-size: 12pt;
+  margin: -4px 20px 10px;
+  width: 90%;
+}
+
+li textarea[readonly=readonly], textarea.downloadviewtxt {
+  margin: 7px 0 10px;
+  width: 100%;
+}
+
+.installsd, textarea.downloadviewtxt {
+  display: none;
+}
+
+#installsd-noopt {
+  display: block;
+}
+
+#panel-submit h3, #panel-submit p {
+  text-align: left;
+}
+
+#panel-submit h2 {
+  margin-top: 0;
+}
+
+#nodownloads, #candownload, #showadminurls {
+  display: none;
+}
+
+.showpwd, #showadminalt {
+  margin: -11px 0 5px;
+}
+
+#nodownloads p, #candownload p {
+  font-style: italic;
+  text-align: center;
+}
+
+p#showwifiname, p#showadmindomain, p#showadminip6, p#showadminip4, p#showadminip4priv, p#showmailaddr, #panel-submit p.ynhdoc, .panel p#ffdnlink {
+  text-align: center;
+  font-size: 20pt;
+}
+
+#mailclient {
+  text-align: left;
+  box-shadow: 3px 3px 2px #000;
+  background-color: #222;
+  padding: 10px;
+  display: block;
+  font-size: 12pt;
+  margin: -4px 20px 20px;
+  height: 5.7em;
+  overflow: hidden;
+}
+
+#mailclient:hover {
+  height: inherit;
+}
+
+#mailclient li span:first-child {
+  text-shadow: 1px 1px #000;
+}
+
+#mailclient li {
+  list-style-type: square;
+  margin-left: 25px;
+}
+
+.panel p#ffdnlink {
+  margin-bottom: 20px;
+}
+
+p.showpwd {
+  text-align: center;
+}
+
+.showpwd a, #showadminalt a {
+  font-size: 10pt;
+}
+
+#showadmindomain a, #showadminip6 a, #showadminip4 a, #showadminip4priv a, .ynhdoc a, #ffdnlink a {
+  text-decoration: none;
+}
+
+.hiddenpwd {
+  display: none;
+  margin-top: 20px;
+}
+
+.hiddenpwd div, .hiddenpwd span {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  background-color: #111;
+  font-weight: bold;
+}
+
+#registrars {
+  text-align: left;
+  list-style-type: square;
+  margin-left: 20px;
+}
+
+#registrars ol {
+  margin-left: 0;
+  padding-left: 15px;
+  display: none;
+}
+
+#ig-install, .unlockencryptedfs {
+  display: none;
+}
+
+#ig-customization div.form-group {
+  margin: 20px 0 0 20px;
+}
+
+#ig-extralinks {
+  margin: 20px 0 1px 5px;
+  text-align: left;
+}
+
+#ig-extralinks p {
+  padding: 0;
+  margin: 0;
+}
+
+.ig-hidden > * {
+  display: none;
+}
+
+.ig-hidden h3 {
+  display: block;
+}
+
+.ig-hidden h3 .ig-hidden-link {
+  cursor: pointer;
+}
+
+.ig-hidden h3:hover .ig-hidden-link {
+  text-decoration: underline;
+}
+
+.cubefilelink {
+  text-align: center;
+}
+
+.language-links {
+  float: left;
+}
+
+#loadhypercube {
+  display: block;
+  float: right;
+  margin: 0.5em 1em;
+  font-size: 0.7em;
+  font-weight: bold;
+  text-decoration: none;
+  outline: none;
+}
+
+h1 {
+  clear: left;
+  margin-bottom: 20px;
+}
+
+h1 span.i18n {
+  color: #fff;
+}
+
+a.btn-danger span {
+  color: #eee;
+}
+
+a.btn-danger:hover span {
+  color: #fff;
+}
+
+#panel-welcome .alert-info {
+  margin: -2px 0 10px;
+}
+
+#start {
+  display: block;
+  padding: 20px 25px;
+  margin: 5px auto 10px;
+  width: 7.6em;
+  background-image: linear-gradient(to bottom, #09AF00 0px, #24AF1D 100%);
+  text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.6);
+  border: 1px solid #fff;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 20pt;
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+}
+
+#start:hover {
+  background-color: #289e22;
+  background-position: 0px -30px;
+  background-repeat: repeat-x;
+}
+
+.custom-install {
+  display: none;
+}
+
+hr {
+  border: 1px solid #555;
+  margin: 40px 0 0;
+}
+
+footer {
+  margin-top: 1em;
+}

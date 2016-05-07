@@ -1,0 +1,1248 @@
+# French translations for PACKAGE package.
+# Copyright (C) 2016 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# Automatically generated, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-05-07 16:32+0200\n"
+"PO-Revision-Date: 2016-05-07 16:35+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: /dev/fd/63:58
+msgid "Load an existing HyperCube file"
+msgstr "Charger un fichier HyperCube existant"
+
+#: /dev/fd/63:58
+msgid "LOAD FILE"
+msgstr "CHARGER UN FICHIER"
+
+#: /dev/fd/63:60
+msgid "ÎnternetCu.be"
+msgstr "LaBriqueÎnter.net"
+
+#: /dev/fd/63:66 /dev/fd/63:100
+msgid "About You"
+msgstr "À propos de vous"
+
+#: /dev/fd/63:67 /dev/fd/63:162 /dev/fd/63:358
+msgid "VPN"
+msgstr "VPN"
+
+#: /dev/fd/63:69 /dev/fd/63:1980
+msgid "Installation"
+msgstr "Installation"
+
+#: /dev/fd/63:77
+msgid "Welcome"
+msgstr "Bienvenue"
+
+#: /dev/fd/63:82 /dev/fd/63:87 /dev/fd/63:166 /dev/fd/63:171 /dev/fd/63:362
+#: /dev/fd/63:386 /dev/fd/63:431 /dev/fd/63:570 /dev/fd/63:835
+msgid "Close"
+msgstr "Fermer"
+
+#: /dev/fd/63:83
+msgid ""
+"This service is a BETA TEST and is NOT WORKING with the current version of "
+"install-sd.sh and YunoHost."
+msgstr ""
+"Ce service est en BÊTA TEST et NE FONCTIONNE PAS avec les versions actuelles "
+"de install-sd.sh et YunoHost."
+
+#: /dev/fd/63:88
+msgid ""
+"Passwords and keys are not sent to a server, and this service can work "
+"offline."
+msgstr ""
+"Les mots de passe et les clés ne sont pas envoyés à un serveur, et ce "
+"service peut fonctionner hors-ligne."
+
+#: /dev/fd/63:91
+msgid "Welcome!"
+msgstr "Bienvenue!"
+
+#: /dev/fd/63:93
+msgid ""
+"You are the happy owner of an Internet Cube, but you do not know how to "
+"bootstrap it? This service was designed for you! After some questions about "
+"you, you will have to choose some settings, then to follow a quick "
+"installation guide."
+msgstr ""
+"Vous êtes l'heureuse ou l'heureux propriétaire d'une Brique Internet, mais "
+"vous ne savez pas l'installer ? Ce service a été conçu pour vous ! Après "
+"quelques questions à propos de vous, vous allez avoir à choisir quelques "
+"paramètres, et à suivre un guide d'installation rapide."
+
+#: /dev/fd/63:94
+msgid "Let's Go!"
+msgstr "C'est parti !"
+
+#: /dev/fd/63:105
+msgid "Do you have an Internet Cube (LIME or LIME2) and a VPN Account?"
+msgstr "Avez-vous une Brique Internet (LIME ou LIME2) et un compte VPN ?"
+
+#: /dev/fd/63:108 /dev/fd/63:117 /dev/fd/63:126 /dev/fd/63:135
+msgid "Yes"
+msgstr "Oui"
+
+#: /dev/fd/63:109 /dev/fd/63:118 /dev/fd/63:127 /dev/fd/63:136
+msgid "No"
+msgstr "Non"
+
+#: /dev/fd/63:114
+msgid "Is your Internet Cube already pre-installed?"
+msgstr "Votre Brique Internet est-elle pré-installée ?"
+
+#: /dev/fd/63:123
+msgid "Do you know how to use a terminal on GNU/Linux?"
+msgstr "Savez-vous comment utiliser un terminal sur GNU/Linux ?"
+
+#: /dev/fd/63:132
+msgid "Do you have a .cube file in the files provided by your VPN provider?"
+msgstr "Votre fournisseur de VPN vous a-t-il fourni un fichier .cube ?"
+
+#: /dev/fd/63:144
+msgid "Internet Cube and VPN providers"
+msgstr "Briques Internet et fournisseurs de VPN"
+
+#: /dev/fd/63:148
+msgid "You need help!"
+msgstr "Vous avez besoin d'aide !"
+
+#: /dev/fd/63:149
+msgid ""
+"If you do not have an Internet Cube (LIME/LIME2) or a VPN account, or you do "
+"not know how to use a terminal on GNU/Linux, you should not use this service "
+"alone for now, and you should ask someone for some help. It is not a "
+"problem, because there are a lot of lovely people, from non-profit "
+"organizations, ready to help you :)."
+msgstr ""
+"Si vous ne possédez pas de Brique Internet (LIME/LIME2) ou de compte VPN, or "
+"que vous ne savez pas comment utiliser un terminal sous GNU/Linux, vous ne "
+"devriez pas utiliser ce service tout seul pour l'instant, et plutôt demander "
+"de l'aide à quelqu'un. Ce n'est pas un problème, parce qu'il y a plein de "
+"gens adorables, engagés dans des associations, prêtes à vous aider :)."
+
+#: /dev/fd/63:150
+msgid ""
+"You can choose a non-profit organization referenced on the map below, or try "
+"to find another one close to you (Linux User Groups, non-profit ISPs, etc). "
+"Be carefull when choosing your VPN provider, because you need to trust it "
+"more than your current ISP and you should try to meet the people doing it."
+msgstr ""
+"Vous pouvez choisir une association référencée sur la carte ci-dessous, ou "
+"essayer d'en trouver une autre proche de chez vous (Groupes d'Utilisateurs "
+"Linux, FAI associatifs, etc). Faites attention quand vous choisissez votre "
+"fournisseur de VPN, parce que vous avez besoin d'avoir plus confiance en lui "
+"qu'en votre fournisseur d'accès à Internet, et vous devriez essayer de "
+"rencontrer les gens qui le gèrent."
+
+#: /dev/fd/63:167
+msgid ""
+"If you do not know how to complete this step, please ask your VPN provider "
+"for a .cube file, and"
+msgstr ""
+"Si vous ne savez pas quoi renseigner ici, demandez un fichier .cube à votre "
+"fournisseur de VPN, et"
+
+#: /dev/fd/63:167
+msgid "use it"
+msgstr "utilisez-le"
+
+#: /dev/fd/63:172 /dev/fd/63:363 /dev/fd/63:387
+msgid "You have some issues to fix in this step."
+msgstr "Vous avez quelques problèmes à régler dans cette étape."
+
+#: /dev/fd/63:176 /dev/fd/63:391
+msgid "Main"
+msgstr "Principal"
+
+#: /dev/fd/63:177 /dev/fd/63:392
+msgid "Advanced"
+msgstr "Avancé"
+
+#: /dev/fd/63:182
+msgid "Settings"
+msgstr "Paramètres"
+
+#: /dev/fd/63:185
+msgid "Server Address"
+msgstr "Adresse du serveur"
+
+#: /dev/fd/63:192
+msgid "Server Port"
+msgstr "Port du serveur"
+
+#: /dev/fd/63:194
+msgid "With restricted access, you should use 443 (TCP) or 53 (UDP)"
+msgstr "Avec un accès restreint, vous devriez utiliser 443 (TCP) ou 53 (UDP)"
+
+#: /dev/fd/63:199
+msgid "Protocol"
+msgstr "Protocole"
+
+#: /dev/fd/63:202
+msgid "UDP"
+msgstr "UDP"
+
+#: /dev/fd/63:205
+msgid ""
+"UDP is more efficient than TCP (but more filtered in case of restrictive "
+"access)"
+msgstr ""
+"UDP est plus efficace que TCP (mais plus filtré dans le cas d'un accès "
+"restreint)"
+
+#: /dev/fd/63:206
+msgid "TCP"
+msgstr "TCP"
+
+#: /dev/fd/63:212
+msgid "IPv4 Assigned Address"
+msgstr "Adresse IPv4 assignée"
+
+#: /dev/fd/63:219 /dev/fd/63:495
+msgid "IPv6 Delegated Prefix"
+msgstr "Préfixe IPv6 délégué"
+
+#: /dev/fd/63:221
+msgid ""
+"Leave empty if your VPN Provider does not provide you an IPv6 delegated "
+"prefix (and complain!)"
+msgstr ""
+"Laisser vide si votre fournisseur de VPN ne vous propose pas de préfixe IPv6 "
+"déléguez (et plaignez-vous !)"
+
+#: /dev/fd/63:225
+msgid "Authentication"
+msgstr "Authentification"
+
+#: /dev/fd/63:228
+msgid "Server CA"
+msgstr "CA du serveur"
+
+#: /dev/fd/63:230 /dev/fd/63:260 /dev/fd/63:272 /dev/fd/63:309 /dev/fd/63:1495
+msgid "Edition mode"
+msgstr "Mode édition"
+
+#: /dev/fd/63:231 /dev/fd/63:261 /dev/fd/63:273 /dev/fd/63:310
+msgid "Unselect this certificate"
+msgstr "Désélectionner ce certificat"
+
+#: /dev/fd/63:235 /dev/fd/63:265 /dev/fd/63:277 /dev/fd/63:314 /dev/fd/63:373
+msgid "Browse"
+msgstr "Parcourir"
+
+#: /dev/fd/63:240
+msgid "Authentication Type"
+msgstr "Type d'authentification"
+
+#: /dev/fd/63:243
+msgid "Certificates"
+msgstr "Certificats"
+
+#: /dev/fd/63:247
+msgid "Login"
+msgstr "Login"
+
+#: /dev/fd/63:251 /dev/fd/63:307
+msgid "Shared-Secret"
+msgstr "Secret partagé"
+
+#: /dev/fd/63:258
+msgid "Client Cert"
+msgstr "Certificat client"
+
+#: /dev/fd/63:270
+msgid "Client Key"
+msgstr "Clé client"
+
+#: /dev/fd/63:284 /dev/fd/63:407
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+#: /dev/fd/63:291 /dev/fd/63:461
+msgid "Password"
+msgstr "Mot de passe"
+
+#: /dev/fd/63:298 /dev/fd/63:421 /dev/fd/63:468 /dev/fd/63:486 /dev/fd/63:555
+msgid "Password (again)"
+msgstr "Mot de passe (répétition)"
+
+#: /dev/fd/63:321
+msgid "DNS"
+msgstr "DNS"
+
+#: /dev/fd/63:324
+msgid "First resolver"
+msgstr "Résolveur DNS"
+
+#: /dev/fd/63:326 /dev/fd/63:333
+msgid "IPv6 or IPv4"
+msgstr "IPv6 ou IPv4"
+
+#: /dev/fd/63:331
+msgid "Second resolver"
+msgstr "Second résolveur"
+
+#: /dev/fd/63:337
+msgid "OpenVPN"
+msgstr "OpenVPN"
+
+#: /dev/fd/63:340
+msgid "Options to add"
+msgstr "Options à ajouter"
+
+#: /dev/fd/63:347
+msgid "Options to remove"
+msgstr "Options à retirer"
+
+#: /dev/fd/63:368
+msgid "Dot Cube File"
+msgstr "Fichier .cube"
+
+#: /dev/fd/63:376
+msgid "Edit values"
+msgstr "Éditer les valeurs"
+
+#: /dev/fd/63:400
+msgid "Your Name"
+msgstr "Votre nom"
+
+#: /dev/fd/63:414
+msgid "Main Password"
+msgstr "Mot de passe principal"
+
+#: /dev/fd/63:432
+msgid ""
+"If you do not have a domain name, you can choose one ending by nohost.me or "
+"noho.st (the availability will be automatically checked)."
+msgstr ""
+"SI vous n'avez pas de nom de domaine, vous pouvez en choisir un terminant "
+"par nohost.me ou noho.st (la disponibilité va être automatiquement vérifiée)"
+
+#: /dev/fd/63:438
+msgid "Main Domain"
+msgstr "Domaine principal"
+
+#: /dev/fd/63:451 /dev/fd/63:492
+msgid "Wifi Hotspot"
+msgstr "Hotspot Wifi"
+
+#: /dev/fd/63:454
+msgid "Name (SSID)"
+msgstr "Nom (SSID)"
+
+#: /dev/fd/63:479
+msgid "User Password"
+msgstr "Mot de passe utilisateur"
+
+#: /dev/fd/63:481 /dev/fd/63:550
+msgid "Default: same as Main Password"
+msgstr "Par défaut : idem que Mot de passe principal"
+
+#: /dev/fd/63:497
+msgid "Default: same as for VPN"
+msgstr "Par défaut : idem que pour le VPN"
+
+#: /dev/fd/63:502
+msgid "First IPv6 DNS resolver"
+msgstr "Premier résolveur DNS IPv6"
+
+#: /dev/fd/63:509
+msgid "Second IPv6 DNS resolver"
+msgstr "Second résolveur DNS IPv6"
+
+#: /dev/fd/63:516
+msgid "First IPv4 DNS resolver"
+msgstr "Premier résolveur DNS IPv4"
+
+#: /dev/fd/63:523
+msgid "Second IPv4 DNS resolver"
+msgstr "Second résolveur DNS IPv4"
+
+#: /dev/fd/63:530
+msgid "IPv4 NAT Prefix (/24)"
+msgstr "Préfixe NAT IPv4 (/24)"
+
+#: /dev/fd/63:537
+msgid "Non-free firmwares"
+msgstr "Pilotes non-libres"
+
+#: /dev/fd/63:545
+msgid "Unix"
+msgstr "Unix"
+
+#: /dev/fd/63:548
+msgid "Root Password"
+msgstr "Mot de passe root"
+
+#: /dev/fd/63:566
+msgid "Ready to Install!"
+msgstr "Prêt à installer !"
+
+#: /dev/fd/63:571
+msgid "You must first fix issues raised in the previous steps."
+msgstr "Vous devez régler les problèmes survenus dans les étapes précédentes"
+
+#: /dev/fd/63:575
+msgid "Installation Guide"
+msgstr "Guide d'installation"
+
+#: /dev/fd/63:578
+msgid ""
+"Sorry, but you cannot use the Installation Guide while you have issues to "
+"fix in the previous steps."
+msgstr ""
+"Désolé, mais vous ne pouvez pas utiliser le Guide d'installation tant que "
+"vous n'avez pas réglé les problèmes dans les étapes précédentes."
+
+#: /dev/fd/63:582
+msgid ""
+"Congratulations! You now just have to follow the Installation Guide, to "
+"install your Internet Cube."
+msgstr ""
+"Félicitations ! Vous n'avez plus qu'à suivre le Guide d'installation, pour "
+"installer votre Brique Internet"
+
+#: /dev/fd/63:586 /dev/fd/63:589 /dev/fd/63:826
+msgid "Download Cube File"
+msgstr "Télécharger le fichier Cube"
+
+#: /dev/fd/63:588
+msgid ""
+"You cannot generate an HyperCube file, because you have some issues to fix "
+"in the previous steps. Instead, you just can download the Cube file "
+"corresponding to your VPN configuration (this file contains private keys and "
+"passwords):"
+msgstr ""
+"Vous ne pouvez pas générer le fichier HyperCube, parce que vous avez des "
+"problèmes à régler dans les étapes précédentes. À ce stade, vous pouvez "
+"uniquement télécharger le fichier Cube correspondant à votre configuration "
+"VPN (ce fichier contient des clés et des mots de passe privés)."
+
+#: /dev/fd/63:590 /dev/fd/63:827
+msgid ""
+"If you cannot directly download the file (e.g. because of Internet "
+"Explorer), please copy-paste by yourself this content, into a file named "
+"config.cube(.txt)"
+msgstr ""
+"Si vous ne pouvez pas directement télécharger le fichier (e.g. parce que "
+"vous utilisez Internet Explorer), copiez-collez vous-même ce contenu dans un "
+"fichier nommé config.cube(.txt)"
+
+#: /dev/fd/63:595
+msgid "Step 1: About your Internet Cube"
+msgstr "Étape 1 : À propos de votre Brique Internet"
+
+#: /dev/fd/63:603
+msgid "My Cube is already pre-installed"
+msgstr "Ma Brique est déjà pré-installée"
+
+#: /dev/fd/63:612
+msgid "I have a LIME2"
+msgstr "J'ai une LIME2"
+
+#: /dev/fd/63:621
+msgid "I want an encrypted file system (experts only)"
+msgstr "Je veux un système de fichiers chiffré (experts uniquement)"
+
+#: /dev/fd/63:626
+msgid "Step 2: Post-Installation"
+msgstr "Étape 2 : Post-installation"
+
+#: /dev/fd/63:628
+msgid "You just have to do the post-installation, using your HyperCube file:"
+msgstr ""
+"Vous avez juste à faire la post-installation, en utilisation votre fichier "
+"HyperCube :"
+
+#: /dev/fd/63:632 /dev/fd/63:652
+msgid "Download your HyperCube file"
+msgstr "Télécharger votre fichier HyperCube"
+
+#: /dev/fd/63:633 /dev/fd/63:653
+msgid ""
+"If you cannot directly download the file (e.g. because of Internet "
+"Explorer), please copy-paste by yourself this content, into a file named "
+"install.hypercube(.txt)"
+msgstr ""
+"Si vous ne pouvez pas directement télécharger le fichier (e.g. parce que "
+"vous utilisez Internet Explorer), copiez-collez vous-même ce contenu dans un "
+"fichier nommé install.hypercube(.txt)"
+
+#: /dev/fd/63:635
+msgid "Put it on the root of a USB stick (not into a folder)"
+msgstr ""
+"Placez-le à la racine de votre clé USB (et non à l'intérieur d'un dossier)"
+
+#: /dev/fd/63:636
+msgid "Unplug your Internet Cube from the outlet if powered on"
+msgstr ""
+"Débranchez la prise électrique de votre Brique Internet, si elle est allumée"
+
+#: /dev/fd/63:637
+msgid "Plug your USB stick (1) and your wifi dongle (2) to your Internet Cube"
+msgstr ""
+"Branchez votre clé USB (1) et votre clé Wifi (2) à votre Brique Internet"
+
+#: /dev/fd/63:638
+msgid "Then connect the ethernet cable (3), then the power cable (4)"
+msgstr "Puis connectez le câble ethernet (3), puis le câble d'alimentation (4)"
+
+#: /dev/fd/63:639
+msgid ""
+"Finally, plug the ethernet cable to your router, then the power cable into "
+"an outlet"
+msgstr ""
+"Enfin, branchez le câble ethernet à votre box internet, puis le câble "
+"d'alimentation à une prise électrique"
+
+#: /dev/fd/63:646
+msgid "Step 2: Installation"
+msgstr "Étape 2 : Installation"
+
+#: /dev/fd/63:648
+msgid "Install the Cube system on a micro-SD card, using your HyperCube file:"
+msgstr ""
+"Installez le système sur une carte micro-SD, en utilisant votre fichier "
+"HyperCube:"
+
+#: /dev/fd/63:655
+msgid "Download the SD Card Installer"
+msgstr "Téléchargez le SD Card Installer"
+
+#: /dev/fd/63:656
+msgid ""
+"On your computer with Debian or Ubuntu, use the SD Card Installer this way:"
+msgstr ""
+"Sur votre ordinateur avec Debian ou Ubuntu, utilisez le SD Card Installer de "
+"cette façon :"
+
+#: /dev/fd/63:662
+msgid "Carefully follow the instructions of the Installer, until the end"
+msgstr "Suivez attentivement les instructions de l'installeur, jusqu'à la fin"
+
+#: /dev/fd/63:663
+msgid "Unplug your Internet Cube if powered on"
+msgstr ""
+"Débranchez la prise électrique de votre Brique Internet, si elle est allumée"
+
+#: /dev/fd/63:664
+msgid "Insert your micro-SD card within your Internet Cube"
+msgstr "Insérez votre carte micro-SD dans votre Brique Internet"
+
+#: /dev/fd/63:665
+msgid ""
+"Connect the ethernet cable and the wifi dongle to your router, then the "
+"power cable to an outlet"
+msgstr ""
+"Connectez le câble ethernet et la clé wifi à votre box internet, puis le "
+"câble d'alimentation à une prise électrique"
+
+#: /dev/fd/63:666
+msgid ""
+"After some minutes, find the private IPv4 address of your Internet Cube, "
+"from your computer (connected via cable to your router), using:"
+msgstr ""
+"Après quelques minutes, trouvez l'adresse IPv4 privée de votre Brique "
+"Internet, à partir de votre ordinateur (connecté en filaire à votre box), en "
+"utilisant :"
+
+#: /dev/fd/63:669
+msgid ""
+"Unlock your Internet Cube hard disk thanks to a web browser, using the IPv4 "
+"you found in step 8 and the passphrase you chose earlier in step 3:"
+msgstr ""
+"Déverrouillez le disque dur de votre Brique Internet grâce à un navigateur "
+"web, en utilisant l'IPv4 que vous avez trouvé à l'étape 8, ainsi que la "
+"passphrase que vous avez choisi précédemment dans l'étape 3 :"
+
+#: /dev/fd/63:676
+msgid "Step 3: You Got a New Wifi!"
+msgstr "Étape 3 : Vous avez un nouveau Wifi !"
+
+#: /dev/fd/63:678
+msgid ""
+"Wait for something like a few dozen minutes, without unplugging the cables."
+msgstr "Patientez quelques dizaines de minutes, sans débrancher les câbles."
+
+#: /dev/fd/63:678
+msgid ""
+"Once you can see your new wifi access point from your computer, this means "
+"that your Internet Cube is ready and that you can use it. Connect your "
+"computer to the new wifi access point."
+msgstr ""
+"Une fois que vous voyez votre nouvel accès Wifi depuis votre ordinateur, ça "
+"signifie que votre Brique Internet est prête et que vous pouvez l'utiliser. "
+"Connectez votre ordinateur à ce nouvel accès Wifi."
+
+#: /dev/fd/63:680
+msgid "Show wifi password"
+msgstr "Voir le mot de passe du Wifi"
+
+#: /dev/fd/63:682
+msgid "Congratulations, you now have a clean Internet access!"
+msgstr "Félicitations, vous avez désormais un accès propre à Internet !"
+
+#: /dev/fd/63:686
+msgid "Step 4: DNS Configuration"
+msgstr "Étape 4 : Configuration DNS"
+
+#: /dev/fd/63:688
+msgid ""
+"For being able to use the self-hosting features of your Cube, you have to "
+"configure your domain name, on the registrar side. But, because you have not "
+"filled out the IPv4 Assigned Address field in the VPN step, your DNS "
+"Configuration can not be generated here. Please, fill out this field and go "
+"back here, or get help from a non-profit organization."
+msgstr ""
+"Pour être capable d'utiliser les fonctionnalités d'autohébergement de votre "
+"Brique, vous devez configurer votre nom de domaine, du côté de votre "
+"registrar. Par contre, parce que vous n'avez pas renseigné le champ Adresse "
+"IPv4 assignée dans l'étape VPN, votre configuration DNS ne peut pas être "
+"générée ici. Veuillez renseigner ce champ et revenir ici, ou demander de "
+"l'aide à une association."
+
+#: /dev/fd/63:689
+msgid ""
+"You have no DNS configuration to do, because you chose a domain ending by "
+"nohost.me or noho.st. However, you should do the steps described above "
+"quickly, because your domain will only be registered during your Cube "
+"installation."
+msgstr ""
+"Vous n'avez pas de configuration DNS à faire, parce que vous avez choisi un "
+"domaine terminant par nohost.me ou noho.st. Par contre,vous devriez "
+"rapidement faire les étapes décrites ci-dessous, parce que votre domaine ne "
+"sera réservé que lors de l'installation de votre Brique."
+
+#: /dev/fd/63:692
+msgid ""
+"For being able to use the self-hosting features of your Cube, you have to "
+"configure your domain name, on the registrar side. Please, click on the "
+"registrar you chose for your domain name (if yours is not listed, please get "
+"help from a non-profit organization):"
+msgstr ""
+"Pour être capable d'utiliser les fonctionnalités d'autohébergement de votre "
+"Brique, vous devez configurer votre nom de domaine, du côté de votre "
+"registrar. Veuillez cliquer sur le registrar que vous avez utilisé pour "
+"réserver votre nom de domaine (si le vôtre n'est pas dans la liste, demandez "
+"de l'aide à une association) :"
+
+#: /dev/fd/63:697
+msgid "Go to your OVH manager:"
+msgstr "Allez sur votre Manager OVH :"
+
+#: /dev/fd/63:698
+msgid ""
+"Sign in, using your OVH Account ID (should be something like aa0000-ovh)"
+msgstr ""
+"Identifiez-vous, en utilisant votre OVH Account ID (qui devrait être de la "
+"forme aa0000-ovh)"
+
+#: /dev/fd/63:699
+msgid "Click on your domain name, in the list on the left"
+msgstr "Cliquez sur votre nom de domaine, dans la liste de gauche"
+
+#: /dev/fd/63:700
+msgid "Click on the tab:"
+msgstr "Cliquez sur l'onglet :"
+
+#: /dev/fd/63:700
+msgid "DNS Zone"
+msgstr "Zone DNS"
+
+#: /dev/fd/63:701
+msgid "On the right, click on the button:"
+msgstr "Sur la droite, cliquez sur le boutton :"
+
+#: /dev/fd/63:701
+msgid "Change in text format"
+msgstr "Changer au format texte"
+
+#: /dev/fd/63:702
+msgid ""
+"In the text area, keep only the 4 first lines (SOA + NS) and delete the "
+"other ones"
+msgstr ""
+"Dans le champ de texte, conservez uniquement les 4 premières lignes (SOA + "
+"NS) et supprimez les suivantes"
+
+#: /dev/fd/63:704
+msgid "Then, at the end of the text area, add these ones:"
+msgstr "Puis, à la fin du champ de texte, ajoutez celles-ci :"
+
+#: /dev/fd/63:707
+msgid "Click on Next, then Confirm"
+msgstr "Cliquez sur Suivant, puis Confirmer"
+
+#: /dev/fd/63:712
+msgid "Go to your Gandi.net account:"
+msgstr "Allez sur votre compte Gandi.net :"
+
+#: /dev/fd/63:713
+msgid ""
+"Sign in, using your Gandi.net Handle (should be something like AA0000-GANDI)"
+msgstr ""
+"Identifiez-vous, en utilisant votre Handle Gandi.net (qui devrait être de la "
+"forme AA0000-GANDI)"
+
+#: /dev/fd/63:714
+msgid "Click on your domain name, in the list"
+msgstr "Cliquez sur votre nom de domaine, dans la liste"
+
+#: /dev/fd/63:715
+msgid "At the bottom right, under Zone files, click on the link:"
+msgstr "En bas à droite, sous Fichiers de zone, cliquez sur le lien :"
+
+#: /dev/fd/63:715
+msgid "Edit the zone"
+msgstr "Éditer la zone"
+
+#: /dev/fd/63:716
+msgid "In the warning bubble, click on the blue button:"
+msgstr "Dans la bulle d'avertissement, cliquez sur le bouton bleu :"
+
+#: /dev/fd/63:716
+msgid "Create a new version"
+msgstr "Créer une nouvelle version"
+
+#: /dev/fd/63:717
+msgid "At the left, change the Edit mode to Expert"
+msgstr "Sur la gauche, passez le Mode d'édition à Expert"
+
+#: /dev/fd/63:719
+msgid "In the text area, replace all by:"
+msgstr "Dans le champ de texte, tout remplacer par :"
+
+#: /dev/fd/63:722
+msgid "Above, click on the blue button:"
+msgstr "Au-dessus, cliquez sur le bouton bleu :"
+
+#: /dev/fd/63:722
+msgid "Use this version"
+msgstr "Utiliser cette version"
+
+#: /dev/fd/63:723
+msgid "In the popup, click on Submit"
+msgstr "Dans la petite fenêtre, cliquez sur Valider"
+
+#: /dev/fd/63:731
+msgid "Step 5: Self-Hosting"
+msgstr "Étape 5 : Autohébergement"
+
+#: /dev/fd/63:733
+msgid ""
+"If you want to update your settings, add accounts, add email addresses or "
+"configure some web services to host, you just have to access the web "
+"administration, named YunoHost (you will have to accept the security "
+"exception proposed by your browser):"
+msgstr ""
+"Si vous voulez mettre à jour vos paramètres, ajouter des comptes, ajouter "
+"des adresses mails ou configurer des services web à héberger, vous avez "
+"juste à utiliser l'administration web, appelée YunoHost (vous allez avoir à "
+"accepter l'exception de sécurité proposée par votre navigateur) :"
+
+#: /dev/fd/63:736
+msgid "Show alternative URLs"
+msgstr "Voir les URL alternatives"
+
+#: /dev/fd/63:742
+msgid "Show admin password"
+msgstr "Voir le mot de passe admin"
+
+#: /dev/fd/63:744
+msgid "If you want to access to your current apps, go to:"
+msgstr "Si vous voulez accéder à vos applications actuelles, rendez-vous sur:"
+
+#: /dev/fd/63:747
+msgid "Show user credentials"
+msgstr "Voir les identifiants"
+
+#: /dev/fd/63:749
+msgid "You first email address is:"
+msgstr "Votre première adresse mail est :"
+
+#: /dev/fd/63:752
+msgid ""
+"You can already use it, using the Roundcube Webmail app, available through "
+"the link above!"
+msgstr ""
+"Vous pouvez d’ores et déjà l'utiliser, grâce à l'application Roundcube "
+"Webmail, disponible via le lien ci-dessus !"
+
+#: /dev/fd/63:754
+msgid ""
+"If you want to configure your mailbox on your smartphone (e.g. using K-9 "
+"Mail), you can use these settings:"
+msgstr ""
+"Si vous souhaitez configurer votre boîte mail sur votre smartphone (e.g. "
+"avec K-9 Mail), vous pouvez utiliser ces paramètres :"
+
+#: /dev/fd/63:757
+msgid "Email address:"
+msgstr "Adresse mail :"
+
+#: /dev/fd/63:758 /dev/fd/63:763 /dev/fd/63:773
+msgid "Password:"
+msgstr "Mot de passe :"
+
+#: /dev/fd/63:758 /dev/fd/63:763 /dev/fd/63:773
+msgid "Show"
+msgstr "Voir"
+
+#: /dev/fd/63:759
+msgid "Account type:"
+msgstr "Type de compte :"
+
+#: /dev/fd/63:760
+msgid "Incoming server settings:"
+msgstr "Paramètres du serveur entrant :"
+
+#: /dev/fd/63:762 /dev/fd/63:772
+msgid "Username:"
+msgstr "Nom d'utilisateur :"
+
+#: /dev/fd/63:764
+msgid "IMAP server:"
+msgstr "Serveur IMAP :"
+
+#: /dev/fd/63:765 /dev/fd/63:775
+msgid "Security:"
+msgstr "Sécurité :"
+
+#: /dev/fd/63:765 /dev/fd/63:775
+msgid "SSL/TLS (always)"
+msgstr "SSL/TLS (toujours)"
+
+#: /dev/fd/63:766 /dev/fd/63:776
+msgid "Authentication:"
+msgstr "Authentification :"
+
+#: /dev/fd/63:766 /dev/fd/63:776
+msgid "PLAIN"
+msgstr "PLAIN"
+
+#: /dev/fd/63:767 /dev/fd/63:777
+msgid "Port:"
+msgstr "Port :"
+
+#: /dev/fd/63:770
+msgid "Outgoing server settings:"
+msgstr "Paramètres du serveur sortant :"
+
+#: /dev/fd/63:774
+msgid "SMTP server:"
+msgstr "Serveur SMTP :"
+
+#: /dev/fd/63:782
+msgid ""
+"If you experience problems using the web administration, please read the "
+"YunoHost Documentation, or ask for some help to a non-profit organization:"
+msgstr ""
+"Si vous rencontrez des problèmes en utilisant l'administration web, vous "
+"êtes encouragé à lire la Documentation YunoHost, ou demander de l'aide à une "
+"association:"
+
+#: /dev/fd/63:784
+msgid "Documentation"
+msgstr "Documentation"
+
+#: /dev/fd/63:784
+msgid "Getting Help"
+msgstr "Obtenir de l'Aide"
+
+#: /dev/fd/63:790
+msgid "A Word About Security"
+msgstr "À propos de la sécurité"
+
+#: /dev/fd/63:792
+msgid ""
+"1) Your Cube/HyperCube files contain private keys and passwords. Keep them "
+"secret and never provide them to anyone."
+msgstr ""
+"1) Vos fichiers Cube/HyperCube contiennent des clés privées et des mots de "
+"passe. Gardez-les secrets et ne les fournissez jamais à personne."
+
+#: /dev/fd/63:793
+msgid ""
+"2) A Cube is just a computer, so keep in mind that it can die any time. "
+"Therefore, if you use it for self-hosting, be sure to make regular backups "
+"of your data (emails, files, etc)."
+msgstr ""
+"2) Une Brique n'est qu'un ordinateur : gardez à l'esprit qu'il peut mourir à "
+"n'importe quel instant. Par conséquent, si vous l'utilisez pour de "
+"l'autohébergement, assurez-vous de faire régulièrement des sauvegardes de "
+"vos données (emails, fichiers, etc)."
+
+#: /dev/fd/63:797
+msgid "How to Properly Power Off my Cube?"
+msgstr "Comment éteindre proprement ma Brique ?"
+
+#: /dev/fd/63:799
+msgid ""
+"Whenever possible, do not disconnect the power supply from your Internet "
+"Cube, without having first switched it off (otherwise, this could lead to "
+"database errors). For turning off your Internet Cube, just quick press the "
+"bottom-left button, using a pen. Then, wait until all the lights are turned "
+"off (especially the orange one, close to the ethernet cable, on the opposite "
+"side). You now can disconnect the power supply."
+msgstr ""
+"Dans la mesure du possible, ne débranchez pas votre Brique Internet, sans "
+"l'avoir éteinte au-préalable (ce qui, dans le cas contraire, pourrait "
+"entraîner des erreurs dans la base de données). Pour éteindre votre Brique "
+"Internet, il suffit d'appuyer un petit coup sur le bouton en bas à gauche, "
+"en utilisant un stylo. Patientez ensuite jusqu'à ce que les lumières soient "
+"éteintes (en particulier la lumière orange, proche du câble ethernet, sur "
+"l'autre face). Vous pouvez maintenant débrancher la prise électrique."
+
+#: /dev/fd/63:805
+msgid "How to Debug The Installation?"
+msgstr "Comment déboguer l'installation ?"
+
+#: /dev/fd/63:807
+msgid ""
+"Sometimes, things go wrong... To help you to debug, you can follow what your "
+"Cube is doing, during the installation process (i.e. the first time you plug "
+"your Cube after following this guide)."
+msgstr ""
+"Parfois, les choses se passent mal... Pour vous aider à déboguer, vous "
+"pouvez suivre ce que votre Brique est en train de faire, durant le processus "
+"d'installation (i.e. la première fois que vous branchez votre Brique après "
+"avoir suivi ce guide)."
+
+#: /dev/fd/63:808
+msgid ""
+"For that, follow these instructions (you maybe will have to ask for help to "
+"someone):"
+msgstr ""
+"Pour ce faire, suivez les instructions suivantes (vous allez peut-être avoir "
+"à demander de l'aide à quelqu'un) :"
+
+#: /dev/fd/63:810
+msgid ""
+"Be sure to have waited long enough. If you have waited for a few dozen "
+"minutes and you do not see your new wifi access point (step 3), continue to "
+"follow these instructions."
+msgstr ""
+"Soyez bien sûr d'avoir patienté suffisamment longtemps. Si vous avez "
+"patienté quelques dizaines de minutes et que vous ne voyez pas votre nouveau "
+"point d'accès wifi (étape 3), continuez à suivre ces instructions."
+
+#: /dev/fd/63:811
+msgid "Unplug your Cube and start again to follow this guide, from step 1."
+msgstr ""
+"Débranchez votre Brique et recommencez à nouveau à suivre ce guide, à partir "
+"de l'étape 1."
+
+#: /dev/fd/63:812
+msgid ""
+"Once you reached again the step 3, find the HTTP address of the HyperCube "
+"Debug interface, using the SD Card Installer on your computer with Debian or "
+"Ubuntu, this way:"
+msgstr ""
+"Une fois que vous avez de nouveau atteint l'étape 3, trouvez l'adresse HTTP "
+"de l'interface HyperCube Debug, en utilisant le SD Card Installer sur votre "
+"ordinateur Debian ou Ubuntu, de cette façon :"
+
+#: /dev/fd/63:815
+msgid "Open this HTTP address with your web browser."
+msgstr "Ouvrez cette adresse HTTP avec votre navigateur web."
+
+#: /dev/fd/63:816
+msgid ""
+"You probably will get a Not Found error: reload the page until you see the "
+"web page (may take a few minutes)."
+msgstr ""
+"Vous allez probablement obtenir une erreur Page Non Trouvée : rechargez la "
+"page jusqu'à ce que vous voyez la page web (ce qui peut prendre quelques "
+"minutes)."
+
+#: /dev/fd/63:817
+msgid "Once you got the web page, stop reloading it."
+msgstr ""
+"Une fois que vous avez réussi à afficher la page web, arrêtez de la "
+"recharger."
+
+#: /dev/fd/63:818
+msgid "Wait until you think the installation is finished or crashed."
+msgstr ""
+"Patientez jusqu'à ce que vous pensiez que l'installation est terminée ou "
+"crashée."
+
+#: /dev/fd/63:819
+msgid "Save the HTML file with Ctrl+S."
+msgstr "Enregistrez le fichier HTML avec Ctrl+S."
+
+#: /dev/fd/63:820
+msgid ""
+"You can now provide it to someone able to help you, and find with her/him "
+"what is wrong."
+msgstr ""
+"Vous pouvez maintenant le fournir à quelqu'un qui serait capable de vous "
+"aider, pour trouver avec elle/lui ce qui se passe mal. "
+
+#: /dev/fd/63:825
+msgid "Download this custom guide (PDF)"
+msgstr "Télécharger le guide personnalisé (PDF)"
+
+#: /dev/fd/63:836
+msgid "You have some issues to fix before continuing."
+msgstr "Vous avez quelques problèmes à régler avant de pouvoir continuer."
+
+#: /dev/fd/63:840
+msgid "Previous"
+msgstr "Précédent"
+
+#: /dev/fd/63:841
+msgid "Next"
+msgstr "Suivant"
+
+#: /dev/fd/63:851 /dev/fd/63:1976
+msgid "Internet Cube"
+msgstr "La Brique Internet"
+
+#: /dev/fd/63:1064 /dev/fd/63:1231
+msgid "ERROR: Invalid character found when preparing the download link."
+msgstr ""
+"ERREUR : Caractère invalide détecté en préparant le lien de téléchargement."
+
+#: /dev/fd/63:1356
+msgid "Optional Field"
+msgstr "Champ optionnel"
+
+#: /dev/fd/63:1472
+msgid "File selection mode"
+msgstr "Mode sélection de fichiers"
+
+#: /dev/fd/63:1536 /dev/fd/63:1787
+msgid "Cannot read this file"
+msgstr "Impossible de lire ce fichier"
+
+#: /dev/fd/63:1595 /dev/fd/63:1773
+msgid "Invalid file (syntax error):"
+msgstr "Fichier invalide (erreur de syntaxe) :"
+
+#: /dev/fd/63:1595
+msgid "are you sure that this is a .cube file?"
+msgstr "êtes-vous sûr qu'il s'agit bien d'un fichier .cube ?"
+
+#: /dev/fd/63:1599 /dev/fd/63:1777
+msgid "Invalid file (content error):"
+msgstr "Fichier invalide (erreur de contenu) :"
+
+#: /dev/fd/63:1599
+msgid "are you sure that this is your .cube file?"
+msgstr "êtes-vous bien sûr qu'il s'agit de votre fichier .cube ?"
+
+#: /dev/fd/63:1644
+msgid "Checking the avaibility of this domain..."
+msgstr "Vérification de la disponibilité de ce domaine..."
+
+#: /dev/fd/63:1658
+msgid "This domain is not available"
+msgstr "Ce domaine n'est pas disponible"
+
+#: /dev/fd/63:1662
+msgid "Cannot check the domain availability (does not work offline)"
+msgstr ""
+"Impossible de vérifier la disponibilité de ce domaine (ne fonctionne pas "
+"hors-ligne)"
+
+#: /dev/fd/63:1672
+msgid "This domain is available"
+msgstr "Ce domaine est disponible"
+
+#: /dev/fd/63:1773 /dev/fd/63:1777
+msgid "are you sure that this is an HyperCube file?"
+msgstr "êtes-vous bien sûr qu'il s'agit de votre fichier HyperCube ?"
+
+#: /dev/fd/63:1894
+msgid "- Wifi:"
+msgstr "- Wifi :"
+
+#: /dev/fd/63:1899
+msgid "- Address:"
+msgstr "- Adresse :"
+
+#: /dev/fd/63:1907
+msgid "- Password:"
+msgstr "- Mot de passe :"
+
+#: /dev/fd/63:1919
+msgid "YES"
+msgstr "OUI"
+
+#: /dev/fd/63:1921
+msgid "NO"
+msgstr "NON"
+
+#: /dev/fd/63:2024
+msgid "internetcube_installguide"
+msgstr "labriqueinternet_guideinstallation"
+
+#: /dev/fd/63:2236
+msgid ""
+"Loading an existing HyperCube file will replace all values currently set."
+msgstr ""
+"Charger un fichier HyperCube existant va remplacer toutes les valeurs "
+"actuellement renseignées."
+
+#: /dev/fd/63:2236
+msgid "Are you sure?"
+msgstr "Êtes-vous sûr ?"
+
+#: /dev/fd/63:2310
+msgid "This field is mandatory"
+msgstr "Ce champ est obligatoire"
+
+#: /dev/fd/63:2331
+msgid "This IP format looks bad"
+msgstr "Le format de cette IP semble incorrect"
+
+#: /dev/fd/63:2338
+msgid "This IPv4 format looks bad"
+msgstr "Le format de cette IPv4 semble incorrect"
+
+#: /dev/fd/63:2345
+msgid "This IPv6 format looks bad"
+msgstr "Le format de cette IPv6 semble incorrect"
+
+#: /dev/fd/63:2372
+msgid "Must be the same than the previous input"
+msgstr "Devrait avoir la même valeur que le champ précédent"
+
+#: /dev/fd/63:2432
+msgid "No .cube file selected"
+msgstr "Aucun fichier .cube sélectionné"
+
+#: /dev/fd/63:2458 /dev/fd/63:2463 /dev/fd/63:2482 /dev/fd/63:2491
+msgid "Must contain a line with <LINE>"
+msgstr "Devrait contenir une ligne avec <LINE>"
+
+#: /dev/fd/63:2508
+msgid "Must be only composed of digits"
+msgstr "Devrait être composé uniquement de chiffres"
+
+#: /dev/fd/63:2563
+msgid "This IPv4 prefix looks bad (required format is x.x.x or x.x.x.0)"
+msgstr ""
+"Le format de ce préfixe IPv4 semble incorrect (requis : x.x.x ou x.x.x.0)"
+
+#: /dev/fd/63:2576
+msgid "This prefix must be part of an IPv4 private range"
+msgstr "Ce préfixe semble correspondre à un réseau IPv4 privé"
+
+#: /dev/fd/63:2584
+msgid "Only lowercase letters and digits are allowed"
+msgstr "Seules les lettres minuscules et les chiffres sont autorisés"
+
+#: /dev/fd/63:2588
+msgid "Admin is not an authorized value"
+msgstr "Admin n'est pas une valeur autorisée"
+
+#: /dev/fd/63:2594
+msgid "Must be greater than 4 characters"
+msgstr "Devrait être plus grand que 4 caractères"
+
+#: /dev/fd/63:2599
+msgid "Only standard characters are allowed"
+msgstr "Seuls les caractères standards sont autorisés"
+
+#: /dev/fd/63:2604
+msgid "Must from 8 to 63 characters (WPA2 passphrase)"
+msgstr "Devrait avoir entre 8 et 63 caractères (passphrase WPA2)"
+
+#: /dev/fd/63:2609
+msgid "Only lowercase letters, digits, dots and dashes are allowed"
+msgstr ""
+"Seules les lettre minuscules, les chiffres, les points et les tirets sont "
+"autorisés"
+
+#: /dev/fd/63:2613
+msgid "Sorry but this domain is not available"
+msgstr "Désolé mais ce domaine n'est pas disponible"
+
+#~ msgid "Plug your USB stick (1) to your Internet Cube"
+#~ msgstr "Branchez votre clé USB (1) à votre Brique Internet"
+
+#~ msgid "Then connect the ethernet cable (2), then the power cable (3)"
+#~ msgstr ""
+#~ "Puis connectez le câble ethernet (2), puis le câble d'alimentation (3)"
+
+#~ msgid ""
+#~ "Finally, plug the ethernet cable to your router, and the power cable into "
+#~ "an outlet"
+#~ msgstr ""
+#~ "Enfin, branchez le câble ethernet à votre box, et le câble d'alimentation "
+#~ "à une prise électrique"
+
+#~ msgid ""
+#~ "Connect the ethernet cable to your router and the power cable to an outlet"
+#~ msgstr ""
+#~ "Connectez le câble ethernet à votre box et le câble d'alimentation à une "
+#~ "prise électrique"
+
+#~ msgid ""
+#~ "You can already use it, using the Roundcube Webmail app, available "
+#~ "through the link above! If you want to configure your mailbox on your "
+#~ "smartphone (e.g. using K-9 Mail), the credentials for an SMTPS/IMAPS "
+#~ "login are the same than the ones provided just above."
+#~ msgstr ""
+#~ "You pouvez d'ores et déjà l'utiliser, grâce à l'application Roundcube "
+#~ "Webmail, disponible via le lien ci-dessus ! Si vous voulez configurer "
+#~ "votre boîte mail sur votre smartphone (e.g. avec K-9 Mail), les "
+#~ "identifiants pour une connexion SMTPS/IMAPS sont les mêmes que ceux "
+#~ "fournis juste au-dessus."
+
+#~ msgid ""
+#~ "If you want to access to your current apps, go to (the credentials for an "
+#~ "SMTPS/IMAPS login, e.g. for configuring an email client on your "
+#~ "smartphone, are the same):"
+#~ msgstr ""
+#~ "Si vous voulez accéder à vos applications actuelles, rendez-vous sur (les "
+#~ "identifiants pour une connexion SMTPS/IMAPS, e.g. pour configurer un "
+#~ "client mail sur votre smartphone, sont les mêmes) :"
+
+#~ msgid ""
+#~ "If you want to update your settings or configure some web services to "
+#~ "host, you just have to access the web administration, named YunoHost (you "
+#~ "will have to accept the security exception proposed by your browser):"
+#~ msgstr ""
+#~ "Si vous voulez changer des paramètres ou configurer des services web à "
+#~ "autohéberger, vous pouvez vous connecter à l'administration web, appelée "
+#~ "YunoHost (vous allez devoir accepter l'exception de sécurité proposée par "
+#~ "votre navigateur) :"
+
+#~ msgid ""
+#~ "1) Your HyperCube file contains private keys and passwords. Keep it "
+#~ "secret and never provide it to anyone."
+#~ msgstr ""
+#~ "1) Votre fichier HyperCube contient des clés et des mots de passe privés. "
+#~ "Gardez-le secret et ne le donnez jamais à personne."
+
+#~ msgid ""
+#~ "You probably will get a Not Found error: reload the page until you see "
+#~ "the web page (may take a dozen minutes because the Cube does some stuff "
+#~ "before)."
+#~ msgstr ""
+#~ "You allez probablement avoir une erreur Page Non-Trouvée : rechargez la "
+#~ "page jusqu'à ce que vous voyez la page web (ce qui peut prendre une "
+#~ "dizaine de minutes parce que la Brique fait d'autres choses avant)."
+
+#~ msgid ""
+#~ "Wait for something like a dozen of minutes, without unplugging the cables."
+#~ msgstr "Patientez environ 10 minutes, sans débrancher les câbles "
+
+#~ msgid "Download this custom guide"
+#~ msgstr "Télécharger le guide personnalisé"

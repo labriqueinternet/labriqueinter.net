@@ -58,6 +58,8 @@ function show_usage() {
   echo -e "  \e[1m-c\e[0m \e[4mpath\e[0m" >&2
   echo -e "     MD5 checksums file (e.g. MD5SUMS)" >&2
   echo -e "     \e[2mDefault: Automatic download from ${url_base} if no -f, or no checksum checking\e[0m" >&2
+#  echo -e "  \e[1m-y\e[0m \e[4mpath\e[0m" >&2
+#  echo -e "     HyperCube file" >&2
   echo -e "  \e[1m-e\e[0m" >&2
   echo -e "     Install an encrypted file system" >&2
   echo -e "     \e[2mDefault: Clear file system\e[0m" >&2
@@ -73,12 +75,15 @@ function show_usage() {
 }
 
 function exit_error() {
-  if [ ! -z "${1}" ]; then
+  local msg=${1}
+  local usage=${2}
+
+  if [ ! -z "${msg}" ]; then
     echo -e "\e[31m\e[1m[ERR] $1\e[0m" >&2
   fi
 
-  if [ "${2}" == usage ]; then
-    if [ -z "${1}" ]; then
+  if [ "${usage}" == usage ]; then
+    if [ -z "${msg}" ]; then
       echo -e "\n       \e[7m\e[1m LaBriqueInternet SD Card Installer \e[0m\n"
     else
       echo
@@ -91,7 +96,9 @@ function exit_error() {
 }
 
 function exit_usage() {
-  exit_error "${1}" usage
+  local msg=${1}
+
+  exit_error "${msg}" usage
 }
 
 function exit_normal() {
@@ -99,12 +106,16 @@ function exit_normal() {
 }
 
 function info() {
-  echo -e "\e[32m[INFO] ${1}\e[0m" >&2
+  local msg=${1}
+
+  echo -e "\e[32m[INFO] ${msg}\e[0m" >&2
 }
 
 function debug() {
+  local msg=${1}
+
   if $opt_debug; then
-    echo -e "\e[33m[DEBUG] ${1}\e[0m" >&2
+    echo -e "\e[33m[DEBUG] ${msg}\e[0m" >&2
   fi
 }
 
@@ -117,6 +128,17 @@ function confirm_writing() {
   if [ "${confirm}" != yes ]; then
     exit_error "Aborted"
   fi
+}
+
+function get_partition_path() {
+  local partition_number=${1}
+  local partition_path="${opt_sdcardpath}${partition_number}"
+
+  if [[ "${opt_sdcardpath}" =~ /mmcblk[0-9]$ ]]; then
+    partition_path="${opt_sdcardpath}p${partition_number}"
+  fi
+
+  echo "${partition_path}"
 }
 
 
@@ -157,8 +179,18 @@ function check_findcubes_bins() {
 }
 
 function check_args() {
-  if [[ ! -b "${opt_sdcardpath}" || ! ( "${opt_sdcardpath}" =~ ^/dev/sd[a-z]$ ||  "${opt_sdcardpath}" =~ ^/dev/mmcblk[0-9]$ ) ]]; then
+  if [[ ! -b "${opt_sdcardpath}" || ! "${opt_sdcardpath}" =~ ^/dev/(sd[a-z]|mmcblk[0-9])$ ]]; then
     exit_usage "-s should be a block device corresponding to your SD card (/dev/sd[a-z]\$ or /dev/mmcblk[0-9]\$)"
+  fi
+
+  if [ ! -z "${opt_hypercubepath}" ]; then
+    if [ ! -r "${opt_hypercubepath}" ]; then
+      exit_usage "File given to -y cannot be read"
+    fi
+
+    if [[ ! "$(basename "${opt_hypercubepath}")" =~ ^install\.hypercube(\.txt)?$ ]]; then
+      exit_usage "Filename given to -y must be install.hypercube or install.hypercube.txt"
+    fi
   fi
   
   if [ ! -z "${opt_md5path}" -a ! -r "${opt_md5path}" ]; then
@@ -170,12 +202,12 @@ function check_args() {
     opt_lime2=false
   fi
   
-  if [[ ! -z "${opt_imgpath}" ]]; then
+  if [ ! -z "${opt_imgpath}" ]; then
     if [ ! -r "${opt_imgpath}" ]; then
       exit_usage "File given to -f cannot be read"
     fi
 
-    if [[ ! "${opt_imgpath}" =~ .img$ && ! "${opt_imgpath}" =~ .img.tar.xz$ ]]; then
+    if [[ ! "${opt_imgpath}" =~ \.img(\.tar\.xz)?$ ]]; then
       exit_usage "Filename given to -f must end by .img or .img.tar.xz"
     fi
   
@@ -203,10 +235,14 @@ function check_args() {
 #################
 
 function cleaning_exit() {
-  status=$?
+  local status=$?
+  local error=${1}
+
+  trap EXIT
+  trap ERR
   trap INT
 
-  if $opt_debug && [ "${status}" -ne 0 -o "${1}" == error ]; then
+  if $opt_debug && [ "${status}" -ne 0 -o "${error}" == error ]; then
     debug "There was an error, press Enter for doing cleaning"
     read -s
   fi
@@ -230,7 +266,7 @@ function cleaning_exit() {
     sudo cryptsetup luksClose olinux 
   fi
 
-  if [ ! -z "${tmp_dir}" ]; then
+  if [ -d "${tmp_dir}" ]; then
     debug "Cleaning: removing ${tmp_dir}"
     rm -r "${tmp_dir}"
   fi
@@ -246,6 +282,7 @@ function find_cubes() {
   local ips=$(sudo arp-scan --local | grep -P '\t02' | awk '{ print $1 }')
   local addip=
   local addhost=
+  local knownhosts=0
   local i=0
 
   if [ -z "${ips}" ]; then
@@ -259,37 +296,58 @@ function find_cubes() {
     i=$(( i + 1 ))
 
     knownhost=$(awk "/$ip/ { print \$2 }" /etc/hosts | head -n1)
-    [ -z "${knownhost}" ] && knownhost=$ip
 
-    echo -e "  ${i}. ${ip} | ssh root@${knownhost} | https://${knownhost}"
+    if [ -z "${knownhost}" ]; then
+      knownhost=$ip
+    else
+      (( knownhosts++ )) || true
+    fi
+
+    echo -e "  ${i}. YunoHost Admin:\thttps://${knownhost}"
+    echo -e "     SSH Access:\tssh root@${knownhost}"
+    echo -e "     HyperCube Debug:\thttp://${knownhost}:2468/install.html\n"
   done
 
-  echo -en "\nSelect an IP to add to your hosts file (just press Enter if not necessary): "
-  read addip
-
-  if [ -z "${addip}" ]; then
-    exit_normal
-  fi
-
-  if [[ "${addip}" =~ ^[0-9]+$ ]]; then
-    addip=${ips[$(( addip - 1 ))]}
+  if [ "${knownhosts}" -ne "${#ips[@]}" ]; then
+    echo -n "Select an IP to add to your hosts file (just press Enter): "
+    read addip
 
     if [ -z "${addip}" ]; then
-      exit_error "IP index not found"
+      exit_normal
     fi
+
+    if [[ "${addip}" =~ ^[0-9]+$ ]]; then
+      addip=${ips[$(( addip - 1 ))]}
+  
+      if [ -z "${addip}" ]; then
+        exit_error "IP index not found"
+      fi
+    fi
+  
+    if [[ ! "${addip}" =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
+      exit_error "This is not an IPv4 nor an IP index"
+    fi
+  
+    echo -en "Choose a host name for this IP: "
+    read addhost
+  
+    echo -e "${addip}\t${addhost}" | sudo tee -a /etc/hosts > /dev/null
+  
+    info "IP successfully added to your hosts file"
+
+    echo -e "\n  YunoHost Admin:\thttps://${addhost}"
+    echo -e "  SSH Access:\t\tssh root@${addhost}"
+    echo -e "  HyperCube Debug:\thttp://${addhost}:2468/install.html\n"
+
+  elif [ "${knownhosts}" -eq 1 ]; then
+    echo "% ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@${knownhost} 2> /dev/null"
+    echo "Press Enter to execute (or Ctrl-C to arbort)"
+    read
+
+    echo "Default Password: olinux"
+    ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no "root@${knownhost}" 2> /dev/null
+    exit_normal
   fi
-
-  if [[ ! "${addip}" =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
-    exit_error "This is not an IPv4 nor an IP index"
-  fi
-
-  echo -en "Choose a host name for this IP: "
-  read addhost
-
-  echo -e "${addip}\t${addhost}" | sudo tee -a /etc/hosts > /dev/null
-
-  info "IP successfully added to your hosts file"
-  echo -e "\n  ssh root@${addhost} | https://${addhost}\n"
 }
 
 function autodetect_sdcardpath() {
@@ -401,7 +459,7 @@ function download_file() {
   local dest_dir=$2
 
   if [ ! -f "${tmp_dir}/cacert_root.crt" ]; then
-  cat << EOF > "${tmp_dir}/cacert_root.crt"
+    cat << EOF > "${tmp_dir}/cacert_root.crt"
 -----BEGIN CERTIFICATE-----
 MIIHPTCCBSWgAwIBAgIBADANBgkqhkiG9w0BAQQFADB5MRAwDgYDVQQKEwdSb290
 IENBMR4wHAYDVQQLExVodHRwOi8vd3d3LmNhY2VydC5vcmcxIjAgBgNVBAMTGUNB
@@ -461,22 +519,17 @@ EOF
 ######################
 
 function install_encrypted() {
-  local partition1="${opt_sdcardpath}1"
-  local partition2="${opt_sdcardpath}2"
+  local partition1=$(get_partition_path 1)
+  local partition2=$(get_partition_path 2)
   local board=a20lime
   local uboot=A20-OLinuXino-Lime
 
-  mkdir "${files_path}" "${olinux_mountpoint}"
+  mkdir -p "${files_path}" "${olinux_mountpoint}"
 
   $opt_lime2 && board+=2
   $opt_lime2 && uboot+=2
 
   local sunxispl_path="${olinux_mountpoint}/usr/lib/u-boot/${uboot}/u-boot-sunxi-with-spl.bin"
-
-  if [[ "${opt_sdcardpath}" =~ /mmcblk[0-9]$ ]]; then
-    partition1="${opt_sdcardpath}p1"
-    partition2="${opt_sdcardpath}p2"
-  fi
 
   confirm_writing
 
@@ -540,11 +593,11 @@ function install_encrypted() {
   sudo mke2fs -t ext4 -q /dev/mapper/olinux
 
   debug "Mounting /dev/mapper/olinux on ${olinux_mountpoint}"
-  sudo mount -t ext4 /dev/mapper/olinux "${olinux_mountpoint}"
+  sudo mount /dev/mapper/olinux "${olinux_mountpoint}"
   sudo mkdir "${olinux_mountpoint}/boot"
 
   debug "Mounting ${partition1} on ${olinux_mountpoint}/boot"
-  sudo mount -t ext4 "${partition1}" "${olinux_mountpoint}/boot"
+  sudo mount "${partition1}" "${olinux_mountpoint}/boot"
 
   loopdev=$(sudo losetup -f)
   debug "Unused loop device found: ${loopdev}"
@@ -576,6 +629,8 @@ function install_encrypted() {
 }
 
 function install_clear() {
+  local partition1=$(get_partition_path 1)
+
   confirm_writing
 
   info "Please wait..."
@@ -583,7 +638,20 @@ function install_clear() {
   debug "Raw copying ${img_path} to ${opt_sdcardpath} (dd)"
   sudo dd if="${img_path}" of="${opt_sdcardpath}" bs=1M &> /dev/null
 
-  debug "Flushing file system buffers (sync)"
+  debug "Flushing file system buffers"
+  sudo sync
+
+  mkdir -p "${files_path}" "${olinux_mountpoint}"
+
+  debug "Mounting ${partition1} on ${olinux_mountpoint}"
+  sudo mount "${partition1}" "${olinux_mountpoint}"
+}
+
+function copy_hypercube() {
+  debug "Copying ${hypercube_path} to ${olinux_mountpoint}/root/"
+  sudo cp "${hypercube_path}" "${olinux_mountpoint}/root/"
+
+  debug "Flushing file system buffers"
   sudo sync
 }
 
@@ -595,8 +663,8 @@ function install_clear() {
 url_base=https://repo.labriqueinter.net/
 deb_version=jessie
 opt_encryptedfs=false
-opt_debug=false
 opt_findcubes=false
+opt_debug=false
 opt_lime2=
 tmp_dir=$(mktemp -dp /tmp/ labriqueinternet-installsd-XXXXX)
 olinux_mountpoint="${tmp_dir}/olinux_mountpoint"
@@ -613,15 +681,16 @@ trap cleaning_exit EXIT
 trap cleaning_exit ERR
 trap cleaning_ctrlc INT
 
-while getopts "f:s:c:e2dlh" opt; do
+while getopts "f:s:c:y:e2ldh" opt; do
   case $opt in
     f) opt_imgpath=$OPTARG ;;
-    c) opt_md5path=$OPTARG ;;
     s) opt_sdcardpath=$OPTARG ;;
+    c) opt_md5path=$OPTARG ;;
+    y) opt_hypercubepath=$OPTARG ;;
     e) opt_encryptedfs=true ;;
     2) opt_lime2=true ;;
-    d) opt_debug=true ;;
     l) opt_findcubes=true ;;
+    d) opt_debug=true ;;
     h) exit_usage ;;
     \?) exit_usage ;;
   esac
@@ -654,6 +723,7 @@ check_bins
 
 img_path=$opt_imgpath
 md5_path=$opt_md5path
+hypercube_path=$opt_hypercubepath
 
 if [ -z "${img_path}" ]; then
   info "Downloading Debian/YunoHost image (HTTPS)"
@@ -685,6 +755,9 @@ else
   install_clear
 fi
 
-info "Done"
+if [ ! -z "${hypercube_path}" ]; then
+  info "Copying HyperCube file"
+  copy_hypercube
+fi
 
-exit_normal
+info "Done"
