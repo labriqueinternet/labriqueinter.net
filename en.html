@@ -43,8 +43,8 @@
               <strong>Clean your internet access:</strong>
               <ul>
                 <li><span>You simply connect the Cube to your Internet Service Provider (ISP) box</span>... and that's it ;</li>
-                <li><span>It will start a second Wifi network</span>, which you can use to access the internet;</li>
-                <li>By using this Wifi rather than the one from your ISP, <span>it won't be able to spy, filter or restrict</span> your internet connection;</li>
+                <li><span>It will start a second wifi network</span>, which you can use to access the internet;</li>
+                <li>By using this wifi rather than the one from your ISP, <span>it won't be able to spy, filter or restrict</span> your internet connection;</li>
                 <li>Furthermore, <span>your computers will automatically gain native IPv6 access</span>, without the need to configure anything;</li>
                 <li>If you decide to switch ISP, <span>you can just unplug and replug the Cube from one box to the other</span> and you won't need to reconfigure anything;</li>
                 <li>You now have a trusted internet connection, without filtering and respectful of Net Neutrality, <span>regardless of where you connect your box</span>, it even works using 3G/4G.</li>
@@ -65,11 +65,11 @@
             <li>
               <strong>Bonus:</strong>
               <ul>
-                <li>with a maximum consumption of only 2W with the Wifi activated, the Cube can be powered <span>via a battery or a small solar Panel</span> (a 12€ battery cell can last 13h);</li>
+                <li>with a maximum consumption of only 2W with the wifi activated, the Cube can be powered <span>via a battery or a small solar Panel</span> (a 12€ battery cell can last 13h);</li>
                 <li>the box is <span>open-hardware and all the software included is free software</span>;</li>
                 <li>the Internet Cube can also allow you to <span>share files easily</span> during an event (this is what we call a <em>PirateBox</em>) ;</li>
                 <li>you can also use it <span>to provide internet access at a public event</span>, when using someone elses connection to free it's owner from liabilities.</li>
-                <li>PS: you can use the same Cube <span>to clean your internet access with its Wifi hotspot and host your internet services</span>.</li>
+                <li>PS: you can use the same Cube <span>to clean your internet access with its wifi hotspot and host your internet services</span>.</li>
               </ul>
             </li>
           </ol>
@@ -85,7 +85,7 @@
       <p>A VPN is used to <a href="https://en.wikipedia.org/wiki/Virtual_private_network">connect one computer to another</a>, in a secure way. 
       No other intermediary on the internet can read the content of the communications transiting through. For the Cube to work, it needs to 
       be configured to access a VPN, that will create a tunnel to another computer on the internet. By connecting yourself to the 
-      Cube Wifi, you can surf the internet, through its encrypted tunnel. This way your commercial 
+      Cube wifi, you can surf the internet, through its encrypted tunnel. This way your commercial 
       <acronym title="Internet Service Provider">ISP</acronym> can't spy, limit or filter your connection. The same mechanism allows the Cube to act as a portable server.</p>
 
       <p>Suppressing oversight from the ISP and online services providers:</p>
@@ -187,7 +187,7 @@
         <li>Sector adaptor (<a href="https://www.olimex.com/wiki/PWRJACK">power jack</a> 5V DC) for the board (a simple mini-USB cable is enough to power the board, but the adapter is useful to plug a self-powered hard drive): <a href="https://www.olimex.com/Products/Power/SY0605E/">SY0605E</a></li>
         <li>Wifi antenna (not open-hardware)
           <ul>
-            <li><a href="http://www.fsf.org/news/ryf-certification-thinkpenguin-usb-with-atheros-chip">Free Software</a> version (limited to 7 simultaneous connections, <em>multissid</em> up to 2 AP): <a href="http://fr.aliexpress.com/item/Atheros-AR9271-Chip-150Mbps-Mini-USB-Wifi-Adapter-with-5dBi-Antenna/32344771975.html">AR9271</a> (<a href="http://www.ebay.fr/itm/Mini-USB-Wifi-Adapter-150Mbps-Atheros-AR9271-Chip-with-5dBi-wifi-Antenna-C1846-/111719135679?pt=LH_DefaultDomain_0&amp;hash=item1a02fab9bf">another link</a>)</li>
+            <li><a href="http://www.fsf.org/news/ryf-certification-thinkpenguin-usb-with-atheros-chip">Free Software</a> version (limited to 7 simultaneous connections, <em>multissid</em> up to 2 AP): <a href="https://www.olimex.com/Products/USB-Modules/MOD-WIFI-AR9271-ANT/">MOD-WIFI-AR9271-ANT</a></li>
             <li><a href="https://packages.debian.org/jessie/firmware-ralink">Non Free Software</a> version (<em>multissid</em> up to 8 AP) : <a href="https://www.olimex.com/Products/USB-Modules/MOD-WIFI-R5370-ANT/">MOD-WIFI-R5370-ANT</a></li>
           </ul>
         <li>Micro-SD card that is used as the internal hard drive: <a hreflang="fr-FR" href="http://www.amazon.fr/Transcend-microSDHC-adaptateur-TS32GUSDU1E-Emballage/dp/B00CES44EO">Transcend Premium 300x Class 10</a> (16 Go is enough)</li>
@@ -210,7 +210,7 @@
         <li>A <a href="stuff/internetcube-poster-a3.png">beautiful poster</a> (<a href="stuff/internetcube-poster-a3.svg">SVG</a>) to stick on the walls (A3 format)</li>
         <li><a href="stuff/internetcube-logo.svg">Vectorial version (SVG)</a> of the official logo</li>
         <li><a href="stuff/internetcube-schema.svg">Vectorial version (SVG)</a> of the BEFORE/AFTER schematic</li>
-        <li><a hreflang="fr-FR" href="pdf/labriqueinternet_schemas.pdf">Other schematics (fr)</a> about the potential uses</li>
+        <li><a hreflang="fr-FR" href="stuff/labriqueinternet-projet.pdf">Other schematics (fr)</a> (<a hreflang="fr-FR" href="stuff/labriqueinternet-projet.svg">SVG</a>) about the potential uses</li>
       </ul>
     </section>
 
@@ -220,13 +220,13 @@
       <div class="text">
         <p>An extension to the cube is <a href="https://github.com/labriqueinternet/torclient_ynh">now available</a> (requires Wifi Hotspot) in order to offer internet access via <a href="https://www.torproject.org">Tor</a>.</p>
 
-        <p>The goal is to provide two Wifi networks: one with the VPN access and another one with the Tor access (and even a third for a PirateBox). It is distributed as a simple application for YunoHost. Activating this functionality is simple as enabling it in the YunoHost web interface.</p>
+        <p>The goal is to provide two wifi networks: one with the VPN access and another one with the Tor access (and even a third for a PirateBox). It is distributed as a simple application for YunoHost. Activating this functionality is simple as enabling it in the YunoHost web interface.</p>
 
         <div class="pictures">
           <a href="img/tor.png"><img src="img/tor_thumb.png" alt="Tor" /></a>
         </div>
 
-        <p>Then, every request to the internet from the devices connected to the Wifi are anonymised using the Tor network. However, to ensure real anonymity (political dissident, journalist, etc...) and prevent your browser from leaking informations about your identity, it is always recommended to directly use the <a href="https://www.torproject.org/download/download-easy.html">Tor Bundle</a> (only for the web and on your own computer). Furthermore, in accordance to the restrictions imposed by Tor, your internet connection is not neutral (limited to TCP and UDP for DNS requests).</p>
+        <p>Then, every request to the internet from the devices connected to the wifi are anonymised using the Tor network. However, to ensure real anonymity (political dissident, journalist, etc...) and prevent your browser from leaking informations about your identity, it is always recommended to directly use the <a href="https://www.torproject.org/download/download-easy.html">Tor Bundle</a> (only for the web and on your own computer). Furthermore, in accordance to the restrictions imposed by Tor, your internet connection is not neutral (limited to TCP and UDP for DNS requests).</p>
       </div>
     </section>
 
@@ -247,8 +247,6 @@
   <footer>
     <div class="logos">
       <a href="http://ffdn.org/en"><img alt="Fédération French Data Network" src="img/ffdn.png" /></a>
-      <a hreflang="fr-FR" href="http://ldn-fai.net"><img alt="Lorraine Data Network" src="img/ldn.png" /></a>
-      <a hreflang="fr-FR" href="http://neutrinet.be"><img alt="Neutrinet" src="img/neutrinet.png" /></a>
       <a href="https://yunohost.org/#/index_en"><img alt="YunoHost" src="img/yunohost.png" /></a>
     </div>
   </footer>
