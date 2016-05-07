@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-04 14:54+0200\n"
-"PO-Revision-Date: 2016-05-04 15:08+0200\n"
+"POT-Creation-Date: 2016-05-07 16:32+0200\n"
+"PO-Revision-Date: 2016-05-07 16:35+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -38,7 +38,7 @@ msgstr "À propos de vous"
 msgid "VPN"
 msgstr "VPN"
 
-#: /dev/fd/63:69 /dev/fd/63:1954
+#: /dev/fd/63:69 /dev/fd/63:1980
 msgid "Installation"
 msgstr "Installation"
 
@@ -231,7 +231,7 @@ msgstr "Authentification"
 msgid "Server CA"
 msgstr "CA du serveur"
 
-#: /dev/fd/63:230 /dev/fd/63:260 /dev/fd/63:272 /dev/fd/63:309 /dev/fd/63:1469
+#: /dev/fd/63:230 /dev/fd/63:260 /dev/fd/63:272 /dev/fd/63:309 /dev/fd/63:1495
 msgid "Edition mode"
 msgstr "Mode édition"
 
@@ -492,20 +492,21 @@ msgstr ""
 "Débranchez la prise électrique de votre Brique Internet, si elle est allumée"
 
 #: /dev/fd/63:637
-msgid "Plug your USB stick (1) to your Internet Cube"
-msgstr "Branchez votre clé USB (1) à votre Brique Internet"
+msgid "Plug your USB stick (1) and your wifi dongle (2) to your Internet Cube"
+msgstr ""
+"Branchez votre clé USB (1) et votre clé Wifi (2) à votre Brique Internet"
 
 #: /dev/fd/63:638
-msgid "Then connect the ethernet cable (2), then the power cable (3)"
-msgstr "Puis connectez le câble ethernet (2), puis le câble d'alimentation (3)"
+msgid "Then connect the ethernet cable (3), then the power cable (4)"
+msgstr "Puis connectez le câble ethernet (3), puis le câble d'alimentation (4)"
 
 #: /dev/fd/63:639
 msgid ""
-"Finally, plug the ethernet cable to your router, and the power cable into an "
-"outlet"
+"Finally, plug the ethernet cable to your router, then the power cable into "
+"an outlet"
 msgstr ""
-"Enfin, branchez le câble ethernet à votre box, et le câble d'alimentation à "
-"une prise électrique"
+"Enfin, branchez le câble ethernet à votre box internet, puis le câble "
+"d'alimentation à une prise électrique"
 
 #: /dev/fd/63:646
 msgid "Step 2: Installation"
@@ -543,10 +544,11 @@ msgstr "Insérez votre carte micro-SD dans votre Brique Internet"
 
 #: /dev/fd/63:665
 msgid ""
-"Connect the ethernet cable to your router and the power cable to an outlet"
+"Connect the ethernet cable and the wifi dongle to your router, then the "
+"power cable to an outlet"
 msgstr ""
-"Connectez le câble ethernet à votre box et le câble d'alimentation à une "
-"prise électrique"
+"Connectez le câble ethernet et la clé wifi à votre box internet, puis le "
+"câble d'alimentation à une prise électrique"
 
 #: /dev/fd/63:666
 msgid ""
@@ -1006,170 +1008,190 @@ msgstr "Précédent"
 msgid "Next"
 msgstr "Suivant"
 
-#: /dev/fd/63:851 /dev/fd/63:1950
+#: /dev/fd/63:851 /dev/fd/63:1976
 msgid "Internet Cube"
 msgstr "La Brique Internet"
 
-#: /dev/fd/63:1064 /dev/fd/63:1206
+#: /dev/fd/63:1064 /dev/fd/63:1231
 msgid "ERROR: Invalid character found when preparing the download link."
 msgstr ""
 "ERREUR : Caractère invalide détecté en préparant le lien de téléchargement."
 
-#: /dev/fd/63:1330
+#: /dev/fd/63:1356
 msgid "Optional Field"
 msgstr "Champ optionnel"
 
-#: /dev/fd/63:1446
+#: /dev/fd/63:1472
 msgid "File selection mode"
 msgstr "Mode sélection de fichiers"
 
-#: /dev/fd/63:1510 /dev/fd/63:1761
+#: /dev/fd/63:1536 /dev/fd/63:1787
 msgid "Cannot read this file"
 msgstr "Impossible de lire ce fichier"
 
-#: /dev/fd/63:1569 /dev/fd/63:1747
+#: /dev/fd/63:1595 /dev/fd/63:1773
 msgid "Invalid file (syntax error):"
 msgstr "Fichier invalide (erreur de syntaxe) :"
 
-#: /dev/fd/63:1569
+#: /dev/fd/63:1595
 msgid "are you sure that this is a .cube file?"
 msgstr "êtes-vous sûr qu'il s'agit bien d'un fichier .cube ?"
 
-#: /dev/fd/63:1573 /dev/fd/63:1751
+#: /dev/fd/63:1599 /dev/fd/63:1777
 msgid "Invalid file (content error):"
 msgstr "Fichier invalide (erreur de contenu) :"
 
-#: /dev/fd/63:1573
+#: /dev/fd/63:1599
 msgid "are you sure that this is your .cube file?"
 msgstr "êtes-vous bien sûr qu'il s'agit de votre fichier .cube ?"
 
-#: /dev/fd/63:1618
+#: /dev/fd/63:1644
 msgid "Checking the avaibility of this domain..."
 msgstr "Vérification de la disponibilité de ce domaine..."
 
-#: /dev/fd/63:1632
+#: /dev/fd/63:1658
 msgid "This domain is not available"
 msgstr "Ce domaine n'est pas disponible"
 
-#: /dev/fd/63:1636
+#: /dev/fd/63:1662
 msgid "Cannot check the domain availability (does not work offline)"
 msgstr ""
 "Impossible de vérifier la disponibilité de ce domaine (ne fonctionne pas "
 "hors-ligne)"
 
-#: /dev/fd/63:1646
+#: /dev/fd/63:1672
 msgid "This domain is available"
 msgstr "Ce domaine est disponible"
 
-#: /dev/fd/63:1747 /dev/fd/63:1751
+#: /dev/fd/63:1773 /dev/fd/63:1777
 msgid "are you sure that this is an HyperCube file?"
 msgstr "êtes-vous bien sûr qu'il s'agit de votre fichier HyperCube ?"
 
-#: /dev/fd/63:1868
+#: /dev/fd/63:1894
 msgid "- Wifi:"
 msgstr "- Wifi :"
 
-#: /dev/fd/63:1873
+#: /dev/fd/63:1899
 msgid "- Address:"
 msgstr "- Adresse :"
 
-#: /dev/fd/63:1881
+#: /dev/fd/63:1907
 msgid "- Password:"
 msgstr "- Mot de passe :"
 
-#: /dev/fd/63:1893
+#: /dev/fd/63:1919
 msgid "YES"
 msgstr "OUI"
 
-#: /dev/fd/63:1895
+#: /dev/fd/63:1921
 msgid "NO"
 msgstr "NON"
 
-#: /dev/fd/63:1998
+#: /dev/fd/63:2024
 msgid "internetcube_installguide"
 msgstr "labriqueinternet_guideinstallation"
 
-#: /dev/fd/63:2210
+#: /dev/fd/63:2236
 msgid ""
 "Loading an existing HyperCube file will replace all values currently set."
 msgstr ""
 "Charger un fichier HyperCube existant va remplacer toutes les valeurs "
 "actuellement renseignées."
 
-#: /dev/fd/63:2210
+#: /dev/fd/63:2236
 msgid "Are you sure?"
 msgstr "Êtes-vous sûr ?"
 
-#: /dev/fd/63:2284
+#: /dev/fd/63:2310
 msgid "This field is mandatory"
 msgstr "Ce champ est obligatoire"
 
-#: /dev/fd/63:2305
+#: /dev/fd/63:2331
 msgid "This IP format looks bad"
 msgstr "Le format de cette IP semble incorrect"
 
-#: /dev/fd/63:2312
+#: /dev/fd/63:2338
 msgid "This IPv4 format looks bad"
 msgstr "Le format de cette IPv4 semble incorrect"
 
-#: /dev/fd/63:2319
+#: /dev/fd/63:2345
 msgid "This IPv6 format looks bad"
 msgstr "Le format de cette IPv6 semble incorrect"
 
-#: /dev/fd/63:2346
+#: /dev/fd/63:2372
 msgid "Must be the same than the previous input"
 msgstr "Devrait avoir la même valeur que le champ précédent"
 
-#: /dev/fd/63:2406
+#: /dev/fd/63:2432
 msgid "No .cube file selected"
 msgstr "Aucun fichier .cube sélectionné"
 
-#: /dev/fd/63:2432 /dev/fd/63:2437 /dev/fd/63:2456 /dev/fd/63:2465
+#: /dev/fd/63:2458 /dev/fd/63:2463 /dev/fd/63:2482 /dev/fd/63:2491
 msgid "Must contain a line with <LINE>"
 msgstr "Devrait contenir une ligne avec <LINE>"
 
-#: /dev/fd/63:2482
+#: /dev/fd/63:2508
 msgid "Must be only composed of digits"
 msgstr "Devrait être composé uniquement de chiffres"
 
-#: /dev/fd/63:2537
+#: /dev/fd/63:2563
 msgid "This IPv4 prefix looks bad (required format is x.x.x or x.x.x.0)"
 msgstr ""
 "Le format de ce préfixe IPv4 semble incorrect (requis : x.x.x ou x.x.x.0)"
 
-#: /dev/fd/63:2550
+#: /dev/fd/63:2576
 msgid "This prefix must be part of an IPv4 private range"
 msgstr "Ce préfixe semble correspondre à un réseau IPv4 privé"
 
-#: /dev/fd/63:2558
+#: /dev/fd/63:2584
 msgid "Only lowercase letters and digits are allowed"
 msgstr "Seules les lettres minuscules et les chiffres sont autorisés"
 
-#: /dev/fd/63:2562
+#: /dev/fd/63:2588
 msgid "Admin is not an authorized value"
 msgstr "Admin n'est pas une valeur autorisée"
 
-#: /dev/fd/63:2568
+#: /dev/fd/63:2594
 msgid "Must be greater than 4 characters"
 msgstr "Devrait être plus grand que 4 caractères"
 
-#: /dev/fd/63:2573
+#: /dev/fd/63:2599
 msgid "Only standard characters are allowed"
 msgstr "Seuls les caractères standards sont autorisés"
 
-#: /dev/fd/63:2578
+#: /dev/fd/63:2604
 msgid "Must from 8 to 63 characters (WPA2 passphrase)"
 msgstr "Devrait avoir entre 8 et 63 caractères (passphrase WPA2)"
 
-#: /dev/fd/63:2583
+#: /dev/fd/63:2609
 msgid "Only lowercase letters, digits, dots and dashes are allowed"
 msgstr ""
 "Seules les lettre minuscules, les chiffres, les points et les tirets sont "
 "autorisés"
 
-#: /dev/fd/63:2587
+#: /dev/fd/63:2613
 msgid "Sorry but this domain is not available"
 msgstr "Désolé mais ce domaine n'est pas disponible"
+
+#~ msgid "Plug your USB stick (1) to your Internet Cube"
+#~ msgstr "Branchez votre clé USB (1) à votre Brique Internet"
+
+#~ msgid "Then connect the ethernet cable (2), then the power cable (3)"
+#~ msgstr ""
+#~ "Puis connectez le câble ethernet (2), puis le câble d'alimentation (3)"
+
+#~ msgid ""
+#~ "Finally, plug the ethernet cable to your router, and the power cable into "
+#~ "an outlet"
+#~ msgstr ""
+#~ "Enfin, branchez le câble ethernet à votre box, et le câble d'alimentation "
+#~ "à une prise électrique"
+
+#~ msgid ""
+#~ "Connect the ethernet cable to your router and the power cable to an outlet"
+#~ msgstr ""
+#~ "Connectez le câble ethernet à votre box et le câble d'alimentation à une "
+#~ "prise électrique"
 
 #~ msgid ""
 #~ "You can already use it, using the Roundcube Webmail app, available "

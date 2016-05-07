@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-04 14:54+0200\n"
+"POT-Creation-Date: 2016-05-07 16:32+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,7 +37,7 @@ msgstr ""
 msgid "VPN"
 msgstr ""
 
-#: /dev/fd/63:69 /dev/fd/63:1954
+#: /dev/fd/63:69 /dev/fd/63:1980
 msgid "Installation"
 msgstr ""
 
@@ -205,7 +205,7 @@ msgstr ""
 msgid "Server CA"
 msgstr ""
 
-#: /dev/fd/63:230 /dev/fd/63:260 /dev/fd/63:272 /dev/fd/63:309 /dev/fd/63:1469
+#: /dev/fd/63:230 /dev/fd/63:260 /dev/fd/63:272 /dev/fd/63:309 /dev/fd/63:1495
 msgid "Edition mode"
 msgstr ""
 
@@ -446,17 +446,17 @@ msgid "Unplug your Internet Cube from the outlet if powered on"
 msgstr ""
 
 #: /dev/fd/63:637
-msgid "Plug your USB stick (1) to your Internet Cube"
+msgid "Plug your USB stick (1) and your wifi dongle (2) to your Internet Cube"
 msgstr ""
 
 #: /dev/fd/63:638
-msgid "Then connect the ethernet cable (2), then the power cable (3)"
+msgid "Then connect the ethernet cable (3), then the power cable (4)"
 msgstr ""
 
 #: /dev/fd/63:639
 msgid ""
-"Finally, plug the ethernet cable to your router, and the power cable into an "
-"outlet"
+"Finally, plug the ethernet cable to your router, then the power cable into "
+"an outlet"
 msgstr ""
 
 #: /dev/fd/63:646
@@ -490,7 +490,8 @@ msgstr ""
 
 #: /dev/fd/63:665
 msgid ""
-"Connect the ethernet cable to your router and the power cable to an outlet"
+"Connect the ethernet cable and the wifi dongle to your router, then the "
+"power cable to an outlet"
 msgstr ""
 
 #: /dev/fd/63:666
@@ -874,159 +875,159 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: /dev/fd/63:851 /dev/fd/63:1950
+#: /dev/fd/63:851 /dev/fd/63:1976
 msgid "Internet Cube"
 msgstr ""
 
-#: /dev/fd/63:1064 /dev/fd/63:1206
+#: /dev/fd/63:1064 /dev/fd/63:1231
 msgid "ERROR: Invalid character found when preparing the download link."
 msgstr ""
 
-#: /dev/fd/63:1330
+#: /dev/fd/63:1356
 msgid "Optional Field"
 msgstr ""
 
-#: /dev/fd/63:1446
+#: /dev/fd/63:1472
 msgid "File selection mode"
 msgstr ""
 
-#: /dev/fd/63:1510 /dev/fd/63:1761
+#: /dev/fd/63:1536 /dev/fd/63:1787
 msgid "Cannot read this file"
 msgstr ""
 
-#: /dev/fd/63:1569 /dev/fd/63:1747
+#: /dev/fd/63:1595 /dev/fd/63:1773
 msgid "Invalid file (syntax error):"
 msgstr ""
 
-#: /dev/fd/63:1569
+#: /dev/fd/63:1595
 msgid "are you sure that this is a .cube file?"
 msgstr ""
 
-#: /dev/fd/63:1573 /dev/fd/63:1751
+#: /dev/fd/63:1599 /dev/fd/63:1777
 msgid "Invalid file (content error):"
 msgstr ""
 
-#: /dev/fd/63:1573
+#: /dev/fd/63:1599
 msgid "are you sure that this is your .cube file?"
 msgstr ""
 
-#: /dev/fd/63:1618
+#: /dev/fd/63:1644
 msgid "Checking the avaibility of this domain..."
 msgstr ""
 
-#: /dev/fd/63:1632
+#: /dev/fd/63:1658
 msgid "This domain is not available"
 msgstr ""
 
-#: /dev/fd/63:1636
+#: /dev/fd/63:1662
 msgid "Cannot check the domain availability (does not work offline)"
 msgstr ""
 
-#: /dev/fd/63:1646
+#: /dev/fd/63:1672
 msgid "This domain is available"
 msgstr ""
 
-#: /dev/fd/63:1747 /dev/fd/63:1751
+#: /dev/fd/63:1773 /dev/fd/63:1777
 msgid "are you sure that this is an HyperCube file?"
 msgstr ""
 
-#: /dev/fd/63:1868
+#: /dev/fd/63:1894
 msgid "- Wifi:"
 msgstr ""
 
-#: /dev/fd/63:1873
+#: /dev/fd/63:1899
 msgid "- Address:"
 msgstr ""
 
-#: /dev/fd/63:1881
+#: /dev/fd/63:1907
 msgid "- Password:"
 msgstr ""
 
-#: /dev/fd/63:1893
+#: /dev/fd/63:1919
 msgid "YES"
 msgstr ""
 
-#: /dev/fd/63:1895
+#: /dev/fd/63:1921
 msgid "NO"
 msgstr ""
 
-#: /dev/fd/63:1998
+#: /dev/fd/63:2024
 msgid "internetcube_installguide"
 msgstr ""
 
-#: /dev/fd/63:2210
+#: /dev/fd/63:2236
 msgid ""
 "Loading an existing HyperCube file will replace all values currently set."
 msgstr ""
 
-#: /dev/fd/63:2210
+#: /dev/fd/63:2236
 msgid "Are you sure?"
 msgstr ""
 
-#: /dev/fd/63:2284
+#: /dev/fd/63:2310
 msgid "This field is mandatory"
 msgstr ""
 
-#: /dev/fd/63:2305
+#: /dev/fd/63:2331
 msgid "This IP format looks bad"
 msgstr ""
 
-#: /dev/fd/63:2312
+#: /dev/fd/63:2338
 msgid "This IPv4 format looks bad"
 msgstr ""
 
-#: /dev/fd/63:2319
+#: /dev/fd/63:2345
 msgid "This IPv6 format looks bad"
 msgstr ""
 
-#: /dev/fd/63:2346
+#: /dev/fd/63:2372
 msgid "Must be the same than the previous input"
 msgstr ""
 
-#: /dev/fd/63:2406
+#: /dev/fd/63:2432
 msgid "No .cube file selected"
 msgstr ""
 
-#: /dev/fd/63:2432 /dev/fd/63:2437 /dev/fd/63:2456 /dev/fd/63:2465
+#: /dev/fd/63:2458 /dev/fd/63:2463 /dev/fd/63:2482 /dev/fd/63:2491
 msgid "Must contain a line with <LINE>"
 msgstr ""
 
-#: /dev/fd/63:2482
+#: /dev/fd/63:2508
 msgid "Must be only composed of digits"
 msgstr ""
 
-#: /dev/fd/63:2537
+#: /dev/fd/63:2563
 msgid "This IPv4 prefix looks bad (required format is x.x.x or x.x.x.0)"
 msgstr ""
 
-#: /dev/fd/63:2550
+#: /dev/fd/63:2576
 msgid "This prefix must be part of an IPv4 private range"
 msgstr ""
 
-#: /dev/fd/63:2558
+#: /dev/fd/63:2584
 msgid "Only lowercase letters and digits are allowed"
 msgstr ""
 
-#: /dev/fd/63:2562
+#: /dev/fd/63:2588
 msgid "Admin is not an authorized value"
 msgstr ""
 
-#: /dev/fd/63:2568
+#: /dev/fd/63:2594
 msgid "Must be greater than 4 characters"
 msgstr ""
 
-#: /dev/fd/63:2573
+#: /dev/fd/63:2599
 msgid "Only standard characters are allowed"
 msgstr ""
 
-#: /dev/fd/63:2578
+#: /dev/fd/63:2604
 msgid "Must from 8 to 63 characters (WPA2 passphrase)"
 msgstr ""
 
-#: /dev/fd/63:2583
+#: /dev/fd/63:2609
 msgid "Only lowercase letters, digits, dots and dashes are allowed"
 msgstr ""
 
-#: /dev/fd/63:2587
+#: /dev/fd/63:2613
 msgid "Sorry but this domain is not available"
 msgstr ""
