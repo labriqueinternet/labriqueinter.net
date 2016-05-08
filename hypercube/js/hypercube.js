@@ -38,8 +38,6 @@ var cube = {
       if(txt) {
         txt = txt.replace(/\n/g, '|');
         txt = txt.replace(/^.*\|(-.*-\|.*\|-.*-)\|.*$/, '$1');
-      } else {
-        txt = '';
       }
     
       return txt;
@@ -48,8 +46,6 @@ var cube = {
     decompressCertificate: function(txt) {
       if(txt) {
         txt = txt.replace(/\|/g, "\n");
-      } else {
-        txt = '';
       }
 
       return txt;
@@ -65,13 +61,13 @@ var cube = {
     $('#vpn_server_port').val(json['server_port']);
     $('#vpn_dns0').val(json['dns0']);
     $('#vpn_dns1').val(json['dns1']);
-    $('#vpn_ip6_net').val(json['ip6_net'] ? json['ip6_net'] : '');
-    $('#vpn_ip4_addr').val(json['ip4_addr'] ? json['ip4_addr'] : '');
+    $('#vpn_ip6_net').val(json['ip6_net']);
+    $('#vpn_ip4_addr').val(json['ip4_addr']);
     $('#vpn_login_user').val(json['login_user']);
     $('#vpn_login_passphrase').val(json['login_passphrase']);
     $('#vpn_login_passphrase_repeat').val(json['login_passphrase']);
-    $('#vpn_openvpn_rm').val(json['openvpn_rm'] ? json['openvpn_rm'].join("\n") : '');
-    $('#vpn_openvpn_add').val(json['openvpn_add'] ? json['openvpn_add'].join("\n") : '');
+    $('#vpn_openvpn_rm').val($.isArray(json['openvpn_rm']) ? json['openvpn_rm'].join("\n") : '');
+    $('#vpn_openvpn_add').val($.isArray(json['openvpn_add']) ? json['openvpn_add'].join("\n") : '');
 
     if(!$('#vpn_server_proto_' + json['server_proto']).is(':checked')) {
       $('#vpn_server_proto_' + json['server_proto']).click();
@@ -1469,29 +1465,32 @@ var validation = {
       var nbWarns = 0;
 
       $.each(fields, function(i, id) {
+        var ip = $('#' + id).val().trim();
         var isWarn = false;
 
-        if(!$('#' + id).val().trim()) {
+        ip = ip.replace(/\/[0-9]+$/, '');
+
+        if(!ip) {
           return;
         }
 
         switch(ipVersion) {
           case 64:
-            if(!ipaddr.isValid($('#' + id).val().trim())) {
+            if(!ipaddr.isValid(ip)) {
               validation.warnings.add(id, _("This IP format looks bad"));
               isWarn = true;
             }
           break;
 
           case 4:
-            if(!ipaddr.IPv4.isValid($('#' + id).val().trim())) {
+            if(!ipaddr.IPv4.isValid(ip)) {
               validation.warnings.add(id, _("This IPv4 format looks bad"));
               isWarn = true;
             }
           break;
 
           case 6:
-            if(!ipaddr.IPv6.isValid($('#' + id).val().trim())) {
+            if(!ipaddr.IPv6.isValid(ip)) {
               validation.warnings.add(id, _("This IPv6 format looks bad"));
               isWarn = true;
             }
@@ -1499,7 +1498,7 @@ var validation = {
         }
 
         if(!isWarn) {
-          $('#' + id).val(ipaddr.parse($('#' + id).val().trim()).toString());
+          $('#' + id).val(ipaddr.parse(ip).toString());
         } else {
           nbWarns++;
         }
