@@ -324,7 +324,8 @@ var hypercube = {
       },
 
       unix: {
-        root_password: $('#unix_root_password').val().trim()
+        root_password: $('#unix_root_password').val().trim(),
+        lang: i18n.lang
       }
     };
 
@@ -947,11 +948,13 @@ var controller = {
       $('.custom-install').hide();
       $('#ig-install').hide();
       $('#ig-postinstall').show();
+      $('#removeusb').show();
 
     } else {
       $('.custom-install').show();
       $('#ig-install').show();
       $('#ig-postinstall').hide();
+      $('#removeusb').hide();
     }
   },
 
@@ -1286,7 +1289,19 @@ var navigation = {
   
     } else if(question == 'question-dotcube') {
       $('#vpn-choice').data('auto', $(this).data('answer'));
-      navigation.goToStep('vpn');
+
+      if($(this).data('answer') == 'yes') {
+        navigation.goToStep('vpn');
+      } else {
+        view.showQuestion('configvpn');
+      }
+
+    } else if(question == 'question-configvpn') {
+      if($(this).data('answer') == 'yes') {
+        navigation.goToStep('vpn');
+      } else {
+        navigation.goToStep('ffdn');
+      }
     }
   },
 
@@ -1726,6 +1741,10 @@ var validation = {
           nbWarns++;
         }
       }
+    }
+
+    if($('#ynh_user').val().trim() && !$('#ynh_user_name').val().trim().match(/ /)) {
+      $('#ynh_user_name').val($('#ynh_user_name').val().trim() + ' ' + $('#ynh_user_name').val().trim());
     }
 
     if($('#ynh_user').val().trim()) {

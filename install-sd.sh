@@ -607,7 +607,7 @@ function install_encrypted() {
   fi
 
   debug "Setuping loop device ${loopdev} with ${img_path}"
-  sudo losetup -o 1048576 "${loopdev}" "${img_path}"
+  sudo losetup -o 1048576 "${loopdev}" "${img_path}" &> /dev/null
 
   debug "Mounting ${loopdev} on ${files_path}"
   sudo mount "${loopdev}" "${files_path}"

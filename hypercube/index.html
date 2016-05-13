@@ -136,6 +136,15 @@
                     <li><a href="javascript:" data-answer="no">_("No")</a></li>
                   </ul>
                 </div>
+
+                <div id="question-configvpn" class="question">
+                  <span>_("Do not use a .cube file is a very bad idea... Are you an expert?")</span>
+    
+                  <ul class="nav nav-pills questions">
+                    <li><a href="javascript:" data-answer="yes">_("Yes")</a></li>
+                    <li><a href="javascript:" data-answer="no">_("No")</a></li>
+                  </ul>
+                </div>
               </div>
             </div>
   
@@ -663,12 +672,11 @@
                       <li>_("Unplug your Internet Cube if powered on")</li>
                       <li>_("Insert your micro-SD card within your Internet Cube")</li>
                       <li>_("Connect the ethernet cable and the wifi dongle to your router, then the power cable to an outlet")</li>
-                      <li class="unlockencryptedfs"><span>_("After some minutes, find the private IPv4 address of your Internet Cube, from your computer (connected via cable to your router), using:")</span>
+                      <li class="unlockencryptedfs"><span>_("After some seconds, on your computer with Debian or Ubuntu, find the YunoHost Admin address corresponding to your Cube, using the SD Card Installer this way:")</span>
                         <pre>% bash install-sd.sh -l</pre>
                       </li>
-                      <li class="unlockencryptedfs"><span>_("Unlock your Internet Cube hard disk thanks to a web browser, using the IPv4 you found in step 8 and the passphrase you chose earlier in step 3:")</span>
-                        <pre>https://my.cu.be.ip/</pre>
-                      </li>
+                      <li class="unlockencryptedfs">_("Unlock your Internet Cube hard disk thanks to a web browser, using the HTTPS address found in the previous step and the passphrase you chose earlier when you were following the SD Card Installer instructions.")</li>
+                      <li class="unlockencryptedfs">_("You will have to unlock your Cube a second time during the installation (you can see exactly when this happens using the section How to Debug The Installation? at the end of this guide).")</li>
                     </ol>
                   </div>
 
@@ -680,6 +688,8 @@
                     <div class="showpwd"><a href="javascript:">_("Show wifi password")</a> <div class="hiddenpwd"><div id="wifipwd"></div></div></div>
   
                     <p>_("Congratulations, you now have a clean Internet access!")</p>
+
+                    <p id="removeusb">_("You can remove the USB stick (1) from your Cube.")</p>
                   </div>
 
                   <div id="ig-dnsconfig">
@@ -815,9 +825,10 @@
                       <li>_("Open this HTTP address with your web browser.")</li>
                       <li>_("You probably will get a Not Found error: reload the page until you see the web page (may take a few minutes).")</li>
                       <li>_("Once you got the web page, stop reloading it.")</li>
-                      <li>_("Wait until you think the installation is finished or crashed.")</li>
+                      <li>_("Wait until you think the installation is finished or aborted.")</li>
                       <li>_("Save the HTML file with Ctrl+S.")</li>
                       <li>_("You can now provide it to someone able to help you, and find with her/him what is wrong.")</li>
+                      <li>_("Tip: You also can plug an USB stick to your Cube before powering it on, and retrieve all logs on the stick from the time when the installation is finished or aborted.")</li>
                     </ol>
                   </div>
 
