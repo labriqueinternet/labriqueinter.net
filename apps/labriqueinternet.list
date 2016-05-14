@@ -1,19 +1,19 @@
 {
     "vpnclient": {
         "branch": "master",
-        "revision": "e5ce4acb6a2b7995851f2c1616236651c24ccc4b",
+        "revision": "4eff9815f0a26e43cd9875e87a21c72d3207c79e",
         "state": "validated",
         "url": "https://github.com/labriqueinternet/vpnclient_ynh"
     },
     "hotspot": {
         "branch": "master",
-        "revision": "852d331df367ab950e63689b8d4fce2b5efe5838",
+        "revision": "0637cdf401e5439eab083b33b82944a3e889f242",
         "state": "validated",
         "url": "https://github.com/labriqueinternet/hotspot_ynh"
     },
     "piratebox": {
         "branch": "master",
-        "revision": "727bc55c23f4d8b6fb6127e827506eb4ac00e7a2",
+        "revision": "64fac219d9a27e1f4f443f9d4e3a2499bdc974b1",
         "state": "validated",
         "url": "https://github.com/labriqueinternet/piratebox_ynh"
     }
