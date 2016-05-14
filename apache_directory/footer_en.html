@@ -1,13 +1,9 @@
     </section>
 
-    <section id="documentation">
-      <h2><span>Doc</span>umentation</h2>
+    <section id="informations">
+      <h2><span>Info</span>rmations</h2>
 
-      <p>You are here because you want to set up an Internet Cube (<em>La Brique Internet</em>, in French) by yourself. If you are interested by a plug-n-play Cube, please contact a non-profit organization (<a href="http://internetcu.be/#get-an-internet-cube">see the map</a>).</p>
-
-      <p>An <a hreflang="fr-FR" href="https://yunohost.org/installation_brique_fr">Installation Guide (fr)</a> is available. All information about hardware, YunoHost apps and community channels can be found on the <a href="http://internetcu.be">official website</a>.</p>
-
-      <p>If you want information about the Debian image itselft, you can read the README of <a href="https://github.com/bleuchtang/sunxi-debian/blob/master/README.md">sunxi-debian</a> and <a href="https://github.com/labriqueinternet/build.labriqueinter.net/blob/master/README.md">build.labriqueinter.net</a>.</p>
+      <p>Informations about the way we build the Debian/YunoHost images are available at <a href="https://github.com/labriqueinternet/build.labriqueinter.net/blob/master/README.md">build.labriqueinter.net</a>. You can rebuild images by yourself if you want.</p>
     </section>
 
     <section id="guide">
@@ -51,14 +47,19 @@
 
       <pre>% sudo apt-get update &amp;&amp; sudo apt-get dist-upgrade</pre>
 
-      <p>You can now do the YunoHost <a href="https://yunohost.org/#/postinstall_en">post-installation</a>. Then, install <a href="https://github.com/labriqueinternet/vpnclient_ynh">VPN Client</a> and <a href="https://github.com/labriqueinternet/hotspot_ynh">Wifi Hotspot</a> on YunoHost.</p>
+      <p>You can now do the YunoHost <a href="https://yunohost.org/#/postinstall_en">post-installation</a>.
 
-      <p>Enjoy!</p>
+      <p>Then, add the list of apps dedicated to the Internet Cube to YunoHost:</p>
+
+      <pre>% yunohost app fetchlist -n labriqueinternet -u\
+  https://raw.githubusercontent.com/labriqueinternet/labriqueinter.net/master/apps/labriqueinternet.json</pre>
+
+      <p>From the YunoHost web administration, you can now install the <em>VPN Client</em> and <em>Wifi Hotspot</em> apps, then configure them.</p>
     </section>
   </main>
 
   <footer>
-    <a href="http://internetcu.be">Internet Cube</a>
+    <a href="https://internetcu.be">Internet Cube</a>
   </footer>
   <script type="text/javascript" src="../js/main.js"></script>
 </body>
