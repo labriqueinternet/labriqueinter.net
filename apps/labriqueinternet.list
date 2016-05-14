@@ -1,7 +1,7 @@
 {
     "vpnclient": {
         "branch": "master",
-        "revision": "c27a94463a09d9708f6b26ed7f7fc07f443c66b8",
+        "revision": "dd6ca03207b68f16f477e9671456650e963184ac",
         "state": "validated",
         "url": "https://github.com/labriqueinternet/vpnclient_ynh"
     },
@@ -13,7 +13,7 @@
     },
     "piratebox": {
         "branch": "master",
-        "revision": "13297a80e9258d29ca1f14fbe8e57f183b11296d",
+        "revision": "9a1cc633e33c81093a72d5894dca24829913d455",
         "state": "validated",
         "url": "https://github.com/labriqueinternet/piratebox_ynh"
     }
