@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-15 20:24+0200\n"
+"POT-Creation-Date: 2016-05-15 21:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -537,8 +537,15 @@ msgstr ""
 msgid "Congratulations, you now have a clean Internet access!"
 msgstr ""
 
-#: /dev/fd/63:687
+#: /dev/fd/63:685
 msgid "You can remove the USB stick (1) from your Cube."
+msgstr ""
+
+#: /dev/fd/63:687
+msgid ""
+"If you do not see your new wifi access point after several dozen minutes, "
+"you should ask someone for some help. You can also try to follow the How to "
+"Debug The Installation? section at the end of this guide."
 msgstr ""
 
 #: /dev/fd/63:691

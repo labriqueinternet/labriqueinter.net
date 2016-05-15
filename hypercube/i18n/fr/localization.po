@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-15 20:24+0200\n"
-"PO-Revision-Date: 2016-05-15 20:27+0200\n"
+"POT-Creation-Date: 2016-05-15 21:05+0200\n"
+"PO-Revision-Date: 2016-05-15 21:06+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -607,9 +607,20 @@ msgstr "Voir le mot de passe du Wifi"
 msgid "Congratulations, you now have a clean Internet access!"
 msgstr "Félicitations, vous avez désormais un accès propre à Internet !"
 
-#: /dev/fd/63:687
+#: /dev/fd/63:685
 msgid "You can remove the USB stick (1) from your Cube."
 msgstr "Vous pouvez débrancher la clé USB (1) de votre Brique."
+
+#: /dev/fd/63:687
+msgid ""
+"If you do not see your new wifi access point after several dozen minutes, "
+"you should ask someone for some help. You can also try to follow the How to "
+"Debug The Installation? section at the end of this guide."
+msgstr ""
+"Si vous ne voyez pas votre nouvel accès Wifi après quelques dizaines de "
+"minutes, vous devriez demander de l'aide à quelqu'un. Vous pouvez également "
+"essayer de suivre la procédure Comment déboguer l'installation ? à la fin de "
+"ce guide."
 
 #: /dev/fd/63:691
 msgid "Step 4: DNS Configuration"
@@ -1190,6 +1201,16 @@ msgstr ""
 #: /dev/fd/63:2641
 msgid "Sorry but this domain is not available"
 msgstr "Désolé mais ce domaine n'est pas disponible"
+
+#~ msgid ""
+#~ "If you do not see your new wifi access point after several dozen minutes, "
+#~ "you should ask someone for some help. You can try to follow the How to "
+#~ "Debug The Installation? section at the end of this guide."
+#~ msgstr ""
+#~ "Si vous ne voyez pas votre nouvel accès Wifi après quelques dizaines de "
+#~ "minutes, vous devriez demander de l'aide à quelqu'un. Vous pouvez "
+#~ "également suivre la procédure Comment déboguer l'installation ? à la fin "
+#~ "de ce guide."
 
 #~ msgid ""
 #~ "This service is a BETA TEST and is NOT WORKING with the current version "
