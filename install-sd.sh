@@ -309,7 +309,7 @@ function find_cubes() {
   done
 
   if [ "${knownhosts}" -ne "${#ips[@]}" ]; then
-    echo -n "Select an IP to add to your hosts file (just press Enter): "
+    echo -n "Select an IP to add to your hosts file (or just press Enter): "
     read addip
 
     if [ -z "${addip}" ]; then
