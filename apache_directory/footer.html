@@ -1,13 +1,9 @@
     </section>
 
-    <section id="documentation">
-      <h2><span>Doc</span>umentation</h2>
+    <section id="informations">
+      <h2><span>Info</span>rmations</h2>
 
-      <p>Vous êtes ici parce que vous voulez configurer vous-même une Brique Internet. Si vous voulez une Brique clé en main, merci de contacter un FAI associatif local (<a href="http://labriqueinter.net/#obtenir-une-brique">voir la carte</a>).</p>
-
-      <p>Un <a href="https://yunohost.org/installation_brique_fr">guide d'installation</a> détaillé est disponible. Vous trouverez toutes les informations concernant le matériel supporté et les apps YunoHost sur le <a href="http://labriqueinter.net">site officiel</a>.</p>
-
-      <p>Les informations à propos de l'image Debian sont disponibles dans les README de <a hreflang="en" href="https://github.com/bleuchtang/sunxi-debian/blob/master/README.md">sunxi-debian</a> et <a hreflang="en" href="https://github.com/labriqueinternet/build.labriqueinter.net/blob/master/README.md">build.labriqueinter.net</a>.</p>
+      <p>Les informations concernant la façon dont ont été construites les images Debian/YunoHost sont disponibles sur <a hreflang="en" href="https://github.com/labriqueinternet/build.labriqueinter.net/blob/master/README.md">build.labriqueinter.net</a>. Vous pouvez reconstruire les images vous-mêmes si vous le souhaitez.</p>
     </section>
 
     <section id="guide">
@@ -50,14 +46,19 @@
 
       <pre>% sudo apt-get update &amp;&amp; sudo apt-get dist-upgrade</pre>
 
-      <p>Vous pouvez maintenant faire la <a href="https://yunohost.org/#/postinstall_fr">post-installation</a>. Puis installer <a hreflang="en" href="https://github.com/labriqueinternet/vpnclient_ynh">VPN Client</a> et <a hreflang="en" href="https://github.com/labriqueinternet/hotspot_ynh">Wifi Hotspot</a> sur YunoHost.</p>
+      <p>Vous pouvez maintenant faire la <a href="https://yunohost.org/#/postinstall_fr">post-installation</a>.
 
-      <p>Yolo!</p>
+      <p>Ajoutez ensuite la liste des apps dédiées à la Brique Internet à YunoHost :</p>
+
+      <pre>% yunohost app fetchlist -n labriqueinternet -u\
+  https://raw.githubusercontent.com/labriqueinternet/labriqueinter.net/master/apps/labriqueinternet.json</pre>
+
+      <p>À partir de l'administration web de YunoHost, vous pouvez désormais installer les apps <em>VPN Client</em> et <em>Wifi Hotspot</em>, puis aller les configurer.
     </section>
   </main>
 
   <footer>
-    <a href="http://labriqueinter.net">La Brique Internet</a>
+    <a href="https://labriqueinter.net">La Brique Internet</a>
   </footer>
   <script type="text/javascript" src="../js/main.js"></script>
 </body>

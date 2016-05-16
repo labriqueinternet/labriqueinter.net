@@ -58,8 +58,8 @@ function show_usage() {
   echo -e "  \e[1m-c\e[0m \e[4mpath\e[0m" >&2
   echo -e "     MD5 checksums file (e.g. MD5SUMS)" >&2
   echo -e "     \e[2mDefault: Automatic download from ${url_base} if no -f, or no checksum checking\e[0m" >&2
-#  echo -e "  \e[1m-y\e[0m \e[4mpath\e[0m" >&2
-#  echo -e "     HyperCube file" >&2
+  echo -e "  \e[1m-y\e[0m \e[4mpath\e[0m" >&2
+  echo -e "     HyperCube file" >&2
   echo -e "  \e[1m-e\e[0m" >&2
   echo -e "     Install an encrypted file system" >&2
   echo -e "     \e[2mDefault: Clear file system\e[0m" >&2
@@ -309,7 +309,7 @@ function find_cubes() {
   done
 
   if [ "${knownhosts}" -ne "${#ips[@]}" ]; then
-    echo -n "Select an IP to add to your hosts file (just press Enter): "
+    echo -n "Select an IP to add to your hosts file (or just press Enter): "
     read addip
 
     if [ -z "${addip}" ]; then

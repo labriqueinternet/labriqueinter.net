@@ -406,3 +406,15 @@ code {
   border: 1px solid #000;
   text-shadow: 1px 1px #000;
 }
+
+#autoinstall {
+  padding: 10px;
+  background-color: #8d0000;
+  border: 2px solid #590000;
+  color: #fff;
+  border-radius: 5px;
+}
+
+#autoinstall a:hover {
+  color: #fff;
+}
