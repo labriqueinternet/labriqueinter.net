@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-15 21:05+0200\n"
+"POT-Creation-Date: 2016-05-16 16:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -866,10 +866,10 @@ msgstr ""
 
 #: /dev/fd/63:826
 msgid ""
-"If you powered on your Cube 4 hours (or more) ago, the HyperCube Debug "
-"interface is no longer available. You need before to unplug your Cube and "
-"start again to follow this guide, from step 1 to step 3 (assuming your Cube "
-"is not - or no longer - pre-installed)."
+"If you powered on your Cube 4 hours (or more) ago, or you have rebooted it "
+"since, the HyperCube Debug interface is no longer available. You need before "
+"to unplug your Cube and start again to follow this guide, from step 1 to "
+"step 3 (assuming your Cube is not - or no longer - pre-installed)."
 msgstr ""
 
 #: /dev/fd/63:827
