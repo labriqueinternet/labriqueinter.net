@@ -3,6 +3,7 @@
 ## English
 
 * https://projeteof.org/blog/an-internet-cube-yunohost-as-a-free-offline-embedded-information-system-for-openstreetmap-benin-action/
+* http://netcommons.eu/?q=content/meet-french-community-citizen-networks
 
 ## French
 
