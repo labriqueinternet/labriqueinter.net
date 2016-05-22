@@ -4,4 +4,5 @@
 
 * 2016-05-16
   - Installs YunoHost 2.4
+  - Uses Debian Stable kernel (3.16)
   - Supports HyperCube Service
