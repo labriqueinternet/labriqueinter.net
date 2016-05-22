@@ -1,0 +1,7 @@
+* 2016-05-21
+  - [HyperCube] Fixes bug with special chars in first/last name during installation
+  - [HyperCube] Improves error management system during installation
+
+* 2016-05-16
+  - Installs YunoHost 2.4
+  - Supports HyperCube Service
