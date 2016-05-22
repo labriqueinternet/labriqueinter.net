@@ -60,6 +60,9 @@ function show_usage() {
   echo -e "     \e[2mDefault: Automatic download from ${url_base} if no -f, or no checksum checking\e[0m" >&2
   echo -e "  \e[1m-y\e[0m \e[4mpath\e[0m" >&2
   echo -e "     HyperCube file" >&2
+  echo -e "  \e[1m-g\e[0m" >&2
+  echo -e "     Check Internet Cube img integrity using GPG signature" >&2
+  echo -e "     \e[2mDefault: GPG Check disabled\e[0m" >&2
   echo -e "  \e[1m-e\e[0m" >&2
   echo -e "     Install an encrypted file system" >&2
   echo -e "     \e[2mDefault: Clear file system\e[0m" >&2
@@ -159,7 +162,7 @@ function check_sudo() {
 }
 
 function check_bins() {
-  local bins=(curl tar awk md5sum mountpoint cryptsetup parted mke2fs tune2fs losetup)
+  local bins=(curl tar awk md5sum mountpoint cryptsetup parted mke2fs tune2fs losetup gpg)
 
   for i in "${bins[@]}"; do
     if ! sudo which "${i}" &> /dev/null; then
@@ -409,6 +412,21 @@ function download_img() {
   img_path="${tmp_dir}/${tar_name}"
 }
 
+function download_asc() {
+  $opt_lime2 && local urlpart_lime2=2
+  $opt_encryptedfs && local urlpart_encryptedfs=_encryptedfs
+
+  local sig_name="labriqueinternet_A20LIME${urlpart_lime2}${urlpart_encryptedfs}_latest_${deb_version}.img.tar.xz.asc"
+
+  info "Signature file: ${sig_name}"
+
+  if ! download_file "${url_base}${sig_name}" "${tmp_dir}"; then
+    exit_error "GPG signature download failed"
+  fi
+
+  sig_path="${tmp_dir}/${sig_name}"
+}
+
 function untar_img() {
   debug "Decompressing ${img_path}"
 
@@ -451,6 +469,23 @@ function check_md5() {
     fi
   else
     info "MD5 message digest successfully verified"
+  fi
+}
+
+function check_gpg() {
+  debug "Check GPG asc file for ${tar_name}"
+  gpg --homedir "${tmp_dir}/.gnupg" -qq --no-tty --no-verbose --batch --list-keys > /dev/null 2>&1
+
+  if ! (gpg --homedir "${tmp_dir}/.gnupg" --keyserver "$gpg_server" -q --no-tty --no-verbose --batch --keyid-format 0xlong --recv-key "$gpg_key" > /dev/null 2>&1); then
+    exit_error "Failed to download GPG ${gpg_key} on ${gpg_server}"
+  else
+    info "Requesting GPG key ${gpg_key} from hkp server ${gpg_server}"
+  fi
+
+  if ! (gpg --trust-model always --no-options --homedir "${tmp_dir}/.gnupg" -q --no-tty --verify "${sig_path}" > /dev/null 2>&1); then
+    exit_error "GPG verification failed using ${sig_path}"
+  else
+    info "Good GPG signature from 'La Brique Internet <release@labriqueinter.net>'"
   fi
 }
 
@@ -615,10 +650,13 @@ function copy_hypercube() {
 ########################
 
 url_base=https://repo.labriqueinter.net/
+gpg_key="0xCD8F4D648AC0ECC1"
+gpg_server="keyserver.ubuntu.com"
 deb_version=jessie
 opt_encryptedfs=false
 opt_findcubes=false
 opt_debug=false
+opt_gpg=false
 opt_lime2=
 tmp_dir=$(mktemp -dp . .install-sd.sh_tmpXXXXXX)
 olinux_mountpoint="${tmp_dir}/olinux_mountpoint"
@@ -635,11 +673,12 @@ trap cleaning_exit EXIT
 trap cleaning_exit ERR
 trap cleaning_ctrlc INT
 
-while getopts "f:s:c:y:e2ldh" opt; do
+while getopts "f:s:c:gy:e2ldh" opt; do
   case $opt in
     f) opt_imgpath=$OPTARG ;;
     s) opt_sdcardpath=$OPTARG ;;
     c) opt_md5path=$OPTARG ;;
+    g) opt_gpg=true ;;
     y) opt_hypercubepath=$OPTARG ;;
     e) opt_encryptedfs=true ;;
     2) opt_lime2=true ;;
@@ -694,6 +733,12 @@ if [ ! -z "${md5_path}" ]; then
   check_md5
 else
   info "Not checking MD5 message digest"
+fi
+
+if $opt_gpg; then
+  info "Downloading GPG Signature (HTTPS)"
+  download_asc
+  check_gpg
 fi
 
 if [[ "${img_path}" =~ .img.tar.xz$ ]]; then
