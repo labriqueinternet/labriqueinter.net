@@ -1,20 +1,20 @@
 #!/bin/bash
 
 # LaBriqueInternet SD Card Installer
-# Copyright (C) 2015 Julien Vaubourg <julien@vaubourg.com>
-# Copyright (C) 2015 Emile Morel <emile@bleuchtang.fr>
+# Copyright (C) 2015-2016 Julien Vaubourg <julien@vaubourg.com>
+# Copyright (C) 2015-2016 Emile Morel <emile@bleuchtang.fr>
 # Contribute at https://github.com/labriqueinternet/labriqueinter.net
-# 
+#
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU Affero General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -192,7 +192,7 @@ function check_args() {
       exit_usage "Filename given to -y must be install.hypercube or install.hypercube.txt"
     fi
   fi
-  
+
   if [ ! -z "${opt_md5path}" -a ! -r "${opt_md5path}" ]; then
     exit_usage "File given to -c cannot be read"
   fi
@@ -201,7 +201,7 @@ function check_args() {
     info "No option -2 specified, installing for LIME by default"
     opt_lime2=false
   fi
-  
+
   if [ ! -z "${opt_imgpath}" ]; then
     if [ ! -r "${opt_imgpath}" ]; then
       exit_usage "File given to -f cannot be read"
@@ -210,19 +210,19 @@ function check_args() {
     if [[ ! "${opt_imgpath}" =~ \.img(\.tar\.xz)?$ ]]; then
       exit_usage "Filename given to -f must end by .img or .img.tar.xz"
     fi
-  
+
     if [[ "${opt_imgpath}" =~ _encryptedfs_ ]]; then
       info "Option -e automatically set, based on the filename given to -f"
       opt_encryptedfs=true
-  
+
     elif $opt_encryptedfs; then
       exit_usage "Filename given to -f does not contain _encryptedfs_ in its name, but -e was set"
     fi
-  
+
     if [[ "${opt_imgpath}" =~ LIME2 ]]; then
       info "Option -2 automatically set, based on the filename given to -f"
       opt_lime2=true
-  
+
     elif $opt_lime2; then
       exit_usage "Filename given to -f does not contain LIME2 in its name, but -2 was set"
     fi
@@ -263,7 +263,7 @@ function cleaning_exit() {
 
   if [ -b /dev/mapper/olinux ]; then
     debug "Cleaning: closing /dev/mapper/olinux luks device"
-    sudo cryptsetup luksClose olinux 
+    sudo cryptsetup luksClose olinux
   fi
 
   if [ -d "${tmp_dir}" ]; then
@@ -318,21 +318,21 @@ function find_cubes() {
 
     if [[ "${addip}" =~ ^[0-9]+$ ]]; then
       addip=${ips[$(( addip - 1 ))]}
-  
+
       if [ -z "${addip}" ]; then
         exit_error "IP index not found"
       fi
     fi
-  
+
     if [[ ! "${addip}" =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
       exit_error "This is not an IPv4 nor an IP index"
     fi
-  
+
     echo -en "Choose a host name for this IP: "
     read addhost
-  
+
     echo -e "${addip}\t${addhost}" | sudo tee -a /etc/hosts > /dev/null
-  
+
     info "IP successfully added to your hosts file"
 
     echo -e "\n  YunoHost Admin:\thttps://${addhost}"
@@ -397,7 +397,7 @@ function autodetect_sdcardpath() {
 function download_img() {
   $opt_lime2 && local urlpart_lime2=2
   $opt_encryptedfs && local urlpart_encryptedfs=_encryptedfs
-  
+
   local tar_name="labriqueinternet_A20LIME${urlpart_lime2}${urlpart_encryptedfs}_latest_${deb_version}.img.tar.xz"
 
   info "Image file: ${tar_name}"
@@ -415,7 +415,7 @@ function untar_img() {
   tar xf "${img_path}" -C "${tmp_dir}"
 
   # Should not have more than 1 line, but, you know...
-  img_path=$(find "${tmp_dir}" -name *.img | head -n1) 
+  img_path=$(find "${tmp_dir}" -name *.img | head -n1)
 
   debug "Debian/YunoHost image is ${img_path}"
 
@@ -514,15 +514,15 @@ function install_encrypted() {
   while ! $is_passphrase_ok; do
     echo -n "Passphrase for your encrypted disk (should be strong): "
     read -s passphrase1 && echo
-  
+
     if [ -z "${passphrase1}" ]; then
       echo "You have to choose a passphrase!" >&2
       continue
     fi
-  
+
     echo -n "Confirm passphrase: "
     read -s passphrase2 && echo
-  
+
     if [ "${passphrase1}" != "${passphrase2}" ]; then
       echo "Passphrases mismatch :(" >&2
       continue
