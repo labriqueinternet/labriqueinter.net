@@ -16,5 +16,11 @@
         "revision": "9a1cc633e33c81093a72d5894dca24829913d455",
         "state": "validated",
         "url": "https://github.com/labriqueinternet/piratebox_ynh"
+    },
+    "doctorcube": {
+        "branch": "master",
+        "revision": "88e4c6ead99b8019dbe9a61accab3490e8585785",
+        "state": "working",
+        "url": "https://github.com/labriqueinternet/doctorcube_ynh"
     }
 }
