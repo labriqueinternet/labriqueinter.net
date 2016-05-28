@@ -448,6 +448,26 @@ function autodetect_sdcardpath() {
   fi
 }
 
+function umount_sdcard() {
+  local mountpoints=$(mount | grep "^${opt_sdcardpath}" | awk '{ print $3 }')
+
+  if [ ! -z "${mountpoints}" ]; then
+     IFS=$'\n'
+
+     info "Unmounting SD card partitions"
+
+     for i in ${mountpoints}; do
+      debug "Unmounting ${i}"
+
+      if ! sudo umount "${i}" &> /dev/null; then
+        exit_error "Umount of ${i} failed"
+      fi
+    done
+  else
+    debug "${opt_sdcardpath} is not mounted"
+  fi
+}
+
 function download_file() {
   local url=$1
   local dest_dir=$2
@@ -764,6 +784,8 @@ fi
 check_sudo
 check_args
 check_bins
+
+umount_sdcard
 
 img_path=$opt_imgpath
 md5_path=$opt_md5path
