@@ -193,8 +193,8 @@ function check_args() {
       exit_usage "File given to -y cannot be read"
     fi
 
-    if [[ ! "$(basename "${opt_hypercubepath}")" =~ ^install\.hypercube(\.txt)?$ ]]; then
-      exit_usage "Filename given to -y must be install.hypercube or install.hypercube.txt"
+    if [[ ! "$(basename "${opt_hypercubepath}")" =~ \.hypercube(\.txt)?$ ]]; then
+      exit_usage "Filename given to -y must end with .hypercube or .hypercube.txt"
     fi
   fi
 
