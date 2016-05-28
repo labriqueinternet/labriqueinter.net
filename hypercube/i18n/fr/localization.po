@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-16 16:53+0200\n"
-"PO-Revision-Date: 2016-05-16 16:54+0200\n"
+"POT-Creation-Date: 2016-05-28 17:22+0200\n"
+"PO-Revision-Date: 2016-05-28 17:22+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -797,8 +797,9 @@ msgid "Show user credentials"
 msgstr "Voir les identifiants"
 
 #: /dev/fd/63:754
-msgid "You first email address is:"
-msgstr "Votre première adresse mail est :"
+msgid "You first email address (which also is a Jabber ID) is:"
+msgstr ""
+"Votre première adresse mail (qui est aussi un identifiant Jabber) est :"
 
 #: /dev/fd/63:757
 msgid ""
@@ -1201,6 +1202,9 @@ msgstr ""
 #: /dev/fd/63:2641
 msgid "Sorry but this domain is not available"
 msgstr "Désolé mais ce domaine n'est pas disponible"
+
+#~ msgid "You first email address is:"
+#~ msgstr "Votre première adresse mail est :"
 
 #~ msgid ""
 #~ "If you powered on your Cube 4 hours (or more) ago, the HyperCube Debug "
