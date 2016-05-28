@@ -1,20 +1,20 @@
 #!/bin/bash
 
 # LaBriqueInternet SD Card Installer
-# Copyright (C) 2015 Julien Vaubourg <julien@vaubourg.com>
-# Copyright (C) 2015 Emile Morel <emile@bleuchtang.fr>
+# Copyright (C) 2015-2016 Julien Vaubourg <julien@vaubourg.com>
+# Copyright (C) 2015-2016 Emile Morel <emile@bleuchtang.fr>
 # Contribute at https://github.com/labriqueinternet/labriqueinter.net
-# 
+#
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
-# 
+#
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU Affero General Public License for more details.
-# 
+#
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
@@ -55,9 +55,14 @@ function show_usage() {
   echo -e "  \e[1m-f\e[0m \e[4mpath\e[0m" >&2
   echo -e "     Debian/YunoHost image file (.img or .img.tar.xz)" >&2
   echo -e "     \e[2mDefault: Automatic download from ${url_base}\e[0m" >&2
+  echo -e "  \e[1m-g\e[0m \e[4mpath\e[0m" >&2
+  echo -e "     GPG signature file (.img.tar.xz.asc)" >&2
+  echo -e "     \e[2mDefault: Automatic download from ${url_base} if no -f\e[0m" >&2
+  echo -e "  \e[1m-m\e[0m \e[4mpath\e[0m" >&2
+  echo -e "     Replace GPG checking by MD5 checking (less secure)" >&2
   echo -e "  \e[1m-c\e[0m \e[4mpath\e[0m" >&2
   echo -e "     MD5 checksums file (e.g. MD5SUMS)" >&2
-  echo -e "     \e[2mDefault: Automatic download from ${url_base} if no -f, or no checksum checking\e[0m" >&2
+  echo -e "     \e[2mDefault: Automatic download from ${url_base} if no -f and no -g\e[0m" >&2
   echo -e "  \e[1m-y\e[0m \e[4mpath\e[0m" >&2
   echo -e "     HyperCube file" >&2
   echo -e "  \e[1m-e\e[0m" >&2
@@ -159,7 +164,19 @@ function check_sudo() {
 }
 
 function check_bins() {
-  local bins=(curl tar awk md5sum mountpoint cryptsetup parted mke2fs tune2fs losetup)
+  local bins=(curl tar awk mountpoint losetup)
+
+  if $opt_encryptedfs; then
+    bins+=(cryptsetup parted mke2fs tune2fs)
+  fi
+
+  if [ ! -z "${opt_gpgpath}" ]; then
+    bins+=(gpg)
+  fi
+
+  if [ ! -z "${opt_md5path}" ]; then
+    bins+=(md5sum)
+  fi
 
   for i in "${bins[@]}"; do
     if ! sudo which "${i}" &> /dev/null; then
@@ -188,41 +205,81 @@ function check_args() {
       exit_usage "File given to -y cannot be read"
     fi
 
-    if [[ ! "$(basename "${opt_hypercubepath}")" =~ ^install\.hypercube(\.txt)?$ ]]; then
-      exit_usage "Filename given to -y must be install.hypercube or install.hypercube.txt"
+    if [[ ! "$(basename "${opt_hypercubepath}")" =~ \.hypercube(\.txt)?$ ]]; then
+      exit_usage "Filename given to -y must end with .hypercube or .hypercube.txt"
     fi
   fi
-  
-  if [ ! -z "${opt_md5path}" -a ! -r "${opt_md5path}" ]; then
-    exit_usage "File given to -c cannot be read"
+
+  if [ ! -z "${opt_md5path}" ]; then
+    if [ ! -z "${opt_gpgpath}" ]; then
+      exit_usage "File given to -c cannot be used with -g"
+    fi
+
+    if ! $opt_md5; then
+      info "Option -m automatically set, due to -c"
+      opt_md5=true
+    fi
+
+    if [ ! -r "${opt_md5path}" ]; then
+      exit_usage "File given to -c cannot be read"
+    fi
+  fi
+
+  if [ ! -z "${opt_gpgpath}" ]; then
+    if $opt_md5; then
+      exit_usage "File given to -g cannot be used with -m set"
+    fi
+
+    if [ ! -r "${opt_gpgpath}" ]; then
+      exit_usage "File given to -g cannot be read"
+    fi
+
+    if [[ ! "${opt_gpgpath}" =~ \.img\.tar\.xz\.asc$ ]]; then
+      exit_usage "Filename given to -g must end with .img.tar.xz.asc"
+    fi
   fi
 
   if [ -z "${opt_lime2}" ]; then
     info "No option -2 specified, installing for LIME by default"
     opt_lime2=false
   fi
-  
+
   if [ ! -z "${opt_imgpath}" ]; then
     if [ ! -r "${opt_imgpath}" ]; then
       exit_usage "File given to -f cannot be read"
     fi
 
     if [[ ! "${opt_imgpath}" =~ \.img(\.tar\.xz)?$ ]]; then
-      exit_usage "Filename given to -f must end by .img or .img.tar.xz"
+      exit_usage "Filename given to -f must end with .img or .img.tar.xz"
     fi
-  
+
+    if [ -z "${opt_gpgpath}" ]; then
+      if ! $opt_md5 && [ -r "${opt_imgpath}.asc" ]; then
+        info "Local GPG signature file found"
+        opt_gpgpath="${opt_imgpath}.asc"
+      fi
+    else
+      if [[ "${opt_imgpath}" =~ \.img$ ]] ; then
+        exit_usage "File given to -g cannot be used for checking the file given to -f (not archive version)"
+      fi
+
+      if [ "$(basename "${opt_gpgpath}")" != "$(basename "${opt_imgpath}").asc" ] ; then
+        exit_usage "Based on filenames, file given to -g seems not correspond to the file given to -f"
+      fi
+    fi
+
     if [[ "${opt_imgpath}" =~ _encryptedfs_ ]]; then
       info "Option -e automatically set, based on the filename given to -f"
       opt_encryptedfs=true
-  
+
     elif $opt_encryptedfs; then
       exit_usage "Filename given to -f does not contain _encryptedfs_ in its name, but -e was set"
     fi
-  
+
     if [[ "${opt_imgpath}" =~ LIME2 ]]; then
       info "Option -2 automatically set, based on the filename given to -f"
       opt_lime2=true
-  
+
     elif $opt_lime2; then
       exit_usage "Filename given to -f does not contain LIME2 in its name, but -2 was set"
     fi
@@ -238,9 +295,7 @@ function cleaning_exit() {
   local status=$?
   local error=${1}
 
-  trap EXIT
-  trap ERR
-  trap INT
+  trap - EXIT ERR INT
 
   if $opt_debug && [ "${status}" -ne 0 -o "${error}" == error ]; then
     debug "There was an error, press Enter for doing cleaning"
@@ -263,7 +318,7 @@ function cleaning_exit() {
 
   if [ -b /dev/mapper/olinux ]; then
     debug "Cleaning: closing /dev/mapper/olinux luks device"
-    sudo cryptsetup luksClose olinux 
+    sudo cryptsetup luksClose olinux
   fi
 
   if [ -d "${tmp_dir}" ]; then
@@ -273,7 +328,6 @@ function cleaning_exit() {
 }
 
 function cleaning_ctrlc() {
-  trap EXIT
   echo && cleaning_exit error
   exit 1
 }
@@ -318,21 +372,21 @@ function find_cubes() {
 
     if [[ "${addip}" =~ ^[0-9]+$ ]]; then
       addip=${ips[$(( addip - 1 ))]}
-  
+
       if [ -z "${addip}" ]; then
         exit_error "IP index not found"
       fi
     fi
-  
+
     if [[ ! "${addip}" =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
       exit_error "This is not an IPv4 nor an IP index"
     fi
-  
+
     echo -en "Choose a host name for this IP: "
     read addhost
-  
+
     echo -e "${addip}\t${addhost}" | sudo tee -a /etc/hosts > /dev/null
-  
+
     info "IP successfully added to your hosts file"
 
     echo -e "\n  YunoHost Admin:\thttps://${addhost}"
@@ -394,10 +448,23 @@ function autodetect_sdcardpath() {
   fi
 }
 
+function download_file() {
+  local url=$1
+  local dest_dir=$2
+
+  debug "Downloading ${url}"
+
+  if ! (cd "${dest_dir}" && curl -#fOA SdCardInstaller "${url}"); then
+    return 1
+  fi
+
+  return 0
+}
+
 function download_img() {
   $opt_lime2 && local urlpart_lime2=2
   $opt_encryptedfs && local urlpart_encryptedfs=_encryptedfs
-  
+
   local tar_name="labriqueinternet_A20LIME${urlpart_lime2}${urlpart_encryptedfs}_latest_${deb_version}.img.tar.xz"
 
   info "Image file: ${tar_name}"
@@ -409,19 +476,16 @@ function download_img() {
   img_path="${tmp_dir}/${tar_name}"
 }
 
-function untar_img() {
-  debug "Decompressing ${img_path}"
+function download_gpg() {
+  local gpg_name="$(basename "${img_path}").asc"
 
-  tar xf "${img_path}" -C "${tmp_dir}"
+  debug "GPG signature file: ${gpg_name}"
 
-  # Should not have more than 1 line, but, you know...
-  img_path=$(find "${tmp_dir}" -name *.img | head -n1) 
-
-  debug "Debian/YunoHost image is ${img_path}"
-
-  if [ ! -r "${img_path}" ]; then
-    exit_error "Decompressed image file cannot be read"
+  if ! download_file "${url_base}${gpg_name}" "${tmp_dir}"; then
+    exit_error "GPG signature download failed"
   fi
+
+  gpg_path="${tmp_dir}/${gpg_name}"
 }
 
 function download_md5() {
@@ -432,8 +496,28 @@ function download_md5() {
   md5_path="${tmp_dir}/MD5SUMS"
 }
 
+function check_gpg() {
+  debug "Creating GnuPG directory: ${tmp_dir}/.gnupg"
+
+  if ! gpg --homedir "${tmp_dir}/.gnupg" -qq --no-tty --no-verbose --batch --list-keys &> /dev/null; then
+    exit_error "Cannot create GnuPG directory"
+  fi
+
+  debug "Requesting GPG key ${gpg_key} from HKP server ${gpg_server}"
+
+  if ! gpg --homedir "${tmp_dir}/.gnupg" --keyserver "${gpg_server}" -q --no-tty --no-verbose --batch --keyid-format 0xlong --recv-key "${gpg_key}" &> /dev/null; then
+    exit_error "GPG key download failed"
+  fi
+
+  if ! gpg --trust-model always --no-options --homedir "${tmp_dir}/.gnupg" -q --no-tty --verify "${gpg_path}" &> /dev/null; then
+    exit_error "GPG signature error"
+  else
+    info "GPG signature successfully verified"
+  fi
+}
+
 function check_md5() {
-  local filename=${img_path##*/}
+  local filename=$(basename "${img_path}")
   local digest=$(awk "/${filename}\$/ { print \$1 }" "${md5_path}" | head -n1)
 
   debug "MD5 message digest found: ${digest}"
@@ -454,17 +538,19 @@ function check_md5() {
   fi
 }
 
-function download_file() {
-  local url=$1
-  local dest_dir=$2
+function untar_img() {
+  debug "Decompressing ${img_path}"
 
-  debug "Downloading ${url}"
+  tar xf "${img_path}" -C "${tmp_dir}"
 
-  if ! (cd "${dest_dir}" && curl -#fOA SdCardInstaller "${url}"); then
-    return 1
+  # Should not have more than 1 line, but, you know...
+  img_path=$(find "${tmp_dir}" -name *.img | head -n1)
+
+  debug "Debian/YunoHost image is ${img_path}"
+
+  if [ ! -r "${img_path}" ]; then
+    exit_error "Decompressed image file cannot be read"
   fi
-
-  return 0
 }
 
 
@@ -514,15 +600,15 @@ function install_encrypted() {
   while ! $is_passphrase_ok; do
     echo -n "Passphrase for your encrypted disk (should be strong): "
     read -s passphrase1 && echo
-  
+
     if [ -z "${passphrase1}" ]; then
       echo "You have to choose a passphrase!" >&2
       continue
     fi
-  
+
     echo -n "Confirm passphrase: "
     read -s passphrase2 && echo
-  
+
     if [ "${passphrase1}" != "${passphrase2}" ]; then
       echo "Passphrases mismatch :(" >&2
       continue
@@ -615,10 +701,13 @@ function copy_hypercube() {
 ########################
 
 url_base=https://repo.labriqueinter.net/
+gpg_key=0xCD8F4D648AC0ECC1
+gpg_server=keyserver.ubuntu.com
 deb_version=jessie
 opt_encryptedfs=false
 opt_findcubes=false
 opt_debug=false
+opt_md5=false
 opt_lime2=
 tmp_dir=$(mktemp -dp . .install-sd.sh_tmpXXXXXX)
 olinux_mountpoint="${tmp_dir}/olinux_mountpoint"
@@ -631,14 +720,15 @@ loopdev=
 ### SCRIPT ###
 ##############
 
-trap cleaning_exit EXIT
-trap cleaning_exit ERR
+trap cleaning_exit EXIT ERR
 trap cleaning_ctrlc INT
 
-while getopts "f:s:c:y:e2ldh" opt; do
+while getopts "s:f:g:mc:y:e2ldh" opt; do
   case $opt in
-    f) opt_imgpath=$OPTARG ;;
     s) opt_sdcardpath=$OPTARG ;;
+    f) opt_imgpath=$OPTARG ;;
+    g) opt_gpgpath=$OPTARG ;;
+    m) opt_md5=true ;;
     c) opt_md5path=$OPTARG ;;
     y) opt_hypercubepath=$OPTARG ;;
     e) opt_encryptedfs=true ;;
@@ -677,23 +767,38 @@ check_bins
 
 img_path=$opt_imgpath
 md5_path=$opt_md5path
+gpg_path=$opt_gpgpath
 hypercube_path=$opt_hypercubepath
 
 if [ -z "${img_path}" ]; then
   info "Downloading Debian/YunoHost image (HTTPS)"
   download_img
 
-  if [ -z "${md5_path}" ]; then
-    info "Downloading MD5SUMS (HTTPS)"
-    download_md5
+  if $opt_md5; then
+    if [ -z "${md5_path}" ]; then
+      info "Downloading MD5SUMS (HTTPS)"
+      download_md5
+    fi
+  else
+    if [ -z "${gpg_path}" ]; then
+      info "Downloading GPG signature (HTTPS)"
+      download_gpg
+    fi
   fi
 fi
 
 if [ ! -z "${md5_path}" ]; then
   info "Checking MD5 message digest"
   check_md5
-else
-  info "Not checking MD5 message digest"
+fi
+
+if [ ! -z "${gpg_path}" ]; then
+  info "Checking GPG signature"
+  check_gpg
+fi
+
+if [ -z "${md5_path}" -a -z "${gpg_path}" ]; then
+  info "Not checking image integrity"
 fi
 
 if [[ "${img_path}" =~ .img.tar.xz$ ]]; then
