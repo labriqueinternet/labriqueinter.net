@@ -564,7 +564,7 @@ function untar_img() {
   tar xf "${img_path}" -C "${tmp_dir}"
 
   # Should not have more than 1 line, but, you know...
-  img_path=$(find "${tmp_dir}" -name *.img | head -n1)
+  img_path=$(find "${tmp_dir}" -name '*.img' | head -n1)
 
   debug "Debian/YunoHost image is ${img_path}"
 
