@@ -164,7 +164,19 @@ function check_sudo() {
 }
 
 function check_bins() {
-  local bins=(curl tar awk md5sum mountpoint cryptsetup parted mke2fs tune2fs losetup gpg)
+  local bins=(curl tar awk mountpoint losetup)
+
+  if $opt_encryptedfs; then
+    bins+=(cryptsetup parted mke2fs tune2fs)
+  fi
+
+  if [ ! -z "${opt_gpgpath}" ]; then
+    bins+=(gpg)
+  fi
+
+  if [ ! -z "${opt_md5path}" ]; then
+    bins+=(md5sum)
+  fi
 
   for i in "${bins[@]}"; do
     if ! sudo which "${i}" &> /dev/null; then
@@ -200,7 +212,7 @@ function check_args() {
 
   if [ ! -z "${opt_md5path}" ]; then
     if [ ! -z "${opt_gpgpath}" ]; then
-      exit_usage "File given to -c cannot be used with -g set"
+      exit_usage "File given to -c cannot be used with -g"
     fi
 
     if ! $opt_md5; then
@@ -218,7 +230,7 @@ function check_args() {
       exit_usage "File given to -g cannot be used with -m set"
     fi
 
-    if [ -a ! -r "${opt_gpgpath}" ]; then
+    if [ ! -r "${opt_gpgpath}" ]; then
       exit_usage "File given to -g cannot be read"
     fi
 
@@ -242,7 +254,7 @@ function check_args() {
     fi
 
     if [ -z "${opt_gpgpath}" ]; then
-      if ! opt_md5 && [ -r "${opt_imgpath}.asc" ]; then
+      if ! $opt_md5 && [ -r "${opt_imgpath}.asc" ]; then
         info "Local GPG signature file found"
         opt_gpgpath="${opt_imgpath}.asc"
       fi
