@@ -55,14 +55,16 @@ function show_usage() {
   echo -e "  \e[1m-f\e[0m \e[4mpath\e[0m" >&2
   echo -e "     Debian/YunoHost image file (.img or .img.tar.xz)" >&2
   echo -e "     \e[2mDefault: Automatic download from ${url_base}\e[0m" >&2
+  echo -e "  \e[1m-g\e[0m \e[4mpath\e[0m" >&2
+  echo -e "     GPG signature file (.img.tar.xz.asc)" >&2
+  echo -e "     \e[2mDefault: Automatic download from ${url_base} if no -f\e[0m" >&2
+  echo -e "  \e[1m-m\e[0m \e[4mpath\e[0m" >&2
+  echo -e "     Replace GPG checking by MD5 checking (less secure)" >&2
   echo -e "  \e[1m-c\e[0m \e[4mpath\e[0m" >&2
   echo -e "     MD5 checksums file (e.g. MD5SUMS)" >&2
-  echo -e "     \e[2mDefault: Automatic download from ${url_base} if no -f, or no checksum checking\e[0m" >&2
+  echo -e "     \e[2mDefault: Automatic download from ${url_base} if no -f and no -g\e[0m" >&2
   echo -e "  \e[1m-y\e[0m \e[4mpath\e[0m" >&2
   echo -e "     HyperCube file" >&2
-  echo -e "  \e[1m-g\e[0m" >&2
-  echo -e "     Check Internet Cube img integrity using GPG signature" >&2
-  echo -e "     \e[2mDefault: GPG Check disabled\e[0m" >&2
   echo -e "  \e[1m-e\e[0m" >&2
   echo -e "     Install an encrypted file system" >&2
   echo -e "     \e[2mDefault: Clear file system\e[0m" >&2
@@ -196,8 +198,33 @@ function check_args() {
     fi
   fi
 
-  if [ ! -z "${opt_md5path}" -a ! -r "${opt_md5path}" ]; then
-    exit_usage "File given to -c cannot be read"
+  if [ ! -z "${opt_md5path}" ]; then
+    if [ ! -z "${opt_gpgpath}" ]; then
+      exit_usage "File given to -c cannot be used with -g set"
+    fi
+
+    if ! $opt_md5; then
+      info "Option -m automatically set, due to -c"
+      opt_md5=true
+    fi
+
+    if [ ! -r "${opt_md5path}" ]; then
+      exit_usage "File given to -c cannot be read"
+    fi
+  fi
+
+  if [ ! -z "${opt_gpgpath}" ]; then
+    if $opt_md5; then
+      exit_usage "File given to -g cannot be used with -m set"
+    fi
+
+    if [ -a ! -r "${opt_gpgpath}" ]; then
+      exit_usage "File given to -g cannot be read"
+    fi
+
+    if [[ ! "${opt_gpgpath}" =~ \.img\.tar\.xz\.asc$ ]]; then
+      exit_usage "Filename given to -g must end with .img.tar.xz.asc"
+    fi
   fi
 
   if [ -z "${opt_lime2}" ]; then
@@ -211,7 +238,22 @@ function check_args() {
     fi
 
     if [[ ! "${opt_imgpath}" =~ \.img(\.tar\.xz)?$ ]]; then
-      exit_usage "Filename given to -f must end by .img or .img.tar.xz"
+      exit_usage "Filename given to -f must end with .img or .img.tar.xz"
+    fi
+
+    if [ -z "${opt_gpgpath}" ]; then
+      if ! opt_md5 && [ -r "${opt_imgpath}.asc" ]; then
+        info "Local GPG signature file found"
+        opt_gpgpath="${opt_imgpath}.asc"
+      fi
+    else
+      if [[ "${opt_imgpath}" =~ \.img$ ]] ; then
+        exit_usage "File given to -g cannot be used for checking the file given to -f (not archive version)"
+      fi
+
+      if [ "$(basename "${opt_gpgpath}")" != "$(basename "${opt_imgpath}").asc" ] ; then
+        exit_usage "Based on filenames, file given to -g seems not correspond to the file given to -f"
+      fi
     fi
 
     if [[ "${opt_imgpath}" =~ _encryptedfs_ ]]; then
@@ -241,9 +283,7 @@ function cleaning_exit() {
   local status=$?
   local error=${1}
 
-  trap EXIT
-  trap ERR
-  trap INT
+  trap - EXIT ERR INT
 
   if $opt_debug && [ "${status}" -ne 0 -o "${error}" == error ]; then
     debug "There was an error, press Enter for doing cleaning"
@@ -276,7 +316,6 @@ function cleaning_exit() {
 }
 
 function cleaning_ctrlc() {
-  trap EXIT
   echo && cleaning_exit error
   exit 1
 }
@@ -397,6 +436,19 @@ function autodetect_sdcardpath() {
   fi
 }
 
+function download_file() {
+  local url=$1
+  local dest_dir=$2
+
+  debug "Downloading ${url}"
+
+  if ! (cd "${dest_dir}" && curl -#fOA SdCardInstaller "${url}"); then
+    return 1
+  fi
+
+  return 0
+}
+
 function download_img() {
   $opt_lime2 && local urlpart_lime2=2
   $opt_encryptedfs && local urlpart_encryptedfs=_encryptedfs
@@ -412,34 +464,16 @@ function download_img() {
   img_path="${tmp_dir}/${tar_name}"
 }
 
-function download_asc() {
-  $opt_lime2 && local urlpart_lime2=2
-  $opt_encryptedfs && local urlpart_encryptedfs=_encryptedfs
+function download_gpg() {
+  local gpg_name="$(basename "${img_path}").asc"
 
-  local sig_name="labriqueinternet_A20LIME${urlpart_lime2}${urlpart_encryptedfs}_latest_${deb_version}.img.tar.xz.asc"
+  debug "GPG signature file: ${gpg_name}"
 
-  info "Signature file: ${sig_name}"
-
-  if ! download_file "${url_base}${sig_name}" "${tmp_dir}"; then
+  if ! download_file "${url_base}${gpg_name}" "${tmp_dir}"; then
     exit_error "GPG signature download failed"
   fi
 
-  sig_path="${tmp_dir}/${sig_name}"
-}
-
-function untar_img() {
-  debug "Decompressing ${img_path}"
-
-  tar xf "${img_path}" -C "${tmp_dir}"
-
-  # Should not have more than 1 line, but, you know...
-  img_path=$(find "${tmp_dir}" -name *.img | head -n1)
-
-  debug "Debian/YunoHost image is ${img_path}"
-
-  if [ ! -r "${img_path}" ]; then
-    exit_error "Decompressed image file cannot be read"
-  fi
+  gpg_path="${tmp_dir}/${gpg_name}"
 }
 
 function download_md5() {
@@ -450,8 +484,28 @@ function download_md5() {
   md5_path="${tmp_dir}/MD5SUMS"
 }
 
+function check_gpg() {
+  debug "Creating GnuPG directory: ${tmp_dir}/.gnupg"
+
+  if ! gpg --homedir "${tmp_dir}/.gnupg" -qq --no-tty --no-verbose --batch --list-keys &> /dev/null; then
+    exit_error "Cannot create GnuPG directory"
+  fi
+
+  debug "Requesting GPG key ${gpg_key} from HKP server ${gpg_server}"
+
+  if ! gpg --homedir "${tmp_dir}/.gnupg" --keyserver "${gpg_server}" -q --no-tty --no-verbose --batch --keyid-format 0xlong --recv-key "${gpg_key}" &> /dev/null; then
+    exit_error "GPG key download failed"
+  fi
+
+  if ! gpg --trust-model always --no-options --homedir "${tmp_dir}/.gnupg" -q --no-tty --verify "${gpg_path}" &> /dev/null; then
+    exit_error "GPG signature error"
+  else
+    info "GPG signature successfully verified"
+  fi
+}
+
 function check_md5() {
-  local filename=${img_path##*/}
+  local filename=$(basename "${img_path}")
   local digest=$(awk "/${filename}\$/ { print \$1 }" "${md5_path}" | head -n1)
 
   debug "MD5 message digest found: ${digest}"
@@ -472,34 +526,19 @@ function check_md5() {
   fi
 }
 
-function check_gpg() {
-  debug "Check GPG asc file for ${tar_name}"
-  gpg --homedir "${tmp_dir}/.gnupg" -qq --no-tty --no-verbose --batch --list-keys > /dev/null 2>&1
+function untar_img() {
+  debug "Decompressing ${img_path}"
 
-  if ! (gpg --homedir "${tmp_dir}/.gnupg" --keyserver "$gpg_server" -q --no-tty --no-verbose --batch --keyid-format 0xlong --recv-key "$gpg_key" > /dev/null 2>&1); then
-    exit_error "Failed to download GPG ${gpg_key} on ${gpg_server}"
-  else
-    info "Requesting GPG key ${gpg_key} from hkp server ${gpg_server}"
+  tar xf "${img_path}" -C "${tmp_dir}"
+
+  # Should not have more than 1 line, but, you know...
+  img_path=$(find "${tmp_dir}" -name *.img | head -n1)
+
+  debug "Debian/YunoHost image is ${img_path}"
+
+  if [ ! -r "${img_path}" ]; then
+    exit_error "Decompressed image file cannot be read"
   fi
-
-  if ! (gpg --trust-model always --no-options --homedir "${tmp_dir}/.gnupg" -q --no-tty --verify "${sig_path}" > /dev/null 2>&1); then
-    exit_error "GPG verification failed using ${sig_path}"
-  else
-    info "Good GPG signature from 'La Brique Internet <release@labriqueinter.net>'"
-  fi
-}
-
-function download_file() {
-  local url=$1
-  local dest_dir=$2
-
-  debug "Downloading ${url}"
-
-  if ! (cd "${dest_dir}" && curl -#fOA SdCardInstaller "${url}"); then
-    return 1
-  fi
-
-  return 0
 }
 
 
@@ -650,13 +689,13 @@ function copy_hypercube() {
 ########################
 
 url_base=https://repo.labriqueinter.net/
-gpg_key="0xCD8F4D648AC0ECC1"
-gpg_server="keyserver.ubuntu.com"
+gpg_key=0xCD8F4D648AC0ECC1
+gpg_server=keyserver.ubuntu.com
 deb_version=jessie
 opt_encryptedfs=false
 opt_findcubes=false
 opt_debug=false
-opt_gpg=false
+opt_md5=false
 opt_lime2=
 tmp_dir=$(mktemp -dp . .install-sd.sh_tmpXXXXXX)
 olinux_mountpoint="${tmp_dir}/olinux_mountpoint"
@@ -669,16 +708,16 @@ loopdev=
 ### SCRIPT ###
 ##############
 
-trap cleaning_exit EXIT
-trap cleaning_exit ERR
+trap cleaning_exit EXIT ERR
 trap cleaning_ctrlc INT
 
-while getopts "f:s:c:gy:e2ldh" opt; do
+while getopts "s:f:g:mc:y:e2ldh" opt; do
   case $opt in
-    f) opt_imgpath=$OPTARG ;;
     s) opt_sdcardpath=$OPTARG ;;
+    f) opt_imgpath=$OPTARG ;;
+    g) opt_gpgpath=$OPTARG ;;
+    m) opt_md5=true ;;
     c) opt_md5path=$OPTARG ;;
-    g) opt_gpg=true ;;
     y) opt_hypercubepath=$OPTARG ;;
     e) opt_encryptedfs=true ;;
     2) opt_lime2=true ;;
@@ -716,29 +755,38 @@ check_bins
 
 img_path=$opt_imgpath
 md5_path=$opt_md5path
+gpg_path=$opt_gpgpath
 hypercube_path=$opt_hypercubepath
 
 if [ -z "${img_path}" ]; then
   info "Downloading Debian/YunoHost image (HTTPS)"
   download_img
 
-  if [ -z "${md5_path}" ]; then
-    info "Downloading MD5SUMS (HTTPS)"
-    download_md5
+  if $opt_md5; then
+    if [ -z "${md5_path}" ]; then
+      info "Downloading MD5SUMS (HTTPS)"
+      download_md5
+    fi
+  else
+    if [ -z "${gpg_path}" ]; then
+      info "Downloading GPG signature (HTTPS)"
+      download_gpg
+    fi
   fi
 fi
 
 if [ ! -z "${md5_path}" ]; then
   info "Checking MD5 message digest"
   check_md5
-else
-  info "Not checking MD5 message digest"
 fi
 
-if $opt_gpg; then
-  info "Downloading GPG Signature (HTTPS)"
-  download_asc
+if [ ! -z "${gpg_path}" ]; then
+  info "Checking GPG signature"
   check_gpg
+fi
+
+if [ -z "${md5_path}" -a -z "${gpg_path}" ]; then
+  info "Not checking image integrity"
 fi
 
 if [[ "${img_path}" =~ .img.tar.xz$ ]]; then
