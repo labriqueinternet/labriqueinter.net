@@ -349,7 +349,7 @@ function find_cubes() {
   for ip in "${ips[@]}"; do
     i=$(( i + 1 ))
 
-    knownhost=$(awk "/$ip/ { print \$2 }" /etc/hosts | head -n1)
+    knownhost=$(awk "/^$ip/ { print \$2 }" /etc/hosts | head -n1)
 
     if [ -z "${knownhost}" ]; then
       knownhost=$ip
@@ -393,14 +393,14 @@ function find_cubes() {
     echo -e "  SSH Access:\t\tssh root@${addhost}"
     echo -e "  HyperCube Debug:\thttp://${addhost}:2468/install.html\n"
 
-  elif [ "${knownhosts}" -eq 1 ]; then
-    echo "% ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@${knownhost} 2> /dev/null"
-    echo "Press Enter to execute (or Ctrl-C to arbort)"
-    read
-
-    echo "Default Password: olinux"
-    ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no "root@${knownhost}" 2> /dev/null
-    exit_normal
+#  elif [ "${knownhosts}" -eq 1 ]; then
+#    echo "% ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@${knownhost} 2> /dev/null"
+#    echo "Press Enter to execute (or Ctrl-C to arbort)"
+#    read
+#
+#    echo "Default Password: olinux"
+#    ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no "root@${knownhost}" 2> /dev/null
+#    exit_normal
   fi
 }
 
