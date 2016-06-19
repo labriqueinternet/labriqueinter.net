@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-19 22:59+0200\n"
+"POT-Creation-Date: 2016-06-20 00:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1052,10 +1052,10 @@ msgstr ""
 msgid "Must from 8 to 63 characters (WPA2 passphrase)"
 msgstr ""
 
-#: /proc/self/fd/11:2637
-msgid "Only lowercase letters, digits, dots and dashes are allowed"
+#: /proc/self/fd/11:2638
+msgid "Domain not valid. Please refer to the FQDN syntax."
 msgstr ""
 
-#: /proc/self/fd/11:2641
+#: /proc/self/fd/11:2642
 msgid "Sorry but this domain is not available"
 msgstr ""

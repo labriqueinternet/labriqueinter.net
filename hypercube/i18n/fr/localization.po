@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-19 22:59+0200\n"
-"PO-Revision-Date: 2016-06-19 22:59+0200\n"
+"POT-Creation-Date: 2016-06-20 00:13+0200\n"
+"PO-Revision-Date: 2016-06-20 00:14+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -1201,15 +1201,20 @@ msgstr "Seuls les caractères standards sont autorisés"
 msgid "Must from 8 to 63 characters (WPA2 passphrase)"
 msgstr "Devrait avoir entre 8 et 63 caractères (passphrase WPA2)"
 
-#: /proc/self/fd/11:2637
-msgid "Only lowercase letters, digits, dots and dashes are allowed"
+#: /proc/self/fd/11:2638
+msgid "Domain not valid. Please refer to the FQDN syntax."
 msgstr ""
-"Seules les lettre minuscules, les chiffres, les points et les tirets sont "
-"autorisés"
+"Le nom de domaine n'est pas valide. Veuillez vous référer à la syntaxe du "
+"FQDN."
 
-#: /proc/self/fd/11:2641
+#: /proc/self/fd/11:2642
 msgid "Sorry but this domain is not available"
 msgstr "Désolé mais ce domaine n'est pas disponible"
+
+#~ msgid "Only lowercase letters, digits, dots and dashes are allowed"
+#~ msgstr ""
+#~ "Seules les lettre minuscules, les chiffres, les points et les tirets sont "
+#~ "autorisés"
 
 #~ msgid "Must be greater than 4 characters"
 #~ msgstr "Devrait être plus grand que 4 caractères"

@@ -1773,8 +1773,9 @@ var validation = {
       nbWarns++;
     }
 
-    if($('#ynh_domain').val().trim() && !$('#ynh_domain').val().trim().match(/^[a-z0-9.-]+$/)) {
-      validation.warnings.add('ynh_domain', _("Only lowercase letters, digits, dots and dashes are allowed"));
+    var fqdn_match = /([a-z0-9]{1}([a-z0-9\-]*[a-z0-9])*)(\.[a-z0-9]{1}([a-z0-9\-]*[a-z0-9])*)*(\.[a-z]{1}([a-z0-9\-]*[a-z0-9])*)\.?/ig
+    if($('#ynh_domain').val().trim() && !$('#ynh_domain').val().trim().match(fqdn_match)) {
+      validation.warnings.add('ynh_domain', _("Domain not valid. Please refer to the FQDN syntax."));
       nbWarns++;
 
     } else if($('.dynette').hasClass('notavailable')) {
