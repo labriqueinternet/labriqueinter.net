@@ -1758,8 +1758,8 @@ var validation = {
       }
     }
 
-    if($('#ynh_password').val().trim() && $('#ynh_password').val().trim().length < 4) {
-      validation.warnings.add('ynh_password', _("Must be greater than 4 characters"));
+    if($('#ynh_password').val().trim() && $('#ynh_password').val().trim().length < 7) {
+      validation.warnings.add('ynh_password', _("Must be greater than 7 characters"));
       nbWarns++;
     }
 
