@@ -16,3 +16,4 @@
 * https://projeteof.org/blog/une-brique-internet-yunohost-comme-systeme-dinformation-libre-embarque-et-deconnecte-pour-laction-openstreetmap-benin-2016/
 * [blog] https://www.infobidouille.com/lorraine-data-network-lance-une-box-pour-un-internet-neutre/ (remplacer LDN par FFDN)
 * [blog] http://zwindler.fr/wordpress/2016/04/09/internet-barbu-vie-privee-brique-internet-ffdn-aquilenet/
+* [blog] http://www.makery.info/2016/07/04/precis-de-degooglisation/
