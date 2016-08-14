@@ -168,6 +168,8 @@ function check_bins() {
 
   if $opt_encryptedfs; then
     bins+=(cryptsetup parted mke2fs tune2fs)
+  else
+    bins+=(partprobe)
   fi
 
   if [ ! -z "${opt_gpgpath}" ]; then
@@ -449,22 +451,22 @@ function autodetect_sdcardpath() {
 }
 
 function umount_sdcard() {
-  local mountpoints=$(mount | grep "^${opt_sdcardpath}" | awk '{ print $3 }')
+  local partitions=$(mount | grep "^${opt_sdcardpath}" | awk '{ print $1 }')
 
-  if [ ! -z "${mountpoints}" ]; then
+  if [ ! -z "${partitions}" ]; then
      IFS=$'\n'
 
      info "Unmounting SD card partitions"
 
-     for i in ${mountpoints}; do
+     for i in ${partitions}; do
       debug "Unmounting ${i}"
 
-      if ! sudo umount "${i}" &> /dev/null; then
+      if ! sudo umount -A "${i}" &> /dev/null; then
         exit_error "Umount of ${i} failed"
       fi
     done
   else
-    debug "${opt_sdcardpath} is not mounted"
+    debug "${opt_sdcardpath}* is not mounted"
   fi
 }
 
@@ -700,6 +702,9 @@ function install_clear() {
 
   debug "Flushing file system buffers"
   sudo sync
+
+  debug "Rereading partition table of ${opt_sdcardpath}"
+  sudo partprobe "${opt_sdcardpath}"
 
   mkdir -p "${files_path}" "${olinux_mountpoint}"
 
