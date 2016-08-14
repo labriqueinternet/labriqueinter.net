@@ -335,18 +335,29 @@ function cleaning_ctrlc() {
 }
 
 function find_cubes() {
-  local ips=$(sudo arp-scan --local | grep -P '\t02' | awk '{ print $1 }')
+  local ips=()
   local addip=
   local addhost=
   local knownhosts=0
   local i=0
+
+  local interfaces=$(ip link show up | awk -F: '/state UP/ { print $2 }')
+
+  if [ -z "${interfaces}" ]; then
+    exit_error "No enabled ethernet interface found on this computer"
+  fi
+
+  debug "Interfaces found: $(echo $interfaces)"
+
+  for i in $interfaces; do
+    ips+=($(sudo arp-scan -l --interface="${i}" | grep -P '\t02' | awk '{ print $1 }'))
+  done
 
   if [ -z "${ips}" ]; then
     exit_error "No Internet Cube found on the network :("
   fi
 
   echo -e "\nInternet Cubes found on the network:\n"
-  ips=($ips)
 
   for ip in "${ips[@]}"; do
     i=$(( i + 1 ))
