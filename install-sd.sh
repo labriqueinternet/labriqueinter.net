@@ -701,6 +701,15 @@ function install_clear() {
   debug "Flushing file system buffers"
   sudo sync
 
+  # If partition's boundaries changed, sync may not be sufficient.
+  if sudo which partprobe &> /dev/null; then
+    debug "Re-reading partition table of ${opt_sdcardpath} (partprobe)"
+    sudo partprobe "${opt_sdcardpath}"
+  else
+    # Often not necessary so we continue and test our luck with mount
+    debug "Warning : partprobe not available."
+  fi
+
   mkdir -p "${files_path}" "${olinux_mountpoint}"
 
   debug "Mounting ${partition1} on ${olinux_mountpoint}"
