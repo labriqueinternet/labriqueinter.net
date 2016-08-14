@@ -56,20 +56,18 @@ function show_usage() {
   echo -e "     Debian/YunoHost image file (.img or .img.tar.xz)" >&2
   echo -e "     \e[2mDefault: Automatic download from ${url_base}\e[0m" >&2
   echo -e "  \e[1m-g\e[0m \e[4mpath\e[0m" >&2
-  echo -e "     GPG signature file (.img.tar.xz.asc)" >&2
-  echo -e "     \e[2mDefault: Automatic download from ${url_base} if no -f\e[0m" >&2
-  echo -e "  \e[1m-m\e[0m \e[4mpath\e[0m" >&2
-  echo -e "     Replace GPG checking by MD5 checking (less secure)" >&2
-  echo -e "  \e[1m-c\e[0m \e[4mpath\e[0m" >&2
-  echo -e "     MD5 checksums file (e.g. MD5SUMS)" >&2
-  echo -e "     \e[2mDefault: Automatic download from ${url_base} if no -f and no -g\e[0m" >&2
+  echo -e "     GPG signature file for checking image integrity (.img.tar.xz.asc)" >&2
+  echo -e "     \e[2mDefault with -f: Automatically filled if there is a .asc next to the image file, else no image integrity checking\e[0m" >&2
+  echo -e "     \e[2mDefault without -f: Automatic download from ${url_base}\e[0m" >&2
   echo -e "  \e[1m-y\e[0m \e[4mpath\e[0m" >&2
   echo -e "     HyperCube file" >&2
   echo -e "  \e[1m-e\e[0m" >&2
   echo -e "     Install an encrypted file system" >&2
+  echo -e "     \e[2mCan be automatically enabled, based on the image filename\e[0m" >&2
   echo -e "     \e[2mDefault: Clear file system\e[0m" >&2
   echo -e "  \e[1m-2\e[0m" >&2
   echo -e "     Install an image for LIME2" >&2
+  echo -e "     \e[2mCan be automatically enabled, based on the image filename\e[0m" >&2
   echo -e "     \e[2mDefault: LIME\e[0m" >&2
   echo -e "  \e[1m-l\e[0m" >&2
   echo -e "     Just scan network for finding local IPv4s corresponding to Internet Cubes" >&2
@@ -114,6 +112,12 @@ function info() {
   local msg=${1}
 
   echo -e "\e[32m[INFO] ${msg}\e[0m" >&2
+}
+
+function warn() {
+  local msg=${1}
+
+  echo -e "\e[93m[WARN] ${msg}\e[0m" >&2
 }
 
 function debug() {
@@ -176,10 +180,6 @@ function check_bins() {
     bins+=(gpg)
   fi
 
-  if [ ! -z "${opt_md5path}" ]; then
-    bins+=(md5sum)
-  fi
-
   for i in "${bins[@]}"; do
     if ! sudo which "${i}" &> /dev/null; then
       exit_error "${i} command is required"
@@ -212,26 +212,7 @@ function check_args() {
     fi
   fi
 
-  if [ ! -z "${opt_md5path}" ]; then
-    if [ ! -z "${opt_gpgpath}" ]; then
-      exit_usage "File given to -c cannot be used with -g"
-    fi
-
-    if ! $opt_md5; then
-      info "Option -m automatically set, due to -c"
-      opt_md5=true
-    fi
-
-    if [ ! -r "${opt_md5path}" ]; then
-      exit_usage "File given to -c cannot be read"
-    fi
-  fi
-
   if [ ! -z "${opt_gpgpath}" ]; then
-    if $opt_md5; then
-      exit_usage "File given to -g cannot be used with -m set"
-    fi
-
     if [ ! -r "${opt_gpgpath}" ]; then
       exit_usage "File given to -g cannot be read"
     fi
@@ -256,7 +237,7 @@ function check_args() {
     fi
 
     if [ -z "${opt_gpgpath}" ]; then
-      if ! $opt_md5 && [ -r "${opt_imgpath}.asc" ]; then
+      if [ -r "${opt_imgpath}.asc" ]; then
         info "Local GPG signature file found"
         opt_gpgpath="${opt_imgpath}.asc"
       fi
@@ -285,7 +266,7 @@ function check_args() {
     elif $opt_lime2; then
       exit_usage "Filename given to -f does not contain LIME2 in its name, but -2 was set"
     fi
-  fi
+   fi
 }
 
 
@@ -521,14 +502,6 @@ function download_gpg() {
   gpg_path="${tmp_dir}/${gpg_name}"
 }
 
-function download_md5() {
-  if ! download_file "${url_base}MD5SUMS" "${tmp_dir}"; then
-    exit_error "MD5SUMS file download failed"
-  fi
-
-  md5_path="${tmp_dir}/MD5SUMS"
-}
-
 function check_gpg() {
   debug "Creating GnuPG directory: ${tmp_dir}/.gnupg"
 
@@ -546,28 +519,6 @@ function check_gpg() {
     exit_error "GPG signature error"
   else
     info "GPG signature successfully verified"
-  fi
-}
-
-function check_md5() {
-  local filename=$(basename "${img_path}")
-  local digest=$(awk "/${filename}\$/ { print \$1 }" "${md5_path}" | head -n1)
-
-  debug "MD5 message digest found: ${digest}"
-  debug "Computing MD5 message digest"
-
-  local compareTo=$(md5sum ${img_path} | awk '{ print $1 }')
-
-  debug "MD5 message digest computed: ${compareTo}"
-
-  if [ "${digest}" != "${compareTo}" ]; then
-    if [[ "${filename}" =~ .tar.xz$ ]]; then
-      exit_error "Checksum error"
-    else
-      exit_error "Checksum error (maybe the file should be an archive)"
-    fi
-  else
-    info "MD5 message digest successfully verified"
   fi
 }
 
@@ -743,7 +694,6 @@ deb_version=jessie
 opt_encryptedfs=false
 opt_findcubes=false
 opt_debug=false
-opt_md5=false
 opt_lime2=
 tmp_dir=$(mktemp -dp . .install-sd.sh_tmpXXXXXX)
 olinux_mountpoint="${tmp_dir}/olinux_mountpoint"
@@ -764,8 +714,6 @@ while getopts "s:f:g:mc:y:e2ldh" opt; do
     s) opt_sdcardpath=$OPTARG ;;
     f) opt_imgpath=$OPTARG ;;
     g) opt_gpgpath=$OPTARG ;;
-    m) opt_md5=true ;;
-    c) opt_md5path=$OPTARG ;;
     y) opt_hypercubepath=$OPTARG ;;
     e) opt_encryptedfs=true ;;
     2) opt_lime2=true ;;
@@ -804,7 +752,6 @@ check_bins
 umount_sdcard
 
 img_path=$opt_imgpath
-md5_path=$opt_md5path
 gpg_path=$opt_gpgpath
 hypercube_path=$opt_hypercubepath
 
@@ -812,22 +759,10 @@ if [ -z "${img_path}" ]; then
   info "Downloading Debian/YunoHost image (HTTPS)"
   download_img
 
-  if $opt_md5; then
-    if [ -z "${md5_path}" ]; then
-      info "Downloading MD5SUMS (HTTPS)"
-      download_md5
-    fi
-  else
-    if [ -z "${gpg_path}" ]; then
-      info "Downloading GPG signature (HTTPS)"
-      download_gpg
-    fi
+  if [ -z "${gpg_path}" ]; then
+    info "Downloading GPG signature (HTTPS)"
+    download_gpg
   fi
-fi
-
-if [ ! -z "${md5_path}" ]; then
-  info "Checking MD5 message digest"
-  check_md5
 fi
 
 if [ ! -z "${gpg_path}" ]; then
@@ -835,8 +770,8 @@ if [ ! -z "${gpg_path}" ]; then
   check_gpg
 fi
 
-if [ -z "${md5_path}" -a -z "${gpg_path}" ]; then
-  info "Not checking image integrity"
+if [ -z "${gpg_path}" ]; then
+  warn "Not checking image integrity"
 fi
 
 if [[ "${img_path}" =~ .img.tar.xz$ ]]; then
