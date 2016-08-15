@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-28 17:21+0200\n"
+"POT-Creation-Date: 2016-08-15 14:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1033,7 +1033,7 @@ msgid "Admin is not an authorized value"
 msgstr ""
 
 #: /dev/fd/63:2622
-msgid "Must be greater than 4 characters"
+msgid "Must be greater than 7 characters"
 msgstr ""
 
 #: /dev/fd/63:2627
@@ -1044,10 +1044,10 @@ msgstr ""
 msgid "Must from 8 to 63 characters (WPA2 passphrase)"
 msgstr ""
 
-#: /dev/fd/63:2637
-msgid "Only lowercase letters, digits, dots and dashes are allowed"
+#: /dev/fd/63:2641
+msgid "Invalid domain (e.g. foo-42.bar or the.foo-42.bar)"
 msgstr ""
 
-#: /dev/fd/63:2641
+#: /dev/fd/63:2644
 msgid "Sorry but this domain is not available"
 msgstr ""

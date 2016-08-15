@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-28 17:22+0200\n"
-"PO-Revision-Date: 2016-05-28 17:22+0200\n"
+"POT-Creation-Date: 2016-08-15 14:45+0200\n"
+"PO-Revision-Date: 2016-08-15 14:58+0200\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.8.7.1\n"
+"X-Generator: Poedit 1.8.8\n"
 
 #: /dev/fd/63:58
 msgid "Load an existing HyperCube file"
@@ -493,7 +493,7 @@ msgstr ""
 #: /dev/fd/63:641
 msgid "Plug your USB stick (1) and your wifi dongle (2) to your Internet Cube"
 msgstr ""
-"Branchez votre clé USB (1) et votre clé Wifi (2) à votre Brique Internet"
+"Branchez votre clé USB (1) et votre antenne Wifi (2) à votre Brique Internet"
 
 #: /dev/fd/63:642
 msgid "Then connect the ethernet cable (3), then the power cable (4)"
@@ -546,7 +546,7 @@ msgid ""
 "Connect the ethernet cable and the wifi dongle to your router, then the "
 "power cable to an outlet"
 msgstr ""
-"Connectez le câble ethernet et la clé wifi à votre box internet, puis le "
+"Connectez le câble Ethernet et l'antenne wifi à votre box internet, puis le "
 "câble d'alimentation à une prise électrique"
 
 #: /dev/fd/63:670
@@ -1182,8 +1182,8 @@ msgid "Admin is not an authorized value"
 msgstr "Admin n'est pas une valeur autorisée"
 
 #: /dev/fd/63:2622
-msgid "Must be greater than 4 characters"
-msgstr "Devrait être plus grand que 4 caractères"
+msgid "Must be greater than 7 characters"
+msgstr "Devrait être plus grand que 7 caractères"
 
 #: /dev/fd/63:2627
 msgid "Only standard characters are allowed"
@@ -1193,15 +1193,26 @@ msgstr "Seuls les caractères standards sont autorisés"
 msgid "Must from 8 to 63 characters (WPA2 passphrase)"
 msgstr "Devrait avoir entre 8 et 63 caractères (passphrase WPA2)"
 
-#: /dev/fd/63:2637
-msgid "Only lowercase letters, digits, dots and dashes are allowed"
-msgstr ""
-"Seules les lettre minuscules, les chiffres, les points et les tirets sont "
-"autorisés"
-
 #: /dev/fd/63:2641
+msgid "Invalid domain (e.g. foo-42.bar or the.foo-42.bar)"
+msgstr "Domaine invalide (e.g. toto-42.titi or tata.toto-42.titi)"
+
+#: /dev/fd/63:2644
 msgid "Sorry but this domain is not available"
 msgstr "Désolé mais ce domaine n'est pas disponible"
+
+#~ msgid "Domain not valid. Please refer to the FQDN syntax."
+#~ msgstr ""
+#~ "Le nom de domaine n'est pas valide. Veuillez vous référer à la syntaxe du "
+#~ "FQDN."
+
+#~ msgid "Only lowercase letters, digits, dots and dashes are allowed"
+#~ msgstr ""
+#~ "Seules les lettre minuscules, les chiffres, les points et les tirets sont "
+#~ "autorisés"
+
+#~ msgid "Must be greater than 4 characters"
+#~ msgstr "Devrait être plus grand que 4 caractères"
 
 #~ msgid "You first email address is:"
 #~ msgstr "Votre première adresse mail est :"
