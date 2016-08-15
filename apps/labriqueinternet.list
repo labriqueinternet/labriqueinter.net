@@ -1,7 +1,7 @@
 {
     "vpnclient": {
         "branch": "master",
-        "revision": "2fd86faf812a1771f54310db4049809970984ca0",
+        "revision": "df431e8f78c4340ecc535c1ccfcbcba50a25ccb3",
         "state": "validated",
         "url": "https://github.com/labriqueinternet/vpnclient_ynh"
     },
@@ -19,7 +19,7 @@
     },
     "doctorcube": {
         "branch": "master",
-        "revision": "8220341154c5fb2ebb023ca051ee525ad50432ee",
+        "revision": "476596bcd7511f4f4da423ab03f4fc77ff2c5d67",
         "state": "working",
         "url": "https://github.com/labriqueinternet/doctorcube_ynh"
     }
