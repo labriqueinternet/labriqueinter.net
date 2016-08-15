@@ -593,6 +593,8 @@ var view = {
 /*******************/
 
 var controller = {
+  fqdn_match: /^([a-z0-9]{1}([a-z0-9\-]*[a-z0-9])*)(\.[a-z0-9]{1}([a-z0-9\-]*[a-z0-9])*)*(\.[a-z]{1}([a-z0-9\-]*[a-z0-9])*)$/i,
+
   deleteFileButtonClick: function() {
     var textInput = $('#' + $(this).attr('id').replace(/_deletebtn$/, '_choosertxt'));
     var fileInput = $('#' + $(this).attr('id').replace(/_deletebtn$/, ''));
@@ -786,7 +788,7 @@ var controller = {
     dynette.removeClass('notavailable');
     dynette.removeClass('dynetterror');
 
-    if($(this).val().trim().match(/^[a-z0-9.-]+$/i) && hypercube.isThisDomainManagedByDyndns($(this).val().trim())) {
+    if($(this).val().trim().match(controller.fqdn_match) && hypercube.isThisDomainManagedByDyndns($(this).val().trim())) {
       dynette.hide();
       dynetteText.text(_("Checking the avaibility of this domain..."));
       dynette.fadeIn();
@@ -1773,14 +1775,17 @@ var validation = {
       nbWarns++;
     }
 
-    var fqdn_match = /([a-z0-9]{1}([a-z0-9\-]*[a-z0-9])*)(\.[a-z0-9]{1}([a-z0-9\-]*[a-z0-9])*)*(\.[a-z]{1}([a-z0-9\-]*[a-z0-9])*)\.?/ig
-    if($('#ynh_domain').val().trim() && !$('#ynh_domain').val().trim().match(fqdn_match)) {
-      validation.warnings.add('ynh_domain', _("Domain not valid. Please refer to the FQDN syntax."));
-      nbWarns++;
+    if($('#ynh_domain').val().trim()) {
+      $('#ynh_domain').val($('#ynh_domain').val().toLowerCase());
 
-    } else if($('.dynette').hasClass('notavailable')) {
-      validation.warnings.add('ynh_domain', _("Sorry but this domain is not available"));
-      nbWarns++;
+      if(!$('#ynh_domain').val().trim().match(controller.fqdn_match)) {
+        validation.warnings.add('ynh_domain', _("Invalid domain (e.g. foo-42.bar or the.foo-42.bar)"));
+        nbWarns++;
+
+      } else if($('.dynette').hasClass('notavailable')) {
+        validation.warnings.add('ynh_domain', _("Sorry but this domain is not available"));
+        nbWarns++;
+      }
     }
 
     if(!nbWarns) {
