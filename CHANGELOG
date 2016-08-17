@@ -1,11 +1,11 @@
 * 2016-08-16 (latest)
   - Fixes a security issue on the disk decryption web interface (thx @alpheb)
   - Fixes bugs on the disk decryption web interface
-  - [HyperCube] Fixes bug with special chars in passwords not hidden in logs
+  - [HyperCube] Fixes bugs with special chars in passwords not hidden in logs
   - [HyperCube] Installs DoctorCube by default
 
 * 2016-05-21
-  - [HyperCube] Fixes bug with special chars in first/last name during installation
+  - [HyperCube] Fixes a bug with special chars in first/last name during installation
   - [HyperCube] Improves error management system during installation
 
 * 2016-05-16
