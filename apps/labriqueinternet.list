@@ -19,7 +19,7 @@
     },
     "doctorcube": {
         "branch": "master",
-        "revision": "476596bcd7511f4f4da423ab03f4fc77ff2c5d67",
+        "revision": "8af21c0236685f83fdcd916b2b88495a21c24994",
         "state": "working",
         "url": "https://github.com/labriqueinternet/doctorcube_ynh"
     }
