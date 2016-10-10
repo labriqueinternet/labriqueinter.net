@@ -646,7 +646,7 @@ function install_encrypted() {
   fi
 
   debug "Raw copying ${sunxispl_path} to ${opt_sdcardpath} (dd)"
-  sudo dd "if=${sunxispl_path}" "of=${opt_sdcardpath}" bs=1M seek=8 conv=fsync oflag=nocache,sync &> /dev/null
+  sudo dd "if=${sunxispl_path}" "of=${opt_sdcardpath}" bs=1K seek=8 conv=fsync oflag=nocache,sync &> /dev/null
 
   debug "Flushing file system buffers (sync)"
   sudo sync
