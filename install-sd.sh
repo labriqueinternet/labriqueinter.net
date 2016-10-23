@@ -222,11 +222,6 @@ function check_args() {
     fi
   fi
 
-  if [ -z "${opt_lime2}" ]; then
-    info "No option -2 specified, installing for LIME by default"
-    opt_lime2=false
-  fi
-
   if [ ! -z "${opt_imgpath}" ]; then
     if [ ! -r "${opt_imgpath}" ]; then
       exit_usage "File given to -f cannot be read"
@@ -252,21 +247,28 @@ function check_args() {
     fi
 
     if [[ "${opt_imgpath}" =~ _encryptedfs_ ]]; then
-      info "Option -e automatically set, based on the filename given to -f"
-      opt_encryptedfs=true
-
+      if ! $opt_encryptedfs; then
+        info "Option -e automatically set, based on the filename given to -f"
+        opt_encryptedfs=true
+      fi
     elif $opt_encryptedfs; then
       exit_usage "Filename given to -f does not contain _encryptedfs_ in its name, but -e was set"
     fi
 
     if [[ "${opt_imgpath}" =~ LIME2 ]]; then
-      info "Option -2 automatically set, based on the filename given to -f"
-      opt_lime2=true
-
+      if ! $opt_lime2; then
+        info "Option -2 automatically set, based on the filename given to -f"
+        opt_lime2=true
+      fi
     elif $opt_lime2; then
       exit_usage "Filename given to -f does not contain LIME2 in its name, but -2 was set"
     fi
-   fi
+  fi
+
+  if [ -z "${opt_lime2}" ]; then
+    info "No option -2 specified, installing for LIME by default"
+    opt_lime2=false
+  fi
 }
 
 
@@ -694,7 +696,7 @@ deb_version=jessie
 opt_encryptedfs=false
 opt_findcubes=false
 opt_debug=false
-opt_lime2=
+opt_lime2=false
 tmp_dir=$(mktemp -dp . .install-sd.sh_tmpXXXXXX)
 olinux_mountpoint="${tmp_dir}/olinux_mountpoint"
 files_path="${tmp_dir}/files"
