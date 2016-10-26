@@ -1,4 +1,9 @@
-* 2016-08-16 (latest)
+* 2016-10-23 (latest)
+  - Updates openvpn in order to avoid a bug requiring to reboot after the upgrade
+  - [HyperCube] Does not configure VPN Client before the installation is completed
+  - [HyperCube] Fails if DoctorCube cannot be installed
+
+* 2016-08-16
   - Fixes a security issue on the disk decryption web interface (thx @alpheb)
   - Fixes bugs on the disk decryption web interface
   - [HyperCube] Fixes bugs with special chars in passwords not hidden in logs
