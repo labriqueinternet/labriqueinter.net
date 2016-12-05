@@ -324,7 +324,7 @@ function find_cubes() {
   local knownhosts=0
   local i=0
 
-  local interfaces=$(ip link show up | awk -F: '/state UP/ { print $2 }')
+  local interfaces=$(sudo ip link show up | awk -F: '/state UP/ { print $2 }')
 
   if [ -z "${interfaces}" ]; then
     exit_error "No enabled ethernet interface found on this computer"
