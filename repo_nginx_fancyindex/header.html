@@ -5,6 +5,17 @@
   <title>La Brique Internet - repo.labriqueinter.net</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="../css/main.css" />
+  <script>
+    window.onload = function () {
+      var links = document.getElementById('files').getElementsByTagName('a');
+  
+      for(var i = 0; i < links.length; i++) {
+        if(links[i].innerHTML.match(/&gt;$/)) {
+          links[i].innerHTML = links[i].href.replace(/.*\/(.*)/, '$1');
+        }
+      }
+    }
+  </script>
 </head>
 
 <body class="nojs">
@@ -21,4 +32,4 @@
     </p>
 
     <section id="files">
-      <h2><span>Télé</span>chargements</h2>
+      <h2><span>Télé</span>chargements</h2><h1>

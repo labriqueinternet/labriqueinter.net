@@ -377,19 +377,11 @@ section[id]:hover .anchor-link {
   color: #fff;
   font-family: jurabook;
   text-decoration: none;
+  padding-left: 30px;
 }
 
 #files table a:hover {
   color: #f00;
-}
-
-#files table td:first-child {
-  text-align: center;
-  width: 20px;
-}
-
-#files table th:first-child {
-  content: "";
 }
 
 footer {
@@ -417,4 +409,52 @@ code {
 
 #autoinstall a:hover {
   color: #fff;
+}
+
+#files h1 {
+  display: none;
+}
+
+#files td a[href$="xz"], #files td a[href$="gz"], #files td a[href$="img"], #files td a[href$="deb"] {
+  background: url('../repo_nginx_fancyindex/icons/img.svg') left center no-repeat;
+}
+
+#files td a[href$="torrent"] {
+  background: url('../repo_nginx_fancyindex/icons/torrent.svg') left center no-repeat;
+}
+
+#files td a[href$="asc"] {
+  background: url('../repo_nginx_fancyindex/icons/fingerprint.svg') left center no-repeat;
+}
+
+#files td a[href$="MD5SUMS"] {
+  background: url('../repo_nginx_fancyindex/icons/checksums.svg') left center no-repeat;
+}
+
+#files td a[href$="/"] {
+  background: url('../repo_nginx_fancyindex/icons/folder.svg') left center no-repeat;
+}
+
+#files td a[href$="../"] {
+  background: url('../repo_nginx_fancyindex/icons/parent.svg') left center no-repeat;
+}
+
+#files td a[href$="images/"] {
+  background: url('../repo_nginx_fancyindex/icons/suitcase.svg') left center no-repeat;
+}
+
+#files td a[href^="uboot"] {
+  background: url('../repo_nginx_fancyindex/icons/technical.svg') left center no-repeat;
+}
+
+#files td a[href$="CHANGELOG"] {
+  background: url('../repo_nginx_fancyindex/icons/changelog.svg') left center no-repeat;
+}
+
+#files td a[href$="README"] {
+  background: url('../repo_nginx_fancyindex/icons/readme.svg') left center no-repeat;
+}
+
+#files td a[href$="sh"] {
+  background: url('../repo_nginx_fancyindex/icons/installsd.svg') left center no-repeat;
 }
