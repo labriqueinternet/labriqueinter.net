@@ -427,6 +427,10 @@ code {
   background: url('../repo_nginx_fancyindex/icons/fingerprint.svg') left center no-repeat;
 }
 
+#files td a[href$="torrent.asc"] {
+  background: url('../repo_nginx_fancyindex/icons/fingerprint_torrent.svg') left center no-repeat;
+}
+
 #files td a[href$="MD5SUMS"] {
   background: url('../repo_nginx_fancyindex/icons/checksums.svg') left center no-repeat;
 }
