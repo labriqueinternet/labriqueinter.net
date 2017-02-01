@@ -574,7 +574,7 @@ function install_encrypted() {
   fi
 
   debug "Installing ext4 on ${partition1}"
-  sudo mke2fs -t ext4 -q "${partition1}"
+  sudo mke2fs -t ext4 -O ^metadata_csum,^64bit -q "${partition1}"
 
   debug "Adjusting tunable filesystem parameters on ${partition1} (tune2fs)"
   sudo tune2fs -o journal_data_writeback "${partition1}" &> /dev/null
@@ -616,7 +616,7 @@ function install_encrypted() {
   fi
 
   debug "Installing ext4 on /dev/mapper/olinux"
-  sudo mke2fs -t ext4 -q /dev/mapper/olinux
+  sudo mke2fs -t ext4 -O ^metadata_csum,^64bit -q /dev/mapper/olinux
 
   debug "Mounting /dev/mapper/olinux on ${olinux_mountpoint}"
   sudo mount /dev/mapper/olinux "${olinux_mountpoint}"
