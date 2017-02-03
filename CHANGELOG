@@ -1,11 +1,18 @@
-* 2016-10-23 (latest)
+* 2017-02-03 (latest)
+  - Installs YunoHost 2.5 Chelsea Manning (with native Let's Encrypt integration)
+  - [LIME2] Fixes instable reachability issues
+  - [LIME2] Fixes slow network issues
+  - [HyperCube] Removes deadlocks with YunoHost processes
+  - [EncryptedFS] Greatly improves the fiability of the web interface
+
+* 2016-10-23
   - Updates openvpn in order to avoid a bug requiring to reboot after the upgrade
   - [HyperCube] Does not configure VPN Client before the installation is completed
   - [HyperCube] Fails if DoctorCube cannot be installed
 
 * 2016-08-16
-  - Fixes a security issue on the disk decryption web interface (thx @alpheb)
-  - Fixes bugs on the disk decryption web interface
+  - [EncryptedFS] Fixes a security issue on the web interface (thx @alpheb)
+  - [EncryptedFS] Fixes some minor bugs on the web interface
   - [HyperCube] Fixes bugs with special chars in passwords not hidden in logs
   - [HyperCube] Installs DoctorCube by default
 
