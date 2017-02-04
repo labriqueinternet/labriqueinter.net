@@ -1,7 +1,8 @@
 * 2017-02-03 (latest)
   - Installs YunoHost 2.5 Chelsea Manning (with native Let's Encrypt integration)
-  - [LIME2] Fixes instable reachability issues
-  - [LIME2] Fixes slow network issues
+  - Fixes issues with physical network interfaces sometimes not automatically brought up
+  - [LIME2] Fixes instable reachability issues (uboot patch)
+  - [LIME2] Fixes slow network issues (uboot patch)
   - [HyperCube] Removes deadlocks with YunoHost processes
   - [EncryptedFS] Greatly improves the fiability of the web interface
 
