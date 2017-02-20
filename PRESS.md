@@ -17,3 +17,7 @@
 * [blog] https://www.infobidouille.com/lorraine-data-network-lance-une-box-pour-un-internet-neutre/ (remplacer LDN par FFDN)
 * [blog] http://zwindler.fr/wordpress/2016/04/09/internet-barbu-vie-privee-brique-internet-ffdn-aquilenet/
 * [blog] http://www.makery.info/2016/07/04/precis-de-degooglisation/
+* [blog] https://blog.sciunto.org/posts/brique_internet/
+* [video] http://videos2016.capitoledulibre.org/communaute-du-libre/bram-1-an-et-demi-de-brique-internet.mp4
+* [news] https://linuxfr.org/news/evolutions-des-projets-la-brique-internet-et-yunohost-des-versions-2-2-2-4-et-2-5
+* [blog] https://tkpx.wordpress.com/2017/02/19/la-brique-internet/
