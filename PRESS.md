@@ -15,9 +15,11 @@
 * [pdf] http://www.cesep.be/PDF/SECOUEZ/SECOUEZ_104.pdf (page 8-9)
 * https://projeteof.org/blog/une-brique-internet-yunohost-comme-systeme-dinformation-libre-embarque-et-deconnecte-pour-laction-openstreetmap-benin-2016/
 * [blog] https://www.infobidouille.com/lorraine-data-network-lance-une-box-pour-un-internet-neutre/ (remplacer LDN par FFDN)
+* [blog] https://www.dadall.info/blog/index.php?article415/la-brique-internet-liberer-sa-connexion-simplement
 * [blog] http://zwindler.fr/wordpress/2016/04/09/internet-barbu-vie-privee-brique-internet-ffdn-aquilenet/
 * [blog] http://www.makery.info/2016/07/04/precis-de-degooglisation/
 * [blog] https://blog.sciunto.org/posts/brique_internet/
+* [blog] https://memo-linux.com/category/yunohost/
 * [video] http://videos2016.capitoledulibre.org/communaute-du-libre/bram-1-an-et-demi-de-brique-internet.mp4
 * [news] https://linuxfr.org/news/evolutions-des-projets-la-brique-internet-et-yunohost-des-versions-2-2-2-4-et-2-5
 * [blog] https://tkpx.wordpress.com/2017/02/19/la-brique-internet/
