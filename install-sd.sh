@@ -678,7 +678,7 @@ function install_clear() {
 
 function copy_hypercube() {
   debug "Copying ${hypercube_path} to ${olinux_mountpoint}/root/"
-  sudo cp "${hypercube_path}" "${olinux_mountpoint}/root/"
+  sudo cp "${hypercube_path}" "${olinux_mountpoint}/root/install.hypercube"
 
   debug "Flushing file system buffers"
   sudo sync
