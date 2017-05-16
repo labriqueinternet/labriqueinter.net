@@ -1770,7 +1770,7 @@ var validation = {
       nbWarns++;
     }
 
-    if($('#hotspot_wifi_passphrase').val().trim() && $('#hotspot_wifi_passphrase').val().trim().length < 3 || $('#hotspot_wifi_passphrase').val().trim().length > 63) {
+    if($('#hotspot_wifi_passphrase').val().trim() && $('#hotspot_wifi_passphrase').val().trim().length < 8 || $('#hotspot_wifi_passphrase').val().trim().length > 63) {
       validation.warnings.add('hotspot_wifi_passphrase', _("Must from 8 to 63 characters (WPA2 passphrase)"));
       nbWarns++;
     }
