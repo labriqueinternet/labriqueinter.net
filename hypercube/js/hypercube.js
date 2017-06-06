@@ -129,9 +129,9 @@ var cube = {
     }
 
     $('#vpn_crt_ta_deletebtn').click();
-    $('#vpn_crt_ta_edition').val(cube.helpers.decompressCertificate(json['crt_ta']));
+    $('#vpn_crt_ta_edition').val(cube.helpers.decompressCertificate(json['crt_client_ta']));
 
-    if(json['crt_ta']) {
+    if(json['crt_client_ta']) {
       if(!$('input[data-auth=vpn_auth_type_ta]').is(':checked')) {
         $('input[data-auth=vpn_auth_type_ta]').click();
         $('input[data-auth=vpn_auth_type_ta]').prop('checked', true);
