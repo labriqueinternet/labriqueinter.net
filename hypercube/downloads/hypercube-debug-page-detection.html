@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>HyperCube - Debug Page Detection</title>
+
+<!--
+ HyperCube Service for the Internet Cube Project
+ Copyright (C) 2017 Julien Vaubourg <julien@vaubourg.com>
+ Contribute at https://github.com/labriqueinternet/labriqueinter.net/tree/master/hypercube
+ Report issues at https://dev.yunohost.org/projects/la-brique-internet/issues
+ 
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Affero General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ 
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Affero General Public License for more details.
+ 
+ You should have received a copy of the GNU Affero General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+
+body {
+  font-family: sans;
+  background-color: #111;
+  color: #fff;
+  width: 90%;
+  margin: 0 auto;
+  font-size: 1em;
+}
+
+main {
+  width: 80%;
+  margin: 0 auto;
+}
+
+footer {
+  margin-top: 3em;
+  text-align: center;
+  border-top: 1px solid #999;
+  margin-top: 2em;
+  padding-top: .7em;
+  font-size: 0.9em;
+}
+
+footer a {
+  color: #ccc;
+}
+
+h1 {
+  font-weight: normal;
+  text-align: center;
+  padding: 1em;
+  font-size: 2.2em;
+}
+
+h1 span {
+  color: #f00;
+}
+
+a {
+  color: #fff;
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+#explanations {
+  text-align: center;
+  font-style: italic;
+}
+
+#nextscan {
+  display: none;
+  margin-top: 2em;
+  text-align: center;
+  font-style: italic;
+}
+
+#subprogress {
+  margin-top: 1em;
+  background-color: #333;
+  border-radius: 5pt;
+}
+
+#progress {
+  background-color: #900;
+  width: 0%;
+  height: 1em;
+  border-radius: 5pt;
+  padding: 5pt;
+  text-align: center;
+  overflow: hidden;
+  margin-bottom: 2em;
+  text-shadow: 1px 1px #000;
+}
+
+#results {
+  display: none;
+  padding: 1em;
+}
+
+#results a {
+  color: #0f0;
+}
+
+#results li {
+  list-style-type: square;
+}
+
+#prefix {
+  font-style: italic;
+  text-align: center;
+  padding: 1em;
+}
+
+#scans {
+  margin-top: 3em;
+  text-align: center;
+  font-weight: bold;
+}
+</style>
+
+<script>
+window.addEventListener('load', start, false);
+
+var ips = [];
+
+function start() {
+  findLocalIp();
+}
+
+function extractIp(sdp) {
+  var ip = '';
+
+  sdp.split('\r\n').forEach(function(line) {
+    if(~line.indexOf("a=candidate")) {
+      var parts = line.split(' ');
+
+      if(parts[7] === 'host') {
+        ip = parts[4];
+        return;
+      }
+
+    } else if(~line.indexOf("c=")) {
+      var parts = line.split(' ');
+
+      ip = parts[2];
+      return;
+    }
+  });
+
+  return ip;
+}
+
+function nextScan(ip, s) {
+  document.getElementById('nextscan').style.display = 'block';
+  document.getElementById('nextscan').textContent = 'Next network scanning in ' + s + ' seconds';
+
+  if(s == 0) {
+    scanNetwork(ip);
+    document.getElementById('nextscan').style.display = 'none';
+
+  } else {
+    setTimeout(function() { nextScan(ip, s - 1); }, 1000);
+  }
+}
+
+function addIp(ip) {
+  if(ips.indexOf(ip) > -1) {
+    return;
+  }
+
+  ips.push(ip);
+  updateIpList();
+}
+
+function tryIp(ip) {
+  var xhttp = new XMLHttpRequest();
+  xhttp.timeout = 10000;
+
+  xhttp.onreadystatechange = function() {
+    if(xhttp.readyState == 4) {
+      updateProgressbar();
+
+      if(document.getElementById('progress').getAttribute('data-real') == 254) {
+        nextScan(ip, 20);
+      }
+
+      if(xhttp.status == 200) {
+        addIp(ip);
+      }
+    }
+  };
+
+  xhttp.open('GET', 'http://' + ip + ':2468', true);
+  xhttp.send();
+}
+
+function updateIpList() {
+  document.getElementById('prefix').style.display = 'none';
+  document.getElementById('results').style.display = 'block';
+
+  var ul = document.getElementById('list');
+
+  while(ul.hasChildNodes()) {
+    ul.removeChild(ul.lastChild);
+  }
+
+  ips.forEach(function(ip) {
+    var a = document.createElement('a');
+    var href = 'http://' + ip + ':2468/install.html';
+    var li = document.createElement('li');
+    var txt = document.createTextNode(ip);
+
+    a.appendChild(txt);
+    a.setAttribute('href', href);
+    li.appendChild(a);
+    ul.appendChild(li);
+  });
+}
+
+function updateProgressbar() {
+  var real = document.getElementById('progress').getAttribute('data-real');
+  document.getElementById('progress').setAttribute('data-real', ++real);
+
+  var pc = Math.round(100 / 255 * real);
+
+  document.getElementById('progress').style.width = pc + '%';
+  document.getElementById('progress').textContent = pc + '% of the /24 network';
+}
+
+function updateScanNumber() {
+  var nb = document.getElementById('progress').getAttribute('data-nb');
+  document.getElementById('progress').setAttribute('data-nb', ++nb);
+  document.getElementById('scans').textContent = 'Network Scanning #' + nb;
+  document.getElementById('progress').style.width = '1%';
+  document.getElementById('progress').setAttribute('data-real', 0);
+}
+
+function scanNetwork(ip) {
+  var bytes = ip.split('.');
+  var prefix = bytes[0] + '.' + bytes[1] + '.' + bytes[2] + '.';
+
+  document.getElementById('prefix').textContent = 'Looking for HyperCube Debug Pages on the network ' + prefix + '0/24...';
+  updateScanNumber();
+
+  for(var i = 1; i < 255; i++) {
+    tryIp(prefix + i);
+  }
+}
+
+function findLocalIp() {
+  var RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+  
+  if(RTCPeerConnection) {
+    var rtc = new RTCPeerConnection({ iceServers: [] });
+
+    rtc.createDataChannel('', { reliable: false });
+  
+    rtc.onicecandidate = function(evt) {
+      if(evt.candidate) {
+        var ip = extractIp('a=' + evt.candidate.candidate);
+
+        if(!ip.match(/:/)) {
+          rtc.close();
+          scanNetwork(ip);
+        }
+      }
+    };
+
+    rtc.createOffer(
+      function(offerDesc) {
+        rtc.setLocalDescription(offerDesc);
+      },
+      function(e) {
+        console.warn('offer failed', e);
+      }
+    );
+  }
+}
+</script>
+</head>
+
+<body>
+<header>
+  <h1><span>HyperCube</span> Debug Page Detection</h1>
+</header>
+
+<main id="main">
+  <div id="explanations">This page should be open <strong>directly on your laptop</strong>, with your web browser.<br />You have to be <strong>on the same network</strong> than your currently running Internet Cube.</div>
+  <div id="scans"></div>
+  <div id="subprogress">
+    <div id="progress" style="width: 1%">&nbsp;</div>
+  </div>
+  <div id="prefix"></div>
+  <div id="results">
+    HyperCube Debug Page found for:
+    <ul id="list"></ul>
+  </div>
+  <div id="nextscan"></div>
+</main>
+
+<footer>
+  <a href="https://labriqueinter.net">La Brique Internet</a>
+</footer>
+</body>
+</html>
