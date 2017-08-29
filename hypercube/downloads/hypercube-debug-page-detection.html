@@ -2,6 +2,7 @@
 <html>
 <head>
 <title>HyperCube - Debug Page Detection</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <!--
  HyperCube Service for the Internet Cube Project
@@ -23,7 +24,6 @@
  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <style>
 
 body {
@@ -133,6 +133,7 @@ a:hover {
 window.addEventListener('load', start, false);
 
 var ips = [];
+var domains = [];
 
 function start() {
   findLocalIp();
@@ -174,12 +175,14 @@ function nextScan(ip, s) {
   }
 }
 
-function addIp(ip) {
+function addIp(ip, domain) {
   if(ips.indexOf(ip) > -1) {
     return;
   }
 
   ips.push(ip);
+  domains.push(domain);
+
   updateIpList();
 }
 
@@ -195,13 +198,14 @@ function tryIp(ip) {
         nextScan(ip, 20);
       }
 
-      if(xhttp.status == 200) {
-        addIp(ip);
+      if(xhttp.status == 200 || xhttp.status == 404) {
+        var domain = (xhttp.status == 200) ? xhttp.responseText.replace("\n", '') : null;
+        addIp(ip, domain);
       }
     }
   };
 
-  xhttp.open('GET', 'http://' + ip + ':2468', true);
+  xhttp.open('GET', 'http://' + ip + ':2468/domain', true);
   xhttp.send();
 }
 
@@ -215,17 +219,26 @@ function updateIpList() {
     ul.removeChild(ul.lastChild);
   }
 
-  ips.forEach(function(ip) {
+  for(var i = 0; i < ips.length; i++) {
+    var ip = ips[i];
+    var domain = domains[i];
+
     var a = document.createElement('a');
     var href = 'http://' + ip + ':2468/install.html';
     var li = document.createElement('li');
-    var txt = document.createTextNode(ip);
+    var txt;
+
+    if(domain == null) {
+      txt = document.createTextNode(ip);
+    } else {
+      txt = document.createTextNode(ip + ' (' + domain + ')');
+    }
 
     a.appendChild(txt);
     a.setAttribute('href', href);
     li.appendChild(a);
     ul.appendChild(li);
-  });
+  }
 }
 
 function updateProgressbar() {
