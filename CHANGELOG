@@ -1,4 +1,10 @@
-* 2017-02-05 (latest)
+* 2017-08-30 (latest)
+  - Installs YunoHost 2.7 Eben Moglen
+  - [HyperCube] Adds support for cross-domain AJAX requests to the debug page
+  - [HyperCube] Increases the timeout of the debug page to 24 hours
+  - [HyperCube] Is able to not install & configure VPN Client and/or Wifi Hotspot
+
+* 2017-02-05
   - Installs YunoHost 2.5 Chelsea Manning (with native Let's Encrypt integration)
   - Fixes issues with physical network interfaces sometimes not automatically brought up
   - [LIME2] Fixes instable reachability issues (uboot patch)
