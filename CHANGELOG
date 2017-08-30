@@ -1,4 +1,4 @@
-* 2017-08-30 (latest)
+* 2017-08-31 (latest)
   - Installs YunoHost 2.7 Eben Moglen
   - [HyperCube] Adds support for cross-domain AJAX requests to the debug page
   - [HyperCube] Increases the timeout of the debug page to 24 hours
