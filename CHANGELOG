@@ -1,4 +1,7 @@
-* 2017-08-31 (latest)
+* 2017-09-06 (latest)
+  - Fixes an important issue with resolv.conf (thx yoshi)
+
+* 2017-08-31
   - Installs YunoHost 2.7 Eben Moglen
   - [HyperCube] Adds support for cross-domain AJAX requests to the debug page
   - [HyperCube] Increases the timeout of the debug page to 24 hours
