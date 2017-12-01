@@ -24,3 +24,4 @@
 * [news] https://linuxfr.org/news/evolutions-des-projets-la-brique-internet-et-yunohost-des-versions-2-2-2-4-et-2-5
 * [blog] https://tkpx.wordpress.com/2017/02/19/la-brique-internet/
 * [tv] https://julien.vaubourg.com/files/fr3_portrait.webm (JT 12/13 + JT 19/20 FR3 Lorraine du 29/06/2017)
+* [tv] http://www.tebeo.bzh/contents/videos/INST171129.mp4 (JT 19 Télé Bretagne Ouest du 29/11/2017), L'instant Numérique : "La brique internet… mais qu'est-ce que c'est?" Invité : Nicolas Petton, développeur logiciel Waulter
