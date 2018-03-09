@@ -704,7 +704,7 @@ function patch_servicesyml() {
     if ! grep -q "need_lock" "${servicesyml}";
     then
         info "Patching services.yml"
-        sed -i "s/yunohost-firewall:/yunohost-firewall:\n  need_lock: true/g" ${servicesyml}
+        sed -i "s/yunohost-firewall:/yunohost-firewall:\n   need_lock: true/g" ${servicesyml}
     fi
 } 
 
