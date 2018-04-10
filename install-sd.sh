@@ -684,6 +684,20 @@ function copy_hypercube() {
   sudo sync
 }
 
+function replace_hypercube_sh() {
+  debug "Changing ${olinux_mountpoint}/usr/local/bin/hypercube.sh by ${hypercubesh_path}"
+  if [ ! -f ${hypercubesh_path} ]; then
+     local hypercubesh_repo="https://raw.githubusercontent.com/labriqueinternet/build.labriqueinter.net/master/build/script/hypercube/hypercube.sh"
+     pushd $(basename ${hypercubesh_path}) 
+     curl -#fOA hypercube.sh  $hypercubesh_repo 
+     popd
+  fi
+  
+  sudo cp "${hypercubesh_path}" "${olinux_mountpoint}/usr/local/bin/hypercube.sh"
+
+  debug "Flushing file system buffers"
+  sudo sync
+}
 
 ########################
 ### GLOBAL VARIABLES ###
@@ -711,12 +725,13 @@ loopdev=
 trap cleaning_exit EXIT ERR
 trap cleaning_ctrlc INT
 
-while getopts "s:f:g:mc:y:e2ldh" opt; do
+while getopts "s:f:g:mc:y:w:e2ldh" opt; do
   case $opt in
     s) opt_sdcardpath=$OPTARG ;;
     f) opt_imgpath=$OPTARG ;;
     g) opt_gpgpath=$OPTARG ;;
     y) opt_hypercubepath=$OPTARG ;;
+    w) opt_hypercubeshpath=$OPTARG ;;
     e) opt_encryptedfs=true ;;
     2) opt_lime2=true ;;
     l) opt_findcubes=true ;;
@@ -756,6 +771,7 @@ umount_sdcard
 img_path=$opt_imgpath
 gpg_path=$opt_gpgpath
 hypercube_path=$opt_hypercubepath
+hypercubesh_path=$opt_hypercubeshpath
 
 if [ -z "${img_path}" ]; then
   info "Downloading Debian/YunoHost image (HTTPS)"
@@ -792,6 +808,11 @@ fi
 if [ ! -z "${hypercube_path}" ]; then
   info "Copying HyperCube file"
   copy_hypercube
+fi
+
+if [ ! -z "${hypercubesh_path}" ]; then
+  info "Replacing HyperCube script"
+  replace_hypercube_sh
 fi
 
 info "Done"
