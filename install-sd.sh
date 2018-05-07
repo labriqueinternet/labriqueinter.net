@@ -699,6 +699,15 @@ function replace_hypercube_sh() {
   sudo sync
 }
 
+function patch_servicesyml() {
+    local servicesyml="${olinux_mountpoint}/etc/yunohost/services.yml"
+    if ! grep -q "need_lock" "${servicesyml}";
+    then
+        info "Patching services.yml"
+        sed -i "s/yunohost-firewall:/yunohost-firewall:\n   need_lock: true/g" ${servicesyml}
+    fi
+} 
+
 ########################
 ### GLOBAL VARIABLES ###
 ########################
@@ -804,6 +813,8 @@ else
   info "Installing SD card (this could take a few minutes)"
   install_clear
 fi
+
+patch_servicesyml
 
 if [ ! -z "${hypercube_path}" ]; then
   info "Copying HyperCube file"
