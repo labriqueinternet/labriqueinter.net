@@ -7,9 +7,9 @@
 */
 
 body {
-  background-color: #111;
+  background-color: #fff;
   padding: 1.4em 1.4em 0.5em;
-  color: #eee;
+  color: #000;
   font-family: Helvetica, Arial, Sans-Serif;
   font-size: 14pt;
   line-height: 1.2em;
@@ -22,7 +22,7 @@ div#banniere {
 }
 
 div#banniere, h1, h2, h3, h4, h5, h6 {
-  color: #fff;
+  color: #000;
   font-family: jurabook;
 }
 
@@ -70,7 +70,7 @@ a,
 a:link,
 a:visited {
   text-decoration: underline;
-  color: #ccc;
+  color: #000;
 }
 
 a:hover,
@@ -87,7 +87,7 @@ a:focus {
   text-align: left;
   list-style: none;
   margin: 0;
-  color: #bbb;
+  color: #000;
 }
 .language-links li {display: inline;}
 .language-links li + li:before {
@@ -98,7 +98,7 @@ a:focus {
 .language-links a {
   text-decoration: none;
   display: inline-block;
-  color: #bbb;
+  color: #000;
   font-weight: bold;
 }
 .language-links a:hover,
