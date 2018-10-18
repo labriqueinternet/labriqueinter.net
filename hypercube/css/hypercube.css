@@ -47,7 +47,6 @@ input[type=file] {
 }
 
 .nav-pills.nav-wizard li {
-  border-color: #111;
 }
 
 .nav-pills.nav-wizard li a {
@@ -116,13 +115,13 @@ input[type=file] {
 
 .panel-default .nav li a {
   text-decoration: none;
-  background-color: #111;
   margin: 0 10px;
+  color: #000;
+  border: 2px solid #000;
 }
 
 .panel-default .nav li a:hover {
-  background-color: #f00;
-  color: #fff;
+  border: 2px solid #f00;
 }
 
 ul.nav a {
@@ -235,7 +234,6 @@ ul.nav a {
 .question span {
   display: block;
   margin: 25pt;
-  text-shadow: 0px 1px 0px #000;
 }
 
 #panel-aboutyou {
@@ -253,7 +251,6 @@ ul.nav a {
 
 .panel-section {
   font-weight: bold;
-  color: #888;
   border-bottom: 1px solid #ddd;
   padding: 5px 5px 5px 5px;
   font-size: inherit;
@@ -323,9 +320,6 @@ iframe {
 }
 
 .panel-default {
-  background-color: #303030;
-  color: #eee;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 1) inset, 0px 0px 8px rgba(0, 0, 0, 1);
 }
 
 .nav-tabs.nav-justified li a {
@@ -396,8 +390,6 @@ label.optionalfield span.glyphicon:hover {
 }
 
 .panel-section {
-  color: #bbb;
-  text-shadow: 0px 1px 0px #000;
   border-bottom-color: #777;
 }
 
@@ -596,7 +588,7 @@ h1 {
 }
 
 h1 span.i18n {
-  color: #fff;
+  color: #000;
 }
 
 a.btn-danger span {
