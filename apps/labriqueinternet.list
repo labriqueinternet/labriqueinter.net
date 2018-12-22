@@ -1,7 +1,7 @@
 {
     "vpnclient": {
         "branch": "master",
-        "revision": "d452b139d7d21feb6a9c5328bc756ca8152e2b55",
+        "revision": "623d8a30453a26ee21aa2ce1142674a2ffdb85b9",
         "state": "validated",
         "url": "https://github.com/labriqueinternet/vpnclient_ynh"
     },
