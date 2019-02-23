@@ -255,13 +255,13 @@ function check_args() {
       exit_usage "Filename given to -f does not contain _encryptedfs_ in its name, but -e was set"
     fi
 
-    if [[ "${opt_imgpath}" =~ LIME2 ]]; then
+    if [[ "${opt_imgpath}" =~ lime2 ]]; then
       if ! $opt_lime2; then
         info "Option -2 automatically set, based on the filename given to -f"
         opt_lime2=true
       fi
     elif $opt_lime2; then
-      exit_usage "Filename given to -f does not contain LIME2 in its name, but -2 was set"
+      exit_usage "Filename given to -f does not contain lime2 in its name, but -2 was set"
     fi
   fi
 
@@ -479,9 +479,9 @@ function download_file() {
 
 function download_img() {
   $opt_lime2 && local urlpart_lime2=2
-  $opt_encryptedfs && local urlpart_encryptedfs=_encryptedfs
+  $opt_encryptedfs && local urlpart_encryptedfs=-encryptedfs
 
-  local tar_name="labriqueinternet_A20LIME${urlpart_lime2}${urlpart_encryptedfs}_latest_${deb_version}.img.tar.xz"
+  local tar_name="internetcube-${deb_version}-latest-lime${urlpart_lime2}${urlpart_encryptedfs}.img.tar.xz"
 
   info "Image file: ${tar_name}"
 
@@ -688,11 +688,11 @@ function replace_hypercube_sh() {
   debug "Changing ${olinux_mountpoint}/usr/local/bin/hypercube.sh by ${hypercubesh_path}"
   if [ ! -f ${hypercubesh_path} ]; then
      local hypercubesh_repo="https://raw.githubusercontent.com/labriqueinternet/build.labriqueinter.net/master/build/script/hypercube/hypercube.sh"
-     pushd $(basename ${hypercubesh_path}) 
-     curl -#fOA hypercube.sh  $hypercubesh_repo 
+     pushd $(basename ${hypercubesh_path})
+     curl -#fOA hypercube.sh  $hypercubesh_repo
      popd
   fi
-  
+
   sudo cp "${hypercubesh_path}" "${olinux_mountpoint}/usr/local/bin/hypercube.sh"
 
   debug "Flushing file system buffers"
@@ -706,7 +706,7 @@ function patch_servicesyml() {
         info "Patching services.yml"
         sudo sed -i "s/yunohost-firewall:/yunohost-firewall:\n   need_lock: true/g" ${servicesyml}
     fi
-} 
+}
 
 ########################
 ### GLOBAL VARIABLES ###
@@ -715,7 +715,7 @@ function patch_servicesyml() {
 url_base=https://repo.labriqueinter.net/
 gpg_key=0xCD8F4D648AC0ECC1
 gpg_server=keyserver.ubuntu.com
-deb_version=jessie
+deb_version=stretch
 opt_encryptedfs=false
 opt_findcubes=false
 opt_debug=false
