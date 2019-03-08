@@ -19,4 +19,4 @@ List of work documents:
 * https://pad.ilico.org/p/hardware_brique
 * http://pad.aquilenet.fr/p/LaBrique
 
-**[BUG REPORTS SHOULD BE OPEN HERE](https://dev.yunohost.org)**
+**[BUG REPORTS SHOULD BE OPEN HERE](https://github.com/labriqueinternet/labriqueinter.net/issues)**
