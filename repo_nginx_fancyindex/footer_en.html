@@ -19,15 +19,7 @@
     <section id="guide-encrypted">
       <h2><span>Quick</span> Guide (encrypted)</h2>
 
-      <p>For even further privacy, the root file system of your Cube can be encrypted (images <em>encryptedfs</em>).</p>
-
-      <p>The hard drive will have to be unlocked each time your Cube is rebooting. You will be able to remotely unlock the hard drive by accessing to your Cube with HTTPS. For that, you will have to use the public IPv4 from your ISP, with a correctly configured port-forwarding on your router (or directly IPv6 if your are lucky).</p>
-
-      <p>Download the <a href="https://repo.internetcu.be/install-sd.sh">SD Card Installer</a>, and just run it with <em>-e</em> (add <em>-2</em> at the end for a LIME2</em>, or <em>-h</em> to see other options):</p>
-
-      <pre>% bash install-sd.sh -e</pre>
-
-      <p>For the SSH access and the YunoHost post-installation, see the <em>Post-Installation</em> section below.</p>
+      <p>The creation of cubes with an encrypted filesystem is currently not supported anymore. Contact the development team if you wish to help on this topic.</p>
     </section>
 
     <section id="post-installation">
@@ -39,9 +31,9 @@
 
       <p>Once your Cube found, connect with SSH on port 22:</p>
 
-      <pre>root:olinux</pre>
+      <pre>root:yunohost</pre>
 
-      <p><strong>Note:</strong> If there is only one Cube on your network, you can also directly use <code>ssh root@fe80::42:babe%wlan0</code> (replacing <em>wlan0</em> by the network device you use on your computer).
+      <p><strong>Note:</strong> If there is only one Cube on your network, you can also directly use <code>ssh root@fe80::42:acab%eth0</code> (replacing <em>eth0</em> by the network device you use on your computer).
 
       <p>The first thing to do is upgrading Debian/Yunohost:</p>
 
@@ -49,9 +41,9 @@
 
       <p>You can now do the YunoHost <a href="https://yunohost.org/#/postinstall_en">post-installation</a>.
 
-      <p>Then, add the list of apps dedicated to the Internet Cube to YunoHost:</p>
+      <p>Then, add the list of community apps to YunoHost:</p>
 
-      <pre>% yunohost app fetchlist -n labriqueinternet -u https://labriqueinter.net/apps/labriqueinternet.json</pre>
+      <pre>% yunohost app fetchlist -n community -u https://app.yunohost.org/community.json</pre>
 
       <p>From the YunoHost web administration, you can now install the <em>VPN Client</em> and <em>Wifi Hotspot</em> apps, then configure them.</p>
     </section>
