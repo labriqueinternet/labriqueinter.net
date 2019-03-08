@@ -19,15 +19,7 @@
     <section id="guide-chiffrement">
       <h2><span>Guide</span> express (avec chiffrement)</h2>
 
-      <p>Pour encore plus de protection de vos données, le système de fichiers de votre Brique peut être chiffré (images <em>encryptedfs</em>).</p>
-
-      <p>La partition devra être déchiffrée à chaque redémarrage de la Brique. Il sera possible de procéder au déchiffrement à distance, grâce à une interface web accessible en HTTPS. Vous devrez alors utiliser l'adresse IP publique de votre FAI (directement en IPv6, ou en IPv4 avec de la redirection de ports sur votre box). </p>
-
-      <p>Il suffit de télécharger le <a href="https://repo.labriqueinter.net/install-sd.sh">SD Card Installer</a>, et l'exécuter avec l'option <em>-e</em> (ajouter <em>-2</em> à la fin pour une LIME2</em>, ou <em>-h</em> pour voir les autres options) :</p>
-
-      <pre>% bash install-sd.sh -e</pre>
-
-      <p>Pour l'accès SSH et la post-installation de YunoHost, voir la section <em>Post-installation</em> ci-dessous.</p>
+      <p>La création de brique utilisant un système de fichier chiffré n'est plus supportée pour le moment. Contacter l'équipe de développement si vous souhaitez aider sur ce sujet.</p>
     </section>
 
     <section id="post-installation">
@@ -38,9 +30,9 @@
 
       <p>Une fois la Brique localisée, connectez-vous par SSH sur le port 22 :</p>
 
-      <pre>root:olinux</pre>
+      <pre>root:yunohost</pre>
 
-      <p><strong>Note :</strong> S'il n'y a qu'une seule Brique sur votre réseau, vous pouvez aussi directement utiliser <code>ssh root@fe80::42:babe%wlan0</code> (en remplaçant <em>wlan0</em> par l'interface réseau que vous utilisez sur votre ordinateur).
+      <p><strong>Note :</strong> S'il n'y a qu'une seule Brique sur votre réseau, vous pouvez aussi directement utiliser <code>ssh root@fe80::42:acab%eth0</code> (en remplaçant <em>eth0</em> par l'interface réseau que vous utilisez sur votre ordinateur).
 
       <p>La première chose à faire est de mettre à jour Debian/YunoHost :</p>
 
@@ -48,9 +40,9 @@
 
       <p>Vous pouvez maintenant faire la <a href="https://yunohost.org/#/postinstall_fr">post-installation</a>.
 
-      <p>Ajoutez ensuite la liste des apps dédiées à la Brique Internet à YunoHost :</p>
+      <p>Ajoutez ensuite la liste des apps community à YunoHost :</p>
 
-      <pre>% yunohost app fetchlist -n labriqueinternet -u https://labriqueinter.net/apps/labriqueinternet.json</pre>
+      <pre>% yunohost app fetchlist -n community -u https://app.yunohost.org/community.json</pre>
 
       <p>À partir de l'administration web de YunoHost, vous pouvez désormais installer les apps <em>VPN Client</em> et <em>Wifi Hotspot</em>, puis aller les configurer.
     </section>
