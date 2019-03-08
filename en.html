@@ -32,63 +32,60 @@
             <button id="subtitles" type="button" data-state="subtitles">CC</button>
             Use a modern browser to watch this video.
           </video>
-          <a href="#features" id="show-features-button">Features list (text)</a>
         </div>
-
-        <div id="features">
-          The Internet cube has two main uses:
-
-          <ol>
-            <li>
-              <strong>Clean your internet access:</strong>
-              <ul>
-                <li><span>You simply connect the Cube to your Internet Service Provider (ISP) box</span>... and that's it ;</li>
-                <li><span>It will start a second wifi network</span>, which you can use to access the internet;</li>
-                <li>By using this wifi rather than the one from your ISP, <span>it won't be able to spy, filter or restrict</span> your internet connection;</li>
-                <li>Furthermore, <span>your computers will automatically gain native IPv6 access</span>, without the need to configure anything;</li>
-                <li>If you decide to switch ISP, <span>you can just unplug and replug the Cube from one box to the other</span> and you won't need to reconfigure anything;</li>
-                <li>You now have a trusted internet connection, without filtering and respectful of Net Neutrality, <span>regardless of where you connect your box</span>, it even works using 3G/4G.</li>
-              </ul>
-            </li>
-            <li>
-              <strong>Self Hosting:</strong>
-              <ul>
-                <li>thanks to the software <a href="https://yunohost.org">YunoHost</a>, <span>the Internet Cube allows you to store your emails and other personal data at your own place</span> instead of storing them on the computer of someone else (what is commonly referred to today as <em>the cloud</em>);</li>
-                <li>YunoHost allows anyone who is interested in IT, without being an expert, <span>to self-host a wide range of services</span> (emails, file sharing, blog, online calendar, etc...);</li>
-                <li>thanks to the Cube, which is also an internet server, <span>you don't have to worry about the restrictions of your ISP</span>: they have disappeared;</li>
-                <li><span>your server is connected to an internet access that respect Net Neutrality and which isn't censored</span>, with static IPv4 and IPv6 and there is no need to configure your ISP box;</li>
-                <li>if you switch ISP, <span>you only need to unplug and replug the Internet Cube from the old box to the new one and your server will be available again</span> without the need of any configuration;</li>
-                <li>if you move or switch off your electricity to go on vacation, <span>you can plug your Cube in on any internet connection</span> without having to do any configuration;</li>
-                <li><span>you can even connect your portable server to an especially restricted access,</span>, like a 3/4G connection and continue to offer your services to the whole world.</li>
-              </ul>
-            </li>
-            <li>
-              <strong>Bonus:</strong>
-              <ul>
-                <li>with a maximum consumption of only 2W with the wifi activated, the Cube can be powered <span>via a battery or a small solar Panel</span> (a 12€ battery cell can last 13h);</li>
-                <li>the box is <span>open-hardware and all the software included is free software</span>;</li>
-                <li>the Internet Cube can also allow you to <span>share files easily</span> during an event (this is what we call a <em>PirateBox</em>) ;</li>
-                <li>you can also use it <span>to provide internet access at a public event</span>, when using someone elses connection to free it's owner from liabilities.</li>
-                <li>PS: you can use the same Cube <span>to clean your internet access with its wifi hotspot and host your internet services</span>.</li>
-              </ul>
-            </li>
-          </ol>
-        </div>
-
     </section>
 
     <section id="how-does-it-works">
       <h2><span>How</span> does it work?</h2>
 
-      <p>The Internet Cube, as presented in the video above, is a simple VPN box paired with a server.</p>
+      <p>The Internet Cube, as presented in the video above, fulfils two complementaty functions.</p>
 
-      <p>A VPN is used to <a href="https://en.wikipedia.org/wiki/Virtual_private_network">connect one computer to another</a>, in a secure way.
-      No other intermediary on the internet can read the content of the communications transiting through. For the Cube to work, it needs to
-      be configured to access a VPN, that will create a tunnel to another computer on the internet. By connecting yourself to the
-      Cube wifi, you can surf the internet, through its encrypted tunnel. This way your commercial
-      <acronym title="Internet Service Provider">ISP</acronym> can't spy, limit or filter your connection. The same mechanism allows the Cube to act as a portable server.</p>
+      <p>1. It <strong>cleans your Internet access</strong>. To achieve this, it broadcast its own WiFi network. By using it, all your internet traffic goes through <a href="https://en.wikipedia.org/wiki/Virtual_private_network">an encrypted tunnel (VPN)</a>. This way, your Internet Service Provider (ISP) is not able to spy, filter or clamp down your internet access. In the future, the Internet Cube might integrate additional features such as automatically blocking ads and trackers, or other features to protect your privacy.</p>
 
-      <p>Suppressing oversight from the ISP and online services providers:</p>
+      <p>2. It allows you to <strong>have your very own piece of Internet</strong>. This is what is called self-hosting : to have your own server, hosting services like a blog, a mailbox, file synchronization, contact and calendar synchronization, etc... This practice is made accessible through the <a href="https://yunohost.org">YunoHost</a> software. The Internet Cube therefore allows you to emancipate yourself from <a href="https://en.wikipedia.org/wiki/GAFAM">the GAFAMs</a> and to take back control of your data.</p>
+
+      <a href="#features" id="show-features-button">Detailed feature list (text)</a>
+      <div id="features">
+        The Internet cube has two main uses:
+
+        <ol>
+          <li>
+            <strong>Clean your internet access:</strong>
+            <ul>
+              <li><span>You simply connect the Cube to your Internet Service Provider (ISP) box</span>... and that's it ;</li>
+              <li><span>It will start a second wifi network</span>, which you can use to access the internet;</li>
+              <li>By using this wifi rather than the one from your ISP, <span>it won't be able to spy, filter or restrict</span> your internet connection;</li>
+              <li>Furthermore, <span>your computers will automatically gain native IPv6 access</span>, without the need to configure anything;</li>
+              <li>If you decide to switch ISP, <span>you can just unplug and replug the Cube from one box to the other</span> and you won't need to reconfigure anything;</li>
+              <li>You now have a trusted internet connection, without filtering and respectful of Net Neutrality, <span>regardless of where you connect your box</span>, it even works using 3G/4G.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Self Hosting:</strong>
+            <ul>
+              <li>thanks to the software <a href="https://yunohost.org">YunoHost</a>, <span>the Internet Cube allows you to store your emails and other personal data at your own place</span> instead of storing them on the computer of someone else (what is commonly referred to today as <em>the cloud</em>);</li>
+              <li>YunoHost allows anyone who is interested in IT, without being an expert, <span>to self-host a wide range of services</span> (emails, file sharing, blog, online calendar, etc...);</li>
+              <li>thanks to the Cube, which is also an internet server, <span>you don't have to worry about the restrictions of your ISP</span>: they have disappeared;</li>
+              <li><span>your server is connected to an internet access that respect Net Neutrality and which isn't censored</span>, with static IPv4 and IPv6 and there is no need to configure your ISP box;</li>
+              <li>if you switch ISP, <span>you only need to unplug and replug the Internet Cube from the old box to the new one and your server will be available again</span> without the need of any configuration;</li>
+              <li>if you move or switch off your electricity to go on vacation, <span>you can plug your Cube in on any internet connection</span> without having to do any configuration;</li>
+              <li><span>you can even connect your portable server to an especially restricted access,</span>, like a 3/4G connection and continue to offer your services to the whole world.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Bonus:</strong>
+            <ul>
+              <li>with a maximum consumption of only 2W with the wifi activated, the Cube can be powered <span>via a battery or a small solar Panel</span> (a 12€ battery cell can last 13h);</li>
+              <li>the box is <span>open-hardware and all the software included is free software</span>;</li>
+              <li>the Internet Cube can also allow you to <span>share files easily</span> during an event (this is what we call a <em>PirateBox</em>) ;</li>
+              <li>you can also use it <span>to provide internet access at a public event</span>, when using someone elses connection to free it's owner from liabilities.</li>
+              <li>PS: you can use the same Cube <span>to clean your internet access with its wifi hotspot and host your internet services</span>.</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+
+      <p>This is summarized in this sketch:</p>
 
       <div class="pictures schema">
         <img src="img/internetcube-schema.png" alt="Schematic" />

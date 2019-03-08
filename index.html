@@ -32,59 +32,60 @@
             <button id="subtitles" type="button" data-state="subtitles">CC</button>
             Utilisez un navigateur récent pour visualiser cette vidéo.
           </video>
-          <a href="#features" id="show-features-button">Liste des fonctionnalités (texte)</a>
         </div>
-
-        <div id="features">
-          La Brique Internet permet deux principaux usages :
-
-          <ol>
-            <li>
-              <strong>Nettoyer son accès à Internet :</strong>
-              <ul>
-                <li><span>la Brique se branche simplement sur la box</span> de votre fournisseur d'accès à Internet (FAI)... c'est tout ;</li>
-                <li><span>elle diffuse un second réseau WiFi</span>, que vous pouvez désormais utiliser pour accéder à Internet ;</li>
-                <li>en passant par ce WiFi plutôt que celui de votre FAI, ce dernier <span>ne sera plus capable d'espionner, ni filtrer, ni brider votre accès</span> à Internet ;</li>
-                <li>en bonus, <span>vos ordinateurs auront tous de l'IPv6 natif</span>, sans ne rien avoir eu à configurer ;</li>
-                <li>si vous changez de FAI, <span>il suffit de débrancher et rebrancher la Brique</span> d'une box à l'autre, et il n'y a rien à reconfigurer ;</li>
-                <li>vous disposez d'un Internet de confiance, sans filtrage et qui respecte la neutralité du Net, <span>peu importe sur quel accès Internet vous branchez votre Brique</span> (y compris sur un accès 3/4G).</li>
-              </ul>
-            </li>
-            <li>
-              <strong>S'auto-héberger :</strong>
-              <ul>
-                <li>grâce au logiciel <a href="https://yunohost.org">YunoHost</a>, <span>la Brique vous permet de conserver vos emails et autres données personnelles chez vous</span> plutôt que sur l'ordinateur d'un inconnu (ce qu'on appelle <em>le cloud</em>) ;</li>
-                <li>YunoHost permet à quelqu'un qui s'intéresse à l'informatique, sans en être expert, d'<span>auto-héberger plein de services différents</span> (mail, partage de fichiers, blog, agenda en ligne, etc.) ;</li>
-                <li>grâce à la Brique, qui est donc aussi un serveur, <span>vous n'avez pas à vous inquiéter des restrictions de votre FAI</span> : elles ont disparu ;</li>
-                <li><span>votre serveur dispose d'un Internet neutre sans filtrage</span>, avec une IPv4 et des IPv6 fixes et il n'y a pas besoin de configurer la box de votre FAI ;</li>
-                <li>si vous changez de FAI, <span>il suffit de débrancher et rebrancher la Brique d'une box à l'autre, et votre serveur est de nouveau disponible</span>, sans ne rien avoir eu à reconfigurer nulle part ;</li>
-                <li>si vous déménagez ou souhaitez couper l'électricité pour partir en vacances, <span>vous pouvez brancher votre Brique sur n'importe quel accès à Internet</span>, sans ne rien reconfigurer non plus ;</li>
-                <li>vous pouvez aller <span>jusqu'à brancher votre serveur nomade sur un accès particulièrement restreint</span>, comme une connexion 3/4G et continuer de proposer vos services au monde entier.</li>
-              </ul>
-            </li>
-            <li>
-              <strong>Bonus :</strong>
-              <ul>
-                <li>avec une consommation de 2W maximum avec le WiFi actif, vous pouvez alimenter la Brique <span>avec une batterie ou un petit panneau solaire</span> (une batterie à 12€ permet de tenir 13h) ;</li>
-                <li>le boîtier est <span><em>open-hardware</em> et les logiciels sont libres</span> ;</li>
-                <li>la Brique peut également servir pour permettre d'<span>échanger des fichiers facilement et librement</span> lors d'un événement (ce qu'on appelle une <em>PirateBox</em>) ;</li>
-                <li>vous pouvez également vous en servir <span>pour couvrir un événement public</span>, en déchargeant ainsi le propriétaire de la ligne Internet de sa responsabilité juridique.</li>
-                <li>PS : vous pouvez utilisez une même Brique, <span>à la fois pour nettoyer votre accès à Internet grâce à son réseau WiFi, et héberger vos services</span> Internet.</li>
-              </ul>
-            </li>
-          </ol>
-        </div>
-
     </section>
 
     <section id="comment-ca-marche">
       <h2><span>Comment</span> ça marche ?</h2>
 
-      <p>La Brique Internet, présentée dans la vidéo ci-dessus, est un simple boîtier VPN couplé à un serveur.</p>
+      <p>La Brique Internet, présentée dans la vidéo ci-dessus, remplie deux fonctions complémentaires.</p>
 
-      <p>Un VPN sert à relier <a href="https://fr.wikipedia.org/wiki/R%C3%A9seau_priv%C3%A9_virtuel">un ordinateur à un autre</a>, de façon sécurisée, de façon à ce qu'aucun intermédiaire sur Internet ne puisse lire le contenu des communications qui transitent. Pour que la Brique fonctionne, il faut lui configurer un accès VPN, qui lui permettra de créer un tunnel jusqu'à un autre ordinateur sur Internet. En vous connectant simplement en WiFi sur la Brique, vous pourrez aller sur Internet, en passant automatiquement au travers de ce tunnel chiffré. De cette façon, votre Fournisseur d'Accès à Internet (FAI) ne peut plus ni vous espionner, ni vous brider ni vous filtrer. C'est le même mécanisme qui permet à la Brique d'être un serveur nomade.</p>
+      <p>1. Elle <strong>nettoie votre accès à Internet</strong>. Pour ce faire, elle diffuse un réseau WiFi. En passant par celui-ci, tout votre traffic Internet passe à travers <a href="https://fr.wikipedia.org/wiki/R%C3%A9seau_priv%C3%A9_virtuel">un tunnel chiffré (VPN)</a>. Ainsi, votre fournisseur d'accès à Internet (FAI) ne peut plus espionner, filtrer ou brider votre accès à Internet. Dans le futur, la brique pourra intégrer des fonctions supplémentaires telles que le blocage automatique des publicités et trackers, ou d'autres mesures permettant de protéger votre vie privée.</p>
 
-      <p>Élimination de la surveillance, de la part du <abbr title="Fournisseur d'Accès à Internet">FAI</abbr> et des fournisseurs de services :</p>
+      <p>2. Elle permet d'<strong>avoir son propre bout d'Internet</strong>. C'est ce qu'on apelle l'auto-hébergement : le fait de disposer de son propre serveur qui héberge des services comme un blog, une boîte mail, de la synchronisation de fichiers, de contacts, de calendrier, etc.. Cette pratique est simplifiée par le logiciel <a href="https://yunohost.org">YunoHost</a>. La Brique Internet permet donc de s'affranchir des services centralisés proposés par <a href="https://fr.wikipedia.org/wiki/GAFAM">les GAFAMs</a> et ainsi de reprendre le contrôle de ses données.</p>
+
+      <a href="#features" id="show-features-button">Détail des fonctionnalités (texte)</a>
+      <div id="features">
+        La Brique Internet permet deux principaux usages :
+
+        <ol>
+          <li>
+            <strong>Nettoyer son accès à Internet :</strong>
+            <ul>
+              <li><span>la Brique se branche simplement sur la box</span> de votre fournisseur d'accès à Internet (FAI)... c'est tout ;</li>
+              <li><span>elle diffuse un second réseau WiFi</span>, que vous pouvez désormais utiliser pour accéder à Internet ;</li>
+              <li>en passant par ce WiFi plutôt que celui de votre FAI, ce dernier <span>ne sera plus capable d'espionner, ni filtrer, ni brider votre accès</span> à Internet ;</li>
+              <li>en bonus, <span>vos ordinateurs auront tous de l'IPv6 natif</span>, sans ne rien avoir eu à configurer ;</li>
+              <li>si vous changez de FAI, <span>il suffit de débrancher et rebrancher la Brique</span> d'une box à l'autre, et il n'y a rien à reconfigurer ;</li>
+              <li>vous disposez d'un Internet de confiance, sans filtrage et qui respecte la neutralité du Net, <span>peu importe sur quel accès Internet vous branchez votre Brique</span> (y compris sur un accès 3/4G).</li>
+            </ul>
+          </li>
+          <li>
+            <strong>S'auto-héberger :</strong>
+            <ul>
+              <li>grâce au logiciel <a href="https://yunohost.org">YunoHost</a>, <span>la Brique vous permet de conserver vos emails et autres données personnelles chez vous</span> plutôt que sur l'ordinateur d'un inconnu (ce qu'on appelle <em>le cloud</em>) ;</li>
+              <li>YunoHost permet à quelqu'un qui s'intéresse à l'informatique, sans en être expert, d'<span>auto-héberger plein de services différents</span> (mail, partage de fichiers, blog, agenda en ligne, etc.) ;</li>
+              <li>grâce à la Brique, qui est donc aussi un serveur, <span>vous n'avez pas à vous inquiéter des restrictions de votre FAI</span> : elles ont disparu ;</li>
+              <li><span>votre serveur dispose d'un Internet neutre sans filtrage</span>, avec une IPv4 et des IPv6 fixes et il n'y a pas besoin de configurer la box de votre FAI ;</li>
+              <li>si vous changez de FAI, <span>il suffit de débrancher et rebrancher la Brique d'une box à l'autre, et votre serveur est de nouveau disponible</span>, sans ne rien avoir eu à reconfigurer nulle part ;</li>
+              <li>si vous déménagez ou souhaitez couper l'électricité pour partir en vacances, <span>vous pouvez brancher votre Brique sur n'importe quel accès à Internet</span>, sans ne rien reconfigurer non plus ;</li>
+              <li>vous pouvez aller <span>jusqu'à brancher votre serveur nomade sur un accès particulièrement restreint</span>, comme une connexion 3/4G et continuer de proposer vos services au monde entier.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>Bonus :</strong>
+            <ul>
+              <li>avec une consommation de 2W maximum avec le WiFi actif, vous pouvez alimenter la Brique <span>avec une batterie ou un petit panneau solaire</span> (une batterie à 12€ permet de tenir 13h) ;</li>
+              <li>le boîtier est <span><em>open-hardware</em> et les logiciels sont libres</span> ;</li>
+              <li>la Brique peut également servir pour permettre d'<span>échanger des fichiers facilement et librement</span> lors d'un événement (ce qu'on appelle une <em>PirateBox</em>) ;</li>
+              <li>vous pouvez également vous en servir <span>pour couvrir un événement public</span>, en déchargeant ainsi le propriétaire de la ligne Internet de sa responsabilité juridique.</li>
+              <li>PS : vous pouvez utilisez une même Brique, <span>à la fois pour nettoyer votre accès à Internet grâce à son réseau WiFi, et héberger vos services</span> Internet.</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+
+      <p>Le tout est résumé dans le schéma suivant :</p>
 
       <div class="pictures schema">
         <img src="img/labriqueinternet-schema.png" alt="Schéma" />
