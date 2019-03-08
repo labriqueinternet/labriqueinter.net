@@ -46,6 +46,22 @@
 
       <p>À partir de l'administration web de YunoHost, vous pouvez désormais installer les apps <em>VPN Client</em> et <em>Wifi Hotspot</em>, puis aller les configurer.
     </section>
+
+    <section id="install-with-hypercube">
+        <h2><span>Hyper</span>cube</h2>
+
+        <p>La méthode d'installation recommandée consiste à utiliser un fichier hypercube généré via <a href="https://install.labriqueinter.net/">cette page</a>.</p>
+
+        <p>Le fichier hypercube peut être fourni au script <code>install-sd.sh</code> de la manière suivante :</p>
+
+        <pre>% bash install-sd.sh -y fichier_hypercube.hyp</pre>
+
+        <p>Si le fichier n'a pas été fourni via le <code>install-sh.sh</code>, il est plus tard possible de brancher une clef USB (formattée en NTFS ou FAT32) sur la brique, contenant le fichier. L'installation via l'hypercube sera alors lancée automatiquement.</p>
+
+        <p>Le déroulement de l'installation de la brique peut être suivi via l'interface web accessible à <code>https://192.168.x.y:2468/</code></p>
+
+        <p>Ou bien il est possible de détecter automatiquement l'interface de debug sur le réseau à l'aide de <a href="https://repo.internetcu.be/tools/hypercube-debug-page-detection.html">cette page</a>.</p>
+    </section>
   </main>
 
   <footer>
