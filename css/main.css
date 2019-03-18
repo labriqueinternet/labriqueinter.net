@@ -284,7 +284,7 @@ footer {
 /**       DotCubeFiles       **/
 
 #cubefilestable {
-  background-color: #222;
+  background-color: #b0aaaa;
   padding: .6em;
   margin: 20px 0;
   box-shadow: 3px 3px 2px #000;
@@ -295,9 +295,8 @@ footer {
 }
 
 #cubefilestable th {
-  background-color: #333;
+  background-color: #666;
   padding: 10px;
-  text-shadow: 2px 1px #111;
 }
 
 td.cubekey {
@@ -317,10 +316,9 @@ td.cubecomment {
 }
 
 pre {
-  text-shadow: 1px 1px #000;
   box-shadow: 3px 3px 2px #000;
-  background-color: #222;
   padding: 10px;
+  background-color: #b0aaaa;
 }
 
 pre span {
@@ -396,7 +394,6 @@ code {
   background-color: #222;
   padding: 1px 7px;
   border: 1px solid #000;
-  text-shadow: 1px 1px #000;
 }
 
 #autoinstall {
