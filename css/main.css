@@ -318,7 +318,7 @@ td.cubecomment {
 pre {
   box-shadow: 3px 3px 2px #000;
   padding: 10px;
-  background-color: #b0aaaa;
+  background-color: #ccc;
 }
 
 pre span {
@@ -372,7 +372,7 @@ section[id]:hover .anchor-link {
 }
 
 #files table a {
-  color: #fff;
+  color: #000;
   font-family: jurabook;
   text-decoration: none;
   padding-left: 30px;
@@ -391,7 +391,7 @@ footer {
 
 code {
   font-family: Helvetica, Arial, Sans-Serif;
-  background-color: #222;
+  background-color: #ccc;
   padding: 1px 7px;
   border: 1px solid #000;
 }
