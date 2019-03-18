@@ -1411,7 +1411,7 @@ var validation = {
 
       $('#timeline a[data-tab=' + step + ']').parent().removeClass('validated');
       $('#timeline a[data-tab=' + step + ']').parent().addClass('warnings');
-      $('#panel-' + panel + ' .control-label').css('color', 'white');
+      $('#panel-' + panel + ' .control-label').css('color', 'black');
       $('#panel-' + panel + ' .hasWarnings').removeClass('hasWarnings');
 
       mainWarning.hide();

@@ -29,6 +29,9 @@ input[type=file] {
   margin-top: 10px;
   margin-bottom: 5px;
 }
+.nav a {
+  color: white;
+}
 
 .container {
   width: 100%;
@@ -120,21 +123,20 @@ input[type=file] {
   border: 2px solid #000;
 }
 
-.panel-default .nav li a:hover {
-  border: 2px solid #f00;
-}
-
 ul.nav a {
   outline: none;
 }
 
 .alert-danger {
   margin: 14px 10px 10px;
-  background-image: linear-gradient(to bottom, #ff7500 0px, #ff5003 100%);
-  border-color: #833c00;
+  box-shadow: 0 0 9px 1px rgba(0,0,0,.1);
+  background-color: #ff7500;
+  background-image: none;
   color: #fff;
   font-size: 12pt;
   display: none;
+  border-radius: 5px;
+  border-color: none;
 }
 
 .alert-danger .close {
@@ -142,7 +144,6 @@ ul.nav a {
 }
 
 .alert-danger strong {
-  text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.2);
   display: block;
   text-align: center;
 }
@@ -305,7 +306,6 @@ iframe {
   font-weight: bold;
   text-align: center;
   margin: 20px;
-  text-shadow: 0px 1px 0px #000;
 }
 
 .panel p {
@@ -328,9 +328,8 @@ iframe {
 }
 
 .nav-tabs.nav-justified li.active a, .nav-tabs.nav-justified li.active a:focus, .nav-tabs.nav-justified li.active a:active, .nav-tabs.nav-justified li.active a:hover {
-  background-color: #111;
-  border-color: #f00;
-  border-width: 0 0 1px 0;
+  background-color: #e5e5e5;
+  border-width: 0 0 0 0;
   color: #555;
 }
 
@@ -407,13 +406,13 @@ label.optionalfield span.glyphicon:hover {
 #panel-submit pre, textarea[readonly=readonly], #mailclient {
   border-radius: 0;
   border: none;
-  color: #fff;
+  color: black;
   text-align: left;
   margin-top: 5px;
+  background-color: #b0aaaa;
 }
 
 textarea[readonly=readonly] {
-  text-shadow: 1px 1px #000;
   box-shadow: 3px 3px 2px #000;
   background-color: #222;
   padding: 10px;
@@ -465,8 +464,7 @@ p#showwifiname, p#showadmindomain, p#showadminip6, p#showadminip4, p#showadminip
 
 #mailclient {
   text-align: left;
-  box-shadow: 3px 3px 2px #000;
-  background-color: #222;
+  background-color: #b0aaaa;
   padding: 10px;
   display: block;
   font-size: 12pt;
@@ -477,10 +475,6 @@ p#showwifiname, p#showadmindomain, p#showadminip6, p#showadminip4, p#showadminip
 
 #mailclient:hover {
   height: inherit;
-}
-
-#mailclient li span:first-child {
-  text-shadow: 1px 1px #000;
 }
 
 #mailclient li {
@@ -514,7 +508,6 @@ p.showpwd {
   padding: 5px 10px;
   border: 1px solid #eee;
   border-radius: 4px;
-  background-color: #111;
   font-weight: bold;
 }
 
@@ -609,7 +602,6 @@ a.btn-danger:hover span {
   margin: 5px auto 10px;
   width: 7.6em;
   background-image: linear-gradient(to bottom, #09AF00 0px, #24AF1D 100%);
-  text-shadow: 0px 2px 0px rgba(0, 0, 0, 0.6);
   border: 1px solid #fff;
   border-radius: 4px;
   font-weight: bold;
