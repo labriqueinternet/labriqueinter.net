@@ -541,6 +541,14 @@ function untar_img() {
   fi
 }
 
+function copy_custom_script() {
+  debug "Copying ${custom_script_path} to ${olinux_mountpoint}/usr/local/bin/hypercube_custom.sh"
+  sudo install -m 755 -o root -g root "${custom_script_path}" "${olinux_mountpoint}/usr/local/bin/hypercube_custom.sh"
+
+  debug "Flushing file system buffers"
+  sudo sync
+}
+
 
 ######################
 ### CORE FUNCTIONS ###
@@ -708,14 +716,6 @@ function patch_servicesyml() {
         info "Patching services.yml"
         sudo sed -i "s/yunohost-firewall:/yunohost-firewall:\n   need_lock: true/g" ${servicesyml}
     fi
-}
-
-function copy_custom_script() {
-  debug "Copying ${custom_script_path} to ${olinux_mountpoint}/usr/local/bin/hypercube_custom.sh"
-  sudo install -m 755 -o root -g root "${custom_script_path}" "${olinux_mountpoint}/usr/local/bin/hypercube_custom.sh"
-
-  debug "Flushing file system buffers"
-  sudo sync
 }
 
 ########################
