@@ -61,6 +61,8 @@ function show_usage() {
   echo -e "     \e[2mDefault without -f: Automatic download from ${url_base}\e[0m" >&2
   echo -e "  \e[1m-y\e[0m \e[4mpath\e[0m" >&2
   echo -e "     HyperCube file" >&2
+  echo -e "  \e[1m-c\e[0m \e[4mpath\e[0m" >&2
+  echo -e "     Include custom script to be executed at the end of system installation" >&2
   echo -e "  \e[1m-e\e[0m" >&2
   echo -e "     Install an encrypted file system" >&2
   echo -e "     \e[2mCan be automatically enabled, based on the image filename\e[0m" >&2
@@ -708,6 +710,14 @@ function patch_servicesyml() {
     fi
 }
 
+function copy_custom_script() {
+  debug "Copying ${custom_script_path} to ${olinux_mountpoint}/usr/local/bin/hypercube_custom.sh"
+  sudo install -m 755 -o root -g root "${custom_script_path}" "${olinux_mountpoint}/usr/local/bin/hypercube_custom.sh"
+
+  debug "Flushing file system buffers"
+  sudo sync
+}
+
 ########################
 ### GLOBAL VARIABLES ###
 ########################
@@ -734,13 +744,14 @@ loopdev=
 trap cleaning_exit EXIT ERR
 trap cleaning_ctrlc INT
 
-while getopts "s:f:g:mc:y:w:e2ldh" opt; do
+while getopts "s:f:g:mc:y:w:c:e2ldh" opt; do
   case $opt in
     s) opt_sdcardpath=$OPTARG ;;
     f) opt_imgpath=$OPTARG ;;
     g) opt_gpgpath=$OPTARG ;;
     y) opt_hypercubepath=$OPTARG ;;
     w) opt_hypercubeshpath=$OPTARG ;;
+    c) opt_customscriptpath=$OPTARG ;;
     e) opt_encryptedfs=true ;;
     2) opt_lime2=true ;;
     l) opt_findcubes=true ;;
@@ -781,6 +792,7 @@ img_path=$opt_imgpath
 gpg_path=$opt_gpgpath
 hypercube_path=$opt_hypercubepath
 hypercubesh_path=$opt_hypercubeshpath
+custom_script_path=$opt_customscriptpath
 
 if [ -z "${img_path}" ]; then
   info "Downloading Debian/YunoHost image (HTTPS)"
@@ -824,6 +836,11 @@ fi
 if [ ! -z "${hypercubesh_path}" ]; then
   info "Replacing HyperCube script"
   replace_hypercube_sh
+fi
+
+if [ ! -z "${custom_script_path}" ]; then
+  info "Copying custom script"
+  copy_custom_script
 fi
 
 info "Done"
