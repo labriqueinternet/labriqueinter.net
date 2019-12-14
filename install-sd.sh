@@ -402,8 +402,8 @@ function autodetect_sdcardpath() {
   local foundblock=;
   local confirm=no;
 
-  if $opt_eemc; then
-    debug "Search for eemc"
+  if $opt_emmc; then
+    debug "Search for emmc"
     root_uuid=$(sed -e 's/^.*root=//' -e 's/ .*$//' < /proc/cmdline)
     root_partition=$(blkid | tr -d '":' | grep ${root_uuid} | awk '{print $1}')
     root_partition_device="${root_partition::-2}"
@@ -694,6 +694,39 @@ function install_clear() {
   sudo mount "${partition1}" "${olinux_mountpoint}"
 }
 
+function update_boot_and_fstab() {
+  local targetuuid=$emmcuuid
+  local choosen_fs="ext4"
+  local root_uuid=$(sed -e 's/^.*root=//' -e 's/ .*$//' < /proc/cmdline)
+  mkdir -p ${olinux_mountpoint}/etc ${olinux_mountpoint}/media/mmcboot ${olinux_mountpoint}/media/mmcroot
+  
+  # Update fstab
+  echo "# <file system>					<mount point>	<type>	<options>							<dump>	<pass>" > ${olinux_mountpoint}/etc/fstab
+  echo "tmpfs						/tmp		tmpfs	defaults,nosuid							0	0" >> ${olinux_mountpoint}/etc/fstab
+  echo "$targetuuid	/		$choosen_fs	defaults,noatime,nodiratime,commit=600,errors=remount-ro,x-gvfs-hide	0	1" >> ${olinux_mountpoint}/etc/fstab
+  
+  # Update boot
+  cp -R /boot ${olinux_mountpoint}
+  # old boot scripts
+  sed -e 's,root='"$root_uuid"',root='"$targetuuid"',g' -i ${olinux_mountpoint}/boot/boot.cmd
+  # new boot scripts
+  if [[ -f ${olinux_mountpoint}/boot/armbianEnv.txt ]]; then
+  	sed -e 's,rootdev=.*,rootdev='"$targetuuid"',g' -i ${olinux_mountpoint}/boot/armbianEnv.txt
+  else
+  	sed -e 's,setenv rootdev.*,setenv rootdev '"$targetuuid"',g' -i ${olinux_mountpoint}/boot/boot.cmd
+  	[[ -f ${olinux_mountpoint}/boot/boot.ini ]] && sed -e 's,^setenv rootdev.*$,setenv rootdev "'"$targetuuid"'",' -i ${olinux_mountpoint}/boot/boot.ini
+  	[[ -f ${olinux_mountpoint}/boot/boot.ini ]] && sed -e 's,^setenv rootdev.*$,setenv rootdev "'"$targetuuid"'",' -i ${olinux_mountpoint}/boot/boot.ini
+  fi
+  mkimage -C none -A arm -T script -d ${olinux_mountpoint}/boot/boot.cmd ${olinux_mountpoint}/boot/boot.scr	>/dev/null 2>&1 || (echo "Error"; exit 0)
+
+  [[ -f /usr/lib/u-boot/platform_install.sh ]] && source /usr/lib/u-boot/platform_install.sh
+  if [[ $(type -t write_uboot_platform) != function ]]; then
+  	echo "Error: no u-boot package found, exiting"
+  	exit -1
+  fi
+  write_uboot_platform "$DIR" "$opt_sdcardpath"
+}
+
 function copy_hypercube() {
   debug "Copying ${hypercube_path} to ${olinux_mountpoint}/root/"
   sudo cp "${hypercube_path}" "${olinux_mountpoint}/root/install.hypercube"
@@ -834,6 +867,10 @@ if $opt_encryptedfs; then
 else
   info "Installing SD card (this could take a few minutes)"
   install_clear
+
+  if $opt_emmc; then
+    update_boot_and_fstab
+  fi
 fi
 
 patch_servicesyml
