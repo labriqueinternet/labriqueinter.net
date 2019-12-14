@@ -3,6 +3,8 @@
 # LaBriqueInternet SD Card Installer
 # Copyright (C) 2015-2016 Julien Vaubourg <julien@vaubourg.com>
 # Copyright (C) 2015-2016 Emile Morel <emile@bleuchtang.fr>
+# Copyright (C) 2019 Aleks
+# Copyright (C) 2019 ljf
 # Contribute at https://github.com/labriqueinternet/labriqueinter.net
 #
 # This program is free software: you can redistribute it and/or modify
@@ -258,19 +260,13 @@ function check_args() {
     fi
 
     if [[ "${opt_imgpath}" =~ lime2 ]]; then
-      if ! $opt_lime2; then
-        info "Option -2 automatically set, based on the filename given to -f"
-        opt_lime2=true
-      fi
-    elif $opt_lime2; then
+      info "Option -2 automatically set, based on the filename given to -f"
+      opt_hardware="lime2"
+    elif [ $opt_hardware == "lime2" ]; then
       exit_usage "Filename given to -f does not contain lime2 in its name, but -2 was set"
     fi
   fi
 
-  if [ -z "${opt_lime2}" ]; then
-    info "No option -2 specified, installing for LIME by default"
-    opt_lime2=false
-  fi
 }
 
 
@@ -403,43 +399,55 @@ function find_cubes() {
 }
 
 function autodetect_sdcardpath() {
-  echo -n "1. Please, remove the target SD card from your computer if present, then press Enter"
-  read -s && echo
-  sleep 1
-
-  local blocks1=$(ls -1 /sys/block/)
-
-  debug "Block devices found: $(echo $blocks1)"
-
-  echo -n "2. Please, plug the target SD card into your computer (and don't touch to other devices), then press Enter"
-  read -s && echo
-  sleep 2
-
-  local blocks2=$(ls -1 /sys/block/)
   local foundblock=;
   local confirm=no;
 
-  debug "Block devices found: $(echo $blocks2)"
+  if $opt_eemc; then
+    debug "Search for eemc"
+    root_uuid=$(sed -e 's/^.*root=//' -e 's/ .*$//' < /proc/cmdline)
+    root_partition=$(blkid | tr -d '":' | grep ${root_uuid} | awk '{print $1}')
+    root_partition_device="${root_partition::-2}"
 
-  for i in $blocks2; do
-    if ! (echo ' '${blocks1}' ' | grep -q " ${i} ") && [ -b "/dev/${i}" ]; then
-      if [ ! -z "${foundblock}" ]; then
-        debug "Block devices ${foundblock} and ${i} was found"
-        exit_error "Assisted Block Device Detection failed: more than 1 new block device found"
+    foundblock=$(ls -d -1 /dev/mmcblk* | grep -w 'mmcblk[0-9]' | grep -v "$root_partition_device");
+
+  else
+
+    echo -n "1. Please, remove the target SD card from your computer if present, then press Enter"
+    read -s && echo
+    sleep 1
+  
+    local blocks1=$(ls -1 /sys/block/)
+  
+    debug "Block devices found: $(echo $blocks1)"
+  
+    echo -n "2. Please, plug the target SD card into your computer (and don't touch to other devices), then press Enter"
+    read -s && echo
+    sleep 2
+  
+    local blocks2=$(ls -1 /sys/block/)
+  
+    debug "Block devices found: $(echo $blocks2)"
+  
+    for i in $blocks2; do
+      if ! (echo ' '${blocks1}' ' | grep -q " ${i} ") && [ -b "/dev/${i}" ]; then
+        if [ ! -z "${foundblock}" ]; then
+          debug "Block devices ${foundblock} and ${i} was found"
+          exit_error "Assisted Block Device Detection failed: more than 1 new block device found"
+        fi
+  
+        foundblock="/dev/${i}"
       fi
-
-      foundblock="${i}"
-    fi
-  done
+    done
+  fi
 
   if [ -z "${foundblock}" ]; then
     exit_error "Assisted Block Device Detection failed: no new block device found"
   else
-    echo -en "\nBlock device /dev/${foundblock} found. Use it as your SD card block device? (yes/no) "
+    echo -en "\nBlock device ${foundblock} found. Use it as your SD card block device? (yes/no) "
     read confirm
 
     if [ "${confirm}" == yes ]; then
-      opt_sdcardpath="/dev/${foundblock}"
+      opt_sdcardpath="${foundblock}"
     else
       exit_error "Aborted"
     fi
@@ -480,7 +488,7 @@ function download_file() {
 }
 
 function download_img() {
-  $opt_lime2 && local urlpart_lime2=2
+  [ $opt_hardware == "lime2" ] && local urlpart_lime2=2
   $opt_encryptedfs && local urlpart_encryptedfs=-encryptedfs
 
   local tar_name="internetcube-${deb_version}-latest-lime${urlpart_lime2}${urlpart_encryptedfs}.img.tar.xz"
@@ -562,8 +570,8 @@ function install_encrypted() {
 
   mkdir -p "${files_path}" "${olinux_mountpoint}"
 
-  $opt_lime2 && board+=2
-  $opt_lime2 && uboot+=2
+  [ $opt_hardware == "lime2" ] && board+=2
+  [ $opt_hardware == "lime2" ] && uboot+=2
 
   local sunxispl_path="${olinux_mountpoint}/usr/lib/u-boot/${uboot}/u-boot-sunxi-with-spl.bin"
 
@@ -729,7 +737,7 @@ deb_version=stretch
 opt_encryptedfs=false
 opt_findcubes=false
 opt_debug=false
-opt_lime2=false
+opt_hardware="lime1"
 tmp_dir=$(mktemp -dp . .install-sd.sh_tmpXXXXXX)
 olinux_mountpoint="${tmp_dir}/olinux_mountpoint"
 files_path="${tmp_dir}/files"
@@ -744,7 +752,7 @@ loopdev=
 trap cleaning_exit EXIT ERR
 trap cleaning_ctrlc INT
 
-while getopts "s:f:g:mc:y:w:e2ldh" opt; do
+while getopts "s:mf:g:c:y:w:em2pldh" opt; do
   case $opt in
     s) opt_sdcardpath=$OPTARG ;;
     f) opt_imgpath=$OPTARG ;;
@@ -752,8 +760,10 @@ while getopts "s:f:g:mc:y:w:e2ldh" opt; do
     y) opt_hypercubepath=$OPTARG ;;
     w) opt_hypercubeshpath=$OPTARG ;;
     c) opt_customscriptpath=$OPTARG ;;
+    m) opt_emmc=true ;;
     e) opt_encryptedfs=true ;;
-    2) opt_lime2=true ;;
+    2) opt_hardware="lime2" ;;
+    p) opt_hardware="pcplus" ;;
     l) opt_findcubes=true ;;
     d) opt_debug=true ;;
     h) exit_usage ;;
