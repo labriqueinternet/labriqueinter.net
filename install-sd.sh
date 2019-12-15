@@ -831,6 +831,7 @@ gpg_server=keyserver.ubuntu.com
 deb_version=stretch
 opt_encryptedfs=false
 opt_findcubes=false
+opt_emmc=false
 opt_debug=false
 opt_hardware="lime1"
 tmp_dir=$(mktemp -dp . .install-sd.sh_tmpXXXXXX)
