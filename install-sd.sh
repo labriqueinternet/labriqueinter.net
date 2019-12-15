@@ -65,6 +65,8 @@ function show_usage() {
   echo -e "     HyperCube file" >&2
   echo -e "  \e[1m-c\e[0m \e[4mpath\e[0m" >&2
   echo -e "     Include custom script to be executed at the end of system installation" >&2
+  echo -e "  \e[1m-m\e[0m" >&2
+  echo -e "     Install on emmc (need to be run from an armbian on the sdcard)" >&2
   echo -e "  \e[1m-e\e[0m" >&2
   echo -e "     Install an encrypted file system" >&2
   echo -e "     \e[2mCan be automatically enabled, based on the image filename\e[0m" >&2
@@ -72,6 +74,9 @@ function show_usage() {
   echo -e "  \e[1m-2\e[0m" >&2
   echo -e "     Install an image for LIME2" >&2
   echo -e "     \e[2mCan be automatically enabled, based on the image filename\e[0m" >&2
+  echo -e "     \e[2mDefault: LIME\e[0m" >&2
+  echo -e "  \e[1m-p\e[0m" >&2
+  echo -e "     Install an image for Orange Pi PC Plus" >&2
   echo -e "     \e[2mDefault: LIME\e[0m" >&2
   echo -e "  \e[1m-l\e[0m" >&2
   echo -e "     Just scan network for finding local IPv4s corresponding to Internet Cubes" >&2
@@ -853,7 +858,7 @@ while getopts "s:mf:g:c:y:w:em2pldh" opt; do
     m) opt_emmc=true ;;
     e) opt_encryptedfs=true ;;
     2) opt_hardware="lime2" ;;
-    p) opt_hardware="pcplus" ;;
+    p) opt_hardware="orangepipcplus" ;;
     l) opt_findcubes=true ;;
     d) opt_debug=true ;;
     h) exit_usage ;;
