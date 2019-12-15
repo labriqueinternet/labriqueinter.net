@@ -491,7 +491,7 @@ function download_img() {
   [ $opt_hardware == "lime2" ] && local urlpart_lime2=2
   $opt_encryptedfs && local urlpart_encryptedfs=-encryptedfs
 
-  local tar_name="internetcube-${deb_version}-latest-lime${urlpart_lime2}${urlpart_encryptedfs}.img.tar.xz"
+  local tar_name="yunohost-${deb_version}-latest-${opt_hardware}${urlpart_encryptedfs}.img.zip"
 
   info "Image file: ${tar_name}"
 
@@ -534,10 +534,10 @@ function check_gpg() {
   fi
 }
 
-function untar_img() {
+function uncompress_img() {
   debug "Decompressing ${img_path}"
 
-  tar xf "${img_path}" -C "${tmp_dir}"
+  unzip "${img_path}" -d "${tmp_dir}"
 
   # Should not have more than 1 line, but, you know...
   img_path=$(find "${tmp_dir}" -name '*.img' | head -n1)
@@ -547,6 +547,63 @@ function untar_img() {
   if [ ! -r "${img_path}" ]; then
     exit_error "Decompressed image file cannot be read"
   fi
+}
+
+function convert_img() {
+  debug "Converting ${img_path}"
+  local TARGET_DIR=./build-img
+*  local REP=$(dirname $0)
+  local APT='DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes'
+  local IMAGE=$(echo ${img_path} | sed 's/yunohost/internetcube/')
+  if [ -f $IMAGE ]; then
+    return
+  fi
+  cp ${img_path} $IMAGE
+  mkdir -p $TARGET_DIR
+  umount $TARGET_DIR || true
+  mount -o loop,offset=4194304 $IMAGE $TARGET_DIR
+  
+  
+  echo '. /etc/bash_completion' >> $TARGET_DIR/root/.bashrc
+
+  # Use dhcp on boot
+  cat <<EOT > $TARGET_DIR/etc/network/interfaces
+source /etc/network/interfaces.d/*
+
+auto lo
+iface lo inet loopback
+
+auto usb0
+allow-hotplug usb0
+iface usb0 inet dhcp
+EOT
+  
+  # Debootstrap optimisations from igorpecovnik
+  # change default I/O scheduler, noop for flash media, deadline for SSD, cfq for mechanical drive
+  cat <<EOT >> $TARGET_DIR/etc/sysfs.conf
+block/mmcblk0/queue/scheduler = noop
+#block/sda/queue/scheduler = cfq
+EOT
+  
+  # Add firstrun and secondrun init script
+  local build_repo="https://raw.githubusercontent.com/labriqueinternet/build.labriqueinter.net/master/script/"
+  pushd $(basename ${hypercubesh_path})
+  curl -#fOA $TARGET_DIR/usr/local/bin/resize2fs-reboot  $build_repo/resize2fs-reboot
+  curl -#fOA $TARGET_DIR/usr/local/bin/hypercube.sh  $build_repo/hypercube/hypercube.sh
+  curl -#fOA $TARGET_DIR/etc/systemd/system/resize2fs-reboot.service  $build_repo/resize2fs-reboot.service
+  curl -#fOA $TARGET_DIR/etc/systemd/system/hypercube.service  $build_repo/hypercube/hypercube.service
+  chmod 755 $TARGET_DIR/usr/local/bin/resize2fs-reboot $TARGET_DIR/usr/local/bin/hypercube.sh
+  chmod 444 $TARGET_DIR/etc/systemd/system/resize2fs-reboot.service $TARGET_DIR/etc/systemd/system/hypercube.service
+
+  ln -f -s '/etc/systemd/system/resize2fs-reboot.service' $TARGET_DIR/etc/systemd/system/multi-user.target.wants/resize2fs-reboot.service
+  ln -f -s '/etc/systemd/system/hypercube.service' $TARGET_DIR/etc/systemd/system/multi-user.target.wants/hypercube.service
+
+  # Add hypercube scripts
+  mkdir -p $TARGET_DIR/var/log/hypercube
+  curl -#fOA $TARGET_DIR/var/log/hypercube/install.html  $build_repo/script/hypercube/install.html
+  chmod 444 $TARGET_DIR/var/log/hypercube/install.html
+  umount $TARGET_DIR || true
+  img_path=$IMAGE
 }
 
 function copy_custom_script() {
@@ -763,7 +820,7 @@ function patch_servicesyml() {
 ### GLOBAL VARIABLES ###
 ########################
 
-url_base=https://repo.labriqueinter.net/
+url_base=https://build.yunohost.org/
 gpg_key=0xCD8F4D648AC0ECC1
 gpg_server=keyserver.ubuntu.com
 deb_version=stretch
@@ -841,24 +898,29 @@ if [ -z "${img_path}" ]; then
   info "Downloading Debian/YunoHost image (HTTPS)"
   download_img
 
-  if [ -z "${gpg_path}" ]; then
-    info "Downloading GPG signature (HTTPS)"
-    download_gpg
-  fi
+  #if [ -z "${gpg_path}" ]; then
+  #  info "Downloading GPG signature (HTTPS)"
+  #  download_gpg
+  #fi
 fi
 
-if [ ! -z "${gpg_path}" ]; then
-  info "Checking GPG signature"
-  check_gpg
-fi
+#if [ ! -z "${gpg_path}" ]; then
+#  info "Checking GPG signature"
+#  check_gpg
+#fi
 
 if [ -z "${gpg_path}" ]; then
   warn "Not checking image integrity"
 fi
 
-if [[ "${img_path}" =~ .img.tar.xz$ ]]; then
+if [[ "${img_path}" =~ .img.zip$ ]]; then
   info "Decompressing Debian/YunoHost image"
-  untar_img
+  uncompress_img
+fi
+
+if [[ "${img_path}" =~ ^yunohost ]]; then
+  info "Converting yunohost image into internetcube image"
+  convert_img
 fi
 
 if $opt_encryptedfs; then
