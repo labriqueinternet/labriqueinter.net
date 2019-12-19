@@ -496,7 +496,7 @@ function download_img() {
   [ $opt_hardware == "lime2" ] && local urlpart_lime2=2
   $opt_encryptedfs && local urlpart_encryptedfs=-encryptedfs
 
-  local tar_name="yunohost-${deb_version}-latest-${opt_hardware}${urlpart_encryptedfs}.img.zip"
+  local tar_name="yunohost-${deb_version}-latest-${opt_hardware}-stable${urlpart_encryptedfs}.img.zip"
 
   info "Image file: ${tar_name}"
 
@@ -556,23 +556,23 @@ function uncompress_img() {
 
 function convert_img() {
   debug "Converting ${img_path}"
-  local TARGET_DIR=./build-img
-*  local REP=$(dirname $0)
+  local TARGET_DIR="${tmp_dir}/build-img"
   local APT='DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes'
   local IMAGE=$(echo ${img_path} | sed 's/yunohost/internetcube/')
   if [ -f $IMAGE ]; then
     return
   fi
+  debug "into ${IMAGE}"
   cp ${img_path} $IMAGE
   mkdir -p $TARGET_DIR
-  umount $TARGET_DIR || true
-  mount -o loop,offset=4194304 $IMAGE $TARGET_DIR
+  sudo umount $TARGET_DIR || true
+  sudo mount -o loop,offset=4194304 $IMAGE $TARGET_DIR
   
   
-  echo '. /etc/bash_completion' >> $TARGET_DIR/root/.bashrc
+  echo '. /etc/bash_completion' | sudo tee -a $TARGET_DIR/root/.bashrc
 
   # Use dhcp on boot
-  cat <<EOT > $TARGET_DIR/etc/network/interfaces
+  cat <<EOT | sudo tee $TARGET_DIR/etc/network/interfaces
 source /etc/network/interfaces.d/*
 
 auto lo
@@ -585,29 +585,28 @@ EOT
   
   # Debootstrap optimisations from igorpecovnik
   # change default I/O scheduler, noop for flash media, deadline for SSD, cfq for mechanical drive
-  cat <<EOT >> $TARGET_DIR/etc/sysfs.conf
+  cat <<EOT | sudo tee -a $TARGET_DIR/etc/sysfs.conf
 block/mmcblk0/queue/scheduler = noop
 #block/sda/queue/scheduler = cfq
 EOT
   
   # Add firstrun and secondrun init script
   local build_repo="https://raw.githubusercontent.com/labriqueinternet/build.labriqueinter.net/master/script/"
-  pushd $(basename ${hypercubesh_path})
-  curl -#fOA $TARGET_DIR/usr/local/bin/resize2fs-reboot  $build_repo/resize2fs-reboot
-  curl -#fOA $TARGET_DIR/usr/local/bin/hypercube.sh  $build_repo/hypercube/hypercube.sh
-  curl -#fOA $TARGET_DIR/etc/systemd/system/resize2fs-reboot.service  $build_repo/resize2fs-reboot.service
-  curl -#fOA $TARGET_DIR/etc/systemd/system/hypercube.service  $build_repo/hypercube/hypercube.service
-  chmod 755 $TARGET_DIR/usr/local/bin/resize2fs-reboot $TARGET_DIR/usr/local/bin/hypercube.sh
-  chmod 444 $TARGET_DIR/etc/systemd/system/resize2fs-reboot.service $TARGET_DIR/etc/systemd/system/hypercube.service
+  curl $build_repo/resize2fs-reboot | sudo tee $TARGET_DIR/usr/local/bin/resize2fs-reboot 
+  curl $build_repo/hypercube/hypercube.sh | sudo tee $TARGET_DIR/usr/local/bin/hypercube.sh
+  curl $build_repo/resize2fs-reboot.service | sudo tee $TARGET_DIR/etc/systemd/system/resize2fs-reboot.service
+  curl $build_repo/hypercube/hypercube.service | sudo tee $TARGET_DIR/etc/systemd/system/hypercube.service
+  sudo chmod 755 $TARGET_DIR/usr/local/bin/resize2fs-reboot $TARGET_DIR/usr/local/bin/hypercube.sh
+  sudo chmod 444 $TARGET_DIR/etc/systemd/system/resize2fs-reboot.service $TARGET_DIR/etc/systemd/system/hypercube.service
 
-  ln -f -s '/etc/systemd/system/resize2fs-reboot.service' $TARGET_DIR/etc/systemd/system/multi-user.target.wants/resize2fs-reboot.service
-  ln -f -s '/etc/systemd/system/hypercube.service' $TARGET_DIR/etc/systemd/system/multi-user.target.wants/hypercube.service
+  sudo ln -f -s '/etc/systemd/system/resize2fs-reboot.service' $TARGET_DIR/etc/systemd/system/multi-user.target.wants/resize2fs-reboot.service
+  sudo ln -f -s '/etc/systemd/system/hypercube.service' $TARGET_DIR/etc/systemd/system/multi-user.target.wants/hypercube.service
 
   # Add hypercube scripts
-  mkdir -p $TARGET_DIR/var/log/hypercube
-  curl -#fOA $TARGET_DIR/var/log/hypercube/install.html  $build_repo/script/hypercube/install.html
-  chmod 444 $TARGET_DIR/var/log/hypercube/install.html
-  umount $TARGET_DIR || true
+  sudo mkdir -p $TARGET_DIR/var/log/hypercube
+  curl $build_repo/hypercube/install.html | sudo tee $TARGET_DIR/var/log/hypercube/install.html
+  sudo chmod 444 $TARGET_DIR/var/log/hypercube/install.html
+  sudo umount $TARGET_DIR || true
   img_path=$IMAGE
 }
 
@@ -833,7 +832,7 @@ opt_encryptedfs=false
 opt_findcubes=false
 opt_emmc=false
 opt_debug=false
-opt_hardware="lime1"
+opt_hardware="lime"
 tmp_dir=$(mktemp -dp . .install-sd.sh_tmpXXXXXX)
 olinux_mountpoint="${tmp_dir}/olinux_mountpoint"
 files_path="${tmp_dir}/files"
@@ -924,7 +923,7 @@ if [[ "${img_path}" =~ .img.zip$ ]]; then
   uncompress_img
 fi
 
-if [[ "${img_path}" =~ ^yunohost ]]; then
+if [[ "${img_path}" =~ yunohost ]]; then
   info "Converting yunohost image into internetcube image"
   convert_img
 fi
