@@ -1750,8 +1750,8 @@ var validation = {
     }
 
     if($('#ynh_user').val().trim()) {
-      if(!$('#ynh_user').val().trim().match(/^[a-z0_9]+$/)) {
-        validation.warnings.add('ynh_user', _("Only lowercase letters and digits are allowed"));
+      if(!$('#ynh_user').val().trim().match(/^[a-z0-9_]+$/)) {
+        validation.warnings.add('ynh_user', _("Only lowercase letters, digits and underscore are allowed"));
         nbWarns++;
   
       } else if($('#ynh_user').val().trim() == 'admin') {
