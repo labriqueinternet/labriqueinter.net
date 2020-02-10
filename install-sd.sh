@@ -3,6 +3,8 @@
 # LaBriqueInternet SD Card Installer
 # Copyright (C) 2015-2016 Julien Vaubourg <julien@vaubourg.com>
 # Copyright (C) 2015-2016 Emile Morel <emile@bleuchtang.fr>
+# Copyright (C) 2019 Aleks
+# Copyright (C) 2019 ljf
 # Contribute at https://github.com/labriqueinternet/labriqueinter.net
 #
 # This program is free software: you can redistribute it and/or modify
@@ -63,6 +65,8 @@ function show_usage() {
   echo -e "     HyperCube file" >&2
   echo -e "  \e[1m-c\e[0m \e[4mpath\e[0m" >&2
   echo -e "     Include custom script to be executed at the end of system installation" >&2
+  echo -e "  \e[1m-m\e[0m" >&2
+  echo -e "     Install on emmc (need to be run from an armbian on the sdcard)" >&2
   echo -e "  \e[1m-e\e[0m" >&2
   echo -e "     Install an encrypted file system" >&2
   echo -e "     \e[2mCan be automatically enabled, based on the image filename\e[0m" >&2
@@ -70,6 +74,9 @@ function show_usage() {
   echo -e "  \e[1m-2\e[0m" >&2
   echo -e "     Install an image for LIME2" >&2
   echo -e "     \e[2mCan be automatically enabled, based on the image filename\e[0m" >&2
+  echo -e "     \e[2mDefault: LIME\e[0m" >&2
+  echo -e "  \e[1m-p\e[0m" >&2
+  echo -e "     Install an image for Orange Pi PC Plus" >&2
   echo -e "     \e[2mDefault: LIME\e[0m" >&2
   echo -e "  \e[1m-l\e[0m" >&2
   echo -e "     Just scan network for finding local IPv4s corresponding to Internet Cubes" >&2
@@ -258,19 +265,13 @@ function check_args() {
     fi
 
     if [[ "${opt_imgpath}" =~ lime2 ]]; then
-      if ! $opt_lime2; then
-        info "Option -2 automatically set, based on the filename given to -f"
-        opt_lime2=true
-      fi
-    elif $opt_lime2; then
+      info "Option -2 automatically set, based on the filename given to -f"
+      opt_hardware="lime2"
+    elif [ $opt_hardware == "lime2" ]; then
       exit_usage "Filename given to -f does not contain lime2 in its name, but -2 was set"
     fi
   fi
 
-  if [ -z "${opt_lime2}" ]; then
-    info "No option -2 specified, installing for LIME by default"
-    opt_lime2=false
-  fi
 }
 
 
@@ -403,43 +404,55 @@ function find_cubes() {
 }
 
 function autodetect_sdcardpath() {
-  echo -n "1. Please, remove the target SD card from your computer if present, then press Enter"
-  read -s && echo
-  sleep 1
-
-  local blocks1=$(ls -1 /sys/block/)
-
-  debug "Block devices found: $(echo $blocks1)"
-
-  echo -n "2. Please, plug the target SD card into your computer (and don't touch to other devices), then press Enter"
-  read -s && echo
-  sleep 2
-
-  local blocks2=$(ls -1 /sys/block/)
   local foundblock=;
   local confirm=no;
 
-  debug "Block devices found: $(echo $blocks2)"
+  if $opt_emmc; then
+    debug "Search for emmc"
+    root_uuid=$(sed -e 's/^.*root=//' -e 's/ .*$//' < /proc/cmdline)
+    root_partition=$(blkid | tr -d '":' | grep ${root_uuid} | awk '{print $1}')
+    root_partition_device="${root_partition::-2}"
 
-  for i in $blocks2; do
-    if ! (echo ' '${blocks1}' ' | grep -q " ${i} ") && [ -b "/dev/${i}" ]; then
-      if [ ! -z "${foundblock}" ]; then
-        debug "Block devices ${foundblock} and ${i} was found"
-        exit_error "Assisted Block Device Detection failed: more than 1 new block device found"
+    foundblock=$(ls -d -1 /dev/mmcblk* | grep -w 'mmcblk[0-9]' | grep -v "$root_partition_device");
+
+  else
+
+    echo -n "1. Please, remove the target SD card from your computer if present, then press Enter"
+    read -s && echo
+    sleep 1
+  
+    local blocks1=$(ls -1 /sys/block/)
+  
+    debug "Block devices found: $(echo $blocks1)"
+  
+    echo -n "2. Please, plug the target SD card into your computer (and don't touch to other devices), then press Enter"
+    read -s && echo
+    sleep 2
+  
+    local blocks2=$(ls -1 /sys/block/)
+  
+    debug "Block devices found: $(echo $blocks2)"
+  
+    for i in $blocks2; do
+      if ! (echo ' '${blocks1}' ' | grep -q " ${i} ") && [ -b "/dev/${i}" ]; then
+        if [ ! -z "${foundblock}" ]; then
+          debug "Block devices ${foundblock} and ${i} was found"
+          exit_error "Assisted Block Device Detection failed: more than 1 new block device found"
+        fi
+  
+        foundblock="/dev/${i}"
       fi
-
-      foundblock="${i}"
-    fi
-  done
+    done
+  fi
 
   if [ -z "${foundblock}" ]; then
     exit_error "Assisted Block Device Detection failed: no new block device found"
   else
-    echo -en "\nBlock device /dev/${foundblock} found. Use it as your SD card block device? (yes/no) "
+    echo -en "\nBlock device ${foundblock} found. Use it as your SD card block device? (yes/no) "
     read confirm
 
     if [ "${confirm}" == yes ]; then
-      opt_sdcardpath="/dev/${foundblock}"
+      opt_sdcardpath="${foundblock}"
     else
       exit_error "Aborted"
     fi
@@ -480,10 +493,10 @@ function download_file() {
 }
 
 function download_img() {
-  $opt_lime2 && local urlpart_lime2=2
+  [ $opt_hardware == "lime2" ] && local urlpart_lime2=2
   $opt_encryptedfs && local urlpart_encryptedfs=-encryptedfs
 
-  local tar_name="internetcube-${deb_version}-latest-lime${urlpart_lime2}${urlpart_encryptedfs}.img.tar.xz"
+  local tar_name="yunohost-${deb_version}-latest-${opt_hardware}-stable${urlpart_encryptedfs}.img.zip"
 
   info "Image file: ${tar_name}"
 
@@ -526,10 +539,10 @@ function check_gpg() {
   fi
 }
 
-function untar_img() {
+function uncompress_img() {
   debug "Decompressing ${img_path}"
 
-  tar xf "${img_path}" -C "${tmp_dir}"
+  unzip "${img_path}" -d "${tmp_dir}"
 
   # Should not have more than 1 line, but, you know...
   img_path=$(find "${tmp_dir}" -name '*.img' | head -n1)
@@ -539,6 +552,62 @@ function untar_img() {
   if [ ! -r "${img_path}" ]; then
     exit_error "Decompressed image file cannot be read"
   fi
+}
+
+function convert_img() {
+  debug "Converting ${img_path}"
+  local TARGET_DIR="${tmp_dir}/build-img"
+  local APT='DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes'
+  local IMAGE=$(echo ${img_path} | sed 's/yunohost/internetcube/')
+  if [ -f $IMAGE ]; then
+    return
+  fi
+  debug "into ${IMAGE}"
+  cp ${img_path} $IMAGE
+  mkdir -p $TARGET_DIR
+  sudo umount $TARGET_DIR || true
+  sudo mount -o loop,offset=4194304 $IMAGE $TARGET_DIR
+  
+  
+  echo '. /etc/bash_completion' | sudo tee -a $TARGET_DIR/root/.bashrc
+
+  # Use dhcp on boot
+  cat <<EOT | sudo tee $TARGET_DIR/etc/network/interfaces
+source /etc/network/interfaces.d/*
+
+auto lo
+iface lo inet loopback
+
+auto usb0
+allow-hotplug usb0
+iface usb0 inet dhcp
+EOT
+  
+  # Debootstrap optimisations from igorpecovnik
+  # change default I/O scheduler, noop for flash media, deadline for SSD, cfq for mechanical drive
+  cat <<EOT | sudo tee -a $TARGET_DIR/etc/sysfs.conf
+block/mmcblk0/queue/scheduler = noop
+#block/sda/queue/scheduler = cfq
+EOT
+  
+  # Add firstrun and secondrun init script
+  local build_repo="https://raw.githubusercontent.com/labriqueinternet/build.labriqueinter.net/master/script/"
+  curl $build_repo/resize2fs-reboot | sudo tee $TARGET_DIR/usr/local/bin/resize2fs-reboot 
+  curl $build_repo/hypercube/hypercube.sh | sudo tee $TARGET_DIR/usr/local/bin/hypercube.sh
+  curl $build_repo/resize2fs-reboot.service | sudo tee $TARGET_DIR/etc/systemd/system/resize2fs-reboot.service
+  curl $build_repo/hypercube/hypercube.service | sudo tee $TARGET_DIR/etc/systemd/system/hypercube.service
+  sudo chmod 755 $TARGET_DIR/usr/local/bin/resize2fs-reboot $TARGET_DIR/usr/local/bin/hypercube.sh
+  sudo chmod 444 $TARGET_DIR/etc/systemd/system/resize2fs-reboot.service $TARGET_DIR/etc/systemd/system/hypercube.service
+
+  sudo ln -f -s '/etc/systemd/system/resize2fs-reboot.service' $TARGET_DIR/etc/systemd/system/multi-user.target.wants/resize2fs-reboot.service
+  sudo ln -f -s '/etc/systemd/system/hypercube.service' $TARGET_DIR/etc/systemd/system/multi-user.target.wants/hypercube.service
+
+  # Add hypercube scripts
+  sudo mkdir -p $TARGET_DIR/var/log/hypercube
+  curl $build_repo/hypercube/install.html | sudo tee $TARGET_DIR/var/log/hypercube/install.html
+  sudo chmod 444 $TARGET_DIR/var/log/hypercube/install.html
+  sudo umount $TARGET_DIR || true
+  img_path=$IMAGE
 }
 
 function copy_custom_script() {
@@ -562,8 +631,8 @@ function install_encrypted() {
 
   mkdir -p "${files_path}" "${olinux_mountpoint}"
 
-  $opt_lime2 && board+=2
-  $opt_lime2 && uboot+=2
+  [ $opt_hardware == "lime2" ] && board+=2
+  [ $opt_hardware == "lime2" ] && uboot+=2
 
   local sunxispl_path="${olinux_mountpoint}/usr/lib/u-boot/${uboot}/u-boot-sunxi-with-spl.bin"
 
@@ -686,6 +755,39 @@ function install_clear() {
   sudo mount "${partition1}" "${olinux_mountpoint}"
 }
 
+function update_boot_and_fstab() {
+  local targetuuid=$emmcuuid
+  local choosen_fs="ext4"
+  local root_uuid=$(sed -e 's/^.*root=//' -e 's/ .*$//' < /proc/cmdline)
+  mkdir -p ${olinux_mountpoint}/etc ${olinux_mountpoint}/media/mmcboot ${olinux_mountpoint}/media/mmcroot
+  
+  # Update fstab
+  echo "# <file system>					<mount point>	<type>	<options>							<dump>	<pass>" > ${olinux_mountpoint}/etc/fstab
+  echo "tmpfs						/tmp		tmpfs	defaults,nosuid							0	0" >> ${olinux_mountpoint}/etc/fstab
+  echo "$targetuuid	/		$choosen_fs	defaults,noatime,nodiratime,commit=600,errors=remount-ro,x-gvfs-hide	0	1" >> ${olinux_mountpoint}/etc/fstab
+  
+  # Update boot
+  cp -R /boot ${olinux_mountpoint}
+  # old boot scripts
+  sed -e 's,root='"$root_uuid"',root='"$targetuuid"',g' -i ${olinux_mountpoint}/boot/boot.cmd
+  # new boot scripts
+  if [[ -f ${olinux_mountpoint}/boot/armbianEnv.txt ]]; then
+  	sed -e 's,rootdev=.*,rootdev='"$targetuuid"',g' -i ${olinux_mountpoint}/boot/armbianEnv.txt
+  else
+  	sed -e 's,setenv rootdev.*,setenv rootdev '"$targetuuid"',g' -i ${olinux_mountpoint}/boot/boot.cmd
+  	[[ -f ${olinux_mountpoint}/boot/boot.ini ]] && sed -e 's,^setenv rootdev.*$,setenv rootdev "'"$targetuuid"'",' -i ${olinux_mountpoint}/boot/boot.ini
+  	[[ -f ${olinux_mountpoint}/boot/boot.ini ]] && sed -e 's,^setenv rootdev.*$,setenv rootdev "'"$targetuuid"'",' -i ${olinux_mountpoint}/boot/boot.ini
+  fi
+  mkimage -C none -A arm -T script -d ${olinux_mountpoint}/boot/boot.cmd ${olinux_mountpoint}/boot/boot.scr	>/dev/null 2>&1 || (echo "Error"; exit 0)
+
+  [[ -f /usr/lib/u-boot/platform_install.sh ]] && source /usr/lib/u-boot/platform_install.sh
+  if [[ $(type -t write_uboot_platform) != function ]]; then
+  	echo "Error: no u-boot package found, exiting"
+  	exit -1
+  fi
+  write_uboot_platform "$DIR" "$opt_sdcardpath"
+}
+
 function copy_hypercube() {
   debug "Copying ${hypercube_path} to ${olinux_mountpoint}/root/"
   sudo cp "${hypercube_path}" "${olinux_mountpoint}/root/install.hypercube"
@@ -722,14 +824,15 @@ function patch_servicesyml() {
 ### GLOBAL VARIABLES ###
 ########################
 
-url_base=https://repo.labriqueinter.net/
+url_base=https://build.yunohost.org/
 gpg_key=0xCD8F4D648AC0ECC1
 gpg_server=keyserver.ubuntu.com
 deb_version=stretch
 opt_encryptedfs=false
 opt_findcubes=false
+opt_emmc=false
 opt_debug=false
-opt_lime2=false
+opt_hardware="lime"
 tmp_dir=$(mktemp -dp . .install-sd.sh_tmpXXXXXX)
 olinux_mountpoint="${tmp_dir}/olinux_mountpoint"
 files_path="${tmp_dir}/files"
@@ -744,7 +847,7 @@ loopdev=
 trap cleaning_exit EXIT ERR
 trap cleaning_ctrlc INT
 
-while getopts "s:f:g:mc:y:w:e2ldh" opt; do
+while getopts "s:mf:g:c:y:w:em2pldh" opt; do
   case $opt in
     s) opt_sdcardpath=$OPTARG ;;
     f) opt_imgpath=$OPTARG ;;
@@ -752,8 +855,10 @@ while getopts "s:f:g:mc:y:w:e2ldh" opt; do
     y) opt_hypercubepath=$OPTARG ;;
     w) opt_hypercubeshpath=$OPTARG ;;
     c) opt_customscriptpath=$OPTARG ;;
+    m) opt_emmc=true ;;
     e) opt_encryptedfs=true ;;
-    2) opt_lime2=true ;;
+    2) opt_hardware="lime2" ;;
+    p) opt_hardware="orangepipcplus" ;;
     l) opt_findcubes=true ;;
     d) opt_debug=true ;;
     h) exit_usage ;;
@@ -798,24 +903,29 @@ if [ -z "${img_path}" ]; then
   info "Downloading Debian/YunoHost image (HTTPS)"
   download_img
 
-  if [ -z "${gpg_path}" ]; then
-    info "Downloading GPG signature (HTTPS)"
-    download_gpg
-  fi
+  #if [ -z "${gpg_path}" ]; then
+  #  info "Downloading GPG signature (HTTPS)"
+  #  download_gpg
+  #fi
 fi
 
-if [ ! -z "${gpg_path}" ]; then
-  info "Checking GPG signature"
-  check_gpg
-fi
+#if [ ! -z "${gpg_path}" ]; then
+#  info "Checking GPG signature"
+#  check_gpg
+#fi
 
 if [ -z "${gpg_path}" ]; then
   warn "Not checking image integrity"
 fi
 
-if [[ "${img_path}" =~ .img.tar.xz$ ]]; then
+if [[ "${img_path}" =~ .img.zip$ ]]; then
   info "Decompressing Debian/YunoHost image"
-  untar_img
+  uncompress_img
+fi
+
+if [[ "${img_path}" =~ yunohost ]]; then
+  info "Converting yunohost image into internetcube image"
+  convert_img
 fi
 
 if $opt_encryptedfs; then
@@ -824,6 +934,10 @@ if $opt_encryptedfs; then
 else
   info "Installing SD card (this could take a few minutes)"
   install_clear
+
+  if $opt_emmc; then
+    update_boot_and_fstab
+  fi
 fi
 
 patch_servicesyml
