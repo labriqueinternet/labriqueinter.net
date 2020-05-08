@@ -1,4 +1,7 @@
-* 2017-09-06 (latest)
+* 2020-05-08
+  - move install.labriqueinter.net to a separated repository
+
+* 2017-09-06
   - Fixes an important issue with resolv.conf (thx yoshi)
 
 * 2017-08-31
