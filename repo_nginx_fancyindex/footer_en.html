@@ -3,65 +3,11 @@
     <section id="informations">
       <h2><span>Info</span>rmations</h2>
 
-      <p>Informations about the way we build the Debian/YunoHost images are available at <a href="https://github.com/labriqueinternet/build.labriqueinter.net/blob/master/README.md">build.labriqueinter.net</a>. You can rebuild images by yourself if you want.</p>
-    </section>
+      <p>To install your Cube, go to: <a href="https://install.internetcu.be">install.internetcu.be</a>.</p>
 
-    <section id="guide">
-      <h2><span>Quick</span> Guide</h2>
+      <p>Information about how we build the YunoHost/InternetCube images are available at <a href="https://github.com/YunoHost/arm-images">github.com/YunoHost/arm-images</a>. You can rebuild images by yourself if you want.</p>
 
-      <p>Download the <a href="https://repo.internetcu.be/install-sd.sh">SD Card Installer</a>, and just run it (add <em>-2</em> at the end for a LIME2</em>, or <em>-h</em> to see other options):</p>
-
-      <pre>% bash install-sd.sh</pre>
-
-      <p>For the SSH access and the YunoHost post-installation, see the <em>Post-Installation</em> section below.</p>
-    </section>
-
-    <section id="guide-encrypted">
-      <h2><span>Quick</span> Guide (encrypted)</h2>
-
-      <p>The creation of cubes with an encrypted filesystem is currently not supported anymore. Contact the development team if you wish to help on this topic.</p>
-    </section>
-
-    <section id="post-installation">
-      <h2><span>Post</span>-Installation</h2>
-
-      <p>To finalize the Cube configuration, log in once it booted on the card. Use the installation script to scan your local network and find the Cube IP:
-
-      <pre>% bash install-sd.sh -l</pre>
-
-      <p>Once your Cube found, connect with SSH on port 22:</p>
-
-      <pre>root:yunohost</pre>
-
-      <p><strong>Note:</strong> If there is only one Cube on your network, you can also directly use <code>ssh root@fe80::42:acab%eth0</code> (replacing <em>eth0</em> by the network device you use on your computer).
-
-      <p>The first thing to do is upgrading Debian/Yunohost:</p>
-
-      <pre>% sudo apt-get update &amp;&amp; sudo apt-get dist-upgrade</pre>
-
-      <p>You can now do the YunoHost <a href="https://yunohost.org/#/postinstall_en">post-installation</a>.
-
-      <p>Then, add the list of community apps to YunoHost:</p>
-
-      <pre>% yunohost app fetchlist -n community -u https://app.yunohost.org/community.json</pre>
-
-      <p>From the YunoHost web administration, you can now install the <em>VPN Client</em> and <em>Wifi Hotspot</em> apps, then configure them.</p>
-    </section>
-
-    <section id="install-with-hypercube">
-        <h2><span>Hyper</span>cube</h2>
-
-        <p>The recommended installation method consists in using an hypercube file generated from <a href="https://install.labriqueinter.net/">this page</a>.</p>
-
-        <p>The hypercube file can be fed to the <code>install-sd.sh</code> script in the following way:</p>
-
-        <pre>% bash install-sd.sh -y install.hypercube</pre>
-
-        <p>If the file was not fed to the <code>install-sh.sh</code>, it is still possible to plug an USB key (formated in NTFS or FAT32) on the cube with the file on it to trigger the install automatically.</p>
-
-        <p>The installation procedure can be followed from the web interface accessible at <code>https://192.168.x.y:2468/</code></p>
-
-        <p>Or it is possible to detect automatically the debug interface available on the local network using <a href="https://repo.internetcu.be/tools/hypercube-debug-page-detection.html">this tool</a>.</p>
+      <p>The image build process is automated. You can follow images build here: <a href="https://build.labriqueinter.net">build.labriqueinter.net</a>.</p>
     </section>
   </main>
 

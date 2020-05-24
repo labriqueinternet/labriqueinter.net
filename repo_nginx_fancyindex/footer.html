@@ -3,64 +3,10 @@
     <section id="informations">
       <h2><span>Info</span>rmations</h2>
 
-      <p>Les informations concernant la façon dont ont été construites les images Debian/YunoHost sont disponibles sur <a hreflang="en" href="https://github.com/labriqueinternet/build.labriqueinter.net/blob/master/README.md">build.labriqueinter.net</a>. Vous pouvez reconstruire les images vous-mêmes si vous le souhaitez.</p>
-    </section>
+      <p>Pour installer votre Brique, rendez-vous sur <a href="https://install.labriqueinter.net">install.labriqueinter.net</a>.</p>
 
-    <section id="guide">
-      <h2><span>Guide</span> express</h2>
-
-      <p>Il suffit de télécharger le <a href="https://repo.labriqueinter.net/install-sd.sh">SD Card Installer</a>, et l'exécuter (ajouter <em>-2</em> à la fin pour une LIME2</em>, ou <em>-h</em> pour voir les autres options) :</p>
-
-      <pre>% bash install-sd.sh</pre>
-
-      <p>Pour l'accès SSH et la post-installation de YunoHost, voir la section <em>Post-installation</em> ci-dessous.</p>
-    </section>
-
-    <section id="guide-chiffrement">
-      <h2><span>Guide</span> express (avec chiffrement)</h2>
-
-      <p>La création d'une Brique utilisant un système de fichier chiffré n'est plus supportée pour le moment. Contacter l'équipe de développement si vous souhaitez aider sur ce sujet.</p>
-    </section>
-
-    <section id="post-installation">
-      <h2><span>Post</span>-installation</h2>
-
-      <p>Pour finaliser la configuration de la Brique, il faut la faire démarrer sur la carte SD puis s'y connecter. Vous pouvez utiliser le script d'installation pour trouver la Brique sur votre réseau local :</p>
-      <pre>% bash install-sd.sh -l</pre>
-
-      <p>Une fois la Brique localisée, connectez-vous par SSH sur le port 22 :</p>
-
-      <pre>root:yunohost</pre>
-
-      <p><strong>Note :</strong> S'il n'y a qu'une seule Brique sur votre réseau, vous pouvez aussi directement utiliser <code>ssh root@fe80::42:acab%eth0</code> (en remplaçant <em>eth0</em> par l'interface réseau que vous utilisez sur votre ordinateur).
-
-      <p>La première chose à faire est de mettre à jour Debian/YunoHost :</p>
-
-      <pre>% sudo apt-get update &amp;&amp; sudo apt-get dist-upgrade</pre>
-
-      <p>Vous pouvez maintenant faire la <a href="https://yunohost.org/#/postinstall_fr">post-installation</a>.
-
-      <p>Ajoutez ensuite la liste des apps community à YunoHost :</p>
-
-      <pre>% yunohost app fetchlist -n community -u https://app.yunohost.org/community.json</pre>
-
-      <p>À partir de l'administration web de YunoHost, vous pouvez désormais installer les apps <em>VPN Client</em> et <em>Wifi Hotspot</em>, puis aller les configurer.
-    </section>
-
-    <section id="install-with-hypercube">
-        <h2><span>Hyper</span>cube</h2>
-
-        <p>La méthode d'installation recommandée consiste à utiliser un fichier hypercube généré via <a href="https://install.labriqueinter.net/">cette page</a>.</p>
-
-        <p>Le fichier hypercube peut être fourni au script <code>install-sd.sh</code> de la manière suivante :</p>
-
-        <pre>% bash install-sd.sh -y install.hypercube</pre>
-
-        <p>Si le fichier n'a pas été fourni via le <code>install-sh.sh</code>, il est plus tard possible de brancher une clef USB (formattée en NTFS ou FAT32) sur la Brique, contenant le fichier. L'installation via l'hypercube sera alors lancée automatiquement.</p>
-
-        <p>Le déroulement de l'installation de la Brique peut être suivi via l'interface web accessible à <code>https://192.168.x.y:2468/</code></p>
-
-        <p>Ou bien il est possible de détecter automatiquement l'interface de debug sur le réseau à l'aide de <a href="https://repo.internetcu.be/tools/hypercube-debug-page-detection.html">cette page</a>.</p>
+      <p>Les informations concernant la façon dont ont été construites les images YunoHost/InternetCube sont disponibles sur <a hreflang="en" href="https://github.com/YunoHost/arm-images">https://github.com/YunoHost/arm-images</a>. Vous pouvez reconstruire les images vous-mêmes si vous le souhaitez.</p>
+      <p>Le processus de construction des images est automatique. Vous pouvez suivre les constructions des images ici: <a href="https://build.labriqueinter.net">build.labriqueinter.net</a>.</p>
     </section>
   </main>
 
