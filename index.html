@@ -40,7 +40,7 @@
 
       <p>La Brique Internet, présentée dans la vidéo ci-dessus, remplie deux fonctions complémentaires.</p>
 
-      <p>1. Elle <strong>nettoie votre accès à Internet</strong>. Pour ce faire, elle diffuse un réseau WiFi. En passant par celui-ci, tout votre traffic Internet passe à travers <a href="https://fr.wikipedia.org/wiki/R%C3%A9seau_priv%C3%A9_virtuel">un tunnel chiffré (VPN)</a>. Ainsi, votre fournisseur d'accès à Internet (FAI) ne peut plus espionner, filtrer ou brider votre accès à Internet. Dans le futur, la brique pourra intégrer des fonctions supplémentaires telles que le blocage automatique des publicités et trackers, ou d'autres mesures permettant de protéger votre vie privée.</p>
+      <p>1. Elle <strong>nettoie votre accès à Internet</strong>. Pour ce faire, elle diffuse un réseau WiFi. En passant par celui-ci, tout votre trafic Internet passe à travers <a href="https://fr.wikipedia.org/wiki/R%C3%A9seau_priv%C3%A9_virtuel">un tunnel chiffré (VPN)</a>. Ainsi, votre fournisseur d'accès à Internet (FAI) ne peut plus espionner, filtrer ou brider votre accès à Internet. Dans le futur, la brique pourra intégrer des fonctions supplémentaires telles que le blocage automatique des publicités et trackers, ou d'autres mesures permettant de protéger votre vie privée.</p>
 
       <p>2. Elle permet d'<strong>avoir son propre bout d'Internet</strong>. C'est ce qu'on appelle l'auto-hébergement : le fait de disposer de son propre serveur qui héberge des services comme un blog, une boîte mail, de la synchronisation de fichiers, de contacts, de calendrier, etc.. Cette pratique est simplifiée par le logiciel <a href="https://yunohost.org">YunoHost</a>. La Brique Internet permet donc de s'affranchir des services centralisés proposés par <a href="https://fr.wikipedia.org/wiki/GAFAM">les GAFAMs</a> et ainsi de reprendre le contrôle de ses données.</p>
 
@@ -91,7 +91,7 @@
         <img src="img/labriqueinternet-schema.png" alt="Schéma" />
       </div>
 
-      <p>L'ordinateur auquel vous vous reliez par le VPN doit être géré par des gens de confiance (e.g. une association rattachée à la <a href="https://www.ffdn.org/fr">FFDN</a>). C'est pour cette raison qu'il est souhaitable de choisir une association pour laquelle vous avez déjà rencontré les adhérents. Certaines associations vous fourniront directement le boîtier clé en main, avec votre accès VPN préconfiguré.</p>
+      <p>L'ordinateur auquel vous vous reliez par le VPN doit être géré par des gens de confiance (e.g. une association rattachée à la <a href="https://www.ffdn.org/fr">FFDN</a>). C'est pour cette raison qu'il est souhaitable de choisir une association pour laquelle vous avez déjà rencontré les adhérents. Certaines associations vous fourniront directement le boîtier clé en main, avec votre accès VPN pré-configuré.</p>
     </section>
 
     <section id="comprendre-les-enjeux">
@@ -137,9 +137,9 @@
     <section id="obtenir-une-brique">
       <h2><span>Comment obtenir</span> une Brique Internet ?</h2>
 
-      <p>Les commandes groupées de matériel se font auprès d'associations locales (environ 70€ par Brique).</p>
+      <p>Il est possible soit d'obtenir une Brique Internet auprès d'associations locales (environ 70€ par Brique), soit de la monter vous-même en achetant le matériel de votre côté (voir plus bas).</p>
 
-      <p>Les associations proposent en général de vous fournir la Brique complète, entièrement montée, installée et configurée avec un accès VPN : <strong>il ne vous restera plus qu'à la déballer et la brancher chez vous pour bénéficier de votre nouvel accès à Internet propre, sans rien avoir à faire d'autre</strong> (et installer ensuite des services web auto-hébergés si le cœur vous en dit, en quelques clics sur l'interface d'administration).</p>
+      <p>Si il est possible de récupérer une Brique Internet installée et configurée prête à brancher et utiliser, les associations préfèrent, en général, configurer la Brique Internet avec vous pour vous accompagner vis-à-vis de vos objectifs et s'assurer que la Brique Internet est pertinente dans votre cas.</p>
 
       <p>Vous pouvez contacter une association <a href="https://db.ffdn.org">près de chez vous</a>, qui fournit des services VPN et/ou des Briques Internet clé en main (cliquer sur les icônes pour obtenir plus d'informations) :</p>
 
@@ -149,72 +149,74 @@
         <iframe src="//db.ffdn.org/embed_map_cube/"></iframe>
       </div>
 
-      <p>Sinon, vous pouvez construire votre propre Brique vous-même, grâce aux liens de la section suivante.</p>
+      <p>Les associations qui font le plus d'installation de Brique Internet en ce moment sont: <a href="https://neutrinet.be/fr/brique">Neutrinet</a> (Belgique), <a href="https://arn-fai.net/brique">Alsace Réseau Neutre</a>, Touraine Data Network et <a href="https://www.franciliens.net/brique-internet/">Franciliens.net</a>.</p>
     </section>
 
     <section id="construire-une-brique">
       <h2><span>Comment construire</span> ma propre Brique ?</h2>
 
-      <p>Les associations citées dans la section précédente vous permettront en général de directement recevoir une Brique clé en main. Pour ceux qui ne souhaitent pas passer par une association et qui souhaitent tout faire eux-même, la procédure reste très accessible, et les liens fournis dans cette section vous permettront d'y arriver facilement.</p>
-
-      <p>Si vous avez en votre possession le matériel proposé ci-dessous, ou même directement une Brique pré-installée :</p>
-
-      <ul>
-        <li><a href="https://install.labriqueinter.net">Installation automatique</a></li>
-        <li><a href="https://repo.labriqueinter.net">Installation manuelle (experts uniquement)</a></li>
-      </ul>
-
-      <p>Si vous tentez de faire une Brique avec un autre matériel (experts uniquement) :</p>
-
-      <ul>
-        <li><a href="https://yunohost.org/#/index_fr">Projet YunoHost</a> (<a href="https://build.yunohost.org">images Debian</a>)</li>
-        <li><a hreflang="en" href="https://github.com/labriqueinternet/hotspot_ynh">Application WiFi Hotspot pour YunoHost</a></li>
-        <li><a hreflang="en" href="https://github.com/labriqueinternet/vpnclient_ynh">Application VPN Client pour YunoHost</a></li>
-        <li><a hreflang="en" href="https://github.com/labriqueinternet/piratebox_ynh">Application PirateBox pour YunoHost</a> (nécessite WiFi Hotspot)</li>
-      </ul>
-
-      <div class="pictures" id="photos">
-        <a href="https://raw.githubusercontent.com/labriqueinternet/hotspot_ynh/master/screenshot.png"><img src="img/screenshot-hotspot_thumb.png" alt="WiFi Hotspot" title="Interface web de WiFi Hotspot" /></a>
-        <a href="https://github.com/jvaubourg/php-piratebox#screenshots"><img src="img/screenshot-piratebox_thumb.png" alt="PirateBox" title="PirateBox" /></a>
-        <a href="https://raw.githubusercontent.com/labriqueinternet/vpnclient_ynh/master/screenshot.png"><img src="img/screenshot-vpnclient_thumb.png" alt="VPN Client" title="Interface web de VPN Client" /></a>
+      <p>Pour construire votre Brique Internet vous-même, il faut:</p>
+      <ol>
+          <li>choisir et acheter le matériel</li>
+          <li>adhérer à un FAI associatif locale et demander un VPN au format .cube</li>
+          <li>suivre <a href="https://yunohost.org/fr/install/hardware:internetcube">ce tutoriel d'installation</a></li>
+      </ol>
+      <div class="row hardware">
+          <div class="col-3">
+            <img src="img/lime2-server.jpg" alt="" style="width:300px"/>
+          </div>
+          <div class="col-9">
+              <h3>Brique Internet classique VPN/Wifi et auto-hébergement</h3>
+            <ul>
+                <li>88€ + coût mensuel du VPN</li>
+                <li>Une carte Olimex LIME2(<em>open-hardware</em>): <a href="https://www.olimex.com/Products/OLinuXino/Home-Server/LIME2-SERVER-NO-HDD/open-source-hardware">LIME2-SERVER</a>
+                <ul>
+                    <li>inclut carte ARM, boîter avec emplacement disque dur, chargeur, batterie et carte microSD 32G. Il est possible de choisir les composants un par un pour par exemple éviter de prendre la batterie.</li>
+                    <li>il est possible de prendre un disque dur ou un disque SSD avec. Ce n'est pas nécessaire au début, mais au-delà d'un an d'utilisation nous recommandons fortement d'utiliser un SSD ou un disque dur carte les supports microSD sont trop fragiles.</li>
+                </ul></li>
+                <li>Une antenne WiFi (pas <em>open-hardware</em>): <a href="https://www.olimex.com/Products/USB-Modules/MOD-WIFI-R5370-ANT/">MOD-WIFI-R5370-ANT</a></li>
+            </ul>
+        </div>
       </div>
 
-      <p>Matériel proposé :</p>
+      <div class="row hardware">
+          <div class="col-3">
+            <img src="img/orange-pi-pc-plus.jpg" alt="" style="float:left;width:300px"/>
+          </div>
+          <div class="col-9">
+            <h3>Brique Internet VPN/Wifi uniquement</h3>
+            <ul>
+                <li>48€ + coût mensuel du VPN</li>
+                <li>Une carte Orange Pi PC+(pas <em>open-hardware</em>): <a href="https://fr.aliexpress.com/item/32668421022.html">Orange Pi PC Plus</a>, avec chargeur et boîtier</li>
+                <ul>
+                    <li>inclut carte ARM, mini-antenne, boîter, chargeur</li>
+                    <li>n'a pas de connectique SATA (uniquement USB2) raison pour laquelle les possibilités d'auto-hébergement sont limitées sur le long terme.</li>
+                </ul></li>
+                <li>Une carte microSD : <a href="https://fr.aliexpress.com/item/1005002564681500.html">SanDisk Extreme Pro 32G</a></li>
+                <li>Une antenne WiFi (pas <em>open-hardware</em>): <a href="https://fr.aliexpress.com/item/4001162977792.html?spm=a2g0o.productlist.0.0.16ec47b0JYohUB&algo_pvid=b91d877a-71e1-4502-bbbf-24ef36a1c272&algo_exp_id=b91d877a-71e1-4502-bbbf-24ef36a1c272-7">Chipset 8188Gu avec antenne (pilote libre)</a>
+                <ul>
+                    <li>le orange pi pc+ inclut une mini-antenne qui peut porter sur quelques mètres soit un studio, une autre antenne est donc nécessaire si vous voulez couvrir un appartement ou plus.</li>
+                </ul></li>
+            </ul>
+        </div>
+      </div>
+      <div class="row hardware">
+          <div class="col-3" style="text-align:center">
+              <span style="font-size: 150px;line-height: 100%;">?</span>
+          </div>
+          <div class="col-9">
+            <h3>Brique Internet personnalisée (experts uniquement)</h3>
+            <p>Si vous tentez de faire une Brique Internet avec un autre matériel (vieux laptop, etc.), il faut <a href="https://yunohost.org/en/install?q=%2Finstall">installer YunoHost</a>, puis les apps <a href="https://github.com/labriqueinternet/vpnclient_ynh">VPN Client</a> et <a href="https://github.com/labriqueinternet/hotspot_ynh">Hotspot Wifi</a>, les configurer avec un VPN .cube et activer le certificat Let's Encrypt.</p>
+            <p>Si vous souhaitez créer et maintenir une image pour une carte ARM spécifique ou avec de nouvelles options (disque dur natif, chiffrement), parlez-en sur la liste de discussion :)</p>
+        </div>
+      </div>
 
+    </section>
+
+    <section id="decorer-une-brique">
+      <h2><span>Comment décorer</span> ma Brique ?</h2>
       <ul>
-        <li>Carte Olimex (<em>open-hardware</em>) : <a hreflang="en" href="https://www.olimex.com/Products/OLinuXino/A20/A20-OLinuXino-LIME/open-source-hardware">A20-OLinuXino-LIME</a> / <a href="https://www.olimex.com/Products/OLinuXino/A20/A20-OLinuXIno-LIME2/open-source-hardware">LIME2</a></li>
-        <li>Boîtier pour la carte :
-          <ul>
-            <li>
-              OLIMEX : <a hreflang="en" href="https://www.olimex.com/Products/OLinuXino/BOXES/BOX-LIME-BLACK/">BOX-LIME-BLACK</a> (métal)
-            </li>
-            <li>
-              DIY : <a hreflang="fr" href="http://carrefour-numerique.cite-sciences.fr/fablab/wiki/doku.php?id=projets:boite_la_brique_internet">Boitier MDF</a> (bois, découpe laser)
-            </li>
-          </ul>
-        </li>
-        <li>Adaptateur secteur (<a href="https://www.olimex.com/wiki/PWRJACK">port</a> 5V DC) pour la carte (un simple câble mini-USB suffit pour alimenter la carte, mais l'adaptateur est utile pour brancher un disque dur auto-alimenté dessus) : <a href="https://www.olimex.com/Products/Power/SY0605E/">SY0605E</a></li>
-        <li>Antenne WiFi (pas <em>open-hardware</em>)
-          <ul>
-            <li>Version <a hreflang="en" href="https://www.fsf.org/news/ryf-certification-thinkpenguin-usb-with-atheros-chip">libre</a> (limitée à 7 connexions simultanées, <em>multissid</em> jusqu'à 2 AP) : <a href="https://www.olimex.com/Products/USB-Modules/MOD-WIFI-AR9271-ANT/">MOD-WIFI-AR9271-ANT</a></li>
-            <li>Version <a hreflang="en" href="https://packages.debian.org/jessie/firmware-ralink">non-libre</a> (<em>multissid</em> jusqu'à 8 AP) : <a href="https://www.olimex.com/Products/USB-Modules/MOD-WIFI-R5370-ANT/">MOD-WIFI-R5370-ANT</a></li>
-          </ul>
-        <li>Carte micro-SD qui sert de disque dur interne : <a href="https://www.amazon.fr/Transcend-microSDHC-adaptateur-TS32GUSDU1E-Emballage/dp/B00CES44EO">Transcend Premium 300x Classe 10</a> (16 Go est suffisant)</li>
-        <li>Batterie (13h d'autonomie, optionnelle) : <a hreflang="en" href="https://www.olimex.com/Products/Power/BATTERY-LIPO6600mAh/">BATTERY-LIPO6600mAh</a></li>
-        <li>Panneau solaire (optionnel) : <a href="https://snootlab.com/lang-fr/seeedstudio/699-lipo-rider-pro-fr.html">LiPo Rider Pro</a>, <a href="https://snootlab.com/lang-fr/seeedstudio/702-panneau-solaire-3w-138x160-fr.html">PS 3W 138x160</a>, + 1 batterie (<a href="https://hackspark.fr/fr/catalogsearch/result/?q=lipo">autre vendeur</a>) - <a href="photos/labriqueinternet-solaire-details.png">Photo</a></li>
-      </ul>
-
-      <p>Prix du matériel détaillé ci-dessus pour 1 Brique complète (avec LIME, sans la batterie et le panneau solaire, mais avec les frais de port) :</p>
-
-      <ul>
-        <li>Environ 70€, dans le cadre d'une commande groupée associative (FFDN)</li>
-        <li>Environ 70€, dans le cadre d'une commande groupée personnelle (à partir de 10 Briques)</li>
-        <li>Environ 80€ sinon</li>
-      </ul>
-
-      <p>Décoration de la Brique et diffusion du projet :</p>
-
-      <ul>
+        <li>Un <a href="carrefour-numerique.cite-sciences.fr/fablab/wiki/doku.php?id=projets:boite_la_brique_internet">boîtier MDF</a></li>
         <li>Un <a href="stuff/labriqueinternet-sticker.png">magnifique sticker</a> (<a href="stuff/labriqueinternet-sticker.svg">SVG</a>) à coller sur un boîtier Olimex (8cm x 5.5cm)</li>
         <li>Une <a href="stuff/labriqueinternet-poster-a3.png">superbe affiche</a> (<a href="stuff/labriqueinternet-poster-a3.svg">SVG</a>) à coller sur tous les murs (format A3)</li>
         <li><a href="stuff/labriqueinternet-logo.svg">Version vectorielle (SVG)</a> du logo officiel</li>
@@ -222,8 +224,32 @@
         <li><a href="stuff/labriqueinternet-projet.pdf">Autres schémas</a> (<a href="stuff/labriqueinternet-projet.svg">SVG</a>) à propos des possibilités d'utilisation</li>
       </ul>
     </section>
+    <section id="se-passer-de-la-brique">
+      <h2><span>Comment se passer</span> d'une Brique ?</h2>
+      <p>S'auto-héberger c'est comme cultiver ses propres légumes, ça prend du temps et au début ça peut ne pas toujours être concluant ! Si vous êtes plutôt AMAP que jardinage, que vous ne vous sentez pas assez confiant ou confiante pour tenter l'aventure de l'auto-hébergement, mais que vous souhaitez vous dégoogliser, nous vous recommandons les services des membres du <a href="https://chatons.org">Collectif des Hébergeurs, Alternatifs, Transparents, Ouverts, Neutre et Solidaire</a> et ceux de la <a href="https://ffdn.org">Fédération FDN</a>.
+        <div class="pictures">
+      <a href="https://chatons.org" style="width:200px"><img src="img/logo_chatons.png" alt="Logo des chatons représentant 3 tête chats en jaune" /></a>
+      <a href="https://ffdn.org" style="width:200px; margin-top:15px;"><img src="img/ffdn.png" alt="Logo de la fédération fdn représentant les lettres FFDN en bleue" /></a>
+        </div>
+      <p>Enfin, une dernière façon de vous dégoogliser et d'être moins victime d'atteinte à la neutralité du net, est de simplement réduire vos besoins technologiques, par exemple en utilisant une clé USB au lieu d'un cloud.</p>
+    </section>
 
-<!--    <section id="remplacer-vpn-par-tor">
+    <section id="participer">
+      <h2><span>Comment contribuer</span> au projet ?</h2>
+      <p>Si vous êtes une association existante ou en création (LUG, Hackerspace, FABlab, FAI associatif, etc.) ou une simple personne motivée, vous pouvez prendre part au projet de plusieurs façons, quelques idées: </p>
+      <ul>
+          <li>créer / diffuser des supports de communication à propos de la Brique Internet et YunoHost</li>
+          <li>organiser des install parties spécial "Brique Internet" ou auto-hébergement (possiblement en invitant des personnes du projet) et en faisant le support qui ensuite</li>
+          <li>fournir des VPN openvpn au <a href="https://labriqueinter.net/dotcubefiles.html">format .cube</a>, respectant la neutralité du net et avec ip publiques dédiées (uniquement FAI de la FFDN ou fournisseur équivalent à l'étranger)</li>
+          <li>prendre part au développement de la Brique Internet (maintenance de l'existant, sauvegarde, chiffrement, passage sur disque dur, application pour diffuser le VPN via un port ethernet, support de VPN wireguard...) ou à celui de YunoHost</li>
+          <li>enrichir <a href="https://wiki.labriqueinter.net">le wiki de la Brique Internet</a> et <a href="https://yunohost.org/fr">celui de YunoHost</a></li>
+          <li>accueillir le Brique Camp annuel</li>
+          <li>remonter des bugs</li>
+          <li>coordonner des opérations de récupérations de cartes Lime2 ou Orange Pi PC plus non utilisées</li>
+          <li>discuter avec Olimex et/ou les revendeurs Orange Pi pour qu'il propose un pack "Brique Internet"</li>
+      </ul>
+    </section>
+          <!--    <section id="remplacer-vpn-par-tor">
       <h2><span>Remplacer le VPN</span> par Tor ?</h2>
 
       <div class="text">
