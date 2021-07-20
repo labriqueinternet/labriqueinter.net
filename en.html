@@ -136,9 +136,9 @@
     <section id="get-an-internet-cube">
       <h2><span>How to get</span> an Internet Cube?</h2>
 
-      <p>Bulk orders are made by local associations (approximately 70€ per Cube).</p>
+      <p>It is possible to either obtain an Internet Cube from local associations (about 70€ per Cube), or to assemble it yourself by purchasing the material on your side (see below).</p>
 
-      <p>Generally, the associations offer to provide you a plug-n-play Cube, fully assembled, installed and configured with VPN access: <strong>you will only have to unpack it, and plug in it at home to take advantage of your new clean internet access, without doing anything else</strong> (and then install self-hosting web services, if you feel like it, in a few clicks via the administration interface).</p>
+      <p>If it is possible to get an Internet Cube installed and configured ready to plug in and use, associations generally prefer to configure the Internet Cube with you to accompany you with respect to your objectives and to ensure that the Internet Cube is relevant in your case.</p>
 
       <p>You can contact an association <a href="https://db.ffdn.org">close to you</a>, providing VPN services and/or plug-n-play Internet Cubes (click on icons for more information):</p>
 
@@ -148,71 +148,74 @@
         <iframe src="//db.ffdn.org/embed_map_cube/"></iframe>
       </div>
 
-      <p>Otherwise, you can build your own Cube all by yourself by following the information in the next section.</p>
+      <p>The associations doing the most Internet Cube installation right now are <a href="https://neutrinet.be/en/brique">Neutrinet</a> (Belgium), <a href="https://arn-fai.net/brique">Alsace Réseau Neutre</a>, Touraine Data Network and <a href="https://www.franciliens.net/brique-internet/">Franciliens.net</a>. If you are a NGO and want to provide Internet Cube to people, see the contribute section.</p>
     </section>
 
     <section id="build-an-internet-cube">
       <h2><span>How to build</span> my own Internet Cube?</h2>
+      <p>To build your Internet Cube yourself, you need:</p>
+      <ol>
+          <li>choose and purchase the hardware</li>
+          <li>join a local association ISP and request a VPN in .cube format</li>
+          <li>follow <a href="https://yunohost.org/en/install/hardware:internetcube">this installation tutorial</a></li>
+      </ol>
 
-      <p>The cited associations in the previous section will generally enable you to directly receive a plug-n-play Cube. For those who do no want to ask an association and want to do everything themselves, the process is simple, and the links provided in this section will allow you to do this easily.</p>
-
-      <p>If you own the hardware suggested below, or even directly a pre-installed Cube:</p>
-
-      <ul>
-        <li><a href="https://install.internetcu.be">Automatic Installation</a></li>
-        <li><a href="https://repo.internetcu.be">Manual Installation (experts only)</a></li>
-      </ul>
-
-      <p>If you are trying to build a Cube with another hardware (experts only):</p>
-
-      <ul>
-        <li><a href="https://yunohost.org/#/index_en">YunoHost project</a> (<a href="https://build.yunohost.org">Debian images</a>)</li>
-        <li><a href="https://github.com/labriqueinternet/hotspot_ynh">Wifi Hotspot application for YunoHost</a></li>
-        <li><a href="https://github.com/labriqueinternet/vpnclient_ynh">VPN Client application for YunoHost</a></li>
-        <li><a href="https://github.com/labriqueinternet/piratebox_ynh">PirateBox application for YunoHost</a> (requires Wifi Hotspot)</li>
-      </ul>
-
-      <div class="pictures" id="photos">
-        <a href="https://raw.githubusercontent.com/labriqueinternet/hotspot_ynh/master/screenshot.png"><img src="img/screenshot-hotspot_thumb.png" alt="WiFi Hotspot" title="Web interface of WiFi Hotspot" /></a>
-        <a href="https://github.com/jvaubourg/php-piratebox#screenshots"><img src="img/screenshot-piratebox_thumb.png" alt="PirateBox" title="PirateBox" /></a>
-        <a href="https://raw.githubusercontent.com/labriqueinternet/vpnclient_ynh/master/screenshot.png"><img src="img/screenshot-vpnclient_thumb.png" alt="VPN Client" title="Web interface of VPN Client" /></a>
+      <div class="row hardware">
+          <div class="col-3">
+            <img src="img/lime2-server.jpg" alt="" style="width:300px"/>
+          </div>
+          <div class="col-9">
+              <h3>Classical Internet Cube for VPN/Wifi and self-hosting</h3>
+            <ul>
+                <li>88€ + monthly VPN cost</li>
+                <li>An Olimex LIME2(<em>open-hardware</em>) card: <a href="https://www.olimex.com/Products/OLinuXino/Home-Server/LIME2-SERVER-NO-HDD/open-source-hardware">LIME2-SERVER</a>
+                <ul>
+                    <li>includes ARM card, case with hard drive slot, charger, battery and 32G microSD card. It is possible to choose the components one by one to avoid taking the battery for example.</li>
+                    <li>it is possible to take a hard drive or SSD with it. This is not necessary at first, but beyond a year of use we strongly recommend using an SSD or hard drive card microSD media are too fragile.</li>
+                </ul></li>
+                <li>A WiFi antenna (not <em>open-hardware</em>): <a href="https://www.olimex.com/Products/USB-Modules/MOD-WIFI-R5370-ANT/">MOD-WIFI-R5370-ANT</a></li>
+            </ul>
+        </div>
       </div>
 
-      <p>Suggested hardware:</p>
+      <div class="row hardware">
+          <div class="col-3">
+            <img src="img/orange-pi-pc-plus.jpg" alt="" style="float:left;width:300px"/>
+          </div>
+          <div class="col-9">
+            <h3>Internet Cube with Wifi/VPN only</h3>
+            <ul>
+                <li>48€ + monthly VPN cost</li>
+                <li>An Orange Pi PC+(not <em>open-hardware</em>) card: <a href="https://fr.aliexpress.com/item/32668421022.html">Orange Pi PC Plus</a>, with charger and case</li>
+                <ul>
+                    <li>includes ARM card, mini-antenna, case, charger</li>
+                    <li>does not have SATA connectivity (only USB2) reason why self-hosting possibilities are limited in the long run.</li>
+                </ul></li>
+                <li>A microSD card: <a href="https://fr.aliexpress.com/item/1005002564681500.html">SanDisk Extreme Pro 32G</a></li>
+                <li>A WiFi antenna (not <em>open-hardware</em>): <a href="https://fr.aliexpress.com/item/4001162977792.html?spm=a2g0o.productlist.0.0.16ec47b0JYohUB&algo_pvid=b91d877a-71e1-4502-bbbf-24ef36a1c272&algo_exp_id=b91d877a-71e1-4502-bbbf-24ef36a1c272-7">Chipset 8188Gu with antenna (free driver)</a>
+                <ul>
+                    <li>the orange pi pc+ includes a mini-antenna that can carry a few meters either a studio, so another antenna is needed if you want to cover an apartment or more.</li>
+                </ul></li>
+            </ul>
+        </div>
+      </div>
+      <div class="row hardware">
+          <div class="col-3" style="text-align:center">
+              <span style="font-size: 150px;line-height: 100%;">?</span>
+          </div>
+          <div class="col-9">
+            <h3>Customized Internet Cube (experts only)</h3>
+            <p>If you are trying to make an Internet Cube with other hardware (old laptop, etc.), you need to <a href="https://yunohost.org/en/install?q=%2Finstall">install YunoHost</a>, then the <a href="https://github.com/labriqueinternet/vpnclient_ynh">VPN Client</a> and <a href="https://github.com/labriqueinternet/hotspot_ynh">Hotspot Wifi</a> apps, configure them with a .cube VPN, and enable the Let's Encrypt certificate.</p>
+            <p>If you want to create and maintain an image for a specific ARM card or with new options (native hard drive, encryption), talk about it on the discussion list :)</p>
+        </div>
+      </div>
+    </section>
 
-      <ul>
-        <li>Olimex board (open-hardware): <a href="https://www.olimex.com/Products/OLinuXino/A20/A20-OLinuXino-LIME/open-source-hardware">A20-OLinuXino-LIME</a> / <a href="https://www.olimex.com/Products/OLinuXino/A20/A20-OLinuXIno-LIME2/open-source-hardware">LIME2</a></li>
-        <li>Case for the board:
-          <ul>
-            <li>
-              Olimex: <a href="https://www.olimex.com/Products/OLinuXino/BOXES/BOX-LIME-BLACK/">BOX-LIME-BLACK</a> (metal)
-            </li>
-            <li>
-              DIY : <a hreflang="fr" href="http://carrefour-numerique.cite-sciences.fr/fablab/wiki/doku.php?id=projets:boite_la_brique_internet">Case MDF</a> (wood, laser cut)
-            </li>
-          </ul>
-        </li>
-        <li>Sector adaptor (<a href="https://www.olimex.com/wiki/PWRJACK">power jack</a> 5V DC) for the board (a simple mini-USB cable is enough to power the board, but the adapter is useful to plug a self-powered hard drive): <a href="https://www.olimex.com/Products/Power/SY0605E/">SY0605E</a></li>
-        <li>Wifi antenna (not open-hardware)
-          <ul>
-            <li><a href="https://www.fsf.org/news/ryf-certification-thinkpenguin-usb-with-atheros-chip">Free Software</a> version (limited to 7 simultaneous connections, <em>multissid</em> up to 2 AP): <a href="https://www.olimex.com/Products/USB-Modules/MOD-WIFI-AR9271-ANT/">MOD-WIFI-AR9271-ANT</a></li>
-            <li><a href="https://packages.debian.org/jessie/firmware-ralink">Non Free Software</a> version (<em>multissid</em> up to 8 AP) : <a href="https://www.olimex.com/Products/USB-Modules/MOD-WIFI-R5370-ANT/">MOD-WIFI-R5370-ANT</a></li>
-          </ul>
-        <li>Micro-SD card that is used as the internal hard drive: <a hreflang="fr-FR" href="https://www.amazon.fr/Transcend-microSDHC-adaptateur-TS32GUSDU1E-Emballage/dp/B00CES44EO">Transcend Premium 300x Class 10</a> (16 Go is enough)</li>
-        <li>Battery (13h of autonomy, optional): <a href="https://www.olimex.com/Products/Power/BATTERY-LIPO6600mAh/">BATTERY-LIPO6600mAh</a></li>
-        <li>Solar panel (optional): <a href="https://snootlab.com/lang-en/seeedstudio/699-lipo-rider-pro-fr.html">LiPo Rider Pro</a>, <a href="https://snootlab.com/lang-en/seeedstudio/702-panneau-solaire-3w-138x160-fr.html">SP 3W 138x160</a>, + 1 battery (<a href="https://hackspark.fr/en/catalogsearch/result/?q=lipo">another reseller</a>) - <a href="photos/labriqueinternet-solaire-details.png">Photo</a></li>
-      </ul>
 
-      <p>Cost of the hardware bundle described above, per Cube (with LIME, without the battery and the solar panel, but including the shipping cost):</p>
 
-      <ul>
-        <li>Approximately 70€ as part of an associative bulk order (FFDN)</li>
-        <li>Approximately 70€ as part of a personal bulk order (from 10 Cubes)</li>
-        <li>Approximately 80€ otherwise</li>
-      </ul>
 
-      <p>Cube ornamentation and spreading the word:</p>
-
+    <section id="decorate-an-internet-cube">
+      <h2><span>How to decorate</span> my Cube ?</h2>
       <ul>
         <li>A <a href="stuff/internetcube-sticker.png">very nice sticker</a> (<a href="stuff/internetcube-sticker.svg">SVG</a>) to stick on an Olimex box (8cm x 5.5cm)</li>
         <li>A <a href="stuff/internetcube-poster-a3.png">beautiful poster</a> (<a href="stuff/internetcube-poster-a3.svg">SVG</a>) to stick on the walls (A3 format)</li>
@@ -221,6 +224,33 @@
         <li><a hreflang="fr-FR" href="stuff/labriqueinternet-projet.pdf">Other schematics (fr)</a> (<a hreflang="fr-FR" href="stuff/labriqueinternet-projet.svg">SVG</a>) about the potential uses</li>
       </ul>
     </section>
+
+    <section id="getting-past-the-cube">
+      <h2><span>How to get past</span> a Cube</h2>
+      <p>Self-hosting is like growing your own vegetables, it takes time and at first it may not always be successful! If you prefer to trust ethical farmers and don't feel confident enough to try the adventure of self-hosting, but would like to de-googlyphied, we recommend the services of the members of the <a href="https://chatons.org/en">CHATONS collective</a> and those of the <a href="https://ffdn.org/en">FDN Federation</a> or other similar ISP like <a href="https://guifi.net/">Guifi</a> or <a href="https://freifunk.net/">Freifunk</a>.
+        <div class="pictures">
+      <a href="https://chatons.org" style="width:200px"><img src="img/logo_chatons.png" alt="Kittens logo depicting 3 cat heads in yellow" /></a>
+      <a href="https://ffdn.org/en" style="width:200px; margin-top:15px;"><img src="img/ffdn.png" alt="Federation fdn logo depicting the letters FFDN in blue" /></a>
+        </div>
+      <p>Finally, one last way to de-google and be less of a victim of net neutrality infringement is to simply reduce your technology needs, for example by using a USB stick instead of a cloud.</p>
+    </section>
+
+    <section id="participate">
+      <h2><span>How to contribute</span> to the project</h2>
+      <p>If you are an existing or creating association (LUG, Hackerspace, FABlab, non profit ISP, etc.) or a simple motivated person, you can take part in the project in several ways, some ideas:</p>
+      <ul>
+          <li>create / distribute communication materials about the Internet Cube and YunoHost</li>
+          <li>organize special "Internet Cube" or self-hosting install parties (possibly inviting people from the project) and making the support that afterwards</li>
+          <li>provide openvpn VPNs in <a href="https://labriqueinter.net/dotcubefiles.html">format .cube</a>, respecting net neutrality and with dedicated public ip (only FFDN ISP or equivalent provider abroad)</li>
+          <li>take part in the development of the Internet Cube (maintenance of the existing, backup, encryption, passage on hard disk, application to broadcast the VPN via an ethernet port, support of VPN wireguard...) or that of YunoHost</li>
+          <li>enrich <a href="https://wiki.labriqueinter.net">the Internet Cube wiki</a> and <a href="https://yunohost.org/fr">the YunoHost one</a></li>
+          <li>host the annual Internet Cube / YunoHost Camp</li>
+          <li>reporting bugs</li>
+          <li>coordinate unused Lime2 or Orange Pi PC plus card recovery operations</li>
+          <li>discuss with Olimex and/or Orange Pi resellers to have them offer an "Internet Cube" package</li>
+      </ul>
+    </section>
+
 
 <!--    <section id="replace-vpn-by-tor">
       <h2><span>Replacing the VPN</span> with Tor?</h2>
