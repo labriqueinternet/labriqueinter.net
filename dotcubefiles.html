@@ -163,19 +163,9 @@
       <p>VPN Client can be configured with a <em>dot cube</em> file, directly in command-line:</p>
 
       <pre>
-% ynh-vpnclient-loadcubefile.sh -h
--u YunoHost username (user with permissions on VPN Client)
--p User password
--c Dot cube file path
--h This help
-
-% ynh-vpnclient-loadcubefile.sh -u jdoe -p AAaxRjLAyU4CU -c /tmp/config.cube
-[VPN] Configuration updated and service successfully reloaded
+% yunohost app config get vpnclient set --args "config_file=/tmp/config.cube"
 </pre>
 
-      <p>The script <em>ynh-vpnclient-loadcubefile.sh</em> is provided with VPN Client.</p>
-
-      <p>The user <em>jdoe:AAaxRjLAyU4CU</em> must be a valid YunoHost user (SSO), allowed to access to the VPN Client web interface. When Wifi Hotspot is detected and if there is only one SSID defined, the <em>IPv6 Delegated Prefix</em> is also configured for this SSID and Wifi Hotspot is restarted.</p>
     </section>
   </main>
 
